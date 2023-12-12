@@ -1,4 +1,5 @@
-﻿using VendaProdutos.Context;
+﻿using Microsoft.EntityFrameworkCore;
+using VendaProdutos.Context;
 
 namespace VendaProdutos.Models
 {
@@ -75,6 +76,30 @@ namespace VendaProdutos.Models
                     }
             _context.SaveChanges();
           return quantidadeLocal;
+        }
+        public List<CarrinhoCompraItem> GetCarrinhoCompraItens()
+        {
+            return CarrinhoCompraItens ??
+                (CarrinhoCompraItens =
+                _context.CarrinhoCompraItens
+                .Where(c => c.CarrinhoCompraId == CarrinhoCompraId)
+                .Include(s => s.Produto)
+                .ToList());
+                
+        }
+        public void LimparCarrinho()
+        {
+            var carrinhoItens = _context.CarrinhoCompraItens
+                .Where(carrinho => carrinho.CarrinhoCompraId == CarrinhoCompraId);
+            _context.CarrinhoCompraItens.RemoveRange(carrinhoItens);
+            _context.SaveChanges();
+        }
+        public decimal GetCarrinhoCompraTotal()
+        {
+            var total = _context.CarrinhoCompraItens
+                .Where( c=> c.CarrinhoCompraId == CarrinhoCompraId)
+            .Select(c => c.Produto.Preco * c.Quantidade).Sum();
+            return total;
         }
     }
 }
