@@ -1,0 +1,12 @@
+.accordion_gen .card:first-child{border-top-left-radius:14px;border-top-right-radius:14px}.accordion_gen .card:last-child{border-bottom-left-radius:14px;border-bottom-right-radius:14px}.accordion_gen .card-header{background:#fff}.accordion_gen button{color:var(--cor-primaria)}.accordion_gen button:hover{color:var(--cor-primaria)!important}.accordion_gen button.collapsed{color:#000}.accordion_gen button:focus,.accordion_gen button:hover{text-decoration:none}.accordion_gen .card-header{border:none}.accordion_gen button svg{width:14px;float:right}.accordion_gen .collapsed svg{transform:rotate(0)}.accordion_gen button svg{transform:rotate(180deg)}
+
+h2.tit1_gen {
+    font-weight: 900;
+    font-size: 50px;
+}
+button.btn.btn-link.btn-block.text-left.tit2_gen.p-4.collapsed {
+    color: #000!important;
+}
+button.btn.btn-link.btn-block.text-left.tit2_gen.p-4 {
+    color: var(--cor-primaria) !important;
+}

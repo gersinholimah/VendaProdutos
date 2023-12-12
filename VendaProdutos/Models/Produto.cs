@@ -49,7 +49,7 @@ namespace VendaProdutos.Models
         [Required(ErrorMessage = "Informe as Imagens do Produto corretamente")]
         [Display(Name = "Imagens do Produto")]
         [StringLength(100, MinimumLength = 25, ErrorMessage = "A {0} deve ter no máximo {1} e no mínimo {2} caracteres")]
-        public string[] GaleriaImagemURL { get; set; }
+        public string GaleriaImagemURL { get; set; }
 
         [StringLength(100, MinimumLength = 25, ErrorMessage = "A {0} deve ter no máximo {1} e no mínimo {2} caracteres")]
         [Required(ErrorMessage = " Para acessibilidade descreva a imagem Corretamente")]

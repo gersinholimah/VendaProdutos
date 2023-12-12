@@ -1,0 +1,22 @@
+:root { 
+    --cor-primaria: #ff4700;
+    --cor-secundaria: #3c2525;
+    --cor-tercearia: #ffd36b;
+    --cor-quaternaria: #00a650;
+    --cor-quinaria: #4b589e;
+ 
+    --gradiente-primario:#3c2525;
+    --gradiente-secuntario:#573333;  
+  }
+  .class{
+    background-color: var(--cor-primaria);
+    background-color: var(--cor-secundaria);
+    background-color: var(--cor-tercearia);
+    background-color: var(--cor-quaternaria);
+    background-color: var(--cor-quinaria);
+
+    background-color: var(--gradiente-primario);
+    background-color: var(--gradiente-secuntario);
+
+  }
+ 

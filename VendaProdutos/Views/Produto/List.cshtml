@@ -1,10 +1,144 @@
-﻿@model IEnumerable<VendaProdutos.Models.Produto>
-
+﻿@model ProdutoListViewModel
+ 
 @{
     ViewData["Title"] = "List";
 }
 
-<h1>List</h1>
+
+
+
+
+
+
+
+
+
+
+
+
+
+<header class="bg_topo_interno mt-50">
+    <div class="container ">
+        <div class="row">
+            <div class="col-12 ">
+                <h1 class="tit2_pradois pb-10"> @Model.CategoriaAtual</h1>
+                <div class="linkbuild_top collapse multi-collapse" id="multiCollapseExample1">
+                    <div>
+                        <p>Lorem ipsum dolor sit amet, <a href="#">consectetur</a> adipiscing elit. Quisque commodo purus nec arcu vehicula, id <a href="#">gravida</a> metus efficitur. Cras fringilla laoreet metus sed suscipit.</p>
+                        <p>Duis pellentesque consectetur eleifend. Donec pulvinar venenatis enim <a href="#">faucibus</a> aliquam. Vivamus elementum mi interdum scelerisque auctor. Phasellus rhoncus tellus ac sollicitudin dictum. </p>
+                        <p>Cras porta ante felis, et blandit sem <a href="#">scelerisque</a> quis. Quisque bibendum enim sit amet enim porta vulputate. <a href="#">Maecenas</a> at blandit metus. Donec vel orci porttitor, egestas velit id, interdum lectus.</p>
+                        <p> Duis non mi nec nibh cursus tempor quis ut dolor. <a href="#">Fusce</a> elementum nulla felis, vitae tincidunt libero pharetra a. <a href="#">Etiam</a> nunc massa, fermentum in lectus at, vehicula efficitur mi. Aenean et facilisis est.</p>
+                    </div>
+                    <div class="float_button">
+                        <div class=" collapse multi-collapse " id="multiCollapseExample3">
+
+                            <button class="ver_menos" data-toggle="collapse" data-target=".multi-collapse" aria-expanded="false" aria-controls="multiCollapseExample1 multiCollapseExample2  multiCollapseExample3">
+                                Ver menos
+                                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512">
+                                    <path d="M201.4 137.4c12.5-12.5 32.8-12.5 45.3 0l160 160c12.5 12.5 12.5 32.8 0 45.3s-32.8 12.5-45.3 0L224 205.3 86.6 342.6c-12.5 12.5-32.8 12.5-45.3 0s-12.5-32.8 0-45.3l160-160z"></path></svg>
+                            </button>
+                        </div>
+
+
+                        <div class=" collapse multi-collapse show" id="multiCollapseExample2">
+                            <button data-toggle="collapse" data-target=".multi-collapse" aria-expanded="false" aria-controls="multiCollapseExample1 multiCollapseExample2  multiCollapseExample3">
+                                Ver mais
+                                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512">
+                                    <path d="M201.4 374.6c12.5 12.5 32.8 12.5 45.3 0l160-160c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0L224 306.7 86.6 169.4c-12.5-12.5-32.8-12.5-45.3 0s-12.5 32.8 0 45.3l160 160z"></path></svg>
+                            </button>
+                        </div>
+
+
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+
+</header>
+
+
+
+<section class="produtos categorias">
+    <div class="container">
+
+        <div class="row   mt-50 mb-20">
+
+            <div class="col-12">
+           @*      <h1>@ViewBag.totalprodutos </h1>
+
+
+                <h1>@ViewData["data"] </h1> *@
+
+            </div>
+
+            @foreach (var Produto in Model.Produtos) {
+
+            <div class="col-sm-6 col-md-4 col-lg-3 ">
+                <div class=" cesta_super_top">
+                    <a href="cesta.html" class="envolve_produtos mb-30-xs mb-70">
+                            <img class="img-fluid" src="@Produto.ImagemUrl">
+                            <h4>@Produto.Nome</h4>
+                             <p> Possuii @Produto.QuantidadeDeItem  Itens </p>
+
+                        <div class="d-flex">
+                            <span>
+                                    <div id="preco_card_super_top">@Produto.Preco</div>
+                                <small class="d-block parcelas">
+                                        <b id="parcelas_supertop">@Produto.Parcela</b>
+                                    <small>x R$</small>
+                                    <b id="valor_parcela_supertop">250</b>
+                                </small>
+                            </span>
+                                @if (@Produto.TaxaDeEntrega > 0)
+                                {
+                            <div class=" ml-auto  mr-20">Frete Grátis</div>
+                                }
+
+                        </div>
+
+                    </a>
+                </div>
+            </div>
+
+            }
+            
+
+          
+
+
+            
+
+             
+
+        </div>
+
+    </div>
+</section>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+@* <h1>List</h1>
 
 <p>
     <a asp-action="Create">Create New</a>
@@ -188,4 +322,4 @@
         </tr>
 }
     </tbody>
-</table>
+</table> *@
