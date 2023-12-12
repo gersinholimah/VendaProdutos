@@ -23,11 +23,33 @@ namespace VendaProdutos.Models
             string carrinhoId = session.GetString("CarrinhoId") ?? Guid.NewGuid().ToString();
             //atribui o id do carrinho na sessão
             session.SetString("CarrinhoId", carrinhoId);
-
+            //retorna o carrinho com o contexto e o Id atribuido ou obitido
             return new CarrinhoCompra(context)
             {
                 CarrinhoCompraId = carrinhoId
             };
+        }
+        public void AdicionarAoCarrinho(Produto produto)
+        {
+            var carrinhoCompraItem = _context.CarrinhoCompraItens.SingleOrDefault(
+                s=> s.Produto.ProdutoId == produto.ProdutoId &&
+                s.CarrinhoCompraId == CarrinhoCompraId);
+
+            if(carrinhoCompraItem == null)
+            {
+                carrinhoCompraItem = new CarrinhoCompraItem
+                {
+                    CarrinhoCompraId = CarrinhoCompraId,
+                    Produto = produto,
+                    Quantidade = 1
+                };
+                _context.CarrinhoCompraItens.Add(carrinhoCompraItem);
+            }
+            else
+            {
+                carrinhoCompraItem.Quantidade++;
+            }
+            _context.SaveChanges();
         }
     }
 }
