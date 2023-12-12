@@ -1,6 +1,7 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using VendaProdutos.Models;
 using VendaProdutos.Repositories.Interfaces;
+using VendaProdutos.ViewModel;
 
 namespace VendaProdutos.Controllers
 {
@@ -18,7 +19,37 @@ namespace VendaProdutos.Controllers
 
         public IActionResult Index()
         {
+            var itens = _carrinhoCompra.GetCarrinhoCompraItens();
+            _carrinhoCompra.CarrinhoCompraItens = itens;
+
+            var carrinhCompraVM = new CarrinhoCompraViewModel 
+            {
+            CarrinhoCompra = _carrinhoCompra,
+            CarrinhoCompraTotal = _carrinhoCompra.GetCarrinhoCompraTotal(),
+            };
             return View();
+        }
+        public IActionResult AdicionarItemNoCarrinhoCompra(int produtoId) {
+
+            var produtoSelecionado = _produtoRepository.Produtos
+                .FirstOrDefault(p => p.ProdutoId == produtoId);
+         if (produtoSelecionado != null)
+            {
+                _carrinhoCompra.AdicionarAoCarrinho(produtoSelecionado);
+            }
+         return RedirectToAction("Index");
+        }
+
+        public IActionResult RemoverItemDoCarrinhoCompra(int produtoId)
+        {
+
+            var produtoSelecionado = _produtoRepository.Produtos
+                .FirstOrDefault(p => p.ProdutoId == produtoId);
+            if (produtoSelecionado != null)
+            {
+                _carrinhoCompra.RemoverDoCarrinho(produtoSelecionado);
+            }
+            return RedirectToAction("Index");
         }
     }
 }
