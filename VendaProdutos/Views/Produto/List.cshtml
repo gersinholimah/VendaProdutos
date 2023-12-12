@@ -74,34 +74,9 @@
 
             </div>
 
-            @foreach (var Produto in Model.Produtos) {
+            @foreach (var produto in Model.Produtos) {
 
-            <div class="col-sm-6 col-md-4 col-lg-3 ">
-                <div class=" cesta_super_top">
-                    <a href="cesta.html" class="envolve_produtos mb-30-xs mb-70">
-                            <img class="img-fluid" src="@Produto.ImagemUrl">
-                            <h4>@Produto.Nome</h4>
-                             <p> Possuii @Produto.QuantidadeDeItem  Itens </p>
-
-                        <div class="d-flex">
-                            <span>
-                                    <div id="preco_card_super_top">@Produto.Preco</div>
-                                <small class="d-block parcelas">
-                                        <b id="parcelas_supertop">@Produto.Parcela</b>
-                                    <small>x R$</small>
-                                    <b id="valor_parcela_supertop">250</b>
-                                </small>
-                            </span>
-                                @if (@Produto.TaxaDeEntrega > 0)
-                                {
-                            <div class=" ml-auto  mr-20">Frete Grátis</div>
-                                }
-
-                        </div>
-
-                    </a>
-                </div>
-            </div>
+            <partial name="_ProdutosResumo" for="@produto"/> 
 
             }
             

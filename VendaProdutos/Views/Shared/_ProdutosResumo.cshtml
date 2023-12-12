@@ -1,0 +1,30 @@
+﻿
+@model Produto
+
+
+<div class="col-sm-6 col-md-4 col-lg-3 ">
+    <div class=" cesta_super_top">
+        <a href="cesta.html" class="envolve_produtos mb-30-xs mb-70">
+            <img class="img-fluid" src="@Model.ImagemUrl">
+            <h4>@Model.Nome</h4>
+            <p> Possuii @Model.QuantidadeDeItem  Itens </p>
+
+            <div class="d-flex">
+                <span>
+                    <div id="preco_card_super_top">@Model.Preco</div>
+                    <small class="d-block parcelas">
+                        <b id="parcelas_supertop">@Model.Parcela</b>
+                        <small>x R$</small>
+                        <b id="valor_parcela_supertop">250</b>
+                    </small>
+                </span>
+                @if (@Model.TaxaDeEntrega > 0)
+                {
+                    <div class=" ml-auto  mr-20">Frete Grátis</div>
+                }
+
+            </div>
+
+        </a>
+    </div>
+</div>
