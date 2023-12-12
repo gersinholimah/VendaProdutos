@@ -31,12 +31,17 @@ namespace VendaProdutos
         {
             services.AddTransient<IProdutoRepository, ProdutoRepository>();
             services.AddTransient<ICategoriaRepository, CategoriaRepository>();
-
+            
+            services.AddSingleton<IHttpContextAccessor, HttpContextAccessor>();
 
             services.AddDbContext<AppDbContext>(options=>
             options.UseSqlServer(Configuration.GetConnectionString("DefaultConnection")));
 
             services.AddControllersWithViews();
+
+            services.AddMemoryCache();
+            services.AddSession();
+
         }
         // This method gets called by the runtime. Use this method to public void Configure(IApplicationBuilder app, IWebHostEnviro {
 
@@ -58,6 +63,7 @@ if (env.IsDevelopment())
 app.UseHttpsRedirection(); app.UseStaticFiles();
 app.UseRouting();
 app.UseAuthorization();
+            app.UseSession();
 app.UseEndpoints(endpoints =>
 {
     endpoints.MapControllerRoute(name: "default",
