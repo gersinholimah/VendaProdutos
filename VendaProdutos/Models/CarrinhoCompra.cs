@@ -18,12 +18,16 @@ namespace VendaProdutos.Models
         {
             //define uma sesssão
             ISession session = services.GetRequiredService<IHttpContextAccessor>()?.HttpContext.Session;
+           
             //obtem um servço do tipo do nosso contexto
             var context = services.GetService<AppDbContext>();
+           
             //obtem ou gera o Id do carrinho
             string carrinhoId = session.GetString("CarrinhoId") ?? Guid.NewGuid().ToString();
+           
             //atribui o id do carrinho na sessão
             session.SetString("CarrinhoId", carrinhoId);
+
             //retorna o carrinho com o contexto e o Id atribuido ou obitido
             return new CarrinhoCompra(context)
             {

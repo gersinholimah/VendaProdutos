@@ -14,6 +14,7 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.DependencyInjection; 
 using Microsoft. Extensions. Hosting;
 using VendaProdutos.Context;
+using VendaProdutos.Models;
 using VendaProdutos.Repositories;
 using VendaProdutos.Repositories.Interfaces;
 namespace VendaProdutos
@@ -29,14 +30,16 @@ namespace VendaProdutos
         // This method gets called by the runtime. Use this method to
         public void ConfigureServices(IServiceCollection services)
         {
+            services.AddDbContext<AppDbContext>(options =>
+           options.UseSqlServer(Configuration.GetConnectionString("DefaultConnection")));
+
             services.AddTransient<IProdutoRepository, ProdutoRepository>();
             services.AddTransient<ICategoriaRepository, CategoriaRepository>();
             
             services.AddSingleton<IHttpContextAccessor, HttpContextAccessor>();
 
-            services.AddDbContext<AppDbContext>(options=>
-            options.UseSqlServer(Configuration.GetConnectionString("DefaultConnection")));
-
+            services.AddScoped(sp => CarrinhoCompra.GetCarrinho(sp));
+   
             services.AddControllersWithViews();
 
             services.AddMemoryCache();
