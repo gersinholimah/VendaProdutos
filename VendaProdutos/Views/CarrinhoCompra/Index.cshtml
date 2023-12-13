@@ -1,0 +1,94 @@
+﻿@model CarrinhoCompraViewModel
+
+<div class="mt-50 ">
+    <div class="container">
+        <div class="row">
+
+
+            <div class="col-12">
+                <div class="cart-info">
+                    <table class="shop_table shop_table_responsive cart woocommerce-cart-form__contents" cellspacing="0">
+                        <thead>
+                            <tr>
+                                <th class="product-remove">&nbsp;</th>
+                                <th class="product-thumbnail">&nbsp;</th>
+                                <th class="product-name">Product</th>
+                                <th class="product-price">Price</th>
+                                <th class="product-quantity">Quantity</th>
+                                <th class="product-subtotal">Subtotal</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @foreach (var item in Model.CarrinhoCompra.CarrinhoCompraItens)
+
+                            {
+                                <h1>Gersinho</h1>
+                            <tr class="woocommerce-cart-form__cart-item cart_item">
+                                <td class="product-remove"> 
+                                        <a href="#" asp-controller="CarrinhoCompra" asp-action="RemoverItemDoCarrinhoCompra" as-produtoId="@item.Produto.ProdutoId" class="remove" aria-label="Remove this item" data-product_id="49" data-product_sku="">×</a>
+                                    </td>
+                                <td class="product-thumbnail">
+                                    <a href="#">
+                                            <img width="100" height="100" src="@item.Produto.ImagemThumbnailUrl" class="attachment-woocommerce_thumbnail size-woocommerce_thumbnail" alt="" loading="lazy" sizes="(max-width: 440px) 100vw, 440px">
+                                        </a>
+                                </td>
+                                <td class="product-name" data-title="Product"> 
+                                        <a href="https://lafka.althemist.com/fastfood/product/big-brekkie-bbq-bacon-egg-burger/">@item.Produto.Nome</a>
+                                    </td>
+                                <td class="product-price" data-title="Price">
+                                    <span class="woocommerce-Price-amount amount">
+                                            <bdi>
+                                                
+                                                <span class="woocommerce-Price-currencySymbol">$</span>
+                                                @item.Produto.Preco.ToString("0.##", System.Globalization.CultureInfo.InvariantCulture)
+                                                <sup> @item.Produto.Preco.ToString("#.00", System.Globalization.CultureInfo.InvariantCulture)</sup>
+                                            </bdi>
+                                    </span>
+                                </td>
+                                <td class="product-quantity" data-title="Quantity">
+                                    <div class="quantity">  
+                                        <input type="number" id="quantity_635084ca1b2dc" class="input-text qty text" step="2" min="0" max="" name="" value="4" title="Qty" size="@item.Quantidade" placeholder="" inputmode="numeric">
+                                        <input type="button" value="+" class="lafka-qty-plus"> 
+                                        <input type="button" value="-" class="lafka-qty-minus"></div>
+                                </td>
+                                <td class="product-subtotal" data-title="Subtotal">
+                                    <span class="woocommerce-Price-amount amount">
+                                        <bdi>
+                                                @{
+                                                    decimal resultado = item.Quantidade * item.Produto.Preco;
+                                                    int parteInteira = (int)Math.Floor(resultado);
+                                                    decimal parteDecimal = resultado - parteInteira;
+                                                }
+
+                                                <span class="woocommerce-Price-currencySymbol">$</span>@parteInteira<sup>.@parteDecimal.ToString("00")</sup>
+                                            </bdi>
+                                    </span>
+                                </td>
+                            </tr>
+
+                            }
+                            <tr>
+                                <td colspan="6" class="actions"> 
+                                   
+
+                                    <button type="submit" class="button" name="update_cart" value="Update cart" aria-disabled="false">Update cart</button> 
+                                    <input type="hidden" id="woocommerce-cart-nonce" name="woocommerce-cart-nonce" value="1fcdca8a65">
+                                    <input type="hidden" name="_wp_http_referer" value="/fastfood/cart/">
+                                </td>
+                            </tr>
+                        </tbody>
+
+
+
+                    </table>
+
+
+                    <a asp-controller="Pedido" asp-action="Checkout">Encerrar Pedido</a>
+                    <a asp-controller="Produto" asp-action="List">Continuar Comprando</a>
+                </div>
+            </div>
+
+
+        </div>
+    </div>
+</div>

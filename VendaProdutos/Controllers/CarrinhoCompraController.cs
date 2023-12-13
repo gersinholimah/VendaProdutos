@@ -27,7 +27,7 @@ namespace VendaProdutos.Controllers
             CarrinhoCompra = _carrinhoCompra,
             CarrinhoCompraTotal = _carrinhoCompra.GetCarrinhoCompraTotal(),
             };
-            return View();
+            return View(carrinhCompraVM);
         }
         public IActionResult AdicionarItemNoCarrinhoCompra(int produtoId) {
 
