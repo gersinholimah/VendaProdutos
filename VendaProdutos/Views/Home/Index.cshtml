@@ -1,2 +1,50 @@
-﻿<h1>Aqui a Index</h1>
+﻿@model HomeViewModel
+
+<h1>Aqui a Index</h1>
 <partial name="_Carousel"/>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<section class="produtos categorias">
+    <div class="container">
+
+        <div class="row   mt-50 mb-20">
+
+            <div class="col-12">
+                @*      <h1>@ViewBag.totalprodutos </h1>
+
+
+                <h1>@ViewData["data"] </h1> *@
+
+            </div>
+
+            @foreach (var produto in Model.ProdutosEmAlta)
+            {
+                <partial name="_ProdutosResumo" for="@produto" />
+            }
+
+
+
+
+
+
+
+
+
+        </div>
+
+    </div>
+</section>
