@@ -881,6 +881,28 @@ div.quantity input.lafka-qty-plus, div.quantity input.lafka-qty-minus, .auction_
 
 
 
+.bolsa_home svg {
+    fill: #135dd8;
+    font-size: 30px;
+    margin-left: 20px;
+}
+
+.badge-info {
+    color: #fff !important;
+    background-color: #21ce35 !important;
+    margin: 0px 0px 0px -3px !important;
+}
+
+
+
+
+
+
+
+
+
+
+
 
 
 
