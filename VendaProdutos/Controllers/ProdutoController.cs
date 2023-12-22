@@ -26,23 +26,27 @@ namespace VendaProdutos.Controllers
             }
             else
             {
-                if(string.Equals("Cesta1", categoria, StringComparison.OrdinalIgnoreCase))
-                    {
-                    produtos = _produtoRepository.Produtos
-                            .Where(p => p.Categoria.CategoriaNome
-                            .Equals("Cesta1"))
-                            .OrderBy(p => p.Nome);
-                        }
-                else
-                {
-                    produtos = _produtoRepository.Produtos
-                               .Where(p => p.Categoria.CategoriaNome
-                               .Equals("Festa1"))
-                               .OrderBy(p => p.Nome);
-                }
-               
-                   
-             }
+                //if(string.Equals("Cesta1", categoria, StringComparison.OrdinalIgnoreCase))
+                //    {
+                //    produtos = _produtoRepository.Produtos
+                //            .Where(p => p.Categoria.CategoriaNome
+                //            .Equals("Cesta1"))
+                //            .OrderBy(p => p.Nome);
+                //        }
+                //else
+                //{
+                //    produtos = _produtoRepository.Produtos
+                //               .Where(p => p.Categoria.CategoriaNome
+                //               .Equals("Festa1"))
+                //               .OrderBy(p => p.Nome);
+                //}
+
+                produtos = _produtoRepository.Produtos
+                    .Where(p => p.Categoria.CategoriaNome.Equals(categoria))
+                    .OrderBy(c => c.Nome);
+                categoriaAtual = categoria;
+
+            }
             var produtosListViewModel = new ProdutoListViewModel
             {
                 Produtos = produtos,
@@ -50,5 +54,10 @@ namespace VendaProdutos.Controllers
             };
             return View(produtosListViewModel);
         }
+        public IActionResult Details(int produtoId) 
+        {
+            var produto = _produtoRepository.Produtos.FirstOrDefault(p => p.ProdutoId == produtoId);
+            return View(produto);
+                }
     }
 }

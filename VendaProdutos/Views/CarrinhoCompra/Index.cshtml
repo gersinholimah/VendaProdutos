@@ -12,9 +12,9 @@
                             <tr>
                                 <th class="product-remove">&nbsp;</th>
                                 <th class="product-thumbnail">&nbsp;</th>
-                                <th class="product-name">Product</th>
-                                <th class="product-price">Price</th>
-                                <th class="product-quantity">Quantity</th>
+                                <th class="product-name">Produto</th>
+                                <th class="product-price">Preço</th>
+                                <th class="product-quantity">Quant</th>
                                 <th class="product-subtotal">Subtotal</th>
                             </tr>
                         </thead>
@@ -22,10 +22,14 @@
                             @foreach (var item in Model.CarrinhoCompra.CarrinhoCompraItens)
 
                             {
-                                <h1>Gersinho</h1>
                             <tr class="woocommerce-cart-form__cart-item cart_item">
-                                <td class="product-remove"> 
-                                        <a href="#" asp-controller="CarrinhoCompra" asp-action="RemoverItemDoCarrinhoCompra" as-produtoId="@item.Produto.ProdutoId" class="remove" aria-label="Remove this item" data-product_id="49" data-product_sku="">×</a>
+                                <td class="product-remove">
+                                      
+                                        <a asp-controller="CarrinhoCompra" asp-action="RemoverItemDoCarrinhoCompra"
+                                           asp-route-produtoId="@item.Produto.ProdutoId"
+                                           class="remove" aria-label="Remove this item"
+                                           data-product_id="49" data-product_sku="">×
+                                       </a>
                                     </td>
                                 <td class="product-thumbnail">
                                     <a href="#">
@@ -38,18 +42,20 @@
                                 <td class="product-price" data-title="Price">
                                     <span class="woocommerce-Price-amount amount">
                                             <bdi>
-                                                
+                                                @{
+                                                    decimal preco =  item.Produto.Preco;
+                                                    int precoInteiro = (int)Math.Floor(preco);
+                                                    decimal precoDecimal = preco - precoInteiro;
+                                                }
                                                 <span class="woocommerce-Price-currencySymbol">$</span>
-                                                @item.Produto.Preco.ToString("0.##", System.Globalization.CultureInfo.InvariantCulture)
-                                                <sup> @item.Produto.Preco.ToString("#.00", System.Globalization.CultureInfo.InvariantCulture)</sup>
+                                                @precoInteiro
+                                                <sup> @precoDecimal.ToString("00")</sup>
                                             </bdi>
                                     </span>
                                 </td>
                                 <td class="product-quantity" data-title="Quantity">
                                     <div class="quantity">  
-                                        <input type="number" id="quantity_635084ca1b2dc" class="input-text qty text" step="2" min="0" max="" name="" value="4" title="Qty" size="@item.Quantidade" placeholder="" inputmode="numeric">
-                                        <input type="button" value="+" class="lafka-qty-plus"> 
-                                        <input type="button" value="-" class="lafka-qty-minus"></div>
+                                            @item.Quantidade
                                 </td>
                                 <td class="product-subtotal" data-title="Subtotal">
                                     <span class="woocommerce-Price-amount amount">

@@ -52,8 +52,6 @@ namespace VendaProdutos
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
         {
 
-
-
             if (env.IsDevelopment())
             {
                 app.UseDeveloperExceptionPage();
@@ -63,11 +61,14 @@ namespace VendaProdutos
             {
                 app.UseExceptionHandler("/Home/Error");
                 // The default HSTS value is 30 days. You may want to app.UseHsts(),
+                app.UseHsts();
+
             }
-            app.UseHttpsRedirection(); app.UseStaticFiles();
+            app.UseHttpsRedirection(); 
+            app.UseStaticFiles();
             app.UseRouting();
-            app.UseAuthorization();
             app.UseSession();
+            app.UseAuthorization();
             app.UseEndpoints(endpoints =>
             {
 
