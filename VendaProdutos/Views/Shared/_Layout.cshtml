@@ -68,6 +68,11 @@
             <div class="bolsa_home">
                 @await Component.InvokeAsync("CarrinhoCompraResumo")
             </div>
+            <form class="navbar-form navbar-right" asp-controller="Produto" asp-action="Search" method="get">
+                <div class="form-group">
+                    <input type="text" class="form-control" placeholder="Procurar produto" name="searchString" value="@ViewData["searchString"]">
+                </div>
+            </form>
             <div class="collapse navbar-collapse" id="navbarSupportedContent">
                 <ul class="navbar-nav mr-auto ml-auto mr-50-lg">
                     <li class="nav-item">
@@ -253,11 +258,7 @@
         @RenderBody()
     </main>
 
-    <footer class="border-top footer text-muted">
-        <div class="container">
-            &copy; 2023 - VendaProdutos - <a asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
-        </div>
-    </footer>
+   
     <script src="~/lib/jquery/dist/jquery.min.js"></script>
     <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
     <script src="~/js/site.js" asp-append-version="true"></script>

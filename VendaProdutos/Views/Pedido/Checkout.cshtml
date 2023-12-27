@@ -1,0 +1,154 @@
+﻿@model Pedido
+<div class="container">
+<h3>Você esta a um passo de completar o seu pedido</h3>
+<hr />
+<form asp-action="Checkout" method="post" class="form-horizontal" role="form">
+
+    <!-- Dados do Comprador -->
+    <div class="row">
+        <div class="form-group col-md-6">
+            <label asp-for="NomeComprador" class="control-label"></label>
+            <input asp-for="NomeComprador" class="form-control" />
+            <span asp-validation-for="NomeComprador" class="text-danger"></span>
+        </div>
+        <div class="form-group col-md-6">
+            <label asp-for="ApelidoComprador" class="control-label"></label>
+            <input asp-for="ApelidoComprador" class="form-control" />
+            <span asp-validation-for="ApelidoComprador" class="text-danger"></span>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="form-group col-md-6">
+            <label asp-for="DataNascimento" class="control-label"></label>
+            <input asp-for="DataNascimento" class="form-control" />
+            <span asp-validation-for="DataNascimento" class="text-danger"></span>
+        </div>
+        <div class="form-group col-md-6">
+            <label asp-for="CPFComprador" class="control-label"></label>
+            <input asp-for="CPFComprador" class="form-control" />
+            <span asp-validation-for="CPFComprador" class="text-danger"></span>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="form-group col-md-6">
+            <label asp-for="WhatsappComprador" class="control-label"></label>
+            <input asp-for="WhatsappComprador" class="form-control" />
+            <span asp-validation-for="WhatsappComprador" class="text-danger"></span>
+        </div>
+        <div class="form-group col-md-6">
+            <label asp-for="Email" class="control-label"></label>
+            <input asp-for="Email" class="form-control" />
+            <span asp-validation-for="Email" class="text-danger"></span>
+        </div>
+    </div>
+
+    <!-- Dados do Recebedor -->
+    <div class="row">
+        <div class="form-group col-md-6">
+            <label asp-for="NomeRecebedor" class="control-label"></label>
+            <input asp-for="NomeRecebedor" class="form-control" />
+            <span asp-validation-for="NomeRecebedor" class="text-danger"></span>
+        </div>
+        <div class="form-group col-md-6">
+            <label asp-for="ApelidoRecebedor" class="control-label"></label>
+            <input asp-for="ApelidoRecebedor" class="form-control" />
+            <span asp-validation-for="ApelidoRecebedor" class="text-danger"></span>
+        </div>
+    </div>
+
+        <div class="row">
+            <div class="form-group col-md-6">
+                <label asp-for="BairroRecebedor" class="control-label"></label>
+                <input asp-for="BairroRecebedor" class="form-control" />
+                <span asp-validation-for="BairroRecebedor" class="text-danger"></span>
+            </div>
+            <div class="form-group col-md-6">
+                <label asp-for="RuaRecebedor" class="control-label"></label>
+                <input asp-for="RuaRecebedor" class="form-control" />
+                <span asp-validation-for="RuaRecebedor" class="text-danger"></span>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="form-group col-md-6">
+                <label asp-for="ComplementoRecebedor" class="control-label"></label>
+                <input asp-for="ComplementoRecebedor" class="form-control" />
+                <span asp-validation-for="ComplementoRecebedor" class="text-danger"></span>
+            </div>
+            <div class="form-group col-md-6">
+                <label asp-for="NumeroCasaRecebedor" class="control-label"></label>
+                <input asp-for="NumeroCasaRecebedor" class="form-control" />
+                <span asp-validation-for="NumeroCasaRecebedor" class="text-danger"></span>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="form-group col-md-6">
+                <label asp-for="WhatsappRecebedor" class="control-label"></label>
+                <input asp-for="WhatsappRecebedor" class="form-control" />
+                <span asp-validation-for="WhatsappRecebedor" class="text-danger"></span>
+            </div>
+           
+        </div>
+
+    <!-- Continue adicionando os campos de endereço do Recebedor e outros conforme necessário -->
+    <!-- Dados do Pedido -->
+    <div class="row">
+        <div class="form-group col-md-6">
+                <labe asp-for="DataDeEntrega" class="control-label">
+                    DataDeEntrega</label>
+                    <input asp-for="DataDeEntrega"  class="form-control" />
+
+            <span asp-validation-for="DataDeEntrega" class="text-danger"></span>
+        </div>
+        <div class="form-group col-md-6">
+                <label asp-for="HoraDeEntrega" class="control-label"></label>
+                <input asp-for="HoraDeEntrega" class="form-control" />
+
+                <span asp-validation-for="HoraDeEntrega" class="text-danger"></span>
+        </div>
+    </div>
+
+        <div class="row">
+            <div class="form-group col-md-6">
+                <labe asp-for="Observacoes" class="control-label">
+                    Observacoes</label>
+                    <input asp-for="Observacoes" class="form-control" />
+                    <span asp-validation-for="Observacoes" class="text-danger"></span>
+            </div>
+            <div class="form-group col-md-6">
+                <label asp-for="Cartinha" class="control-label">Cartinha</label>
+                <textarea asp-for="Cartinha" class="form-control"></textarea>
+
+                <span asp-validation-for="Cartinha" class="text-danger"></span>
+            </div>
+        </div>
+
+    <!-- Continue adicionando outros campos do Pedido conforme necessário -->
+    <!-- Campos relacionados aos itens do pedido -->
+    <!-- (Certifique-se de ajustar conforme a estrutura real do PedidoDetalhe) -->
+    <!-- Exemplo para um campo de quantidade de itens -->
+
+
+        <!-- Adicione outros campos dos itens do pedido conforme necessário -->
+        <!--   <div class="row">
+        <div class="form-group col-md-6">
+            <label class="control-label"></label>
+                <input  value="PedidoItens[0].Quantidade" class="form-control" />
+        </div>
+</div> -->
+
+    <br />
+    <div class="row">
+        <div class="form-group col-md-3">
+            <input class="btn btn-success" type="submit" value="Concluir Pedido" />
+        </div>
+        &nbsp;
+        <div class="form-group col-md-3">
+            <a class="btn btn-outline-info" asp-controller="CarrinhoCompra" asp-action="Index">Retornar ao Carrinho</a>
+        </div>
+    </div>
+</form>
+</div>

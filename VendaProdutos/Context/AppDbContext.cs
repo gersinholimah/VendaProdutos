@@ -13,6 +13,8 @@ namespace VendaProdutos.Context
 
         public DbSet<CarrinhoCompraItem> CarrinhoCompraItens { get; set; }
 
+        public DbSet<Pedido> Pedidos { get; set; }  
+        public DbSet<PedidoDetalhe> PedidosDetalhe { get; set; }    
 
     }
 }

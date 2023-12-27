@@ -3,6 +3,7 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using VendaProdutos.Context;
 
@@ -11,9 +12,11 @@ using VendaProdutos.Context;
 namespace VendaProdutos.Migrations
 {
     [DbContext(typeof(AppDbContext))]
-    partial class AppDbContextModelSnapshot : ModelSnapshot
+    [Migration("20231226194056_AtualizaDataTimePedido")]
+    partial class AtualizaDataTimePedido
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -131,8 +134,8 @@ namespace VendaProdutos.Migrations
                         .HasMaxLength(50)
                         .HasColumnType("nvarchar(50)");
 
-                    b.Property<string>("CPFComprador")
-                        .HasColumnType("nvarchar(max)");
+                    b.Property<int>("CPFComprador")
+                        .HasColumnType("int");
 
                     b.Property<string>("Cartinha")
                         .HasMaxLength(450)
@@ -156,7 +159,7 @@ namespace VendaProdutos.Migrations
                     b.Property<bool>("EntregaPedido")
                         .HasColumnType("bit");
 
-                    b.Property<DateTime>("HoraDeEntrega")
+                    b.Property<DateTime>("HoraDaEntrega")
                         .HasColumnType("datetime2");
 
                     b.Property<string>("NomeComprador")

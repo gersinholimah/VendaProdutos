@@ -36,6 +36,7 @@ namespace VendaProdutos
 
             services.AddTransient<IProdutoRepository, ProdutoRepository>();
             services.AddTransient<ICategoriaRepository, CategoriaRepository>();
+            services.AddTransient<IPedidoRepository, PedidoRepository>();
 
             services.AddSingleton<IHttpContextAccessor, HttpContextAccessor>();
 

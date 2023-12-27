@@ -1,0 +1,85 @@
+﻿@model Pedido
+
+<div class="container">
+
+    <div class="jumbotron">
+        <h2>@ViewBag.CheckoutCompletoMensagem</h2>
+    </div>
+
+    <div class="card">
+        <div class="card-body">
+            <p>
+                Status do pedido: @if (Model.PagamentoPedido)
+                {
+                    <strong>PAGO</strong>
+                }
+                else
+                {
+                    <strong>Aguardando Pagamento</strong>
+                }
+            </p>
+            <p>Encomendado dia :  <strong>@Model.PedidoEnviado</strong>
+            <p>Número do Pedido   : <strong>@Model.PedidoId</strong></p>
+            
+
+            <h4>Entregar para</h4>
+            <p>  Nome : <strong>@Model.NomeRecebedor</strong> </p>
+            <p>  Whatsapp  : <strong>@Model.WhatsappRecebedor</strong> </p>
+
+            <h4>Emdereço de entrega</h4>
+
+
+            <p>  Cidade : <strong>Feira de Santana</strong> </p>
+            <p>  Bairro : <strong>@Model.BairroRecebedor</strong> </p>
+            <p>  Rua : <strong>@Model.RuaRecebedor</strong> </p>
+
+
+            <p>  Nº do imóvel: <strong>@Model.NumeroCasaRecebedor</strong> </p>
+
+            <p>  Complemento do endereço : <strong>@Model.ComplementoRecebedor</strong> </p>
+ 
+            <h4>Outras informações</h4>
+            
+
+            <p>Entregar Dia: <strong>@Model.DataDeEntrega.ToString("dd/MM/yyyy")</strong> às <strong>@Model.HoraDeEntrega.ToString("HH:mm")</strong> </p>
+
+            <p>  Observacoes : <strong>@Model.Observacoes</strong> </p>
+
+            <p>  Cartinha : <strong>@Model.Cartinha</strong> </p>
+
+
+
+
+
+
+            <h4>Surpresa incomendada</h4>
+
+
+
+            <table class="table">
+                <tr>
+                    <th></th>
+                    <th>Quantidade</th>
+                    <th>Lanche</th>
+                    <th>Preço</th>
+                </tr>
+                        @foreach (var item in Model.PedidoItens)
+                        {
+                    <tr>
+                        <td><img src="@item.Produto.ImagemUrl" width="40" height="40" /></td>
+                        <td>@item.Quantidade</td>
+                        <td>@item.Produto.Nome</td>
+                        <td>@item.Produto.Preco</td>
+                    </tr>
+                        }
+            </table>
+
+            <h4>Valor Total do Pedido: <strong>@(((decimal)ViewBag.TotalPedido).ToString("C2"))</strong></h4>
+        </div>
+    </div>
+</div>
+<div class="form-group" style="text-align :center">
+    <h3>
+        <a class="nav-link text-info" asp-controller="Home" asp-action="Index">Retornar</a>
+    </h3>
+</div>
