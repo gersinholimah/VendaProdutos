@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Mvc;
 using VendaProdutos.Models;
 using VendaProdutos.Repositories.Interfaces;
 
@@ -16,11 +17,14 @@ namespace VendaProdutos.Controllers
             _carrinhoCompra = carrinhoCompra;
         }
 
+        [Authorize]
         [HttpGet]
         public IActionResult Checkout()
         {
             return View();
         }
+        
+        [Authorize]
         [HttpPost]
         public IActionResult Checkout(Pedido pedido)
         {

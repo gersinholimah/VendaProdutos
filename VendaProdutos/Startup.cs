@@ -88,6 +88,13 @@ namespace VendaProdutos
             app.UseEndpoints(endpoints =>
             {
 
+               
+                    endpoints.MapControllerRoute(
+                      name: "areas",
+                      pattern: "{area:exists}/{controller=Home}/{action=Index}/{id?}"
+                    );
+ 
+
                 endpoints.MapControllerRoute(
                     name: "categoriaFiltro", 
                     pattern: "Produto/{action}/{categoria?}",

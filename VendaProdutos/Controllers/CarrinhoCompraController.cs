@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Mvc;
 using VendaProdutos.Models;
 using VendaProdutos.Repositories.Interfaces;
 using VendaProdutos.ViewModel;
@@ -29,6 +30,8 @@ namespace VendaProdutos.Controllers
             };
             return View(carrinhCompraVM);
         }
+
+        [Authorize]
         public IActionResult AdicionarItemNoCarrinhoCompra(int produtoId) {
 
             var produtoSelecionado = _produtoRepository.Produtos
@@ -40,6 +43,7 @@ namespace VendaProdutos.Controllers
          return RedirectToAction("Index");
         }
 
+        [Authorize]
         public IActionResult RemoverItemDoCarrinhoCompra(int produtoId)
         {
 
