@@ -19,6 +19,7 @@ using VendaProdutos.Context;
 using VendaProdutos.Models;
 using VendaProdutos.Repositories;
 using VendaProdutos.Repositories.Interfaces;
+using VendaProdutos.Services;
 namespace VendaProdutos
 {
     public class Startup
@@ -52,6 +53,8 @@ namespace VendaProdutos
             services.AddTransient<ICategoriaRepository, CategoriaRepository>();
             services.AddTransient<IPedidoRepository, PedidoRepository>();
 
+            services.AddScoped<ISeedUserRoleInitial, SeedUserRoleInitial>();
+
             services.AddSingleton<IHttpContextAccessor, HttpContextAccessor>();
 
             services.AddScoped(sp => CarrinhoCompra.GetCarrinho(sp));
@@ -64,7 +67,8 @@ namespace VendaProdutos
         }
         // This method gets called by the runtime. Use this method to public void Configure(IApplicationBuilder app, IWebHostEnviro {
 
-        public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
+        public void Configure(IApplicationBuilder app, 
+            IWebHostEnvironment env, ISeedUserRoleInitial seedUserRoleInitial)
         {
 
             if (env.IsDevelopment())
@@ -82,6 +86,12 @@ namespace VendaProdutos
             app.UseHttpsRedirection(); 
             app.UseStaticFiles();
             app.UseRouting();
+
+            //Cria os perfis
+            seedUserRoleInitial.SeedRoles();
+            //Cria os usuários e atributos ao perfil
+            seedUserRoleInitial.SeedUsers();
+
             app.UseSession();
             app.UseAuthentication();
             app.UseAuthorization();
