@@ -56,9 +56,7 @@
                 <img src="~/img/pradois_cestas.svg" loading="lazy" alt="Logo Pradois">
 
             </a>
-            <div class="d-xl-none d-lg-none login_mobile">
-                <a class="btn_cadastrar_gen cor_btn_fr1_gen" href="">Cadastrar</a>
-            </div>
+           
             <span class="navbar-toggler collapsed" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
                 <div class="menu-btn-1" onclick="menuBtnFunction(this)">
                     <span></span>
@@ -68,6 +66,9 @@
             <div class="bolsa_home">
                 @await Component.InvokeAsync("CarrinhoCompraResumo")
             </div>
+            
+            @await Html.PartialAsync("_LoginPartial")
+
             <form class="navbar-form navbar-right" asp-controller="Produto" asp-action="Search" method="get">
                 <div class="form-group">
                     <input type="text" class="form-control" placeholder="Procurar produto" name="searchString" value="@ViewData["searchString"]">
@@ -245,6 +246,8 @@
 
                     </li>
                 </ul>
+
+                
 
             </div>
         </div>
