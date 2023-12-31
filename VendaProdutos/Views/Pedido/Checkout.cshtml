@@ -11,25 +11,10 @@
             <input asp-for="NomeComprador" class="form-control" />
             <span asp-validation-for="NomeComprador" class="text-danger"></span>
         </div>
-        <div class="form-group col-md-6">
-            <label asp-for="ApelidoComprador" class="control-label"></label>
-            <input asp-for="ApelidoComprador" class="form-control" />
-            <span asp-validation-for="ApelidoComprador" class="text-danger"></span>
-        </div>
+
     </div>
 
-    <div class="row">
-        <div class="form-group col-md-6">
-            <label asp-for="DataNascimento" class="control-label"></label>
-            <input asp-for="DataNascimento" class="form-control" />
-            <span asp-validation-for="DataNascimento" class="text-danger"></span>
-        </div>
-        <div class="form-group col-md-6">
-            <label asp-for="CPFComprador" class="control-label"></label>
-            <input asp-for="CPFComprador" class="form-control" />
-            <span asp-validation-for="CPFComprador" class="text-danger"></span>
-        </div>
-    </div>
+ 
 
     <div class="row">
         <div class="form-group col-md-6">
@@ -37,30 +22,31 @@
             <input asp-for="WhatsappComprador" class="form-control" />
             <span asp-validation-for="WhatsappComprador" class="text-danger"></span>
         </div>
-        <div class="form-group col-md-6">
-            <label asp-for="Email" class="control-label"></label>
-            <input asp-for="Email" class="form-control" />
-            <span asp-validation-for="Email" class="text-danger"></span>
-        </div>
-    </div>
-
-    <!-- Dados do Recebedor -->
-    <div class="row">
+ 
+ 
         <div class="form-group col-md-6">
             <label asp-for="NomeRecebedor" class="control-label"></label>
             <input asp-for="NomeRecebedor" class="form-control" />
             <span asp-validation-for="NomeRecebedor" class="text-danger"></span>
         </div>
-        <div class="form-group col-md-6">
-            <label asp-for="ApelidoRecebedor" class="control-label"></label>
-            <input asp-for="ApelidoRecebedor" class="form-control" />
-            <span asp-validation-for="ApelidoRecebedor" class="text-danger"></span>
-        </div>
+  
     </div>
 
+             <ul class="nav nav-tabs" id="myTabs">
+                <li class="nav-item">
+                    <a class=" active btn btn-primary" id="tab1-tab" data-toggle="tab" href="#tab1">RESIDENCIAL</a>
+                </li>
+                <li class="nav-item">
+                    <a class=" btn btn-primary" id="tab2-tab" data-toggle="tab" href="#tab2">COMERCIAL</a>
+                </li>
+         
+            </ul>
+
+            
+ 
         <div class="row">
             <div class="form-group col-md-6">
-                <label asp-for="BairroRecebedor" class="control-label"></label>
+                <label asp-for="BairroRecebedor" class="control-label">Bairro</label>
                 <input asp-for="BairroRecebedor" class="form-control" />
                 <span asp-validation-for="BairroRecebedor" class="text-danger"></span>
             </div>
@@ -73,16 +59,42 @@
 
         <div class="row">
             <div class="form-group col-md-6">
-                <label asp-for="ComplementoRecebedor" class="control-label"></label>
+                <label asp-for="ComplementoRecebedor" class="control-label">Complemento</label>
                 <input asp-for="ComplementoRecebedor" class="form-control" />
                 <span asp-validation-for="ComplementoRecebedor" class="text-danger"></span>
             </div>
             <div class="form-group col-md-6">
-                <label asp-for="NumeroCasaRecebedor" class="control-label"></label>
+                <label asp-for="NumeroCasaRecebedor" class="control-label">Nº do imóvel</label>
                 <input asp-for="NumeroCasaRecebedor" class="form-control" />
                 <span asp-validation-for="NumeroCasaRecebedor" class="text-danger"></span>
             </div>
         </div>
+
+        <div class="tab-content mt-2">
+            <div class="tab-pane fade show active" id="tab1">
+            </div>
+            <div class="tab-pane fade" id="tab2">
+                <div class="row">
+                    <div class="form-group col-md-6">
+                        <label asp-for="NomeDaEmpresa" class="control-label">Nome da empresa</label>
+                        <input asp-for="NomeDaEmpresa" class="form-control" />
+                        <span asp-validation-for="NomeDaEmpresa" class="text-danger"></span>
+                    </div>
+                    <div class="form-group col-md-6">
+                        <label asp-for="Setor" class="control-label">Setor que a pessoa trabalha</label>
+                        <input asp-for="Setor" class="form-control" />
+                        <span asp-validation-for="Setor" class="text-danger"></span>
+                    </div>
+                    <div class="form-group col-md-6">
+                        <label asp-for="PontoDeReferencia" class="control-label">Ponto de referencia</label>
+                        <input asp-for="PontoDeReferencia" class="form-control" />
+                        <span asp-validation-for="PontoDeReferencia" class="text-danger"></span>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+
 
         <div class="row">
             <div class="form-group col-md-6">
@@ -152,3 +164,25 @@
     </div>
 </form>
 </div>
+
+
+
+
+
+
+
+
+
+
+<script>
+    var today, datepicker;
+    today = new Date(new Date().getFullYear(),
+        new Date().getMonth(),
+        new Date().getDate());
+    datepicker = $('#datepicker').datepicker({
+        format: 'dd-mm-yyyy',
+        minDate: today,
+        locale: 'pt-br'
+
+    });
+</script>

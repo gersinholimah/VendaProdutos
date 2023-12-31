@@ -51,6 +51,18 @@ namespace VendaProdutos.Models
         [StringLength(100, MinimumLength = 25, ErrorMessage = "A {0} deve ter no máximo {1} e no mínimo {2} caracteres")]
         public string GaleriaImagemURL { get; set; }
 
+        [Display(Name = "2ª Imagen do carousel do Produto")]
+        [StringLength(100, MinimumLength = 25, ErrorMessage = "A {0} deve ter no máximo {1} e no mínimo {2} caracteres")]
+        public string Imagem2CarolselURL { get; set; }
+
+        [Display(Name = "3ª Imagen do carousel do Produto")]
+        [StringLength(100, MinimumLength = 25, ErrorMessage = "A {0} deve ter no máximo {1} e no mínimo {2} caracteres")]
+        public string Imagem3CarolselURL { get; set; }
+
+        [Display(Name = "4ª Imagen do carousel do Produto")]
+        [StringLength(100, MinimumLength = 25, ErrorMessage = "A {0} deve ter no máximo {1} e no mínimo {2} caracteres")]
+        public string Imagem4CarolselURL { get; set; }
+
         [StringLength(100, MinimumLength = 25, ErrorMessage = "A {0} deve ter no máximo {1} e no mínimo {2} caracteres")]
         [Required(ErrorMessage = " Para acessibilidade descreva a imagem Corretamente")]
         [Display(Name = "Descrição da imagem do produto")]

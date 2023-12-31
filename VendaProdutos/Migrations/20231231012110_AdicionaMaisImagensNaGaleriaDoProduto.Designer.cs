@@ -3,6 +3,7 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using VendaProdutos.Context;
 
@@ -11,9 +12,11 @@ using VendaProdutos.Context;
 namespace VendaProdutos.Migrations
 {
     [DbContext(typeof(AppDbContext))]
-    partial class AppDbContextModelSnapshot : ModelSnapshot
+    [Migration("20231231012110_AdicionaMaisImagensNaGaleriaDoProduto")]
+    partial class AdicionaMaisImagensNaGaleriaDoProduto
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -316,10 +319,21 @@ namespace VendaProdutos.Migrations
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("PedidoId"));
 
-                    b.Property<string>("BairroRecebedor")
+                    b.Property<string>("ApelidoComprador")
                         .IsRequired()
                         .HasMaxLength(50)
                         .HasColumnType("nvarchar(50)");
+
+                    b.Property<string>("ApelidoRecebedor")
+                        .HasMaxLength(50)
+                        .HasColumnType("nvarchar(50)");
+
+                    b.Property<string>("BairroRecebedor")
+                        .HasMaxLength(50)
+                        .HasColumnType("nvarchar(50)");
+
+                    b.Property<string>("CPFComprador")
+                        .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("Cartinha")
                         .HasMaxLength(450)
@@ -336,6 +350,14 @@ namespace VendaProdutos.Migrations
                     b.Property<DateTime>("DataDeEntrega")
                         .HasColumnType("datetime2");
 
+                    b.Property<DateTime?>("DataNascimento")
+                        .HasColumnType("datetime2");
+
+                    b.Property<string>("Email")
+                        .IsRequired()
+                        .HasMaxLength(50)
+                        .HasColumnType("nvarchar(50)");
+
                     b.Property<bool>("EntregaPedido")
                         .HasColumnType("bit");
 
@@ -347,12 +369,7 @@ namespace VendaProdutos.Migrations
                         .HasMaxLength(50)
                         .HasColumnType("nvarchar(50)");
 
-                    b.Property<string>("NomeDaEmpresa")
-                        .HasMaxLength(100)
-                        .HasColumnType("nvarchar(100)");
-
                     b.Property<string>("NomeRecebedor")
-                        .IsRequired()
                         .HasMaxLength(50)
                         .HasColumnType("nvarchar(50)");
 
@@ -376,22 +393,9 @@ namespace VendaProdutos.Migrations
                     b.Property<DateTime>("PedidoEnviado")
                         .HasColumnType("datetime2");
 
-                    b.Property<string>("PontoDeReferencia")
-                        .HasMaxLength(100)
-                        .HasColumnType("nvarchar(100)");
-
                     b.Property<string>("RuaRecebedor")
-                        .IsRequired()
                         .HasMaxLength(100)
                         .HasColumnType("nvarchar(100)");
-
-                    b.Property<string>("Setor")
-                        .HasMaxLength(100)
-                        .HasColumnType("nvarchar(100)");
-
-                    b.Property<string>("TelefoneCompradorDiferenteDoCadastro")
-                        .HasMaxLength(30)
-                        .HasColumnType("nvarchar(30)");
 
                     b.Property<int>("TotalItensPedido")
                         .HasColumnType("int");
@@ -401,8 +405,8 @@ namespace VendaProdutos.Migrations
 
                     b.Property<string>("WhatsappComprador")
                         .IsRequired()
-                        .HasMaxLength(30)
-                        .HasColumnType("nvarchar(30)");
+                        .HasMaxLength(25)
+                        .HasColumnType("nvarchar(25)");
 
                     b.Property<string>("WhatsappRecebedor")
                         .IsRequired()

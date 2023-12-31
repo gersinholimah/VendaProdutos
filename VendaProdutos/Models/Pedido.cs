@@ -7,61 +7,35 @@ namespace VendaProdutos.Models
     {
         public int PedidoId { get; set; }
 
-        [Required(ErrorMessage = "Informe o seu nome completo")]
+        [Required(ErrorMessage = "Informe o nome de quem está enviando")]
         [StringLength(50)]
         public string NomeComprador { get; set; }
+          
 
-        
-        [Required(ErrorMessage = "Informe o seu apelido")]
-        [StringLength(50)]
-        public string ApelidoComprador { get; set; }
-
-
-        [Display(Name = "Data Nascimento")]
-        [DataType(DataType.Text)]
-        [DisplayFormat(DataFormatString = "{0: dd/MM/yyyy hh:mm}", ApplyFormatInEditMode = true)]
-        public DateTime? DataNascimento { get; set; }
-
-
-        [Display(Name = "CPF")]
-        public string CPFComprador { get; set; }
-
-        [Required(ErrorMessage = "Informe o seu nº de Whatsapp")]
-        [StringLength(25)]
+        [Required(ErrorMessage = "Informe o seu Whatsapp")]
+        [StringLength(30)]
         [DataType(DataType.PhoneNumber)]
         public string WhatsappComprador { get; set; }
 
-
-        [Required(ErrorMessage = "Informe o seu email.")]
-        [StringLength(50)]
-        [DataType(DataType.EmailAddress)]
-        [RegularExpression(@"(?:[a-z0-9!#$%&'*+/=?^_`{|}~-]+(?:\.[a-z0-9!#$%&'*+/=?^_`{|}~-]+)*|""(?:[\x01-\x08\x0b\x0c\x0e-\x1f\x21\x23-\x5b\x5d-\x7f]|\\[\x01-\x09\x0b\x0c\x0e-\x7f])*"")@(?:(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?|\[(?:(?:25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)\.){3}(?:25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?|[a-z0-9-]*[a-z0-9]:(?:[\x01-\x08\x0b\x0c\x0e-\x1f\x21-\x5a\x53-\x7f]|\\[\x01-\x09\x0b\x0c\x0e-\x7f])+)\])",
-            ErrorMessage = "O email não possui um formato correto")]
-        public string Email { get; set; }
-
-
-
+        [Required(ErrorMessage = "Informe o Nome do Recebedor")]
         [StringLength(50)]
         [Display(Name = "Nome Recebedor")]
         public string NomeRecebedor { get; set; }
 
 
-
-        [StringLength(50)]
-        [Display(Name = "Apelido Recebedor")]
-        public string ApelidoRecebedor { get; set; }
-
+        [Required(ErrorMessage = "Informe o Bairro da entrega")]
         [StringLength(50)]
         [Display(Name = "Bairro Recebedor")]
         public string BairroRecebedor { get; set; }
 
 
+        [Required(ErrorMessage = "Informe a Rua  da entrega")]
         [StringLength(100)]
         [Display(Name = "Rua Recebedor")]
         public string RuaRecebedor { get; set; }
 
         [StringLength(200)]
-        [Display(Name = "Complemento do Recebedor")]
+        [Display(Name = "Complemento do endereco")]
         public string ComplementoRecebedor { get; set; }
 
 
@@ -69,7 +43,17 @@ namespace VendaProdutos.Models
         [Display(Name = "Numero Da Casa")]
         public string NumeroCasaRecebedor { get; set; }
 
-         
+        [StringLength(100)]
+        [Display(Name = "Nome da Empresa")]
+        public string NomeDaEmpresa { get; set; }
+
+        [StringLength(100)]
+        [Display(Name = "Setor")]
+        public string Setor { get; set; }
+
+        [StringLength(100)]
+        [Display(Name = "Ponto de Referencia")]
+        public string PontoDeReferencia { get; set; }
 
         [Required(ErrorMessage = "Informe o Whatsapp do Recebedor")]
         [StringLength(25)]
@@ -103,6 +87,9 @@ namespace VendaProdutos.Models
 
 
 
+        [StringLength(30)]
+        [Display(Name = "Telefone do comprador")]
+        public string TelefoneCompradorDiferenteDoCadastro { get; set; }
 
 
 
@@ -115,11 +102,16 @@ namespace VendaProdutos.Models
         public string Cartinha { get; set; }
 
 
+        [StringLength(450)]
+        [Display(Name = "Comprovante de Pagamento")]
+        public string ComprovanteDePagamento { get; set; }
 
         [ScaffoldColumn(false)]
         [Column(TypeName = "decimal(18,2)")]
         [Display(Name = "Total do Pedido")]
         public decimal TotalPedido { get; set; }
+
+
 
         [ScaffoldColumn(false)]
         [Display(Name = "Itens no Pedido")]
@@ -140,6 +132,9 @@ namespace VendaProdutos.Models
 
         [Display(Name = "Pagamento Pedido")]
         public bool PagamentoPedido { get; set; }
+
+        [Display(Name = "Pagamento na Entrega")]
+        public bool PagamentoNaEntrega { get; set; }
 
         [Display(Name = "Pedido Eentregue")]
         public bool EntregaPedido { get; set; }
