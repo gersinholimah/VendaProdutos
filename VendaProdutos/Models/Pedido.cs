@@ -67,17 +67,17 @@ namespace VendaProdutos.Models
 
 
 
+        [Required(ErrorMessage = "Informe a Data da Entrega")]
+        [StringLength(30)]
 
         [Display(Name = "Data da Entrega")]
-        [DataType(DataType.Date)]
-        [DisplayFormat(DataFormatString = "{0:yyyy-MM-dd}", ApplyFormatInEditMode = true)]
-        public DateTime DataDeEntrega { get; set; }
+         public string DataDeEntrega { get; set; }
 
+        [Required(ErrorMessage = "Informe a Hora da Entrega")]
+        [StringLength(30)]
 
         [Display(Name = "Hora da Entrega")]
-        [DataType(DataType.Time)]
-        [DisplayFormat(DataFormatString = "{0:HH:mm}", ApplyFormatInEditMode = true)]
-        public DateTime HoraDeEntrega { get; set; }
+          public string HoraDeEntrega { get; set; }
 
 
 
