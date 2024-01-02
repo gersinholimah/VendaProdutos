@@ -11,6 +11,8 @@
 <h1>Pedidos realizados</h1>
 
 <form method="get" class="form-inline">
+                <input name="idPedidoFilter" class="form-control" placeholder="Id do pedido" value="@Model.RouteValue["idPedidoFilter"]" />
+
                 <input name="compradorFilter" class="form-control" placeholder="Comprador" value="@Model.RouteValue["compradorFilter"]" />
                 <input name="whatsappFilter" class="form-control" placeholder="Whatsapp Comprador" value="@Model.RouteValue["whatsappFilter"]" />
                 <input name="recebedorFilter" class="form-control" placeholder="Recebedor" value="@Model.RouteValue["recebedorFilter"]" />
@@ -43,6 +45,9 @@ Total de Pedidos : @Model.TotalRecordCount
 <table class="table">
     <thead>
         <tr>
+                        <th>
+                            @Html.DisplayNameFor(model => model.PedidoId)
+                        </th>
             <th>
                 @Html.DisplayNameFor(model => model.NomeComprador)
             </th>
@@ -70,7 +75,11 @@ Total de Pedidos : @Model.TotalRecordCount
     </thead>
     <tbody>
 @foreach (var item in Model) {
-        <tr>
+                        <tr>
+                            
+                            <td>
+                                @Html.DisplayFor(modelItem => item.PedidoId)
+                            </td>
             <td>
                 @Html.DisplayFor(modelItem => item.NomeComprador)
             </td>
@@ -113,6 +122,8 @@ Total de Pedidos : @Model.TotalRecordCount
                 <a asp-action="Edit" asp-route-id="@item.PedidoId">Edit</a> |
                 <a asp-action="Details" asp-route-id="@item.PedidoId">Details</a> |
                 <a asp-action="Delete" asp-route-id="@item.PedidoId">Delete</a>
+                <a asp-action="PedidoProdutos" asp-route-id="@item.PedidoId">Ver itens</a>
+
             </td>
         </tr>
 }

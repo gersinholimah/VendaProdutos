@@ -9,6 +9,7 @@ using Microsoft.EntityFrameworkCore;
 using ReflectionIT.Mvc.Paging;
 using VendaProdutos.Context;
 using VendaProdutos.Models;
+using VendaProdutos.ViewModel;
 
 namespace VendaProdutos.Areas.Admin.Controllers
 {
@@ -23,12 +24,33 @@ namespace VendaProdutos.Areas.Admin.Controllers
             _context = context;
         }
 
+        public IActionResult PedidoProdutos(int? id)
+        {
+            var pedido = _context.Pedidos
+                .Include(pd => pd.PedidoItens)
+                .ThenInclude(l => l.Produto)
+                .FirstOrDefault(p => p.PedidoId == id);
+            if(pedido == null)
+            {
+                Response.StatusCode = 404;
+                return View("PedidoNotFound", id ?? 0); //id.Value
+            }
+            PedidoProdutoViewModel pedidoProdutos = new PedidoProdutoViewModel()
+            {
+                Pedido = pedido,
+                PedidoDetalhes = pedido.PedidoItens
+            };
+            return View(pedidoProdutos);
+
+        }
+
+
         // GET: Admin/AdminPedidos
         //public async Task<IActionResult> Index()
         //{
         //    return View(await _context.Pedidos.ToListAsync());
         //}
-       
+
         //public async Task<IActionResult> Index(string filter, int pageindex = 1, string sort = "NomeComprador")
         //{
         //    var resultado = _context.Pedidos.AsNoTracking()
@@ -46,7 +68,7 @@ namespace VendaProdutos.Areas.Admin.Controllers
 
 
 
-        public async Task<IActionResult> Index(string compradorFilter, string whatsappFilter, string recebedorFilter, string dataEntregaFilter, bool? pagamentoEfetuadoFilter, int pageindex = 1, string sort = "NomeComprador")
+        public async Task<IActionResult> Index(string compradorFilter, string whatsappFilter, string recebedorFilter, string dataEntregaFilter, int? idPedidoFilter, bool? pagamentoEfetuadoFilter, int pageindex = 1, string sort = "NomeComprador")
 {
     var resultado = _context.Pedidos.AsNoTracking().AsQueryable();
 
@@ -64,7 +86,11 @@ var pagamentoOptions = new List<SelectListItem>
     {
         resultado = resultado.Where(p => p.NomeComprador.Contains(compradorFilter));
     }
+            if (idPedidoFilter.HasValue)
+            {
+                 resultado = resultado.Where(p => p.PedidoId == idPedidoFilter.Value);
 
+            }
 
             if (!string.IsNullOrWhiteSpace(whatsappFilter))
             {
@@ -94,7 +120,8 @@ var pagamentoOptions = new List<SelectListItem>
          { "whatsappFilter", whatsappFilter },
         {"recebedorFilter", recebedorFilter},
         {"dataEntregaFilter", dataEntregaFilter},
-       {"pagamentoEfetuadoFilter",pagamentoEfetuadoFilter }
+       {"pagamentoEfetuadoFilter",pagamentoEfetuadoFilter },
+        {"idPedidoFilter", idPedidoFilter}
 
 
     };
