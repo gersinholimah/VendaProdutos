@@ -15,6 +15,7 @@ using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.DependencyInjection; 
 using Microsoft. Extensions. Hosting;
+using ReflectionIT.Mvc.Paging;
 using VendaProdutos.Context;
 using VendaProdutos.Models;
 using VendaProdutos.Repositories;
@@ -69,6 +70,12 @@ namespace VendaProdutos
             services.AddScoped(sp => CarrinhoCompra.GetCarrinho(sp));
 
             services.AddControllersWithViews();
+
+            services.AddPaging(options =>
+            {
+                options.ViewName = "Bootstrap4";
+                options.PageParameterName = "pageindex";
+            });
 
             services.AddMemoryCache();
             services.AddSession();

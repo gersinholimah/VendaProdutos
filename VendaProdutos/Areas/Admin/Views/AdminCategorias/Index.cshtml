@@ -4,7 +4,10 @@
     ViewData["Title"] = "Index";
 }
 
-<h1>Index</h1>
+<div class="container">
+    <div class="row">
+        <div class="col-12">
+<h1>Categorias Cadastradas</h1>
 
 <p>
     <a asp-action="Create">Create New</a>
@@ -12,72 +15,36 @@
 <table class="table">
     <thead>
         <tr>
+                        <th>
+                            @Html.DisplayNameFor(model => model.ImagemDestaque)
+                        </th>
             <th>
                 @Html.DisplayNameFor(model => model.CategoriaNome)
             </th>
             <th>
                 @Html.DisplayNameFor(model => model.Descricao)
             </th>
-            <th>
-                @Html.DisplayNameFor(model => model.ImagemDestaque)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.DescricaoTagAlt)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.PostSuperior)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.PostInferior)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.MetaDescricao)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.MetaImage)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.MetaTitle)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.UrlAmigavel)
-            </th>
+           
+          
+          
+           
             <th></th>
         </tr>
     </thead>
     <tbody>
 @foreach (var item in Model) {
         <tr>
-            <td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.ImagemDestaque)
+                            </td>
+
+                            <td>
                 @Html.DisplayFor(modelItem => item.CategoriaNome)
             </td>
             <td>
                 @Html.DisplayFor(modelItem => item.Descricao)
             </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.ImagemDestaque)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.DescricaoTagAlt)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.PostSuperior)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.PostInferior)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.MetaDescricao)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.MetaImage)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.MetaTitle)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.UrlAmigavel)
-            </td>
+           
             <td>
                 <a asp-action="Edit" asp-route-id="@item.CategoriaId">Edit</a> |
                 <a asp-action="Details" asp-route-id="@item.CategoriaId">Details</a> |
@@ -87,3 +54,8 @@
 }
     </tbody>
 </table>
+
+
+        </div>
+    </div>
+</div>

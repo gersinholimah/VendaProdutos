@@ -1,0 +1,129 @@
+﻿@model ReflectionIT.Mvc.Paging.PagingList<VendaProdutos.Models.Pedido>
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<div class="container">
+    <div class="row">
+        <div class="col-12">
+
+<h1>Pedidos realizados</h1>
+
+<form method="get" class="form-inline">
+                <input name="compradorFilter" class="form-control" placeholder="Comprador" value="@Model.RouteValue["compradorFilter"]" />
+                <input name="whatsappFilter" class="form-control" placeholder="Whatsapp Comprador" value="@Model.RouteValue["whatsappFilter"]" />
+                <input name="recebedorFilter" class="form-control" placeholder="Recebedor" value="@Model.RouteValue["recebedorFilter"]" />
+                <input name="dataEntregaFilter" class="form-control" placeholder="Data de entrega" value="@Model.RouteValue["dataEntregaFilter"]" />
+
+                <div class="form-group">
+                    <label for="pagamentoEfetuadoFilter" class="mr-2">Status de Pagamento:</label>
+                    <select name="pagamentoEfetuadoFilter" class="form-control">
+                        @foreach (var option in (List<SelectListItem>)ViewData["PagamentoOptions"])
+                        {
+                            <option value="@option.Value" selected="@option.Selected">@option.Text</option>
+                        }
+                    </select>
+                </div>
+ 
+
+    <button type="submit" class="btn btn-info">
+        <span class="glyphicon glyphicon-search" aria-hidden="true"> Procurar </span>
+    </button>
+</form>
+
+Total de Pedidos : @Model.TotalRecordCount
+<div>
+    <vc:pager paging-list="@Model"></vc:pager>
+</div>
+
+<p>
+    <a asp-action="Create">Create New</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.NomeComprador)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.WhatsappComprador)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.NomeRecebedor)
+            </th> 
+            <th>
+                @Html.DisplayNameFor(model => model.DataDeEntrega)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.HoraDeEntrega)
+            </th>      
+            <th>
+                @Html.DisplayNameFor(model => model.PagamentoPedido)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.PagamentoNaEntrega)
+            </th>
+             
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.NomeComprador)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.WhatsappComprador)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.NomeRecebedor)
+            </td> 
+            <td>
+                @Html.DisplayFor(modelItem => item.DataDeEntrega)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.HoraDeEntrega)
+            </td> 
+            
+            <td>
+                                @if (item.PagamentoPedido)
+                                {
+                                    <p>Pago</p>
+                                }
+                                else
+                                {
+                                    <p>Aguardando</p>
+
+                                }
+                            </td>
+            <td>
+                                @if (item.PagamentoPedido)
+                                {
+                                    <p>~Sim</p>
+                                }
+                                else
+                                {
+                                    <p>Não</p>
+
+                                }
+                            </td>
+                            <td>
+                <a asp-action="Edit" asp-route-id="@item.PedidoId">Edit</a> |
+                <a asp-action="Details" asp-route-id="@item.PedidoId">Details</a> |
+                <a asp-action="Delete" asp-route-id="@item.PedidoId">Delete</a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>
+
+<div>
+    <vc:pager paging-list="@Model"></vc:pager>
+</div>
+
+
+                    </div>
+    </div>
+</div>
