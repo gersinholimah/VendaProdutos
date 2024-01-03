@@ -42,6 +42,8 @@ namespace VendaProdutos
                 .AddEntityFrameworkStores<AppDbContext>()
                 .AddDefaultTokenProviders();
 
+            services.Configure<ConfigurationImagens>(Configuration.GetSection("ConfigurationPastaImagens"));
+
             services.Configure<IdentityOptions>(options => { 
             options.Password.RequireDigit = true;
                 options.Password.RequireLowercase = false;

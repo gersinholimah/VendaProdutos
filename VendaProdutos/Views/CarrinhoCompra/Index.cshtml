@@ -84,13 +84,24 @@
                             </tr>
                         </tbody>
 
-
+                        <tfoot>
+                            <tr>
+                                <td colspan="3" class="text-right">Total:</td>
+                                <td class="text-right">
+                                    @Model.CarrinhoCompraTotal.ToString("c")
+                                </td>
+                            </tr>
+                        </tfoot>
 
                     </table>
 
 
-                    <a asp-controller="Pedido" asp-action="Checkout">Encerrar Pedido</a>
-                    <a asp-controller="Produto" asp-action="List">Continuar Comprando</a>
+                    @if (Model.CarrinhoCompraTotal > 0)
+                    {
+                    <a class="btn btn-success" asp-controller="Pedido" asp-action="Checkout">Encerrar Pedido</a>
+
+                    }
+                    <a class="btn btn-primary" asp-controller="Lanche" asp-action="List">Continuar Comprando</a>
                 </div>
             </div>
 
