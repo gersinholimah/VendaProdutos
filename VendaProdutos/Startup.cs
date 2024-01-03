@@ -16,6 +16,7 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.DependencyInjection; 
 using Microsoft. Extensions. Hosting;
 using ReflectionIT.Mvc.Paging;
+using VendaProdutos.Areas.Admin.Servicos;
 using VendaProdutos.Context;
 using VendaProdutos.Models;
 using VendaProdutos.Repositories;
@@ -55,7 +56,9 @@ namespace VendaProdutos
             services.AddTransient<IPedidoRepository, PedidoRepository>();
 
             services.AddScoped<ISeedUserRoleInitial, SeedUserRoleInitial>();
-          
+
+            services.AddScoped<RelatorioVendasService>();
+
             services.AddAuthorization(options =>
             {
                 options.AddPolicy("Admin",
