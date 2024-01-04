@@ -106,14 +106,12 @@ namespace VendaProdutos.Models
         [Display(Name = "Comprovante de Pagamento")]
         public string ComprovanteDePagamento { get; set; }
 
-        [ScaffoldColumn(false)]
         [Column(TypeName = "decimal(18,2)")]
         [Display(Name = "Total do Pedido")]
         public decimal TotalPedido { get; set; }
 
 
 
-        [ScaffoldColumn(false)]
         [Display(Name = "Itens no Pedido")]
         public int TotalItensPedido { get; set; }
 

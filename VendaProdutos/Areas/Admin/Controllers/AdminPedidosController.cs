@@ -115,16 +115,24 @@ var pagamentoOptions = new List<SelectListItem>
 
 
 
-            decimal somaTotal = 0;
+            decimal somaPagos = 0;
+            decimal somaNaoPagos = 0;
+
             foreach (var pedido in resultado)
             {
 
-                if (pedido.PagamentoPedido) { 
-                somaTotal += pedido.TotalPedido;
+                if (pedido.PagamentoPedido) {
+                    somaPagos += pedido.TotalPedido;
+                }
+
+                if (!pedido.PagamentoPedido)
+                {
+                    somaNaoPagos += pedido.TotalPedido;
                 }
             }
 
-            ViewBag.SomaTotalPedidos = somaTotal;
+            ViewBag.SomaPedidosPagos = somaPagos;
+            ViewBag.SomaPedidosNaoPagos = somaNaoPagos;
 
 
 
@@ -208,7 +216,7 @@ var pagamentoOptions = new List<SelectListItem>
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("PedidoId,NomeComprador,WhatsappComprador,NomeRecebedor,BairroRecebedor,RuaRecebedor,ComplementoRecebedor,NumeroCasaRecebedor,NomeDaEmpresa,Setor,PontoDeReferencia,WhatsappRecebedor,DataDeEntrega,HoraDeEntrega,TelefoneCompradorDiferenteDoCadastro,Observacoes,Cartinha,ComprovanteDePagamento,PedidoEnviado,PedidoEntregueEm,PagamentoPedido,PagamentoNaEntrega,EntregaPedido")] Pedido pedido)
+        public async Task<IActionResult> Edit(int id, [Bind("PedidoId,NomeComprador,WhatsappComprador,NomeRecebedor,BairroRecebedor,RuaRecebedor,ComplementoRecebedor,NumeroCasaRecebedor,NomeDaEmpresa,Setor,PontoDeReferencia,WhatsappRecebedor,DataDeEntrega,HoraDeEntrega,TelefoneCompradorDiferenteDoCadastro,Observacoes,Cartinha,ComprovanteDePagamento,PedidoEnviado,PedidoEntregueEm,PagamentoPedido,PagamentoNaEntrega,EntregaPedido,TotalPedido,TotalItensPedido")] Pedido pedido)
         {
             if (id != pedido.PedidoId)
             {

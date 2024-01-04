@@ -35,10 +35,19 @@
 </form>
 
 Total de Pedidos : @Model.TotalRecordCount
-             <p>Soma Total dos Valores de Todos os Pedidos: @ViewBag.SomaTotalPedidos</p>
+            @if (ViewBag.SomaPedidosPagos > 0)
+            {
+            <p>Total em pedidos pagos: @ViewBag.SomaPedidosPagos</p>
+
+}
+            @if (ViewBag.SomaPedidosNaoPagos > 0)
+            {
+                <p>Total em pedidos não pagos: @ViewBag.SomaPedidosNaoPagos</p>
+            }
+             
 
 
-<div>
+            <div>
     <vc:pager paging-list="@Model"></vc:pager>
 </div>
 
