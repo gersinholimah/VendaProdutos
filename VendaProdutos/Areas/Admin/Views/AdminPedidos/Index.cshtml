@@ -35,10 +35,14 @@
 </form>
 
 Total de Pedidos : @Model.TotalRecordCount
+             <p>Soma Total dos Valores de Todos os Pedidos: @ViewBag.SomaTotalPedidos</p>
+
+
 <div>
     <vc:pager paging-list="@Model"></vc:pager>
 </div>
 
+       
 <p>
     <a asp-action="Create">Create New</a>
 </p>
@@ -59,9 +63,11 @@ Total de Pedidos : @Model.TotalRecordCount
             </th> 
             <th>
                 @Html.DisplayNameFor(model => model.DataDeEntrega)
+                            @Html.DisplayNameFor(model => model.HoraDeEntrega)
+
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.HoraDeEntrega)
+                valor
             </th>      
             <th>
                 @Html.DisplayNameFor(model => model.PagamentoPedido)
@@ -91,9 +97,12 @@ Total de Pedidos : @Model.TotalRecordCount
             </td> 
             <td>
                 @Html.DisplayFor(modelItem => item.DataDeEntrega)
+                                @Html.DisplayFor(modelItem => item.HoraDeEntrega)
+
             </td>
             <td>
-                @Html.DisplayFor(modelItem => item.HoraDeEntrega)
+                                @Html.DisplayFor(modelItem => item.TotalPedido)
+
             </td> 
             
             <td>

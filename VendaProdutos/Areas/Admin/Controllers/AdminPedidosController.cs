@@ -112,9 +112,26 @@ var pagamentoOptions = new List<SelectListItem>
                 resultado = resultado.Where(p => p.PagamentoPedido == pagamentoEfetuadoFilter.Value);
             }
 
+
+
+
+            decimal somaTotal = 0;
+            foreach (var pedido in resultado)
+            {
+
+                if (pedido.PagamentoPedido) { 
+                somaTotal += pedido.TotalPedido;
+                }
+            }
+
+            ViewBag.SomaTotalPedidos = somaTotal;
+
+
+
             var model = await PagingList.CreateAsync(resultado, 10, pageindex, sort, "NomeComprador");
 
-    model.RouteValue = new RouteValueDictionary
+            
+            model.RouteValue = new RouteValueDictionary
     {
         { "compradorFilter", compradorFilter },
          { "whatsappFilter", whatsappFilter },
