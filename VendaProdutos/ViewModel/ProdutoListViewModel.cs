@@ -6,6 +6,7 @@ namespace VendaProdutos.ViewModel
     {
         public IEnumerable<Produto> Produtos { get; set; }
         public string CategoriaAtual { get; set; }
+        public string PostSuperior { get; set; }
 
     }
 }

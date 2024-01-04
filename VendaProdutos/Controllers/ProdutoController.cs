@@ -14,7 +14,7 @@ namespace VendaProdutos.Controllers
             _produtoRepository = produtoRepository;
         }
 
-        public IActionResult List(string categoria)
+        public IActionResult List(string categoria, string postSuperior)
         {
             IEnumerable<Produto> produtos;
             string categoriaAtual = string.Empty;
@@ -50,7 +50,8 @@ namespace VendaProdutos.Controllers
             var produtosListViewModel = new ProdutoListViewModel
             {
                 Produtos = produtos,
-                CategoriaAtual = categoriaAtual
+                CategoriaAtual = categoriaAtual,
+                PostSuperior = postSuperior
             };
             return View(produtosListViewModel);
         }

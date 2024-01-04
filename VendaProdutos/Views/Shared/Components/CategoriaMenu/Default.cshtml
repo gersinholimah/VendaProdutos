@@ -3,7 +3,7 @@
         @foreach(var categoria in Model){
         <li class="has-submenu">
                 <a class="dropdown-item dropdown-toggle asp-controller="Produto" asp-action="List"
-            asp-route-categoria="@categoria.CategoriaNome" > @categoria.CategoriaNome</a>
+               asp-route-categoria="@categoria.CategoriaNome" asp-route-postSuperior="@categoria.PostSuperior"> @categoria.CategoriaNome</a>
         </li>
         }
         <li class="has-submenu">

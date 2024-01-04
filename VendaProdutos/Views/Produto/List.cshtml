@@ -22,12 +22,13 @@
         <div class="row">
             <div class="col-12 ">
                 <h1 class="tit2_pradois pb-10"> @Model.CategoriaAtual </h1>
+
+                @if (!string.IsNullOrEmpty(Model.PostSuperior))
+                {
+
                 <div class="linkbuild_top collapse multi-collapse" id="multiCollapseExample1">
                     <div>
-                        <p>Lorem ipsum dolor sit amet, <a href="#">consectetur</a> adipiscing elit. Quisque commodo purus nec arcu vehicula, id <a href="#">gravida</a> metus efficitur. Cras fringilla laoreet metus sed suscipit.</p>
-                        <p>Duis pellentesque consectetur eleifend. Donec pulvinar venenatis enim <a href="#">faucibus</a> aliquam. Vivamus elementum mi interdum scelerisque auctor. Phasellus rhoncus tellus ac sollicitudin dictum. </p>
-                        <p>Cras porta ante felis, et blandit sem <a href="#">scelerisque</a> quis. Quisque bibendum enim sit amet enim porta vulputate. <a href="#">Maecenas</a> at blandit metus. Donec vel orci porttitor, egestas velit id, interdum lectus.</p>
-                        <p> Duis non mi nec nibh cursus tempor quis ut dolor. <a href="#">Fusce</a> elementum nulla felis, vitae tincidunt libero pharetra a. <a href="#">Etiam</a> nunc massa, fermentum in lectus at, vehicula efficitur mi. Aenean et facilisis est.</p>
+                        @Html.Raw(Model.PostSuperior)
                     </div>
                     <div class="float_button">
                         <div class=" collapse multi-collapse " id="multiCollapseExample3">
@@ -51,6 +52,7 @@
 
                     </div>
                 </div>
+                }
 
             </div>
         </div>
@@ -111,190 +113,4 @@
 
 
 
-
-
-@* <h1>List</h1>
-
-<p>
-    <a asp-action="Create">Create New</a>
-</p>
-<table class="table">
-    <thead>
-        <tr>
-            <th>
-                @Html.DisplayNameFor(model => model.Sku)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Altura)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Largura)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Profundidade)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Comprimento)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Peso)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.GaleriaImagemURL)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.DescricaoImgTagAlt)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Nome)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.DescricaoCurta)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.DescricaoDetalhada)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.PostInferior)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.PrecoPromocional)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Preco)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Parcela)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.MetaDescricao)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.MetaImage)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.MetaTitle)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.UrlAmigavel)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.ImagemUrl)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.ImagemThumbnailUrl)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.IsProdutoEmAlta)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Esgotado)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.TaxaDeEntrega)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.SobEncomenda)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.QuantidadeDeItem)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Categoria)
-            </th>
-            <th></th>
-        </tr>
-    </thead>
-    <tbody>
-@foreach (var item in Model) {
-        <tr>
-            <td>
-                @Html.DisplayFor(modelItem => item.Sku)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Altura)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Largura)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Profundidade)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Comprimento)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Peso)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.GaleriaImagemURL)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.DescricaoImgTagAlt)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Nome)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.DescricaoCurta)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.DescricaoDetalhada)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.PostInferior)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.PrecoPromocional)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Preco)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Parcela)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.MetaDescricao)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.MetaImage)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.MetaTitle)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.UrlAmigavel)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.ImagemUrl)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.ImagemThumbnailUrl)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.IsProdutoEmAlta)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Esgotado)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.TaxaDeEntrega)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.SobEncomenda)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.QuantidadeDeItem)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Categoria.CategoriaNome)
-            </td>
-            <td>
-                <a asp-action="Edit" asp-route-id="@item.ProdutoId">Edit</a> |
-                <a asp-action="Details" asp-route-id="@item.ProdutoId">Details</a> |
-                <a asp-action="Delete" asp-route-id="@item.ProdutoId">Delete</a>
-            </td>
-        </tr>
-}
-    </tbody>
-</table> *@
+ 
