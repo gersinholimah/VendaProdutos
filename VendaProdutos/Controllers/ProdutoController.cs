@@ -2,11 +2,14 @@
 using VendaProdutos.Models;
 using VendaProdutos.Repositories.Interfaces;
 using VendaProdutos.ViewModel;
+using Microsoft.AspNetCore.Mvc.ModelBinding;
+using System.Drawing.Imaging;
 
 namespace VendaProdutos.Controllers
 {
     public class ProdutoController : Controller
     {
+
         private readonly IProdutoRepository _produtoRepository;
 
         public ProdutoController(IProdutoRepository produtoRepository)
@@ -14,7 +17,12 @@ namespace VendaProdutos.Controllers
             _produtoRepository = produtoRepository;
         }
 
-        public IActionResult List(string categoria, string postSuperior)
+        public IActionResult List(string categoria, [FromForm] string postSuperior,
+           [FromForm] string metaDescricao,
+          [FromForm] string metaTitle,
+           [FromForm] string metaImage,
+           [FromForm] string urlAmigavel
+            )
         {
             IEnumerable<Produto> produtos;
             string categoriaAtual = string.Empty;
@@ -45,13 +53,19 @@ namespace VendaProdutos.Controllers
                     .Where(p => p.Categoria.CategoriaNome.Equals(categoria))
                     .OrderBy(c => c.Nome);
                 categoriaAtual = categoria;
-
+                ViewBag.CategoriaAtual = categoriaAtual;
+                ViewBag.PostSuperior = postSuperior;
+                ViewBag.MetaDescricao = metaDescricao;
+                ViewBag.MetaDescricao = metaDescricao;
+                ViewBag.MetaTitle = metaTitle;
+                ViewBag.MetaImage = metaImage;
+                ViewBag.UrlAmigavel = urlAmigavel;
             }
             var produtosListViewModel = new ProdutoListViewModel
             {
                 Produtos = produtos,
-                CategoriaAtual = categoriaAtual,
-                PostSuperior = postSuperior
+              
+
             };
             return View(produtosListViewModel);
         }

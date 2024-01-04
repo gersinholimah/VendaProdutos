@@ -128,8 +128,8 @@ namespace VendaProdutos
  
 
                 endpoints.MapControllerRoute(
-                    name: "categoriaFiltro", 
-                    pattern: "Produto/{action}/{categoria?}",
+                    name: "categoriaFiltro",
+                        pattern: "Produtos/{categoria?}",/*pattern: "Produto/{action}/{categoria?}"*/
                     defaults: new {Controller = "Produto", action = "List" });
  
                 endpoints.MapControllerRoute(

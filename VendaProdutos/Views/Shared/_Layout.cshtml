@@ -45,7 +45,10 @@
     <meta property="og:type" content="website" />
     <meta property="og:image" content="https://dindix-landing.netlify.app/img/favicon.png" />
 
-
+    ViewBag.metaTitle
+    ViewBag.metaDescricao    
+    ViewBag.metaImage 
+    ViewBag.urlAmigavel 
 
 </head>
 <body>
@@ -266,7 +269,7 @@
     <main role="main" class="pb-3">
         @RenderBody()
     </main>
-
+    <h1> G @ViewBag.categoriaAtual</h1>
    
     <script src="~/lib/jquery/dist/jquery.min.js"></script>
     <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>

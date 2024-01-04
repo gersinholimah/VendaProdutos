@@ -2,8 +2,25 @@
     <ul class="dropdown-menu">
         @foreach(var categoria in Model){
         <li class="has-submenu">
-                <a class="dropdown-item dropdown-toggle asp-controller="Produto" asp-action="List"
-               asp-route-categoria="@categoria.CategoriaNome" asp-route-postSuperior="@categoria.PostSuperior"> @categoria.CategoriaNome</a>
+
+
+            <form action="/Produtos/@categoria.CategoriaNome" method="post">
+                <input type="hidden" name="categoria" value="@categoria.CategoriaNome" />
+                <input type="hidden" name="postSuperior" value="@categoria.PostSuperior" />
+                <input type="hidden" name="metaDescricao" value="@categoria.MetaDescricao" />
+                <input type="hidden" name="metaTitle" value="@categoria.MetaTitle" />
+                <input type="hidden" name="metaImage" value="@categoria.MetaImage" />
+                <input type="hidden" name="urlAmigavel" value="@categoria.UrlAmigavel" />
+                <input type="hidden" name="categoriaCompleta" value="@categoria" />
+
+
+      
+
+
+                <button type="submit" class="dropdown-item">
+                    @categoria.CategoriaNome
+                </button>
+            </form>
         </li>
         }
         <li class="has-submenu">
@@ -11,3 +28,5 @@
                asp-route-categoria="" > Todos os Produtos</a>
         </li>
     </ul>
+ 
+  
