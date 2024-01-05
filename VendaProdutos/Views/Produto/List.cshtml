@@ -9,20 +9,12 @@
 
 
 
-
-
-
-
-
-
-
-
 <header class="bg_topo_interno mt-50">
     <div class="container ">
         <div class="row">
             <div class="col-12 ">
                 <h1 class="tit2_pradois pb-10"> @Model.CategoriaAtual </h1>
-
+                <p>@Html.Raw(ViewBag.PostSuperior)</p>
                 @if (!string.IsNullOrEmpty(Model.PostSuperior))
                 {
 
@@ -61,43 +53,119 @@
 
 </header>
 
+@if (Model.ExibeCategoria)
+{
+     <section class="banner_categ mt-50" style="background-image:url(../../img/img_topo_xs.png)"> 
 
+    <div class="container">
+        <div class="row">
+            <div class="col-12">
+                <h1 class="categ_text">Um gesto sincero vale mais que mil palavras</h1>
+            </div>
+        </div>
+    </div>
+</section>
+}
+
+@if (!Model.ExibeCategoria)
+{
+    <section class="produtos categorias">
+        <div class="container">
+            <div class="row   mt-50 mb-20">
+                <div class="col-12">
+                </div>
+                @foreach (var produto in Model.Produtos)
+                {
+                    <partial name="_ProdutosResumo" for="@produto"/>
+                }
+            </div>
+        </div>
+    </section>
+}
+
+
+@if (Model.ExibeCategoria)
+{
+@foreach (var categoria in Model.Categorias)
+{
 
 <section class="produtos categorias">
     <div class="container">
-
-        <div class="row   mt-50 mb-20">
-
-            <div class="col-12">
-           @*      <h1>@ViewBag.totalprodutos </h1>
-
-
-                <h1>@ViewData["data"] </h1> *@
-
+        <div class="row">
+            <div class="col-12  mt-50 mb-20">
+                        @{
+                            // Obtém a string da propriedade e substitui espaços por hifens
+                            string categoriaUrl = categoria.CategoriaNome.Replace(" ", "-");
+                        }
+                        <h2>@categoria.CategoriaNome
+                            <form action="/Produtos/@categoriaUrl" method="post">
+                                <input type="hidden" name="categoria" value="@categoria.CategoriaNome" />
+                                <input type="hidden" name="postSuperior" value="@categoria.PostSuperior" />
+                                <input type="hidden" name="metaDescricao" value="@categoria.MetaDescricao" />
+                                <input type="hidden" name="metaTitle" value="@categoria.MetaTitle" />
+                                <input type="hidden" name="metaImage" value="@categoria.MetaImage" />
+                                <input type="hidden" name="urlAmigavel" value="@categoria.UrlAmigavel" />
+                                <input type="hidden" name="categoriaCompleta" value="@categoria" />
+                                <input type="hidden" name="categoriaId " value="@categoria.CategoriaId " />
+                                 
+                                <button type="submit" >
+                                    Ver tudo
+                                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 384 512">
+                                        <!--! Font Awesome Pro 6.2.0 Copyright 2022 Fonticons, Inc. -->
+                                        <path d="M342.6 233.4c12.5 12.5 12.5 32.8 0 45.3l-192 192c-12.5 12.5-32.8 12.5-45.3 0s-12.5-32.8 0-45.3L274.7 256 105.4 86.6c-12.5-12.5-12.5-32.8 0-45.3s32.8-12.5 45.3 0l192 192z" />
+                                    </svg>
+                                </button>
+                            </form>
+                            </h2>
             </div>
+            <div class="col-12">
+                <div class=" swiper mySwiper">
+                    <div class="swiper-wrapper">
 
-            @foreach (var produto in Model.Produtos) {
+                                @foreach (var produto in categoria.Produtos)
+                                {
+                        <div class="swiper-slide">
+                            <div class=" cesta_super_top">
+                                            <a asp-controller="Produto" asp-action="Details" asp-route-produtoId="@produto.ProdutoId" class="envolve_produtos mb-30-xs mb-70">
+                                    <img class="img-fluid" src="@produto.ImagemThumbnailUrl">
+                                                <h4>@produto.Nome</h4>
+                                                <p> Possuii @produto.QuantidadeDeItem Itens </p>
+                                    <div class="d-flex">
+                                        <span>
+                                                        <div id="preco_card_super_top">R$ @produto.PrecoPromocional</div>
+                                            <small class="d-block parcelas">
+                                                            <b id="parcelas_supertop">@produto.Parcela</b>
+                                                <small>x R$</small>
+                                                            <b id="valor_parcela_supertop">@String.Format("{0:N2}", produto.PrecoPromocional / produto.Parcela)</b>
 
-            <partial name="_ProdutosResumo" for="@produto"/> 
+                                            </small>
+                                        </span>
+                                                    @if (produto.TaxaDeEntrega == 0)
+                                                    {
+                                                        <div class=" ml-auto  mr-20">Frete Grátis</div>
+                                                    }
+                                     </div>
 
-            }
-            
+                                </a>
+                            </div>
+                        </div>
+                        }
 
-          
 
+                    </div>
 
-            
-
-             
-
+                </div>
+            </div>
         </div>
+
 
     </div>
 </section>
 
 
 
-
+    }
+}
 
 
 
@@ -114,3 +182,54 @@
 
 
  
+
+<script src="https://cdn.jsdelivr.net/npm/swiper/swiper-bundle.min.js"></script>
+
+<script>
+    var swiper = new Swiper(".mySwiper", {
+        slidesPerView: 3.5,
+        spaceBetween: 30,
+        freeMode: true,
+        pagination: {
+            el: ".swiper-pagination",
+            clickable: true,
+        },
+        navigation: {
+            nextEl: ".swiper-button-next",
+            prevEl: ".swiper-button-prev",
+        },
+        breakpoints: {
+
+
+            0: {
+                slidesPerView: 1.5,
+                spaceBetween: 20,
+                freeMode: true,
+
+            },
+            767: {
+                slidesPerView: 2.5,
+                spaceBetween: 20,
+                freeMode: true,
+
+            },
+            992: {
+                slidesPerView: 3.5,
+                spaceBetween: 40,
+                freeMode: true,
+
+            },
+            1200: {
+                slidesPerView: 3.5,
+                spaceBetween: 50,
+                freeMode: true,
+
+            },
+
+
+        }
+    });
+
+
+
+</script>

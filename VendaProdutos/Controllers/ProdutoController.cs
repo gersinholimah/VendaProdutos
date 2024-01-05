@@ -4,6 +4,9 @@ using VendaProdutos.Repositories.Interfaces;
 using VendaProdutos.ViewModel;
 using Microsoft.AspNetCore.Mvc.ModelBinding;
 using System.Drawing.Imaging;
+using VendaProdutos.Context;
+using System.Collections.Generic;
+using Microsoft.EntityFrameworkCore;
 
 namespace VendaProdutos.Controllers
 {
@@ -11,61 +14,59 @@ namespace VendaProdutos.Controllers
     {
 
         private readonly IProdutoRepository _produtoRepository;
+        private readonly AppDbContext _context;
 
-        public ProdutoController(IProdutoRepository produtoRepository)
+        public ProdutoController(IProdutoRepository produtoRepository, AppDbContext context)
         {
             _produtoRepository = produtoRepository;
+            _context = context;
+
         }
 
         public IActionResult List(string categoria, [FromForm] string postSuperior,
            [FromForm] string metaDescricao,
           [FromForm] string metaTitle,
-           [FromForm] string metaImage,
-           [FromForm] string urlAmigavel
+           [FromForm] string metaImage 
+ 
             )
         {
             IEnumerable<Produto> produtos;
+            IEnumerable<Categoria> listaCategorias = _context.Categorias.Include(c => c.Produtos).ToList();
             string categoriaAtual = string.Empty;
-           
-            if(string.IsNullOrEmpty(categoria))
+            bool exibeCategoria = false;
+            string pathProduto = "Produtos/";
+            ViewBag.PathProduto = pathProduto;
+            Categoria produtoAtual = null;
+
+      
+
+            if (string.IsNullOrEmpty(categoria))
             {
                 produtos = _produtoRepository.Produtos.OrderBy(p => p.ProdutoId);
-                    categoriaAtual = "Todos os lanches";
+                categoriaAtual = "Categorias";
+                exibeCategoria = true;
             }
             else
             {
-                //if(string.Equals("Cesta1", categoria, StringComparison.OrdinalIgnoreCase))
-                //    {
-                //    produtos = _produtoRepository.Produtos
-                //            .Where(p => p.Categoria.CategoriaNome
-                //            .Equals("Cesta1"))
-                //            .OrderBy(p => p.Nome);
-                //        }
-                //else
-                //{
-                //    produtos = _produtoRepository.Produtos
-                //               .Where(p => p.Categoria.CategoriaNome
-                //               .Equals("Festa1"))
-                //               .OrderBy(p => p.Nome);
-                //}
-
+              
+                exibeCategoria = false;
                 produtos = _produtoRepository.Produtos
                     .Where(p => p.Categoria.CategoriaNome.Equals(categoria))
                     .OrderBy(c => c.Nome);
-                categoriaAtual = categoria;
+                categoriaAtual = categoria; 
                 ViewBag.CategoriaAtual = categoriaAtual;
-                ViewBag.PostSuperior = postSuperior;
                 ViewBag.MetaDescricao = metaDescricao;
-                ViewBag.MetaDescricao = metaDescricao;
-                ViewBag.MetaTitle = metaTitle;
+                 ViewBag.MetaTitle = metaTitle;
                 ViewBag.MetaImage = metaImage;
-                ViewBag.UrlAmigavel = urlAmigavel;
             }
+
             var produtosListViewModel = new ProdutoListViewModel
             {
                 Produtos = produtos,
-              
-
+                PostSuperior = postSuperior,
+                CategoriaAtual = categoriaAtual,
+                Categorias = listaCategorias,
+                ExibeCategoria = exibeCategoria
             };
             return View(produtosListViewModel);
         }

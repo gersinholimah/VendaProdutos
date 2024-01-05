@@ -648,16 +648,18 @@ ul.star {
    width: 12px;
 fill:var(--cor-primaria);
 }
-.categorias h2 a {
-   float: right;
-   font-size: 18px;
-   font-weight: 500;
-   color: var(--cor-primaria);
-   text-decoration: none;
+.categorias h2 a, .categorias h2 button {
+    background: transparent;
+    border: none;
+    float: right;
+    font-size: 18px;
+    font-weight: 500;
+    color: var(--cor-primaria);
+    text-decoration: none;
 }
-.categorias h2 a:hover {
-   text-decoration: underline;
-}
+    .categorias h2 a:hover, .categorias h2 button:hover {
+        text-decoration: underline;
+    }
 
 .categorias h2 {
    font-size: 35px;

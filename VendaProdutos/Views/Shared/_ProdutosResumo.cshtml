@@ -11,14 +11,14 @@
 
             <div class="d-flex">
                 <span>
-                    <div id="preco_card_super_top">@Model.Preco</div>
+                    <div id="preco_card_super_top">@Model.PrecoPromocional</div>
                     <small class="d-block parcelas">
                         <b id="parcelas_supertop">@Model.Parcela</b>
                         <small>x R$</small>
-                        <b id="valor_parcela_supertop">@String.Format("{0:N2}", Model.Preco / Model.Parcela)</b>
+                        <b id="valor_parcela_supertop">@String.Format("{0:N2}", Model.PrecoPromocional / Model.Parcela)</b>
                     </small>
                 </span>
-                @if (@Model.TaxaDeEntrega < 0)
+                @if (@Model.TaxaDeEntrega == 0)
                 {
                     <div class=" ml-auto  mr-20">Frete Grátis</div>
                 }
