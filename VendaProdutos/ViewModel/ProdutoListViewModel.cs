@@ -10,6 +10,8 @@ namespace VendaProdutos.ViewModel
 
         public string CategoriaAtual { get; set; }
         public string PostSuperior { get; set; }
+        
+          public string PostInferior { get; set; }
 
         public bool ExibeCategoria { get; set; }
 

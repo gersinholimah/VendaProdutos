@@ -1,7 +1,7 @@
 ﻿@model ProdutoListViewModel
  
 @{
-    ViewData["Title"] = "List";
+    ViewData["Title"] = Model.CategoriaAtual == "Categorias" ? "Categorias de" : "Categoria";
 }
 
 
@@ -13,14 +13,96 @@
     <div class="container ">
         <div class="row">
             <div class="col-12 ">
-                <h1 class="tit2_pradois pb-10"> @Model.CategoriaAtual </h1>
-                <p>@Html.Raw(ViewBag.PostSuperior)</p>
-                @if (!string.IsNullOrEmpty(Model.PostSuperior))
-                {
+
+
+                @if (Model.CategoriaAtual == "Categorias")
+                    {
+                    <h1 class="tit2_pradois pb-10">Surpresas diferenciadas em Feira de Santana </h1>
+
+                    }else{
+                    <h1 class="tit2_pradois pb-10">
+                        @Model.CategoriaAtual
+                    </h1>
+                    }
+               
+                
+ 
 
                 <div class="linkbuild_top collapse multi-collapse" id="multiCollapseExample1">
+
                     <div>
+                        @if (!string.IsNullOrEmpty(Model.PostSuperior))
+                        {
                         @Html.Raw(Model.PostSuperior)
+                        }
+                        else
+                        {
+                             <p>Cestas de café da manhã, festa na caixa e flores em Feira de Santana: um presente especial para todas as ocasiões</p>
+                            <p>As cestas de café da manhã, festa na caixa e flores são opções de presentes perfeitas para qualquer ocasião. Elas são uma forma de demonstrar carinho, atenção e cuidado com a pessoa presenteada.</p>
+
+                            <h2>Como escolher surpresas</h2>
+
+                            <p>Na hora de escolher uma surpresa, é importante considerar o gosto da pessoa presenteada. Se você não sabe o que ela gosta, pode optar por uma cesta ou festa na caixa personalizada da Pradois.</p>
+
+                            <h2>Momento indicado para presentear</h2>
+
+                            <p>As cestas de café da manhã, festa na caixa e flores são presentes que podem ser dados em qualquer ocasião. No entanto, existem algumas datas que são mais propícias para presentear, como:</p>
+                            <ul>
+                                <li>Dia das Mães</li>
+                                <li>Dia dos Namorados</li>
+                                <li>Aniversário</li>
+                                <li>Dia dos Pais</li>
+                                <li>Dia dos Professores</li>
+                                <li>Natal</li>
+                            </ul>
+                            <p>Você também pode presentear alguém com uma cesta ou festa na caixa sem motivo especial, apenas para demonstrar seu carinho.</p>
+
+                            <h2>Itens que podem vir na cesta</h2>
+
+                            <p>As cestas de café da manhã, festa na caixa e flores da Pradois podem ser compostas por diversos itens. Aqui estão algumas sugestões:</p>
+                            <ul>
+                                <li>Frutas</li>
+                                <li>Pães</li>
+                                <li>Bolos</li>
+                                <li>Sucos</li>
+                                <li>Café</li>
+                                <li>Leite</li>
+                                <li>Chá</li>
+                                <li>Biscoitos</li>
+                                <li>Salgadinhos</li>
+                                <li>Balões</li>
+                                <li>Serpentinas</li>
+                                <li>Confetes</li>
+                                <li>Bolo</li>
+                                <li>Doces</li>
+                                <li>Salgados</li>
+                                <li>Flores</li>
+                            </ul>
+                            <p>Você pode escolher os itens que mais combinam com a pessoa presenteada. Também pode personalizar a cesta ou festa na caixa com um cartão ou uma mensagem especial da Pradois.</p>
+
+                            <h2>Tipos de flores</h2>
+
+                            <p>As flores da Pradois são uma ótima opção de presente para qualquer ocasião. Elas podem ser enviadas para celebrar uma data especial, demonstrar carinho ou apoio.</p>
+
+                            <h2>Feira de Santana: uma cidade para presentear</h2>
+
+                            <p>Feira de Santana é uma cidade do interior da Bahia, com uma população de mais de 600 mil habitantes. É a segunda maior cidade do estado e a maior do interior nordestino.</p>
+                            <p>Feira de Santana é uma cidade vibrante e cheia de vida. É um importante centro comercial, industrial, educacional e cultural. A cidade também é um importante polo turístico, com atrações como a Feira Central, o Parque da Cidade e o Museu Regional de Feira de Santana.</p>
+                            <p>A Pradois é uma empresa que está presente em Feira de Santana há mais de 20 anos. A empresa é especializada em cestas de café da manhã, festa na caixa e flores.</p>
+                            <p>A Pradois oferece uma variedade de produtos para atender às necessidades de todos os clientes. As cestas de café da manhã são compostas por itens frescos e saborosos, como frutas, pães, bolos, sucos e café. As festas na caixa são compostas por itens como balões, serpentinas, confetes, bolo, doces e salgados. As flores são escolhidas com cuidado e atenção, para que representem o carinho e atenção do presenteado.</p>
+                            <p>A Pradois é uma ótima opção para quem está procurando um presente especial para alguém que mora em Feira de Santana. A empresa oferece uma variedade de produtos de alta qualidade, com preços competitivos.</p>
+
+                            <h2>Vantagens de comprar cestas de café da manhã, festa na caixa e flores na Pradois</h2>
+
+                            <ul>
+                                <li>Você pode encontrar uma variedade de produtos para escolher na Pradois.</li>
+                                <li>Os preços são competitivos.</li>
+                                <li>A entrega é rápida e eficiente.</li>
+                            </ul>
+
+                            <p>Se você está procurando um presente especial para alguém que mora em Feira de Santana, não deixe de conferir as opções disponíveis na Pradois.</p>
+
+                        }
                     </div>
                     <div class="float_button">
                         <div class=" collapse multi-collapse " id="multiCollapseExample3">
@@ -43,8 +125,8 @@
 
 
                     </div>
-                </div>
-                }
+                    </div>
+              
 
             </div>
         </div>
@@ -101,6 +183,7 @@
                             <form action="/Produtos/@categoriaUrl" method="post">
                                 <input type="hidden" name="categoria" value="@categoria.CategoriaNome" />
                                 <input type="hidden" name="postSuperior" value="@categoria.PostSuperior" />
+                                <input type="hidden" name="postInferior" value="@categoria.PostInferior" />
                                 <input type="hidden" name="metaDescricao" value="@categoria.MetaDescricao" />
                                 <input type="hidden" name="metaTitle" value="@categoria.MetaTitle" />
                                 <input type="hidden" name="metaImage" value="@categoria.MetaImage" />
@@ -175,9 +258,179 @@
 
 
 
+<section class="faq pt-50 pb-70 ">
+@*     pt-50-xs
+ *@    <div class="container ">
+        <div class="row">
+            <div class="col-12">
+                <h2 class="tit1_gen pb-40">Principais Dúvidas</h2>
+                <div class="accordion accordion_gen mt_60_gen" id="accordionExample">
+                    <article class="card ">
+                        <div class="card-header p-0" id="headingOne">
+                            <h3 class="mb-0 ">
+                                <button class="btn btn-link btn-block text-left tit2_gen p-4" type="button" data-toggle="collapse" data-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+                                    Quais as vantagens de usar um Gateway de pagamento?
+                                    <svg aria-hidden="true" focusable="false" data-prefix="far" data-icon="chevron-down" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512" class="svg-inline--fa fa-chevron-down fa-w-14">
+                                        <path fill="currentColor" d="M441.9 167.3l-19.8-19.8c-4.7-4.7-12.3-4.7-17 0L224 328.2 42.9 147.5c-4.7-4.7-12.3-4.7-17 0L6.1 167.3c-4.7 4.7-4.7 12.3 0 17l209.4 209.4c4.7 4.7 12.3 4.7 17 0l209.4-209.4c4.7-4.7 4.7-12.3 0-17z" class=""></path>
+                                    </svg>
+                                </button>
+                            </h3>
+                        </div>
+                        <div id="collapseOne" class="collapse show" aria-labelledby="headingOne" data-parent="#accordionExample">
+                            <div class="card-body color_fr0_gen descri2_gen pt-0 px-4">
+                                A integração de gateways de
+                            </div>
+                        </div>
+                    </article>
+                    <article class="card">
+                        <div class="card-header p-0" id="headingTwo">
+                            <h3 class="mb-0">
+                                <button class="btn btn-link btn-block text-left collapsed tit2_gen p-4" type="button" data-toggle="collapse" data-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
+                                    Quais as formas de pagamento aceitas?
+                                    <svg aria-hidden="true" focusable="false" data-prefix="far" data-icon="chevron-down" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512" class="svg-inline--fa fa-chevron-down fa-w-14">
+                                        <path fill="currentColor" d="M441.9 167.3l-19.8-19.8c-4.7-4.7-12.3-4.7-17 0L224 328.2 42.9 147.5c-4.7-4.7-12.3-4.7-17 0L6.1 167.3c-4.7 4.7-4.7 12.3 0 17l209.4 209.4c4.7 4.7 12.3 4.7 17 0l209.4-209.4c4.7-4.7 4.7-12.3 0-17z" class=""></path>
+                                    </svg>
+                                </button>
+                            </h3>
+                        </div>
+                        <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionExample">
+                            <div class="card-body color_fr0_gen descri2_gen pt-0 px-4">
+                                As formas de pagamento
+                            </div>
+                        </div>
+                    </article>
+                    <article class="card">
+                        <div class="card-header p-0" id="headingThree">
+                            <h3 class="mb-0">
+                                <button class="btn btn-link btn-block text-left collapsed tit2_gen p-4" type="button" data-toggle="collapse" data-target="#collapseThree" aria-expanded="false" aria-controls="collapseTwo">
+                                    O que é um split de pagamento e como posso me beneficiar dele?
+                                    <svg aria-hidden="true" focusable="false" data-prefix="far" data-icon="chevron-down" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512" class="svg-inline--fa fa-chevron-down fa-w-14">
+                                        <path fill="currentColor" d="M441.9 167.3l-19.8-19.8c-4.7-4.7-12.3-4.7-17 0L224 328.2 42.9 147.5c-4.7-4.7-12.3-4.7-17 0L6.1 167.3c-4.7 4.7-4.7 12.3 0 17l209.4 209.4c4.7 4.7 12.3 4.7 17 0l209.4-209.4c4.7-4.7 4.7-12.3 0-17z" class=""></path>
+                                    </svg>
+                                </button>
+                            </h3>
+                        </div>
+                        <div id="collapseThree" class="collapse" aria-labelledby="headingThree" data-parent="#accordionExample">
+                            <div class="card-body color_fr0_gen descri2_gen pt-0 px-4">
+                                O split de pagamento é
+
+                            </div>
+                        </div>
+                    </article>
+                    <article class="card">
+                        <div class="card-header p-0" id="headingFour">
+                            <h3 class="mb-0">
+                                <button class="btn btn-link btn-block text-left collapsed tit2_gen p-4" type="button" data-toggle="collapse" data-target="#collapseFour" aria-expanded="false" aria-controls="collapseTwo">
+                                    O que é ambiente de Sandbox?
+                                    <svg aria-hidden="true" focusable="false" data-prefix="far" data-icon="chevron-down" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512" class="svg-inline--fa fa-chevron-down fa-w-14">
+                                        <path fill="currentColor" d="M441.9 167.3l-19.8-19.8c-4.7-4.7-12.3-4.7-17 0L224 328.2 42.9 147.5c-4.7-4.7-12.3-4.7-17 0L6.1 167.3c-4.7 4.7-4.7 12.3 0 17l209.4 209.4c4.7 4.7 12.3 4.7 17 0l209.4-209.4c4.7-4.7 4.7-12.3 0-17z" class=""></path>
+                                    </svg>
+                                </button>
+                            </h3>
+                        </div>
+                        <div id="collapseFour" class="collapse" aria-labelledby="headingFour" data-parent="#accordionExample">
+                            <div class="card-body color_fr0_gen descri2_gen pt-0 px-4">
+                                O ambiente de sandbox é um ambiente de teste
+                            </div>
+                        </div>
+                    </article>
+                    <article class="card">
+                        <div class="card-header p-0" id="headingFive">
+                            <h3 class="mb-0">
+                                <button class="btn btn-link btn-block text-left collapsed tit2_gen p-4" type="button" data-toggle="collapse" data-target="#collapseFive" aria-expanded="false" aria-controls="collapseTwo">
+                                    A Genpag tem selo antifraude?
+                                    <svg aria-hidden="true" focusable="false" data-prefix="far" data-icon="chevron-down" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512" class="svg-inline--fa fa-chevron-down fa-w-14">
+                                        <path fill="currentColor" d="M441.9 167.3l-19.8-19.8c-4.7-4.7-12.3-4.7-17 0L224 328.2 42.9 147.5c-4.7-4.7-12.3-4.7-17 0L6.1 167.3c-4.7 4.7-4.7 12.3 0 17l209.4 209.4c4.7 4.7 12.3 4.7 17 0l209.4-209.4c4.7-4.7 4.7-12.3 0-17z" class=""></path>
+                                    </svg>
+                                </button>
+                            </h3>
+                        </div>
+                        <div id="collapseFive" class="collapse" aria-labelledby="headingFive" data-parent="#accordionExample">
+                            <div class="card-body color_fr0_gen descri2_gen pt-0 px-4">
+                                Nossa infraestrutura conta com o si
+
+                            </div>
+                        </div>
+                    </article>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
 
 
 
+
+
+
+
+
+
+
+<section class="linkbuild_2 mt-100 mb-110">
+    <div class="container">
+        <div class="row">
+            @if (!string.IsNullOrEmpty(Model.PostInferior))
+            {
+            <div class="col-12">
+                  @Html.Raw(@Model.PostInferior)
+            </div>
+
+
+}
+else
+{
+                <div class="col-12">
+
+                <h2>Feira de Santana: uma cidade histórica e cheia de vida</h2>
+
+                <p>Feira de Santana é uma cidade do interior da Bahia, com uma população de mais de 600 mil habitantes. É a segunda maior cidade do estado e a maior do interior nordestino.</p>
+
+                <p>A história de Feira de Santana remonta ao século XVI, quando a região era habitada por indígenas Tupinambás. Em 1674, foi fundada a Fazenda Sant'Anna dos Olhos d'Água, que daria origem à cidade.</p>
+
+                <p>No século XIX, Feira de Santana se tornou um importante centro comercial e de produção agrícola. A cidade também era um importante ponto de parada para as tropas que viajavam entre Salvador e o interior do país.</p>
+
+                <p>No século XX, Feira de Santana continuou a se desenvolver, tornando-se um importante centro industrial, educacional e cultural. A cidade também é um importante polo turístico, com atrações como a Feira Central, o Parque da Cidade e o Museu Regional de Feira de Santana.</p>
+
+                <p>Presentear com cestas de café da manhã e festa na caixa: uma forma de demonstrar carinho</p>
+
+                    <h3>Presentear com cestas de café da manhã e festa na caixa: uma forma de demonstrar carinho</h3>
+
+                <p>Presentear com cestas de café da manhã e festa na caixa é uma forma de demonstrar carinho e atenção a alguém especial. Esses presentes são perfeitos para ocasiões especiais, como o Dia das Mães, o Dia dos Namorados e outras datas comemorativas.</p>
+
+                <p>As cestas de café da manhã são uma ótima opção para quem quer começar o dia com um toque especial. Elas geralmente são compostas por itens como frutas, pães, bolos, sucos e café. As cestas de café da manhã podem ser personalizadas de acordo com o gosto do presenteado.</p>
+
+                <p>As festas na caixa são uma ótima opção para quem quer surpreender alguém com uma festa surpresa. Elas geralmente são compostas por itens como balões, serpentinas, confetes, bolo, doces e salgados. As festas na caixa podem ser entregues em casa ou no trabalho do presenteado.</p>
+
+                    <h3>A importância de presentear com cestas de café da manhã e festa na caixa</h3>
+
+                <p>Presentear com cestas de café da manhã e festa na caixa é uma forma de demonstrar carinho e atenção a alguém especial. Esses presentes são perfeitos para ocasiões especiais, como o Dia das Mães, o Dia dos Namorados e outras datas comemorativas.</p>
+
+                <p>As cestas de café da manhã e as festas na caixa são uma forma de mostrar que você se importa com a pessoa presenteada. Eles são uma forma de dizer "eu te amo", "obrigado" ou "você é especial para mim".</p>
+
+                <p>Ao presentear com cesta de café da manhã ou festa na caixa, você está proporcionando momentos de alegria e descontração para a pessoa presenteada. Esses presentes são uma forma de tornar o dia especial ainda mais especial.</p>
+
+                <h3>Feira de Santana: a cidade perfeita para presentear</h3>
+
+                <p>Feira de Santana é uma cidade cheia de vida e de opções para presentear. A cidade conta com diversas lojas especializadas em cestas de café da manhã e festa na caixa.</p>
+
+                <p>Se você está procurando um presente especial para alguém que você ama, Feira de Santana é o lugar certo para encontrar. A cidade oferece diversas opções de cestas de café da manhã e festa na caixa, para todos os gostos e bolsos.</p>
+
+                <p>Aqui estão algumas dicas para escolher a cesta de café da manhã ou festa na caixa perfeita:</p>
+                <div>
+                <ul>
+                    <li>Considere o gosto da pessoa presenteada.</li>
+                    <li>Pense na ocasião para a qual você está presenteando.</li>
+                    <li>Defina o seu orçamento.</li>
+                </ul>
+                    </div>
+                <p>Com um pouco de planejamento, você pode encontrar o presente perfeito para tornar o dia de alguém especial ainda mais especial.</p>
+                </div>
+            }
+
+        </div>
+    </div>
+</section>
 
 
 

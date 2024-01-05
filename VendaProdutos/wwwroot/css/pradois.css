@@ -545,12 +545,14 @@ ul.star {
    font-size: 39px;
 }
 .linkbuild_top p {
-   font-size: 16px!important;
+   font-size: 15px!important;
    line-height: 26px;
    margin-bottom: 20px;
    font-weight: 400;
 }
-
+.linkbuild_top h2 {
+    font-size: 18px;
+}
 .linkbuild_top p:first-child{
    text-overflow: ellipsis;
    overflow: hidden;
@@ -667,6 +669,11 @@ fill:var(--cor-primaria);
    color: #000;
    text-align: left;
    
+}
+.linkbuild_2 h3 {
+    color: #a6a6a6;
+    font-size: 18px;
+    margin-bottom: 25px;
 }
 .banner_categ{
     background-color: var(--gradiente-primario) !important;

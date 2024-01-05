@@ -32,9 +32,9 @@
     <meta name="msapplication-navbutton-color" content="#3c2525">
 
 
-    <title> Pradois @ViewData["Title"] - @Html.Raw((ViewBag.Title != null) ? ViewBag.Title : "CESTAS em Feira de Santana - Café da manhã, Aniversário, Surpresa")" </title>
+    <title> Pradois - @ViewData["Title"] @Html.Raw((ViewBag.MetaTitle != null) ? ViewBag.MetaTitle : "CESTAS em Feira de Santana - Café da manhã, Aniversário, Surpresa") </title>
     <meta name="description" content="@Html.Raw((ViewBag.metaDescricao != null) ? ViewBag.metaDescricao : "Cesta completa, Simples, light, infantil, fitness, festa na caixa, romantica, com rosas, fotos, balões frete e entrega grátis para toda região de Feira? Você só encontra aqui na Pradois!")" />
-    <meta property="og:title" content="Pradois @ViewData["Title"] - @Html.Raw((ViewBag.Title != null) ? ViewBag.Title : "CESTAS em Feira de Santana - Café da manhã, Aniversário, Surpresa")" />
+    <meta property="og:title" content="Pradois @ViewData["Title"] - @Html.Raw((ViewBag.MetaTitle != null) ? ViewBag.MetaTitle : "CESTAS em Feira de Santana - Café da manhã, Aniversário, Surpresa")" />
     <meta property="og:description" content="@Html.Raw((ViewBag.metaDescricao != null) ? ViewBag.metaDescricao : "Cesta completa, Simples, light, infantil, fitness, festa na caixa, romantica, com rosas, fotos, balões frete e entrega grátis para toda região de Feira? Você só encontra aqui na Pradois!")" />
     <meta property="og:image" content="@((ViewBag.metaImage != null) ? ViewBag.metaImage : "https://pradois.com.br/img/cesta.png")" />
     <meta property="og:url" content="pradois.com.br/@ViewBag.urlAmigavel" />
@@ -42,7 +42,7 @@
  
     <meta name="twitter:card" content="summary_large_image" />
     <meta name="twitter:site" content="pradois.com.br/@ViewBag.urlAmigavel" />
-    <meta name="twitter:title" content="Pradois @ViewData["Title"] - @Html.Raw((ViewBag.Title != null) ? ViewBag.Title : "CESTAS em Feira de Santana - Café da manhã, Aniversário, Surpresa")" />
+    <meta name="twitter:title" content="Pradois @ViewData["Title"] - @Html.Raw((ViewBag.MetaTitle != null) ? ViewBag.MetaTitle : "CESTAS em Feira de Santana - Café da manhã, Aniversário, Surpresa")" />
 
     <meta name="twitter:description" content="@Html.Raw((ViewBag.metaDescricao != null) ? ViewBag.metaDescricao : "Entrega de cestas em Feira de Santana")" />
     <meta name="twitter:image" content="@((ViewBag.metaImage != null) ? ViewBag.metaImage : "https://pradois.com.br/img/cesta.png")" />
@@ -98,159 +98,7 @@
 
                         </li>
                     }
-                    <li class="nav-item dropdown">
-                        <a class="nav-link dropdown-toggle" href="#" data-bs-toggle="dropdown"> Produtos  </a>
-                        <ul class="dropdown-menu">
-
-                            <li class="has-submenu">
-                                <a class="dropdown-item dropdown-toggle" href="#"> Pagamentos</a>
-                                <div class="megasubmenu dropdown-menu">
-                                    <div class="list-group list-group-flush">
-                                        <a href="#" class="list-group-item list-group-item-action ">Pagamentos online</a>
-                                        <a href="#" class="list-group-item list-group-item-action">Checkout</a>
-                                        <a href="#" class="list-group-item list-group-item-action">Checkout Mobile</a>
-                                        <a href="#" class="list-group-item list-group-item-action">Link de pagamento</a>
-                                        <a href="#" class="list-group-item list-group-item-action">Recorrência</a>
-                                        <a href="#" class="list-group-item list-group-item-action">Emissão de Nota Fiscal</a>
-                                        <a href="#" class="list-group-item list-group-item-action">Planos</a>
-                                    </div>
-
-                                </div>
-                            </li>
-                            <li class="has-submenu">
-                                <a class="dropdown-item dropdown-toggle" href="#"> Negócio  </a>
-                                <div class="megasubmenu dropdown-menu">
-                                    <div class="list-group">
-                                        <a href="#" class="list-group-item list-group-item-action">Pagamento presencial</a>
-                                        <a href="#" class="list-group-item list-group-item-action">Faturas e contratos</a>
-                                        <a href="#" class="list-group-item list-group-item-action">Planos</a>
-                                        <a href="#" class="list-group-item list-group-item-action">Ponto de Venda</a>
-                                        <a href="#" class="list-group-item list-group-item-action">Conciliação automática</a>
-                                        <a href="#" class="list-group-item list-group-item-action">Emissão de Notas Fiscais</a>
-                                        <a href="#" class="list-group-item list-group-item-action">Catálogo online</a>
-                                        <a href="#" class="list-group-item list-group-item-action">Cardápio online</a>
-                                        <a href="#" class="list-group-item list-group-item-action">Vendedor</a>
-                                        <a href="#" class="list-group-item list-group-item-action">Estoques</a>
-                                    </div>
-                                </div>
-                            </li>
-                        </ul>
-                    </li>
-
-
-
-
-                    <li class="nav-item dropdown">
-                        <a class="nav-link dropdown-toggle" href="#" data-bs-toggle="dropdown"> Soluções  </a>
-                        <ul class="dropdown-menu">
-                            <li class="has-submenu">
-                                <a class="dropdown-item dropdown-toggle" href="#"> Pagamentos </a>
-                                <div class="megasubmenu dropdown-menu">
-                                    <div class="list-group">
-                                        <a href="#" class="list-group-item list-group-item-action">e-commerce</a>
-                                        <a href="#" class="list-group-item list-group-item-action">SaaS</a>
-                                        <a href="#" class="list-group-item list-group-item-action">Marketplaces</a>
-                                        <a href="#" class="list-group-item list-group-item-action">Startups</a>
-                                    </div>
-                                </div>
-                            </li>
-                            <li class="has-submenu">
-                                <a class="dropdown-item dropdown-toggle" href="#"> Negócios</a>
-                                <div class="megasubmenu dropdown-menu">
-                                    <div class="list-group">
-                                        <a href="#" class="list-group-item list-group-item-action">Varejo</a>
-                                        <a href="#" class="list-group-item list-group-item-action">Restaurantes e Bares</a>
-                                        <a href="#" class="list-group-item list-group-item-action">Serviços Profissionais</a>
-                                        <a href="#" class="list-group-item list-group-item-action">Corporativo</a>
-                                    </div>
-                                </div>
-                            </li>
-                        </ul>
-                    </li>
-
-
-
-                    <li class="nav-item dropdown">
-                        <a class="nav-link dropdown-toggle" href="#" data-bs-toggle="dropdown"> Desenvolvedores  </a>
-                        <ul class="dropdown-menu">
-                            <li class="has-submenu">
-                                <a class="dropdown-item dropdown-toggle" href="#"> Integre já </a>
-                                <div class="megasubmenu dropdown-menu">
-                                    <div class="list-group">
-                                        <a href="#" class="list-group-item list-group-item-action">Checkout pré-integrado</a>
-                                        <a href="#" class="list-group-item list-group-item-action">Documentação</a>
-                                        <a href="#" class="list-group-item list-group-item-action">SandBox</a>
-                                        <a href="#" class="list-group-item list-group-item-action">Bibliotecas e SDKs</a>
-                                        <a href="#" class="list-group-item list-group-item-action">Plugins</a>
-                                        <a href="#" class="list-group-item list-group-item-action">SandBox</a>
-                                    </div>
-                                </div>
-                            </li>
-                            <li class="has-submenu">
-                                <a class="dropdown-item dropdown-toggle" href="#"> Guias </a>
-                                <div class="megasubmenu dropdown-menu">
-                                    <div class="list-group">
-                                        <a href="#" class="list-group-item list-group-item-action">Aceitar pagamento online</a>
-                                        <a href="#" class="list-group-item list-group-item-action">Gerenciar assinaturas</a>
-                                        <a href="#" class="list-group-item list-group-item-action">Enviar pagamentos</a>
-                                        <a href="#" class="list-group-item list-group-item-action">Configurar pagamentos presenciais</a>
-                                        <a href="#" class="list-group-item list-group-item-action">Referência completa da API</a>
-                                        <a href="#" class="list-group-item list-group-item-action">Status da API</a>
-                                    </div>
-                                </div>
-                            </li>
-                        </ul>
-                    </li>
-
-
-
-
-                    <li class="nav-item dropdown has-megamenu">
-                        <a class="nav-link dropdown-toggle" href="#" data-bs-toggle="dropdown"> Recursos  </a>
-                        <div class="dropdown-menu megamenu " role="menu">
-                            <div class="envolve_megamenu">
-                                <div class="container">
-                                    <div class="row">
-                                        <div class="col ">
-                                            <a href="#"><span>Central de Suporte</span></a>
-                                            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis at odio arcu. Interdum et malesuada fames.</p>
-                                            <a href="#">Acessar suporte<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 512"><!--! Font Awesome Pro 6.1.2 by fontawesome - https://fontawesome.com License - https://fontawesome.com/license (Commercial License) Copyright 2022 Fonticons, Inc. --><path d="M96 480c-8.188 0-16.38-3.125-22.62-9.375c-12.5-12.5-12.5-32.75 0-45.25L242.8 256L73.38 86.63c-12.5-12.5-12.5-32.75 0-45.25s32.75-12.5 45.25 0l192 192c12.5 12.5 12.5 32.75 0 45.25l-192 192C112.4 476.9 104.2 480 96 480z"></path></svg></a>
-                                        </div>
-                                        <div class="col ">
-                                            <a href="#"><span>Guias</span></a>
-                                            <p>Vivamus ultricies urna aliquet nibh commodo lobortis. Nullam sollicitudin nulla in pharetra suscipit.</p>
-                                            <a href="#">Ver guias<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 512"><!--! Font Awesome Pro 6.1.2 by fontawesome - https://fontawesome.com License - https://fontawesome.com/license (Commercial License) Copyright 2022 Fonticons, Inc. --><path d="M96 480c-8.188 0-16.38-3.125-22.62-9.375c-12.5-12.5-12.5-32.75 0-45.25L242.8 256L73.38 86.63c-12.5-12.5-12.5-32.75 0-45.25s32.75-12.5 45.25 0l192 192c12.5 12.5 12.5 32.75 0 45.25l-192 192C112.4 476.9 104.2 480 96 480z"></path></svg></a>
-                                        </div>
-                                        <div class="col ">
-                                            <a href="#"><span>Blog</span></a>
-                                            <p>O mais respeitado blog de varejo do Brasil. São quase x conteúdos gratuitos para quem quer vender mais.</p>
-                                            <a href="#">Visitar blog<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 512"><!--! Font Awesome Pro 6.1.2 by fontawesome - https://fontawesome.com License - https://fontawesome.com/license (Commercial License) Copyright 2022 Fonticons, Inc. --><path d="M96 480c-8.188 0-16.38-3.125-22.62-9.375c-12.5-12.5-12.5-32.75 0-45.25L242.8 256L73.38 86.63c-12.5-12.5-12.5-32.75 0-45.25s32.75-12.5 45.25 0l192 192c12.5 12.5 12.5 32.75 0 45.25l-192 192C112.4 476.9 104.2 480 96 480z"></path></svg></a>
-                                        </div>
-                                        <div class="col ">
-                                            <a href="#"><span>Materiais</span></a>
-                                            <p>In id turpis id ex faucibus elementum non in velit. Morbi ac maximus nibh. Nunc sem velit, tristique sit.</p>
-                                            <a href="#">Acessar conteúdo<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 512"><!--! Font Awesome Pro 6.1.2 by fontawesome - https://fontawesome.com License - https://fontawesome.com/license (Commercial License) Copyright 2022 Fonticons, Inc. --><path d="M96 480c-8.188 0-16.38-3.125-22.62-9.375c-12.5-12.5-12.5-32.75 0-45.25L242.8 256L73.38 86.63c-12.5-12.5-12.5-32.75 0-45.25s32.75-12.5 45.25 0l192 192c12.5 12.5 12.5 32.75 0 45.25l-192 192C112.4 476.9 104.2 480 96 480z"></path></svg></a>
-                                        </div>
-                                        <div class="col ">
-                                            <a href="#"><span>Fale com a Equipe de Vendas</span></a>
-                                            <p>Pellentesque tempus auctor enim et maximus. Donec sit amet leo in felis lobortis. </p>
-                                            <a href="#">
-                                                Falar agora
-                                                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 512"><!--! Font Awesome Pro 6.1.2 by fontawesome - https://fontawesome.com License - https://fontawesome.com/license (Commercial License) Copyright 2022 Fonticons, Inc. --><path d="M96 480c-8.188 0-16.38-3.125-22.62-9.375c-12.5-12.5-12.5-32.75 0-45.25L242.8 256L73.38 86.63c-12.5-12.5-12.5-32.75 0-45.25s32.75-12.5 45.25 0l192 192c12.5 12.5 12.5 32.75 0 45.25l-192 192C112.4 476.9 104.2 480 96 480z"></path></svg>
-                                            </a>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div> <!-- dropdown-mega-menu.// -->
-                    </li>
-
-
-
-                    <li class="nav-item">
-                        <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Index">Home</a>
-
-                    </li>
+                    
                 </ul>
 
                 
@@ -267,12 +115,21 @@
         @RenderBody()
     </main>
     
-    @* Pega a url do site *@
-    @using Microsoft.AspNetCore.Mvc
-    @inject IUrlHelper Url
-    <script>
-        var baseUrl = '@Url.Action("Index", "Home", null, Context.Request.Scheme)';
-    </script>
+ 
+
+
+
+
+    
+
+
+
+
+
+
+
+
+
 
 
 

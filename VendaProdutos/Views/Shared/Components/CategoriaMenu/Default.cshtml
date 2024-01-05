@@ -11,16 +11,14 @@
             <form action="/Produtos/@categoriaUrl" method="post">
                 <input type="hidden" name="categoria" value="@categoria.CategoriaNome" />
                 <input type="hidden" name="postSuperior" value="@categoria.PostSuperior" />
+                <input type="hidden" name="postInferior" value="@categoria.PostInferior" />
                 <input type="hidden" name="metaDescricao" value="@categoria.MetaDescricao" />
                 <input type="hidden" name="metaTitle" value="@categoria.MetaTitle" />
                 <input type="hidden" name="metaImage" value="@categoria.MetaImage" />
                 <input type="hidden" name="urlAmigavel" value="@categoria.UrlAmigavel" />
                 <input type="hidden" name="categoriaCompleta" value="@categoria" />
                 <input type="hidden" name="categoriaId " value="@categoria.CategoriaId " />
-
-
-      
-
+                
 
                 <button type="submit" class="dropdown-item">
                     @categoria.CategoriaNome

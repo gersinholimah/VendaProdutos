@@ -26,8 +26,10 @@ namespace VendaProdutos.Controllers
         public IActionResult List(string categoria, [FromForm] string postSuperior,
            [FromForm] string metaDescricao,
           [FromForm] string metaTitle,
-           [FromForm] string metaImage 
- 
+           [FromForm] string metaImage,
+          [FromForm] string postInferior
+
+
             )
         {
             IEnumerable<Produto> produtos;
@@ -37,26 +39,28 @@ namespace VendaProdutos.Controllers
             string pathProduto = "Produtos/";
             ViewBag.PathProduto = pathProduto;
             Categoria produtoAtual = null;
+ 
 
-      
 
             if (string.IsNullOrEmpty(categoria))
             {
                 produtos = _produtoRepository.Produtos.OrderBy(p => p.ProdutoId);
                 categoriaAtual = "Categorias";
                 exibeCategoria = true;
+                ViewBag.MetaTitle = "Cestas, festa na caixa e presentes em Feira de Santana: Entrega rápida e segura.";
             }
             else
             {
-              
-                exibeCategoria = false;
+                     // Obtém a string da propriedade e substitui espaços por hifens
+ 
+                 exibeCategoria = false;
                 produtos = _produtoRepository.Produtos
                     .Where(p => p.Categoria.CategoriaNome.Equals(categoria))
                     .OrderBy(c => c.Nome);
                 categoriaAtual = categoria; 
                 ViewBag.CategoriaAtual = categoriaAtual;
                 ViewBag.MetaDescricao = metaDescricao;
-                 ViewBag.MetaTitle = metaTitle;
+                 ViewBag.MetaTitle = categoria;
                 ViewBag.MetaImage = metaImage;
             }
 
@@ -64,9 +68,10 @@ namespace VendaProdutos.Controllers
             {
                 Produtos = produtos,
                 PostSuperior = postSuperior,
+                PostInferior = postInferior,
                 CategoriaAtual = categoriaAtual,
                 Categorias = listaCategorias,
-                ExibeCategoria = exibeCategoria
+                ExibeCategoria = exibeCategoria,
             };
             return View(produtosListViewModel);
         }
