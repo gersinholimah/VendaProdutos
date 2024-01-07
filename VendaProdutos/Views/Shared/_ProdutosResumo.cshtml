@@ -2,7 +2,7 @@
 @model Produto
 
 
-<div class="col-sm-6 col-md-4 col-lg-3 ">
+<div id="produto-@Model.ProdutoId" class="col-sm-6 col-md-4 col-lg-3 ">
     <div class=" cesta_super_top">
         <a asp-controller="Produto" asp-action="Details" asp-route-produtoId="@Model.ProdutoId" class="envolve_produtos mb-30-xs mb-70">
             <img class="img-fluid" src="@Model.ImagemUrl">
@@ -25,6 +25,74 @@
 
             </div>
 
+
         </a>
-    </div>
+        <a class="btn btn-primary" id="cartButton" asp-controller="CarrinhoCompra"
+           asp-action="AdicionarItemNoCarrinhoCompra" asp-route-ProdutoId="@Model.ProdutoId">
+            Incluir no Carrinho
+        </a>
+
+        <button class="btn btn-success" id="botao2" onclick="adicionarAoCarrinhoAjax(@Model.ProdutoId)">
+            Adicionar ao Carrinho (AJAX)
+        </button>
+
+        <button id="botao1" onclick="acaoBotao1()">Botão de fora</button>
+     </div>
 </div>
+
+
+
+<script src="https://code.jquery.com/jquery-3.6.4.min.js" integrity="sha256-oP6HI/t1qEzB53L0R6JLY2zkiq0I6a0+PRAkFO9uqrs=" crossorigin="anonymous"></script>
+
+
+
+
+<script>
+    function adicionarAoCarrinhoAjax(produtoId) {
+        console.log("Bõtão 2 foi clicado")
+
+        $.ajax({
+            url: '/CarrinhoCompra/AdicionarItemNoCarrinhoCompraAjax',
+            type: 'POST',
+            data: { produtoId: produtoId },
+            success: function (result) {
+                if (result.success) {
+                    // Exibir alerta de sucesso usando Bootstrap
+                    showAlert('success', result.mensagem);
+                } else {
+                    // Exibir alerta de falha usando Bootstrap
+                    showAlert('danger', result.mensagem);
+                }
+            },
+            error: function () {
+                // Exibir alerta de erro usando Bootstrap
+                showAlert('danger', 'Erro ao processar a solicitação.');
+            }
+        });
+    }
+
+    function showAlert(type, message) {
+        // Crie e exiba um alerta Bootstrap
+        var alertHtml = '<div class="alert alert-' + type + ' alert-dismissible fade show" role="alert">' +
+            message +
+            '<button type="button" class="close" data-dismiss="alert" aria-label="Close">' +
+            '<span aria-hidden="true">&times;</span></button></div>';
+
+        $('#alertContainer').html(alertHtml);
+    }
+</script>
+
+
+
+
+
+
+
+
+
+<script>
+    function acaoBotao1() {
+        console.log("Bõtão 1 foi clicado")
+        document.getElementById("botao2").click();
+    }
+</script>

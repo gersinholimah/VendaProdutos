@@ -42,6 +42,32 @@ namespace VendaProdutos.Controllers
          return RedirectToAction("Index");
         }
 
+
+
+
+
+
+        public IActionResult AdicionarItemNoCarrinhoCompraAjax(int produtoId)
+        {
+            var produtoSelecionado = _produtoRepository.Produtos.FirstOrDefault(p => p.ProdutoId == produtoId);
+
+            if (produtoSelecionado != null)
+            {
+                _carrinhoCompra.AdicionarAoCarrinho(produtoSelecionado);
+                return Json(new { success = true, mensagem = "Produto adicionado ao carrinho com sucesso!" });
+            }
+
+            return Json(new { success = false, mensagem = "Falha ao adicionar o produto ao carrinho." });
+        }
+
+
+
+
+
+
+
+
+
         public IActionResult RemoverItemDoCarrinhoCompra(int produtoId)
         {
 
