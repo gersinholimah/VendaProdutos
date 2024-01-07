@@ -891,27 +891,195 @@ div.quantity input.lafka-qty-plus, div.quantity input.lafka-qty-minus, .auction_
 
 
 .bolsa_home svg {
-    fill: #135dd8;
+    fill: #636363;
     font-size: 30px;
-    margin-left: 20px;
+    margin: 14px 0px 0 20px;
+    width: 38px;
 }
 
 .badge-info {
     color: #fff !important;
     background-color: #21ce35 !important;
-    margin: 0px 0px 0px -3px !important;
+    margin: 35px 0px 0px -11px !important;
+    position: absolute;
+}
+
+
+
+.modal-backdrop {
+    background-color: #3c2525 !important;
+}
+
+
+
+.searchbox, .searchbox:before, .searchbox*:after {
+    box-sizing: inherit;
+}
+
+    .searchbox, .searchbox:active, .searchbox:focus {
+        outline: none;
+    }
+
+.searchbox {
+    position: relative;
+    height: 80px;
+    width: 100%;
+    background: #fff !important;
+    margin: 40% auto 50px auto;
+    overflow: hidden;
+    border-bottom: 5px solid var(--cor-primaria);
+    background: none;
+    color: #27287d;
+    transform-style: preserve-3d;
+    transition: all 0.4s cubic-bezier(0.25, 0.8, 0.25, 1);
+}
+
+.searchbox--active {
+    color: #000;
+}
+
+.searchbox:after {
+    position: absolute;
+    content: "";
+    width: 100%;
+    height: 100%;
+    top: 20px;
+    left: 0px;
+    transform: rotateX(90deg);
+    background: #fff;
+    transition: all 0.4s cubic-bezier(0.25, 0.8, 0.25, 1);
+}
+
+.searchbox--active:after {
+    top: 0px;
+    left: 0px;
+    transform: rotateX(0deg);
+}
+
+.searchbox input {
+    position: absolute;
+    z-index: 1;
+    height: 100%;
+    width: 100%;
+    padding-left: 8px;
+    padding-right: 44px;
+    border: none;
+    font-size: 1em;
+    color: inherit;
+    background: none;
+    font-size: 29px;
+    font-family: "Open Sans";
+    padding: 20px;
+}
+
+.searchbox .sb-search-submit:hover {
+    background-color: var(--cor-primaria);
+    -webkit-transition: all ease .600s;
+    -o-transition: all ease .600s;
+    -moz-transition: all ease .600s;
+    -ms-transition: all ease .300s;
+    transition: all ease .600s;
+}
+
+.searchbox .sb-search-submit {
+    position: absolute;
+    z-index: 1;
+    right: 0px;
+    top: 0px;
+    height: 100%;
+    width: 70px;
+    border: none;
+    background: #adadad;
+    background-position: center center;
+    background-size: 20px;
+    font-size: 1.4em;
+    color: inherit;
+    -webkit-transition: all ease .600s;
+    -o-transition: all ease .600s;
+    -moz-transition: all ease .600s;
+    -ms-transition: all ease .300s;
+    transition: all ease .600s;
+}
+
+.modal-backdrop.show {
+    opacity: 0.98!important;
+}
+
+
+
+
+.modal-conten {
+    pointer-events: auto;
+}
+
+
+
+.menu_mobi {
+    background: #3c2525;
+    display: flex;
+    align-items: center;
+    padding: 18px;
+}
+.envolve_menu_mobi {
+    display: flex;
+    align-items: center;
+}
+
+    .envolve_menu_mobi .bolsa_home svg {
+        fill: #515151;
+        font-size: 33px;
+        margin-left: 20px;
+        width: 30px;
+        margin: 14px 0px 0 0;
+    }
+
+    .envolve_menu_mobi .badge-info {
+        color: #fff !important;
+        background-color: #21ce35 !important;
+        margin: 19px 0px 0px -31px !important;
+        font-size: 11px;
+        width: 16px;
+        height: 16px;
+        position: absolute;
+    }
+
+    .envolve_menu_mobi i {
+        margin-right: 20px;
+    }
+
+.nav_nova .envolve_menu_mobi .nav-link {
+    margin-right: 18px;
+}
+.menu_mobi svg {
+    fill: #ffffff;
+}
+
+nav .container {
+    background: #fff;
 }
 
 
 
 
 
+.navbar_gen .nav-item button.active,
+.navbar_gen .nav-item button.nav-link:visited,
+.navbar_gen .nav-item:visited button.nav-link
+.navbar_gen .nav-item button.active,
+.navbar_gen .nav-item button.nav-link:focus,
+.navbar_gen .nav-item:focus button.nav-link,
+.navbar_gen .nav-item button.active,
+.navbar_gen .nav-item button.nav-link:hover,
+.navbar_gen .nav-item:hover button.nav-link {
+    background: transparent;
+    border: none !important;
+    outline: none;
+}
 
-
-
-
-
-
+.navbar_gen .nav-item button.nav-link {
+    border: none;
+    background: transparent;
+}
 
 
 
@@ -926,7 +1094,7 @@ div.quantity input.lafka-qty-plus, div.quantity input.lafka-qty-minus, .auction_
 
 
 @media (max-width: 1399.98px) {
-   .pp.-active {
+    .pp.-active {
        height: auto;
    }
 }
@@ -953,12 +1121,13 @@ div.quantity input.lafka-qty-plus, div.quantity input.lafka-qty-minus, .auction_
 }
 
 @media (max-width: 991.98px) {
-   .pp__text {
-       text-align: center;
-       margin: 0 10px 10px 10px;
-       width: auto;
-       line-height: 17px;
-   }
+
+    .pp__text {
+        text-align: center;
+        margin: 0 10px 10px 10px;
+        width: auto;
+        line-height: 17px;
+    }
 }
 
 .pp__close {
@@ -1025,13 +1194,20 @@ div.quantity input.lafka-qty-plus, div.quantity input.lafka-qty-minus, .auction_
    .d-none-min-sm{
        display: none!important;
    }
+    .envolve_menu_mobi {
+        display: none !important;
+    }
 
 
 }
 
 
    /* Extra small devices (portrait phones, less than 576px)*/
-   @media (max-width: 575.98px) { }
+   @media (max-width: 400px) {
+    .menu_mobi {
+        padding: 0;
+    }
+   }
    
     /* Small devices (landscape phones, less than 768px)*/
    @media (max-width: 767.98px) {
@@ -1196,6 +1372,15 @@ h2.tit1_gen {
            margin-right: auto;
            margin-left: auto;
        }
+    .navbar.nav_nova {
+        background: -moz-linear-gradient(left, #fff 0%, #fff 4%, #fff 50%, #830101 50%, #830101 50%, #830101 50%, #830101 50%, #830101 50%, #830101 50%, #830101 50%, #830101 100%) !important;
+        background: -webkit-linear-gradient(left, #fff 0%,#fff 4%,#fff 50%,#3c2525 50%,#3c2525 50%,#3c2525 50%,#3c2525 50%,#3c2525 50%,#3c2525 50%,#3c2525 50%,#3c2525 100%) !important;
+        background: linear-gradient(to right, white 0%,white 4%,white 50%,#3c2525 50%,#3c2525 50%,#3c2525 50%,#3c2525 50%,#3c2525 50%,#3c2525 50%,#3c2525 50%,#3c2525 100%) !important;
+        filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='##fff', endColorstr='#830101',GradientType=1 ) !important;
+    }
+    .navbar_gen .navbar-brand img {
+        width: 100px!important;
+    }
     }
    
    /* Large devices (desktops, less than 1200px)*/

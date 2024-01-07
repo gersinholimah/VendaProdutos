@@ -15,7 +15,7 @@
 }
 else
 {
-    <div class=" login_mobile">
+    <div class=" login_mobile d-none">
 @*         d-xl-none d-lg-none
  *@        <a class="btn_cadastrar_gen cor_btn_fr1_gen" asp-controller="Account" asp-action="Login" asp-route-returnUrl="@string.Format("{0}{1}",Context.Request.Path, Context.Request.QueryString)" style="color:white">&nbsp; Log in&nbsp; </a>
         <a class="btn_cadastrar_gen cor_btn_fr1_gen" asp-controller="Account" asp-action="Register" style="color:white">&nbsp;Registro&nbsp;&nbsp;&nbsp; </a>

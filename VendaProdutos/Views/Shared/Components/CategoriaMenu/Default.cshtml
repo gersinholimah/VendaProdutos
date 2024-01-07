@@ -1,4 +1,4 @@
-﻿    <a class="nav-link dropdown-toggle"  data-bs-toggle="dropdown"> Produtos  </a>
+﻿@*     <a class="nav-link dropdown-toggle"  data-bs-toggle="dropdown"> Produtos  </a>
     <ul class="dropdown-menu">
         @foreach(var categoria in Model){
 
@@ -30,6 +30,37 @@
             <a class="dropdown-item dropdown-toggle asp-controller="Produto" asp-action="List"
                asp-route-categoria="" > Todos os Produtos</a>
         </li>
-    </ul>
- 
-  
+    </ul> *@
+
+
+
+@foreach(var categoria in Model){
+<li class="nav-item">
+        @{
+            // Obtém a string da propriedade e substitui espaços por hifens
+            string categoriaUrl = categoria.CategoriaNome.Replace(" ", "-");
+        }
+        <form action="/Produtos/@categoriaUrl" method="post">
+            <input type="hidden" name="categoria" value="@categoria.CategoriaNome" />
+            <input type="hidden" name="postSuperior" value="@categoria.PostSuperior" />
+            <input type="hidden" name="postInferior" value="@categoria.PostInferior" />
+            <input type="hidden" name="metaDescricao" value="@categoria.MetaDescricao" />
+            <input type="hidden" name="metaTitle" value="@categoria.MetaTitle" />
+            <input type="hidden" name="metaImage" value="@categoria.MetaImage" />
+            <input type="hidden" name="urlAmigavel" value="@categoria.UrlAmigavel" />
+            <input type="hidden" name="categoriaCompleta" value="@categoria" />
+            <input type="hidden" name="categoriaId " value="@categoria.CategoriaId " />
+
+
+            <button type="submit" class="nav-link text-dark">
+                @categoria.CategoriaNome
+            </button>
+        </form>
+    </li>
+
+    
+ }
+<li class="nav-item">
+    <a class="nav-link text-dark" asp-controller="Produto" asp-action="List"
+       asp-route-categoria=""> Todos os Produtos</a>
+</li>

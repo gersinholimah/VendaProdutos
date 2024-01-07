@@ -56,35 +56,46 @@
                 <img src="~/img/pradois_cestas.svg" loading="lazy" alt="Logo Pradois">
 
             </a>
-           
+            <div class="envolve_menu_mobi ">
+                @await Component.InvokeAsync("CarrinhoCompraResumo")
+
+                <div class="menu_mobi">
+
+                         <a href="#" class="nav-link" data-toggle="modal" data-target="#modal-buscar">
+                        <svg b-49ubqv3qok="" xmlns="http://www.w3.org/2000/svg" width="22" viewBox="0 0 512 512" style="fill: #fff;">
+                                <!--!Font Awesome Free 6.5.1 by - https://fontawesome.com License - https://fontawesome.com/license/free Copyright 2024 Fonticons, Inc.-->
+                                <path b-49ubqv3qok="" d="M416 208c0 45.9-14.9 88.3-40 122.7L502.6 457.4c12.5 12.5 12.5 32.8 0 45.3s-32.8 12.5-45.3 0L330.7 376c-34.4 25.2-76.8 40-122.7 40C93.1 416 0 322.9 0 208S93.1 0 208 0S416 93.1 416 208zM208 352a144 144 0 1 0 0-288 144 144 0 1 0 0 288z"></path>
+                            </svg>                            <div class="ripple-container"></div>
+                        </a>
+
             <span class="navbar-toggler collapsed" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
                 <div class="menu-btn-1" onclick="menuBtnFunction(this)">
                     <span></span>
                 </div>
             </span>
-
-            <div class="bolsa_home">
-                @await Component.InvokeAsync("CarrinhoCompraResumo")
             </div>
+            </div>
+
+           
             
             @await Html.PartialAsync("_LoginPartial")
 
-            <form class="navbar-form navbar-right" asp-controller="Produto" asp-action="Search" method="get">
-                <div class="form-group">
-                    <input type="text" class="form-control" placeholder="Procurar produto" name="searchString" value="@ViewData["searchString"]">
-                </div>
-            </form>
+     
             <div class="collapse navbar-collapse" id="navbarSupportedContent">
                 <ul class="navbar-nav mr-auto ml-auto mr-50-lg">
+                    @if (User.IsInRole("Admin"))
+                    {
+                        <a class="nav-link text-light" asp-area="Admin" asp-controller="Admin" asp-action="Index">Admin</a>
+                    }
                     <li class="nav-item">
                         <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Index">Home</a>
 
                     </li>
-                    <li class="nav-item">
+                    <li class="nav-item d-none">
                         <a class="nav-link text-dark" asp-area="" asp-controller="Produto" asp-action="List">Produtos</a>
 
                     </li>
-                    <li class="nav-item">
+                    <li class="nav-item d-none">
                         <a class="nav-link text-dark" asp-area="" asp-controller="Contato" asp-action="Index">Contato</a>
 
                     </li>
@@ -98,6 +109,20 @@
 
                         </li>
                     }
+
+                    <li class="nav-item buscar">
+                        <a href="#" class="nav-link" data-toggle="modal" data-target="#modal-buscar">
+                            <svg b-49ubqv3qok="" xmlns="http://www.w3.org/2000/svg" width="18" viewBox="0 0 512 512" style="fill: #ff4700;">
+                                <!--!Font Awesome Free 6.5.1 by - https://fontawesome.com License - https://fontawesome.com/license/free Copyright 2024 Fonticons, Inc.-->
+                                <path b-49ubqv3qok="" d="M416 208c0 45.9-14.9 88.3-40 122.7L502.6 457.4c12.5 12.5 12.5 32.8 0 45.3s-32.8 12.5-45.3 0L330.7 376c-34.4 25.2-76.8 40-122.7 40C93.1 416 0 322.9 0 208S93.1 0 208 0S416 93.1 416 208zM208 352a144 144 0 1 0 0-288 144 144 0 1 0 0 288z"></path>
+                            </svg>                            <div class="ripple-container"></div>
+                        </a>
+                    </li>
+                    <li class="nav-item ">
+
+                    @await Component.InvokeAsync("CarrinhoCompraResumo")
+                    </li>
+
                     
                 </ul>
 
@@ -107,7 +132,20 @@
         </div>
     </nav>
 
-
+    <div class="modal fade" id="modal-buscar" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+        <div class="modal-dialog ">
+            <div class="modal-conten">
+                <form class="searchbox isSelected" asp-controller="Produto" asp-action="Search" method="get">
+                    <div class="form-group">
+                        <input type="text" placeholder="O que você procura?" name="searchString" value="@ViewData["searchString"]">
+                        <button class="sb-search-submit fa fa-search" id="searchsubmit" type="submit">
+                            <svg b-49ubqv3qok="" xmlns="http://www.w3.org/2000/svg" height="16" width="16" viewBox="0 0 512 512"><!--!Font Awesome Free 6.5.1 by - https://fontawesome.com License - https://fontawesome.com/license/free Copyright 2024 Fonticons, Inc.--><path b-49ubqv3qok="" d="M416 208c0 45.9-14.9 88.3-40 122.7L502.6 457.4c12.5 12.5 12.5 32.8 0 45.3s-32.8 12.5-45.3 0L330.7 376c-34.4 25.2-76.8 40-122.7 40C93.1 416 0 322.9 0 208S93.1 0 208 0S416 93.1 416 208zM208 352a144 144 0 1 0 0-288 144 144 0 1 0 0 288z"></path></svg>
+                        </button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
 
     <header>
     </header>
