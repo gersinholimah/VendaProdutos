@@ -145,6 +145,11 @@ namespace VendaProdutos.Models
         [Display(Name = "Sob Encomenda")]
         public bool SobEncomenda { get; set; }
 
+        [Display(Name = "Opção Extra")]
+        public bool OpcaoExtra { get; set; }
+
+        [Display(Name = "Não Vender Individual")]
+        public bool NaoVenderIndividualmente { get; set; }
 
         public int QuantidadeDeItem { get; set; }
 
