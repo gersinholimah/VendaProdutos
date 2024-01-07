@@ -33,7 +33,7 @@ namespace VendaProdutos.Controllers
             )
         {
             IEnumerable<Produto> produtos;
-            IEnumerable<Categoria> listaCategorias = _context.Categorias.Include(c => c.Produtos).ToList();
+            IEnumerable<Categoria> listaCategorias = _context.Categorias.Include(c => c.Produtos).Where(c => !c.EsconderCategoria).ToList();
             string categoriaAtual = string.Empty;
             bool exibeCategoria = false;
             string pathProduto = "Produtos/";
@@ -77,8 +77,18 @@ namespace VendaProdutos.Controllers
         }
         public IActionResult Details(int produtoId) 
         {
+
+             IEnumerable<Produto> listaOpcoesExtra = _produtoRepository.Produtos.Where(c => c.OpcaoExtra).ToList();
             var produto = _produtoRepository.Produtos.FirstOrDefault(p => p.ProdutoId == produtoId);
-            return View(produto);
+
+            // Adicione outros dados necessários ao ViewModel
+            var produtosListViewModel = new ProdutoListViewModel
+            {
+                Produto = produto,
+                OpcoesExtra = listaOpcoesExtra,
+            
+            };
+            return View(produtosListViewModel);
                 }
         public ViewResult Search(string searchString)
         {
@@ -87,13 +97,13 @@ namespace VendaProdutos.Controllers
 
             if (string.IsNullOrEmpty(searchString))
             {
-                produtos = _produtoRepository.Produtos.OrderBy(p => p.ProdutoId);
+                produtos = _produtoRepository.Produtos.OrderBy(p => p.ProdutoId).Where(p => !p.NaoVenderIndividualmente);
                 categoriaAtual = "Todos os Produtos";
             }
             else
             {
                 produtos = _produtoRepository.Produtos
-                          .Where(p => p.Nome.ToLower().Contains(searchString.ToLower()));
+                          .Where(p => p.Nome.ToLower().Contains(searchString.ToLower()) && !p.Categoria.EsconderCategoria);
 
                 if (produtos.Any())
                     categoriaAtual = "Produtos";

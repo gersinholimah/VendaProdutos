@@ -59,6 +59,9 @@ namespace VendaProdutos.Models
         [Required(ErrorMessage = "Informe uma url amigavel para a categoria Corretamente")]
         public string UrlAmigavel { get; set; }
 
+        [Display(Name = "Esconder Categoria")]
+        public bool EsconderCategoria { get; set; }
+
         public List<Produto> Produtos { get; set; }
     }
 }

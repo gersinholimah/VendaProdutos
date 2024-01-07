@@ -3,6 +3,7 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using VendaProdutos.Context;
 
@@ -11,9 +12,11 @@ using VendaProdutos.Context;
 namespace VendaProdutos.Migrations
 {
     [DbContext(typeof(AppDbContext))]
-    partial class AppDbContextModelSnapshot : ModelSnapshot
+    [Migration("20240107050720_AdicionaPropriedadeListarCategoria")]
+    partial class AdicionaPropriedadeListarCategoria
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -268,13 +271,13 @@ namespace VendaProdutos.Migrations
                         .HasMaxLength(100)
                         .HasColumnType("nvarchar(100)");
 
-                    b.Property<bool>("EsconderCategoria")
-                        .HasColumnType("bit");
-
                     b.Property<string>("ImagemDestaque")
                         .IsRequired()
                         .HasMaxLength(100)
                         .HasColumnType("nvarchar(100)");
+
+                    b.Property<bool>("ListarCategoria")
+                        .HasColumnType("bit");
 
                     b.Property<string>("MetaDescricao")
                         .IsRequired()

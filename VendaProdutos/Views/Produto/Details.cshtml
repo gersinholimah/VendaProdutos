@@ -1,15 +1,15 @@
-﻿@model Produto
+﻿@model ProdutoListViewModel
 
 <div class="mt-50 container_produto">
     <div class="container">
         <div class="row">
             <div class="col-md-3">
-                <img class="img-fluid" src="@Model.ImagemThumbnailUrl">
+                <img class="img-fluid" src="@Model.Produto.ImagemThumbnailUrl">
             </div>
 
             <div class="col-md-3">
-                <h1 class="mt-30-xs"> @Model.Categoria.CategoriaNome<!--PRECISO INFORMAR AQUI O TIPO DE CATEGORIA--> <span>@Model.Nome</span></h1>
-                <div class="mt-20 descri"><b>Descrição:</b>@Model.DescricaoCurta ... <a class="maisdetalhes" href="#descricao-completa">Continue lendo</a> </div>
+                <h1 class="mt-30-xs"> @Model.Produto.Categoria.CategoriaNome<!--PRECISO INFORMAR AQUI O TIPO DE CATEGORIA--> <span>@Model.Produto.Nome</span></h1>
+                <div class="mt-20 descri"><b>Descrição:</b>@Model.Produto.DescricaoCurta ... <a class="maisdetalhes" href="#descricao-completa">Continue lendo</a> </div>
 
 
 
@@ -17,73 +17,39 @@
             <div class="col-md-6">
 
                 <small>
-                    <div class="de mt-50-xs"> De: R$&nbsp;@Model.Preco</div>
-                    R$ <span id="preco_super_top">@Model.PrecoPromocional</span> <!-- problema é aqui -->
-                    @if (@Model.Parcela > 0)
+                    <div class="de mt-50-xs"> De: R$&nbsp;@Model.Produto.Preco</div>
+                    R$ <span id="preco_super_top">@Model.Produto.PrecoPromocional</span> <!-- problema é aqui -->
+                    @if (@Model.Produto.Parcela > 0)
                     {
                     <div class="parcelado">
                         5x sem juros no cartão
                     </div>
                     }
-                     @if (@Model.TaxaDeEntrega == 0)
+                    @if (@Model.Produto.TaxaDeEntrega == 0)
                     {
                         <div class="parcela mb-90-xs">Entrega grátis em Feira de Santana</div>
                     }
                 </small>
 
-                <form id="BookingForm" method="get">
-
+ 
 
                     <div class="product-addon product-addon-ExtraToppings checkbox mt-50">
                         <h3 class="addon-name">Opções extra</h3>
-                        <p class="form-row form-row-wide addon-wrap-307-extra-toppings-0-0">
-                            <label>
-                                <input type="checkbox" class="addon addon-checkbox" id="cartao_presente" name="sva" value="cartao" data-price="">
-                                <img width="40" height="40" src="https://lafka.althemist.com/fastfood/wp-content/uploads/sites/2/2021/06/jalapeno-addon-60x60.png" class="lafka-addon-image-icon" alt="" loading="lazy" srcset="https://lafka.althemist.com/fastfood/wp-content/uploads/sites/2/2021/06/jalapeno-addon-60x60.png 60w, https://lafka.althemist.com/fastfood/wp-content/uploads/sites/2/2021/06/jalapeno-addon.png">
-                                Cartão presente (R$ 0)
-                            </label>
-                        </p>
-                        <p class="form-row form-row-wide addon-wrap-307-extra-toppings-0-1">
-                            <label>
-                                <input type="checkbox" class="addon addon-checkbox buques" name="sva" value="6rosas" data-price="50.45">
-                                <img width="40" height="40" src="https://lafka.althemist.com/fastfood/wp-content/uploads/sites/2/2021/06/jalapeno-addon-60x60.png" class="lafka-addon-image-icon" alt="" loading="lazy" srcset="https://lafka.althemist.com/fastfood/wp-content/uploads/sites/2/2021/06/jalapeno-addon-60x60.png 60w, https://lafka.althemist.com/fastfood/wp-content/uploads/sites/2/2021/06/jalapeno-addon.png">
-                                Buquê 6 rosas (R$ 10)
-                            </label>
-                        </p>
-                        <p class="form-row form-row-wide addon-wrap-307-extra-toppings-0-2">
-                            <label>
-                                <input type="checkbox" class="addon addon-checkbox buques" name="sva" value="buque_12" data-price="99.90">
-                                <img width="40" height="40" src="https://lafka.althemist.com/fastfood/wp-content/uploads/sites/2/2021/06/jalapeno-addon-60x60.png" class="lafka-addon-image-icon" alt="" loading="lazy" srcset="https://lafka.althemist.com/fastfood/wp-content/uploads/sites/2/2021/06/jalapeno-addon-60x60.png 60w, https://lafka.althemist.com/fastfood/wp-content/uploads/sites/2/2021/06/jalapeno-addon.png">
-                                Buquê 12 rosas R$ 10)
-                            </label>
-                        </p>
-                        <p class="form-row form-row-wide addon-wrap-307-extra-toppings-0-3">
-                            <label>
-                                <input type="checkbox" class="addon addon-checkbox" name="sva" value="balao_gas" data-price="45.80">
-                                <img width="40" height="40" src="https://lafka.althemist.com/fastfood/wp-content/uploads/sites/2/2021/06/jalapeno-addon-60x60.png" class="lafka-addon-image-icon" alt="" loading="lazy" srcset="https://lafka.althemist.com/fastfood/wp-content/uploads/sites/2/2021/06/jalapeno-addon-60x60.png 60w, https://lafka.althemist.com/fastfood/wp-content/uploads/sites/2/2021/06/jalapeno-addon.png">
-                                Balões gás helio (R$ 10)
-                            </label>
-                        </p>
-                        <p class="form-row form-row-wide addon-wrap-307-extra-toppings-0-4">
-                            <label>
-                                <input type="checkbox" class="addon addon-checkbox" name="sva" value="varal" data-price="20">
-                                <img width="40" height="40" src="https://lafka.althemist.com/fastfood/wp-content/uploads/sites/2/2021/06/jalapeno-addon-60x60.png" class="lafka-addon-image-icon" alt="" loading="lazy" srcset="https://lafka.althemist.com/fastfood/wp-content/uploads/sites/2/2021/06/jalapeno-addon-60x60.png 60w, https://lafka.althemist.com/fastfood/wp-content/uploads/sites/2/2021/06/jalapeno-addon.png">
-                                Varal de fotos (R$ 10)
-                            </label>
-                        </p>
+
+                    @foreach (var opcoesExtra in Model.OpcoesExtra)
+                    {
                         <p class="form-row form-row-wide addon-wrap-307-extra-toppings-0-5">
                             <label>
                                 <input type="checkbox" class="addon addon-checkbox" name="sva" value="frete" data-price="00.00">
-                                <img width="40" height="40" src="https://lafka.althemist.com/fastfood/wp-content/uploads/sites/2/2021/06/jalapeno-addon-60x60.png" class="lafka-addon-image-icon" alt="" loading="lazy" srcset="https://lafka.althemist.com/fastfood/wp-content/uploads/sites/2/2021/06/jalapeno-addon-60x60.png 60w, https://lafka.althemist.com/fastfood/wp-content/uploads/sites/2/2021/06/jalapeno-addon.png">
-
-                                Frete(R$ 0)
+                                <img width="40" height="40" src=""  class="lafka-addon-image-icon" alt="" loading="lazy" >
+                                @opcoesExtra.Nome 
                             </label>
                         </p>
+                    }
+
                         <div class="clear"></div>
                     </div>
-
-                </form>
-
+                
 
                 <div id="product-addons-total" class="mt-20">
                     <dl class="product-addon-totals">
@@ -108,7 +74,7 @@
 
 
 
-                <a class="pt-10 pb-10 pr-40 pl-40 mt-10 mr-auto-xs ml-auto-xs d-block-xs" asp-controller="CarrinhoCompra" asp-action="AdicionarItemNoCarrinhoCompra" asp-route-produtoId="@Model.ProdutoId">Encomendar agora</a>
+                <a class="pt-10 pb-10 pr-40 pl-40 mt-10 mr-auto-xs ml-auto-xs d-block-xs" asp-controller="CarrinhoCompra" asp-action="AdicionarItemNoCarrinhoCompra" asp-route-produtoId="@Model.Produto.ProdutoId">Encomendar agora</a>
 
 
 
@@ -140,7 +106,7 @@
             <div class="col-md-12">
 
 
-                <p class="mt-20">@Model.DescricaoDetalhada</p>
+                <p class="mt-20">@Model.Produto.DescricaoDetalhada</p>
 
             </div>
         </div>

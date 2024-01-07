@@ -7,7 +7,11 @@ namespace VendaProdutos.ViewModel
     {
         public IEnumerable<Produto> Produtos { get; set; }
         public IEnumerable<Categoria> Categorias { get; set; }
+        public IEnumerable<Produto> OpcoesExtra { get; set; }
 
+        public Produto Produto { get; set; }
+
+        
         public string CategoriaAtual { get; set; }
         public string PostSuperior { get; set; }
         
@@ -15,5 +19,6 @@ namespace VendaProdutos.ViewModel
 
         public bool ExibeCategoria { get; set; }
 
+        
     }
 }
