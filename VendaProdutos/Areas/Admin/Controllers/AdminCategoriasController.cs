@@ -89,7 +89,7 @@ namespace VendaProdutos.Areas.Admin.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("CategoriaId,CategoriaNome,Descricao,ImagemDestaque,DescricaoTagAlt,PostSuperior,PostInferior,MetaDescricao,MetaImage,MetaTitle,UrlAmigavel")] Categoria categoria)
+        public async Task<IActionResult> Edit(int id, [Bind("CategoriaId,CategoriaNome,Descricao,ImagemDestaque,DescricaoTagAlt,PostSuperior,PostInferior,MetaDescricao,MetaImage,MetaTitle,UrlAmigavel, EsconderCategoria")] Categoria categoria)
         {
             if (id != categoria.CategoriaId)
             {

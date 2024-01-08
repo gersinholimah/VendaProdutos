@@ -54,8 +54,8 @@ Total de produtos : @Model.TotalRecordCount
 @foreach (var item in Model) {
         <tr>
                 <td>
-                    @Html.DisplayFor(modelItem => item.ImagemThumbnailUrl)
-                </td>
+                                <img class="image-fluid" src="@Html.DisplayFor(modelItem => item.ImagemUrl)" />
+                            </td>
             
             <td>
                 @Html.DisplayFor(modelItem => item.Nome)

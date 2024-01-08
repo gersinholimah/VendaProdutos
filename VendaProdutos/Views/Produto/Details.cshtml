@@ -2,9 +2,84 @@
 
 <div class="mt-50 container_produto">
     <div class="container">
-        <div class="row">
-            <div class="col-md-3">
-                <img class="img-fluid" src="@Model.Produto.ImagemThumbnailUrl">
+        <div class="row container_produto">
+            <div class="col-md-3 galeria_produto">
+ 
+                <div class="">
+                    <div style="
+              "
+                         class="swiper mySwiper2">
+                        <div class="swiper-wrapper">
+                            <div class="swiper-slide">
+                                <img class="img-fluid"
+                                     width="345"
+                                     height="352"
+                                     alt="4ª foto  da cesta"
+                                     src="@Model.Produto.ImagemUrl" />
+                            </div>
+                            <div class="swiper-slide">
+                                <img class="img-fluid"
+                                     width="345"
+                                     height="352"
+                                     alt="1ª foto  da cesta"
+                                     src="@Model.Produto.Imagem2CarolselURL" />
+                            </div>
+
+                            <div class="swiper-slide">
+                                <img class="img-fluid"
+                                     width="345"
+                                     height="352"
+                                     alt="2ª foto  da cesta"
+                                     src="@Model.Produto.Imagem3CarolselURL" />
+                            </div>
+
+                            <div class="swiper-slide">
+                                <img class="img-fluid"
+                                     width="345"
+                                     height="352"
+                                     alt="3ª foto  da cesta"
+                                     src="@Model.Produto.Imagem4CarolselURL" />
+                            </div>
+
+                            
+                        </div>
+                        <div class="swiper-button-next"></div>
+                        <div class="swiper-button-prev"></div>
+                    </div>
+                    <div thumbsSlider="" class="swiper mySwiper">
+                        <div class="swiper-wrapper">
+                            <div class="swiper-slide">
+                                <img class="img-fluid"
+                                     width="74"
+                                     height="75"
+                                     alt="1ª miniatura da cesta"
+                                     src="@Model.Produto.ImagemUrl" />
+                            </div>
+                            <div class="swiper-slide">
+                                <img class="img-fluid"
+                                     width="74"
+                                     height="75"
+                                     alt="2ª miniatura da cesta"
+                                     src="@Model.Produto.Imagem2CarolselURL" />
+                            </div>
+                            <div class="swiper-slide">
+                                <img class="img-fluid"
+                                     width="74"
+                                     height="75"
+                                     alt="3ª miniatura da cesta"
+                                     src="@Model.Produto.Imagem3CarolselURL" />
+                            </div>
+                            <div class="swiper-slide">
+                                <img class="img-fluid"
+                                     width="74"
+                                     height="75"
+                                     alt="4ª miniatura da cesta"
+                                     src="@Model.Produto.Imagem4CarolselURL" />
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
             </div>
 
             <div class="col-md-3">
@@ -38,31 +113,39 @@
 
                     @foreach (var opcoesExtra in Model.OpcoesExtra)
                     {
-                        <p class="form-row form-row-wide addon-wrap-307-extra-toppings-0-5">
-                            <label>
-                                <input type="checkbox" class="addon addon-checkbox" name="sva" value="frete" data-price="00.00">
-                                <img width="40" height="40" src=""  class="lafka-addon-image-icon" alt="" loading="lazy" >
-                                @opcoesExtra.Nome 
-                            </label>
-                        </p>
+                        <div class="form-row">
+                        <div class="opcao_extra" id="minhaDiv">
+                             <img src="@opcoesExtra.ImagemUrl" class="lafka-addon-image-icon" alt="" loading="lazy">
+                            <div class="envolve_opcoes">
+                                @{
+                                    int parteInteiraPrecoPromocional = (int)opcoesExtra.PrecoPromocional;
+                                }
+                                @opcoesExtra.Nome (R$ @parteInteiraPrecoPromocional)
+                                    <button id="adicionar_@opcoesExtra.ProdutoId" class="btn btn-primary btn-sm" onclick="adicionaNaListaDeCompra(@opcoesExtra.ProdutoId, @opcoesExtra.PrecoPromocional)">Adicionar</button>
+                                    <button id="remover_@opcoesExtra.ProdutoId" class="btn btn-danger" onclick="removeDaListaDeCompra(@opcoesExtra.ProdutoId, @opcoesExtra.PrecoPromocional)" style="display: none;">Remover</button>
+
+                                </div>
+                         </div>
+                        </div>
+
                     }
 
                         <div class="clear"></div>
                     </div>
                 
 
-                <div id="product-addons-total" class="mt-20">
+                <div id="valores_totais" class="mt-20">
                     <dl class="product-addon-totals">
                         <dt>Adições extra:</dt>
                         <dd>
                             <strong>
-                                <span id="adicoes_extra" class="amount">R$ 150,00</span>
+                                <span id="adicoes_extra" class="amount"><span id="valor_inicial">0,00</span></span>
                             </strong>
                         </dd>
                         <dt>Valor total:</dt>
                         <dd>
                             <strong>
-                                <span id="valor_total" class="amount">R$ 350,00</span>
+                                <span id="valor_total" class="amount"><span id="valor_inicial">@Model.Produto.PrecoPromocional.ToString("F2", new System.Globalization.CultureInfo("pt-BR"))</span></span>
                             </strong>
                         </dd>
                     </dl>
@@ -71,13 +154,11 @@
 
 
 
+ 
 
+                <a class="pt-10 pb-10 pr-40 pl-40 mt-10 mr-auto-xs ml-auto-xs d-block-xs" onclick="compraProdutosDaLista()">Encomendar agora</a>
 
-
-                <a class="pt-10 pb-10 pr-40 pl-40 mt-10 mr-auto-xs ml-auto-xs d-block-xs" asp-controller="CarrinhoCompra" asp-action="AdicionarItemNoCarrinhoCompra" asp-route-produtoId="@Model.Produto.ProdutoId">Encomendar agora</a>
-
-
-
+ 
 
             </div>
 
@@ -112,3 +193,151 @@
         </div>
     </div>
 </section>
+
+
+
+
+
+
+
+
+
+
+
+
+<script src="https://code.jquery.com/jquery-3.6.4.min.js" integrity="sha256-oP6HI/t1qEzB53L0R6JLY2zkiq0I6a0+PRAkFO9uqrs=" crossorigin="anonymous"></script>
+ 
+
+<script>
+    // Array para armazenar os IDs dos produtos selecionados
+    var listaDeCompra = ['@Model.Produto.ProdutoId'];
+    var totalAdicoesExtras = 0
+    var precoProdutoAtual = 0
+    precoProdutoAtual = parseFloat("@Model.Produto.PrecoPromocional".replace(",", "."))
+    var previsaoTotaldoValorDoPedido = 0
+
+    // Função para adicionar um produto à lista
+    function adicionaNaListaDeCompra(produtoId, precoPromocional) {
+        console.log('precoProdutoAtual', precoProdutoAtual)
+        if (!listaDeCompra.includes(produtoId)) {
+            listaDeCompra.push(produtoId);
+            atualizaBotoes(produtoId, true);
+
+            totalAdicoesExtras += parseFloat(precoPromocional)
+            previsaoTotaldoValorDoPedido = totalAdicoesExtras + parseFloat(precoProdutoAtual)
+                atualizaTotalAdicoesExtras()
+
+        }
+
+         
+    }
+
+    // Função para remover um produto da lista
+    function removeDaListaDeCompra(produtoId, precoPromocional) {
+        if (listaDeCompra.includes(produtoId)) {
+            var index = listaDeCompra.indexOf(produtoId);
+            listaDeCompra.splice(index, 1);
+            atualizaBotoes(produtoId, false);
+
+            totalAdicoesExtras -= parseFloat(precoPromocional)
+            previsaoTotaldoValorDoPedido = totalAdicoesExtras + parseFloat(precoProdutoAtual)
+
+            atualizaTotalAdicoesExtras()
+        }
+    }
+
+    function atualizaTotalAdicoesExtras() {
+        $("#adicoes_extra").text("R$ " + totalAdicoesExtras.toFixed(2));
+        $("#valor_total").text("R$ " + previsaoTotaldoValorDoPedido.toFixed(2));
+
+        var tagValor_inicial = $(`#valor_inicial`);
+        if (totalAdicoesExtras > 0) {
+            tagValor_inicial.hide();
+        } else {
+            tagValor_inicial.show();
+        }
+    }
+
+
+    // Função para atualizar a visibilidade dos botões
+    function atualizaBotoes(produtoId, adicionado) {
+        var botaoAdicionar = $(`#adicionar_${produtoId}`);
+        var botaoRemover = $(`#remover_${produtoId}`);
+
+        if (adicionado) {
+            botaoAdicionar.hide();
+            botaoRemover.show();
+        } else {
+            botaoAdicionar.show();
+            botaoRemover.hide();
+        }
+    }
+
+    // Função para comprar os produtos da lista
+    function compraProdutosDaLista() {
+        var valores_totais = $(`#valores_totais`);
+        valores_totais.hide();
+
+        
+        if (listaDeCompra.length > 0) {
+            // Iterar sobre cada ID na lista de compra
+            listaDeCompra.forEach(function (produtoId) {
+                $.ajax({
+                    url: '/CarrinhoCompra/AdicionarItemNoCarrinhoCompraAjax',
+                    type: 'POST',
+                    data: { produtoId: produtoId },
+                    success: function () {
+                        // Remover o produto da lista após a compra bem-sucedida (opcional)
+                        removeDaListaDeCompra(produtoId);
+
+                        // Se todos os produtos foram processados, redirecionar para a página do carrinho
+                        if (listaDeCompra.length === 0) {
+                            window.location.href = '/CarrinhoCompra';
+                        }
+                    },
+                    error: function () {
+                        alert('Erro ao processar a compra.');
+                    }
+                });
+            });
+        } else {
+            alert('Adicione produtos à lista antes de comprar.');
+        }
+    }
+</script>
+
+
+
+ 
+
+
+
+
+
+
+
+<script src="https://cdn.jsdelivr.net/npm/swiper@9/swiper-bundle.min.js"></script>
+
+<script>
+    var swiper = new Swiper(".mySwiper", {
+        loop: true,
+        spaceBetween: 10,
+        slidesPerView: 4,
+        freeMode: true,
+        watchSlidesProgress: true,
+    });
+    var swiper2 = new Swiper(".mySwiper2", {
+        loop: true,
+        spaceBetween: 10,
+        navigation: {
+            nextEl: ".swiper-button-next",
+            prevEl: ".swiper-button-prev",
+        },
+        thumbs: {
+            swiper: swiper,
+        },
+    });
+</script>
+
+
+ 

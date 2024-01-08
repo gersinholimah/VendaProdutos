@@ -372,14 +372,13 @@ font-weight: 800;
    display: inline-block;
    font-weight: 900;
 }
-.form-row label {
+.form-row .opcao_extra {
    margin: 0;
    background-color: #f1f1f1;
    padding: 5px 5px;
    vertical-align: middle;
    border-radius: 4px;
-   display: block;
- 
+  
    text-transform: uppercase;
    font-weight: 900;
    font-weight: 700;
@@ -1089,6 +1088,92 @@ nav .container {
 
 
 
+    .galeria_produto .mySwiper {
+        padding: 10px;
+        background: #000;
+        border-bottom-right-radius: 9px;
+        border-bottom-left-radius: 9px;
+    }
+
+.mySwiper2 {
+    background: linear-gradient(0deg, rgba(0, 0, 0, 1) 55%, rgba(255, 255, 255, 1) 56%);
+}
+
+
+.mySwiper .swiper-slide img {
+    opacity: 0.4;
+}
+
+.mySwiper .swiper-slide-thumb-active img {
+    opacity: 1 !important;
+}
+
+
+.swiper-slide {
+    border-radius: 10px;
+}
+.swiper-button-next:after, .swiper-button-prev:after {
+    color: #a1a1a1c9;
+}
+
+
+
+
+.opcao_extra {
+    background: #ebebeb;
+    border-radius: 10px;
+    padding: 0;
+    display: flex;
+    justify-content: flex-start;
+    grid-template-columns: 40px auto;
+    display: grid;
+}
+
+    .opcao_extra img {
+        width: 43px;
+    }
+    .opcao_extra .envolve_opcoes {
+        font-size: 12px !important;
+        letter-spacing: -0.3px;
+        padding: 0px 5px 5px 5px;
+        display: grid;
+    }
+
+
+.opcao_extra button{
+    width: 81px;
+    font-size: 12px;
+}
+
+.envolve_opcoes button {
+    padding: 0;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -1380,6 +1465,9 @@ h2.tit1_gen {
     }
     .navbar_gen .navbar-brand img {
         width: 100px!important;
+    }
+    .galeria_produto {
+        max-width: 521px;
     }
     }
    
