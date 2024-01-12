@@ -6,9 +6,9 @@
     <div class=" cesta_super_top">
         <a asp-controller="Produto" asp-action="Details" asp-route-produtoId="@Model.ProdutoId" class="envolve_produtos mb-30-xs mb-70">
             <img class="img-fluid" src="@Model.ImagemUrl">
-            <h4>@Model.Nome</h4>
+            <h4>@Model.Categoria.NomeCurto @Model.Nome</h4>
             <p> Possui @Model.QuantidadeDeItem  Itens </p>
-
+            
             <div class="d-flex">
                 <span>
                     <div id="preco_card_super_top">@Model.PrecoPromocional</div>
@@ -27,17 +27,8 @@
 
 
         </a>
-        <a class="btn btn-primary" id="cartButton" asp-controller="CarrinhoCompra"
-           asp-action="AdicionarItemNoCarrinhoCompra" asp-route-ProdutoId="@Model.ProdutoId">
-            Incluir no Carrinho
-        </a>
-
-        <button class="btn btn-success" id="botao2" onclick="adicionarAoCarrinhoAjax(@Model.ProdutoId)">
-            Adicionar ao Carrinho (AJAX)
-        </button>
-
-        <button id="botao1" onclick="acaoBotao1()">Botão de fora</button>
-     </div>
+      
+      </div>
 </div>
 
 

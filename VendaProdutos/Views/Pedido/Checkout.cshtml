@@ -32,16 +32,7 @@
   
     </div>
 
-             <ul class="nav nav-tabs" id="myTabs">
-                <li class="nav-item">
-                    <a class=" active btn btn-primary" id="tab1-tab" data-toggle="tab" href="#tab1">RESIDENCIAL</a>
-                </li>
-                <li class="nav-item">
-                    <a class=" btn btn-primary" id="tab2-tab" data-toggle="tab" href="#tab2">COMERCIAL</a>
-                </li>
-         
-            </ul>
-
+ 
             
  
         <div class="row">
@@ -71,10 +62,8 @@
         </div>
 
         <div class="tab-content mt-2">
-            <div class="tab-pane fade show active" id="tab1">
-            </div>
-            <div class="tab-pane fade" id="tab2">
-                <div class="row">
+           
+                 <div class="row">
                     <div class="form-group col-md-6">
                         <label asp-for="NomeDaEmpresa" class="control-label">Nome da empresa</label>
                         <input asp-for="NomeDaEmpresa" class="form-control" />
@@ -91,8 +80,7 @@
                         <span asp-validation-for="PontoDeReferencia" class="text-danger"></span>
                     </div>
                 </div>
-            </div>
-
+ 
         </div>
 
 
@@ -174,15 +162,503 @@
 
 
 
-<script>
-    var today, datepicker;
-    today = new Date(new Date().getFullYear(),
-        new Date().getMonth(),
-        new Date().getDate());
-    datepicker = $('#datepicker').datepicker({
-        format: 'dd-mm-yyyy',
-        minDate: today,
-        locale: 'pt-br'
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css">
+<script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
+
+
+
+
+
+
+
+
+
+
+
+             <div class="container">
+  <div class="py-5 text-center">
+    <img class="d-block mx-auto mb-4" src="/docs/4.5/assets/brand/bootstrap-solid.svg" alt="" width="72" height="72">
+    <h2>Checkout form</h2>
+    <p class="lead">Below is an example form built entirely with Bootstrap’s form controls. Each required form group has a validation state that can be triggered by attempting to submit the form without completing it.</p>
+  </div>
+
+  <div class="row">
+    
+    <div class="col-md-8 order-md-1">
+      <h4 class="mb-3">Suas informações</h4>
+      <form class="needs-validation" novalidate>
+        <div class="row">
+          <div class="col-sm-7 mb-3">
+            <label for="firstName">Seu Nome</label>
+            <input type="text" class="form-control" id="firstName" placeholder="" value="" required>
+            <div class="invalid-feedback">
+             Digite seu nome completo.
+            </div>
+          </div>
+                    <div class="col-sm-5 mb-3">
+            <label for="lastName">Seu Whatsapp</label>
+                        <input type="tel" class="form-control" id="lastName" placeholder="" pattern="[0-9]{3}-[0-9]{3}-[0-9]{4}" required required>
+            <div class="invalid-feedback">
+              Informe um telefone válido.
+            </div>
+          </div>
+        </div>
+                <h4 class="mb-3">Endereço da entrega</h4>
+
+                <ul class="nav nav-tabs" id="myTabs">
+                    <li class="nav-item">
+                        <a class=" active btn btn-primary" id="tab1-tab" data-toggle="tab" href="#tab1">RESIDENCIAL</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class=" btn btn-primary" id="tab2-tab" data-toggle="tab" href="#tab2">COMERCIAL</a>
+                    </li>
+
+                </ul>
+              
+
+                <div class="row">
+
+
+                    <div class="col-sm-6 mb-3">
+                            <label>Cidade</label>
+                            <select class="custom-select d-block w-100">
+                                <option>Feira de Santana / BA</option>
+                            </select>
+                        </div>
+
+                    <div class="col-sm-6 mb-3">
+                            <label for="address">Bairro</label>
+                            <input type="text" class="form-control" id="address" placeholder="Nome do Bairro da entrega" required>
+                            <div class="invalid-feedback">
+                                Informe o nome do bairro onde o pedido será entregue.
+                            </div>
+                        </div>
+
+                    <div class="col-sm-8 mb-3">
+                            <label>Rua</label>
+                        <input type="text" class="form-control" placeholder="Nome da rua da entrega" required>
+                            <div class="invalid-feedback">
+                                Informe o nome da rua onde o pedido será entregue.
+                            </div>
+                        </div>
+
+
+                    <div class="col-sm-4 mb-3">
+                            <label for="address2">Nº do imóvel </label>
+                        <input type="text" class="form-control" id="address2" placeholder="Nº do imóvel da entrega" required>
+                            <div class="invalid-feedback">
+                                Informe o Nº do imóvel onde o pedido será entregue.
+                            </div>
+                        </div>
+                    <div class="col-sm-12 mb-3">
+                            <label>Ponto de referência <span class="text-muted">(Opcional)</span></label>
+                            <input type="text" class="form-control" id="address2" placeholder="Imóvel próximo a...">
+                            <div class="invalid-feedback">
+                            Informe o Ponto de referência do endereço onde o pedido será entregue.
+                            </div>
+                        </div>
+
+                </div>
+
+                <div class="tab-content mt-2 ">
+
+                    <div class="tab-pane fade show active" id="tab1">
+                    </div>
+                    <div class="tab-pane fade row" id="tab2">
+                        <div class="col-sm-8 mb-3">
+                            <label>Nome da empresa</label>
+                            <input type="text" class="form-control" id="address2" placeholder="Nome da empresa" required>
+                            <div class="invalid-feedback">
+                                Informe o nome da empresa onde o pedido será entregue.
+                            </div>
+                        </div>
+                        <div class="col-sm-4 mb-3">
+                            <label>Setor que a pessoa trabalha</label>
+                            <input type="text" class="form-control" id="address2" placeholder="Nome do setor" required>
+                            <div class="invalid-feedback">
+                                Informe o nome do setor onde a pessoa que vai receber trabalha.
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+                <h4 class="mb-3">Informações complementáres</h4>
+
+                <div class="row">
+                    <div class="col-sm-6 mb-3">
+                        <label>De</label>
+                        <input type="text" class="form-control" id="address2" placeholder="Quem está enviando?" required>
+                        <div class="invalid-feedback">
+                            Informe Nome da(s) pessoa(s) que está enviando
+                        </div>
+                    </div>
+ 
+                    <div class="col-sm-6 mb-3">
+                        <label>Para:</label>
+                        <input type="text" class="form-control" id="address2" placeholder="Quem vai receber?" required>
+                        <div class="invalid-feedback">
+                            Informe o nome de quem vai receber
+                        </div>
+                    </div>
+
+                    <div class="col-12 mb-3">
+                        <label>Cartinha</label>
+                        <textarea class="form-control"></textarea>
+                    </div>
+
+                    <div class="col-sm-6 mb-3">
+                        <label>Whatsapp de quem vai receber</label>
+                         <input type="tel" class="form-control" id="lastName" placeholder="" pattern="[0-9]{3}-[0-9]{3}-[0-9]{4}" required >
+
+                        <div class="invalid-feedback">
+                            Informe o nº telefone de quem vai receber
+                        </div>
+                    </div>
+                    <div class="col-sm-6 mb-3">  </div>
+
+                   
+
+                    <div class="col-6 mb-3">
+                        <label>Data da entrega</label>
+                        <input type="text" id="datePicker" placeholder="Dia/mês/ano" class="form-control" width="276" required />
+                    
+                        <div class="invalid-feedback">
+                            Informe a data que o pedido deve ser entregue
+                        </div>
+                        <div id="output"></div>
+
+                    </div>
+             
+                    <div class="col-6 mb-3">
+                         <label for="selectHours">Hora da entrega:</label>
+                        <select id="selectHours" required class="form-control">
+                            <options>Disponivelbilidade para o dia selecionado</options>
+                        </select>
+                        <div class="invalid-feedback">
+                            Informe o horário que o pedido deve ser entregue
+                        </div>
+                    </div>
+                    <div class="col-sm-12 mb-3">
+                        <label>Observações</label>
+                        <textarea class="form-control"></textarea>
+                    </div>
+                </div>
+               
+                    
+          
+        <hr class="mb-4">
+        <button class="btn btn-primary btn-lg btn-block" type="submit">Continue to checkout</button>
+      </form>
+    </div>
+
+        <div class="col-md-4 order-md-2 mb-4">
+            <h4 class="d-flex justify-content-between align-items-center mb-3">
+                <span class="text-muted">Your cart</span>
+                <span class="badge badge-secondary badge-pill">3</span>
+            </h4>
+            <ul class="list-group mb-3">
+                <li class="list-group-item d-flex justify-content-between lh-condensed">
+                    <div>
+                        <h6 class="my-0">Product name</h6>
+                        <small class="text-muted">Brief description</small>
+                    </div>
+                    <span class="text-muted">$12</span>
+                </li>
+                <li class="list-group-item d-flex justify-content-between lh-condensed">
+                    <div>
+                        <h6 class="my-0">Second product</h6>
+                        <small class="text-muted">Brief description</small>
+                    </div>
+                    <span class="text-muted">$8</span>
+                </li>
+                <li class="list-group-item d-flex justify-content-between lh-condensed">
+                    <div>
+                        <h6 class="my-0">Third item</h6>
+                        <small class="text-muted">Brief description</small>
+                    </div>
+                    <span class="text-muted">$5</span>
+                </li>
+                <li class="list-group-item d-flex justify-content-between bg-light">
+                    <div class="text-success">
+                        <h6 class="my-0">Promo code</h6>
+                        <small>EXAMPLECODE</small>
+                    </div>
+                    <span class="text-success">-$5</span>
+                </li>
+                <li class="list-group-item d-flex justify-content-between">
+                    <span>Total (USD)</span>
+                    <strong>$20</strong>
+                </li>
+            </ul>
+
+            <form class="card p-2">
+                <div class="input-group">
+                    <input type="text" class="form-control" placeholder="Promo code">
+                    <div class="input-group-append">
+                        <button type="submit" class="btn btn-secondary">Redeem</button>
+                    </div>
+                </div>
+            </form>
+        </div>
+
+  </div>
+
+  <footer class="my-5 pt-5 text-muted text-center text-small">
+    <p class="mb-1">&copy; 2017-2020 Company Name</p>
+    <ul class="list-inline">
+      <li class="list-inline-item"><a href="#">Privacy</a></li>
+      <li class="list-inline-item"><a href="#">Terms</a></li>
+      <li class="list-inline-item"><a href="#">Support</a></li>
+    </ul>
+  </footer>
+</div>
+<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+      <script>window.jQuery || document.write('<script src="/docs/4.5/assets/js/vendor/jquery.slim.min.js"><\/script>')</script><script src="/docs/4.5/dist/js/bootstrap.bundle.min.js" integrity="sha384-ho+j7jyWK8fNQe+A12Hb8AhRq26LrZ/JpcUGGOn+Y7RsweNrtN/tE3MoK7ZeZDyx" crossorigin="anonymous"></script>
+        <script>
+                // Example starter JavaScript for disabling form submissions if there are invalid fields
+    (function () {
+      'use strict'
+
+      window.addEventListener('load', function () {
+        // Fetch all the forms we want to apply custom Bootstrap validation styles to
+        var forms = document.getElementsByClassName('needs-validation')
+
+        // Loop over them and prevent submission
+        Array.prototype.filter.call(forms, function (form) {
+          form.addEventListener('submit', function (event) {
+            if (form.checkValidity() === false) {
+              event.preventDefault()
+              event.stopPropagation()
+            }
+
+            form.classList.add('was-validated')
+          }, false)
+        })
+      }, false)
+    })()
+        </script>
+
+
+
+
+
+
+
+
+
+ <script>
+    document.addEventListener("DOMContentLoaded", function () {
+      flatpickr("#datePicker", {
+        dateFormat: "l, d/m/Y",
+        minDate: "today",
+        maxDate: new Date().fp_incr(60),
+        locale: {
+          firstDayOfWeek: 0,
+          weekdays: {
+            shorthand: ['Dom', 'Seg', 'Ter', 'Qua', 'Qui', 'Sex', 'Sáb'],
+            longhand: ['Domingo', 'Segunda', 'Terça', 'Quarta', 'Quinta', 'Sexta', 'Sábado'],
+          },
+          months: {
+            shorthand: ['Jan', 'Fev', 'Mar', 'Abr', 'Mai', 'Jun', 'Jul', 'Ago', 'Set', 'Out', 'Nov', 'Dez'],
+            longhand: ['Janeiro', 'Fevereiro', 'Março', 'Abril', 'Maio', 'Junho', 'Julho', 'Agosto', 'Setembro', 'Outubro', 'Novembro', 'Dezembro'],
+          },
+        },
+        showMonths: 1,
+        enableTime: false, // Configurado como false para desabilitar a seleção de horas no input de data
+        allowInput: true,
+      });
+
+      flatpickr("#timePicker", {
+        enableTime: true,
+        noCalendar: true, // Desabilita o calendário para permitir apenas a seleção de horas
+        dateFormat: "H:i",
+        defaultDate: "12:00", // Pode definir a hora padrão, se desejar
+        time_24hr: true, // Configurado como true para usar o formato de 24 horas
+        minuteIncrement: 1, // Incremento de minutos
+        allowInput: true,
+      });
+    });
+  </script>
+
+
+<script>
+    //aqui é para o dia atual
+
+    document.addEventListener("DOMContentLoaded", function () {
+        const selectHours = document.getElementById("selectHours");
+
+        const now = new Date();
+        const currentHour = now.getHours();
+        let startHour = currentHour + 4; // A primeira opção será 4 horas à frente do horário atual
+
+        // Limita o início das opções a 4h e o final a 18h
+        startHour = Math.max(4, startHour);
+        const endHour = Math.min(18, 24);
+
+        // Adiciona opções de horas em intervalos de 30 minutos com texto personalizado
+        for (let hour = startHour; hour < endHour; hour++) {
+            for (let minute = 0; minute < 60; minute += 30) {
+                const formattedHour = (hour < 10 ? '0' : '') + hour.toString();
+                const formattedMinute = minute === 0 ? '00' : minute.toString();
+                let optionText;
+
+                if (hour <= 12) {
+                    optionText = `Manhã ${formattedHour}h${formattedMinute} às ${formattedHour}h${(minute + 30) - 1}`;
+                } else {
+                    optionText = `Tarde ${formattedHour}h${formattedMinute} às ${formattedHour}h${(minute + 30) - 1}`;
+                }
+
+                const option = new Option(optionText, `${formattedHour}:${formattedMinute}`);
+                selectHours.add(option);
+            }
+        }
+
+        // Adiciona a última opção se o horário atual for menor que 18h
+        if (currentHour < 18) {
+            const lastOption = new Option('Tarde 18h00 às 18h30', '18:00');
+            selectHours.add(lastOption);
+        }
     });
 </script>
+
+@* 
+    
+    <script>
+        //aqui é para dias a frente do dia atual
+    document.addEventListener("DOMContentLoaded", function () {
+        const selectHours = document.getElementById("selectHours");
+
+        // Adiciona opções de horas em intervalos de 30 minutos com texto personalizado
+        for (let hour = 6; hour < 19; hour++) {
+            for (let minute = 0; minute < 60; minute += 30) {
+                const formattedHour = (hour < 10 ? '0' : '') + hour.toString();
+                const formattedMinute = minute === 0 ? '00' : minute.toString();
+                let optionText;
+
+                if (hour <= 12) {
+                    optionText = `Manhã ${formattedHour}h${formattedMinute} às ${formattedHour}h${(minute + 30) - 1}`;
+                } else {
+                    optionText = `Tarde ${formattedHour}h${formattedMinute} às ${formattedHour}h${(minute + 30) - 1}`;
+                }
+
+                const option = new Option(optionText, `${formattedHour}:${formattedMinute}`);
+                selectHours.add(option);
+            }
+        }
+    });
+</script> 
+*@
+     <script>
+        document.addEventListener("DOMContentLoaded", function () {
+            const inputElement = document.getElementById("datePicker");
+            const outputDiv = document.getElementById("output");
+
+            inputElement.addEventListener("input", function (event) {
+                const texto = event.target.value;
+
+                // Use uma expressão regular para capturar o texto após a vírgula sem espaço
+                const regex = /([^,]+),\s(\d{2}\/\d{2}\/\d{4})/;
+                const match = texto.match(regex);
+
+                if (match) {
+                    const textoSemEspaco = match[1]; // O texto sem espaço após a vírgula
+                    const data = match[2]; // A data no formato dd/mm/yyyy
+
+                    console.log("Texto sem espaço:", textoSemEspaco);
+                    console.log("Data:", data);
+
+                    // Agora você pode usar 'textoSemEspaco' e 'data' conforme necessário
+
+                    // Exemplo de exibição no elemento de saída (div)
+                    outputDiv.textContent = `Texto sem espaço: ${textoSemEspaco}, Data: ${data}`;
+
+
+
+                const today = new Date();
+
+                // Obtém o dia, mês e ano
+                const day = today.getDate();
+                const month = today.getMonth() + 1; // Os meses começam do zero, então adicionamos 1
+                const year = today.getFullYear();
+
+                // Formata a data no formato "dd/mm/yyyy"
+                const formattedDate = `${day.toString().padStart(2, '0')}/${month.toString().padStart(2, '0')}/${year}`;
+
+
+
+                if (data === formattedDate) {
+                    outputDiv.textContent = `Dia Igual ao dia de hoje`;
+
+                    } else {
+                    outputDiv.textContent = `Dia diferente do dia de hoje`;
+
+                    }
+
+
+                } else {
+                    outputDiv.textContent = "Formato inválido";
+                }
+            });
+        });
+</script>
+ 

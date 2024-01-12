@@ -20,13 +20,17 @@ namespace VendaProdutos.Controllers
 
         public IActionResult Index()
         {
+             
             var itens = _carrinhoCompra.GetCarrinhoCompraItens();
             _carrinhoCompra.CarrinhoCompraItens = itens;
+            IEnumerable<Produto> listaOpcoesExtra = _produtoRepository.Produtos.Where(c => c.OpcaoExtra).ToList();
 
             var carrinhCompraVM = new CarrinhoCompraViewModel 
             {
             CarrinhoCompra = _carrinhoCompra,
             CarrinhoCompraTotal = _carrinhoCompra.GetCarrinhoCompraTotal(),
+            OpcoesExtra = listaOpcoesExtra
+
             };
             return View(carrinhCompraVM);
         }

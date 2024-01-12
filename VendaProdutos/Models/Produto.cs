@@ -91,7 +91,7 @@ namespace VendaProdutos.Models
         [Required(ErrorMessage = "Informe o Preço Promocional do Produto corretamente")]
         [Display(Name = "Preço Promocional do Produto")]
         [Column(TypeName = "decimal(10,2)")]
-        [Range(1, 999.99, ErrorMessage = "A {0} deve estar entre 1 e 9999.99")]
+        [Range(0, 999.99, ErrorMessage = "A {0} deve estar entre 1 e 9999.99")]
         public decimal PrecoPromocional { get; set; }
 
         [Required(ErrorMessage = "Informe o Preço do Produto corretamente")]

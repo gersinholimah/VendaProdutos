@@ -73,8 +73,11 @@
 
             @foreach (var produto in Model.ProdutosEmAlta)
             {
-                <partial name="_ProdutosResumo" for="@produto" />
-            }
+                if (!produto.NaoVenderIndividualmente)
+                {
+                    <partial name="_ProdutosResumo" for="@produto" />
+                }
+             }
 
 
 

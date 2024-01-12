@@ -3,13 +3,15 @@
 <div class="mt-50 container_produto">
     <div class="container">
         <div class="row container_produto">
-            <div class="col-md-3 galeria_produto">
+            <div class="col-md-6 galeria_produto">
  
                 <div class="">
                     <div style="
               "
                          class="swiper mySwiper2">
                         <div class="swiper-wrapper">
+                            @if (!string.IsNullOrEmpty(Model.Produto.ImagemUrl))
+                            {
                             <div class="swiper-slide">
                                 <img class="img-fluid"
                                      width="345"
@@ -17,79 +19,112 @@
                                      alt="4ª foto  da cesta"
                                      src="@Model.Produto.ImagemUrl" />
                             </div>
-                            <div class="swiper-slide">
-                                <img class="img-fluid"
+                            }
+                            @if (!string.IsNullOrEmpty(Model.Produto.Imagem2CarolselURL))
+                            {
+                                <div class="swiper-slide">
+                                    <img class="img-fluid"
                                      width="345"
                                      height="352"
                                      alt="1ª foto  da cesta"
                                      src="@Model.Produto.Imagem2CarolselURL" />
                             </div>
+                            }
+                            @if (!string.IsNullOrEmpty(Model.Produto.Imagem3CarolselURL))
+                            {
+                                <div class="swiper-slide">
+                                    <img class="img-fluid"
+                                    width="345"
+                                    height="352"
+                                    alt="2ª foto  da cesta"
+                                    src="@Model.Produto.Imagem3CarolselURL" />
+                                </div>
+                            }
+                            @if (!string.IsNullOrEmpty(Model.Produto.Imagem4CarolselURL))
+                            {
+                                <div class="swiper-slide">
+                                    <img class="img-fluid"
+                                    width="345"
+                                    height="352"
+                                    alt="3ª foto  da cesta"
+                                    src="@Model.Produto.Imagem4CarolselURL" />
+                                </div>
+                            }
 
-                            <div class="swiper-slide">
-                                <img class="img-fluid"
-                                     width="345"
-                                     height="352"
-                                     alt="2ª foto  da cesta"
-                                     src="@Model.Produto.Imagem3CarolselURL" />
-                            </div>
-
-                            <div class="swiper-slide">
-                                <img class="img-fluid"
-                                     width="345"
-                                     height="352"
-                                     alt="3ª foto  da cesta"
-                                     src="@Model.Produto.Imagem4CarolselURL" />
-                            </div>
-
-                            
                         </div>
                         <div class="swiper-button-next"></div>
                         <div class="swiper-button-prev"></div>
                     </div>
                     <div thumbsSlider="" class="swiper mySwiper">
                         <div class="swiper-wrapper">
+                            @if (!string.IsNullOrEmpty(Model.Produto.ImagemUrl))
+                            {
                             <div class="swiper-slide">
+                                
                                 <img class="img-fluid"
                                      width="74"
                                      height="75"
                                      alt="1ª miniatura da cesta"
                                      src="@Model.Produto.ImagemUrl" />
                             </div>
-                            <div class="swiper-slide">
-                                <img class="img-fluid"
-                                     width="74"
-                                     height="75"
-                                     alt="2ª miniatura da cesta"
-                                     src="@Model.Produto.Imagem2CarolselURL" />
-                            </div>
-                            <div class="swiper-slide">
-                                <img class="img-fluid"
-                                     width="74"
-                                     height="75"
-                                     alt="3ª miniatura da cesta"
-                                     src="@Model.Produto.Imagem3CarolselURL" />
-                            </div>
-                            <div class="swiper-slide">
-                                <img class="img-fluid"
-                                     width="74"
-                                     height="75"
-                                     alt="4ª miniatura da cesta"
-                                     src="@Model.Produto.Imagem4CarolselURL" />
-                            </div>
+                            }
+                            @if (!string.IsNullOrEmpty(Model.Produto.Imagem2CarolselURL))
+                            {
+                                <div class="swiper-slide">
+                                    <img class="img-fluid"
+                                    width="74"
+                                    height="75"
+                                    alt="2ª miniatura da cesta"
+                                    src="@Model.Produto.Imagem2CarolselURL" />
+                                </div>
+                            }
+                            @if (!string.IsNullOrEmpty(Model.Produto.Imagem3CarolselURL))
+                            {
+                                <div class="swiper-slide">
+                                    <img class="img-fluid"
+                                    width="74"
+                                    height="75"
+                                    alt="3ª miniatura da cesta"
+                                    src="@Model.Produto.Imagem3CarolselURL" />
+                                </div>
+                            }
+                            @if (!string.IsNullOrEmpty(Model.Produto.Imagem4CarolselURL))
+                            {
+                                <div class="swiper-slide">
+                                    <img class="img-fluid"
+                                    width="74"
+                                    height="75"
+                                    alt="4ª miniatura da cesta"
+                                    src="@Model.Produto.Imagem4CarolselURL" />
+                                </div>
+                            }
                         </div>
                     </div>
                 </div>
 
             </div>
 
-            <div class="col-md-3">
-                <h1 class="mt-30-xs"> @Model.Produto.Categoria.CategoriaNome<!--PRECISO INFORMAR AQUI O TIPO DE CATEGORIA--> <span>@Model.Produto.Nome</span></h1>
-                <div class="mt-20 descri"><b>Descrição:</b>@Model.Produto.DescricaoCurta ... <a class="maisdetalhes" href="#descricao-completa">Continue lendo</a> </div>
-
-
-
-            </div>
             <div class="col-md-6">
+                <h1 class="mt-30-xs">
+                    @Model.Produto.Categoria.NomeCurto  <span>@Model.Produto.Nome
+                    </span>
+                    <div style="color: #fd4800; font-weight: 800">
+                        Apenas em Feira de Santana
+                    </div>
+                </h1>
+                <div class="mt-20 descri"><b>Descrição:</b>Com @Model.Produto.QuantidadeDeItem itens, @Model.Produto.DescricaoCurta ... <a class="maisdetalhes" href="#descricao-completa">Continue lendo</a> </div>
+
+
+                <div class="envolve_star">
+                    <ul class="star mt-30">
+                        <li>★</li>
+                        <li>★</li>
+                        <li>★</li>
+                        <li>★</li>
+                        <li>★</li>
+                    </ul>
+                </div>
+            
 
                 <small>
                     <div class="de mt-50-xs"> De: R$&nbsp;@Model.Produto.Preco</div>
@@ -113,20 +148,24 @@
 
                     @foreach (var opcoesExtra in Model.OpcoesExtra)
                     {
-                        <div class="form-row">
+                        @if (opcoesExtra.ProdutoId != Model.Produto.ProdutoId)
+                        {
+                            // Seu código aqui
+                                                <div class="form-row">
                         <div class="opcao_extra" id="minhaDiv">
                              <img src="@opcoesExtra.ImagemUrl" class="lafka-addon-image-icon" alt="" loading="lazy">
                             <div class="envolve_opcoes">
                                 @{
                                     int parteInteiraPrecoPromocional = (int)opcoesExtra.PrecoPromocional;
                                 }
-                                @opcoesExtra.Nome (R$ @parteInteiraPrecoPromocional)
+                                     @opcoesExtra.Nome (@(parteInteiraPrecoPromocional == 0 ? "GRÁTIS" : $"R$ {parteInteiraPrecoPromocional}"))                                
                                     <button id="adicionar_@opcoesExtra.ProdutoId" class="btn btn-primary btn-sm" onclick="adicionaNaListaDeCompra(@opcoesExtra.ProdutoId, @opcoesExtra.PrecoPromocional)">Adicionar</button>
                                     <button id="remover_@opcoesExtra.ProdutoId" class="btn btn-danger" onclick="removeDaListaDeCompra(@opcoesExtra.ProdutoId, @opcoesExtra.PrecoPromocional)" style="display: none;">Remover</button>
 
                                 </div>
                          </div>
                         </div>
+                        }
 
                     }
 
@@ -134,7 +173,7 @@
                     </div>
                 
 
-                <div id="valores_totais" class="mt-20">
+                <div id="valores_totais" class="mt-20" style="display:none;">
                     <dl class="product-addon-totals">
                         <dt>Adições extra:</dt>
                         <dd>
@@ -198,7 +237,37 @@
 
 
 
+<section class="detalhes_produto ">
+    <div class="container">
+        <div class="row">
+            <div class="col-12">
+                <h3 class="mb-60 mt-100 mb-40-xs mt-100-xs">
+                    <span>Mais @Model.Produto.Categoria.CategoriaNome</span> para escolher
+                </h3>
+            </div>
+        </div>
 
+        <div id="produtos" class="row">
+            @foreach (var categoria in Model.Categorias)
+                    {
+
+                @if (categoria.CategoriaId == @Model.Produto.Categoria.CategoriaId){
+                @foreach (var produto in categoria.Produtos)
+                {
+
+                    @if (produto.ProdutoId != @Model.Produto.ProdutoId)
+                    {
+                            <partial name="_ProdutosResumo" for="@produto" />
+
+                    }
+                }
+            }
+
+                    
+                    }
+                    </div>
+    </div>
+</section>
 
 
 
@@ -229,7 +298,9 @@
 
         }
 
-         
+        var valores_totais = $(`#valores_totais`);
+        valores_totais.show();
+
     }
 
     // Função para remover um produto da lista
@@ -244,17 +315,21 @@
 
             atualizaTotalAdicoesExtras()
         }
+
+
     }
 
     function atualizaTotalAdicoesExtras() {
         $("#adicoes_extra").text("R$ " + totalAdicoesExtras.toFixed(2));
         $("#valor_total").text("R$ " + previsaoTotaldoValorDoPedido.toFixed(2));
 
+        var valores_totais = $(`#valores_totais`);
         var tagValor_inicial = $(`#valor_inicial`);
         if (totalAdicoesExtras > 0) {
             tagValor_inicial.hide();
         } else {
             tagValor_inicial.show();
+            valores_totais.hide();
         }
     }
 

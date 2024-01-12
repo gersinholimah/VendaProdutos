@@ -58,6 +58,11 @@ namespace VendaProdutos.Models
         [StringLength(100, ErrorMessage = "O tamanho máximo é 100 caracteres")]
         [Required(ErrorMessage = "Informe uma url amigavel para a categoria Corretamente")]
         public string UrlAmigavel { get; set; }
+        
+
+        [StringLength(160, ErrorMessage = "O tamanho máximo é 100 caracteres")]
+        [Required(ErrorMessage = "Informe o Nome Curto para a categoria Corretamente")]
+        public string NomeCurto { get; set; }
 
         [Display(Name = "Esconder Categoria")]
         public bool EsconderCategoria { get; set; }

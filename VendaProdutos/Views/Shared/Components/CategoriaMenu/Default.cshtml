@@ -35,7 +35,11 @@
 
 
 @foreach(var categoria in Model){
-<li class="nav-item">
+    @if (!categoria.EsconderCategoria)
+    {
+        
+   
+    <li class="nav-item">
         @{
             // Obtém a string da propriedade e substitui espaços por hifens
             string categoriaUrl = categoria.CategoriaNome.Replace(" ", "-");
@@ -57,8 +61,8 @@
             </button>
         </form>
     </li>
+    }
 
-    
  }
 <li class="nav-item">
     <a class="nav-link text-dark" asp-controller="Produto" asp-action="List"

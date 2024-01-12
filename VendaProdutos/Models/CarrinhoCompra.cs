@@ -102,7 +102,7 @@ namespace VendaProdutos.Models
         {
             var total = _context.CarrinhoCompraItens
                 .Where( c=> c.CarrinhoCompraId == CarrinhoCompraId)
-            .Select(c => c.Produto.Preco * c.Quantidade).Sum();
+            .Select(c => c.Produto.PrecoPromocional * c.Quantidade).Sum();
             return total;
         }
     }

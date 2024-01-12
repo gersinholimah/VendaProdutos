@@ -1,113 +1,264 @@
 ﻿@model CarrinhoCompraViewModel
+@{
+    bool freteGratis = false;
+    int[] opcaoExtraSelecionada = new int[] { }; // Cria um array vazio
+    bool escondeOpcoesExtra = true; // Inicializa como verdadeiro
 
-<div class="mt-50 ">
-    <div class="container">
-        <div class="row">
+    // Verifica se alguma opção extra não foi selecionada
+    foreach (var item in Model.CarrinhoCompra.CarrinhoCompraItens)
+    {
+        if (item.Produto.OpcaoExtra)
+        {
+            opcaoExtraSelecionada = opcaoExtraSelecionada.Concat(new[] { item.Produto.ProdutoId }).ToArray();
+        }
+        else if (!item.Produto.OpcaoExtra && item.Produto.TaxaDeEntrega == 0)
+        {
+            freteGratis = true;
+        }
+    }
+
+    // Atualiza escondeOpcoesExtra com base nas opções selecionadas
+    escondeOpcoesExtra = !Model.OpcoesExtra.Any(opcao => !opcaoExtraSelecionada.Contains(opcao.ProdutoId));
+}
+  }
 
 
+<div class="container carrinho">
+    <div class="row">
+
+        @if (Model.CarrinhoCompraTotal > 0){
             <div class="col-12">
-                <div class="cart-info">
-                    <table class="shop_table shop_table_responsive cart woocommerce-cart-form__contents" cellspacing="0">
-                        <thead>
-                            <tr>
-                                <th class="product-remove">&nbsp;</th>
-                                <th class="product-thumbnail">&nbsp;</th>
-                                <th class="product-name">Produto</th>
-                                <th class="product-price">Preço</th>
-                                <th class="product-quantity">Quant</th>
-                                <th class="product-subtotal">Subtotal</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            @foreach (var item in Model.CarrinhoCompra.CarrinhoCompraItens)
+                <h1 class="tit2_pradois pb-10">Voce está comprando:</h1>
+                <p>Verifique as informações abaixo e selecione o botão VERDE</p>
+            </div>
+        <div class="col-xl-8">
+            @foreach (var item in Model.CarrinhoCompra.CarrinhoCompraItens){
+                
+                   
+             <div class="card border shadow-none">
+                <div class="card-body">
 
-                            {
-                            <tr class="woocommerce-cart-form__cart-item cart_item">
-                                <td class="product-remove">
-                                      
+                    <div class="d-flex align-items-start">
+                        <div class="me-4">
+                                <img src="@item.Produto.ImagemUrl" alt="" class="avatar-lg rounded">
+                        </div>
+                        <div class="flex-grow-1 align-self-center overflow-hidden">
+                            <div class="col-12">
+                                        <h5 class="text-truncate font-size-18 font-weight-bold"><span class="titulo_carrinho">@item.Produto.Categoria.NomeCurto @item.Produto.Nome </span></h5>
+                                <p class="text-muted mb-0">
+                                    <i class="bx bxs-star text-warning"></i>
+                                    <i class="bx bxs-star text-warning"></i>
+                                    <i class="bx bxs-star text-warning"></i>
+                                    <i class="bx bxs-star text-warning"></i>
+                                    <i class="bx bxs-star-half text-warning"></i>
+                                </p>
+                                <div class="d-none-xs d-none-sm">
+                                    <div class="row">
+                                        <div class="col-md-4">
+                                            <div class="">
+                                                <p class=" mb-0 font-weight-bold">Preço</p>
+                                                <span class="text-muted me-2 text-muted ">
+                                                        R$ @item.Produto.PrecoPromocional
+                                                </span>  
+                                            </div>
+                                        </div>
+                                        <div class="col-md-5">
+                                            <div class="">
+                                                <p class="mb-0  font-weight-bold">Quantidae</p>
+                                                <div class="d-inline-flex">
+                                                    <select class="form-select form-select-sm w-xl" disabled>
+                                                            <option disabled value="@item.Quantidade" selected="">@item.Quantidade</option>
+                                                    </select>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-3">
+                                            <div class="">
+                                                <p class="mb-0 font-weight-bold">Total</p>
+                                                    @{
+                                                        decimal resultado = item.Quantidade * item.Produto.PrecoPromocional;
+                                                    }
+
+                                                    <h5 class="text-muted">R$ @resultado </h5>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                             </div>
+                        </div>
+                        <div class="flex-shrink-0 ms-2">
+                            <ul class="list-inline mb-0 font-size-16">
+                                <li class="list-inline-item mr-10">
                                         <a asp-controller="CarrinhoCompra" asp-action="RemoverItemDoCarrinhoCompra"
                                            asp-route-produtoId="@item.Produto.ProdutoId"
                                            class="remove" aria-label="Remove this item"
-                                           data-product_id="49" data-product_sku="">×
-                                       </a>
-                                    </td>
-                                <td class="product-thumbnail">
-                                    <a href="#">
-                                            <img width="100" height="100" src="@item.Produto.ImagemThumbnailUrl" class="attachment-woocommerce_thumbnail size-woocommerce_thumbnail" alt="" loading="lazy" sizes="(max-width: 440px) 100vw, 440px">
+                                           data-product_id="49" data-product_sku="">
+                                            <svg xmlns="http://www.w3.org/2000/svg" height="16" width="14" viewBox="0 0 448 512"><!--!Font Awesome Free 6.5.1 by  - https://fontawesome.com License - https://fontawesome.com/license/free Copyright 2024 Fonticons, Inc.--><path d="M135.2 17.7C140.6 6.8 151.7 0 163.8 0H284.2c12.1 0 23.2 6.8 28.6 17.7L320 32h96c17.7 0 32 14.3 32 32s-14.3 32-32 32H32C14.3 96 0 81.7 0 64S14.3 32 32 32h96l7.2-14.3zM32 128H416V448c0 35.3-28.7 64-64 64H96c-35.3 0-64-28.7-64-64V128zm96 64c-8.8 0-16 7.2-16 16V432c0 8.8 7.2 16 16 16s16-7.2 16-16V208c0-8.8-7.2-16-16-16zm96 0c-8.8 0-16 7.2-16 16V432c0 8.8 7.2 16 16 16s16-7.2 16-16V208c0-8.8-7.2-16-16-16zm96 0c-8.8 0-16 7.2-16 16V432c0 8.8 7.2 16 16 16s16-7.2 16-16V208c0-8.8-7.2-16-16-16z" /></svg>
                                         </a>
-                                </td>
-                                <td class="product-name" data-title="Product"> 
-                                        <a href="https://lafka.althemist.com/fastfood/product/big-brekkie-bbq-bacon-egg-burger/">@item.Produto.Nome</a>
-                                    </td>
-                                <td class="product-price" data-title="Price">
-                                    <span class="woocommerce-Price-amount amount">
-                                            <bdi>
-                                                @{
-                                                    decimal preco =  item.Produto.Preco;
-                                                    int precoInteiro = (int)Math.Floor(preco);
-                                                    decimal precoDecimal = preco - precoInteiro;
-                                                }
-                                                <span class="woocommerce-Price-currencySymbol">$</span>
-                                                @precoInteiro
-                                                <sup> @precoDecimal.ToString("00")</sup>
-                                            </bdi>
-                                    </span>
-                                </td>
-                                <td class="product-quantity" data-title="Quantity">
-                                    <div class="quantity">  
-                                            @item.Quantidade
-                                </td>
-                                <td class="product-subtotal" data-title="Subtotal">
-                                    <span class="woocommerce-Price-amount amount">
-                                        <bdi>
-                                                @{
-                                                    decimal resultado = item.Quantidade * item.Produto.Preco;
-                                                    int parteInteira = (int)Math.Floor(resultado);
-                                                    decimal parteDecimal = resultado - parteInteira;
-                                                }
+                                </li>
+                                
+                            </ul>
+                        </div>
+                    </div>
 
-                                                <span class="woocommerce-Price-currencySymbol">$</span>@parteInteira<sup>.@parteDecimal.ToString("00")</sup>
-                                            </bdi>
-                                    </span>
-                                </td>
-                            </tr>
+                    <div class="d-none-md d-none-lg">
+                            <div class="row">
+                                <div class="col-4">
+                                    <div class="">
+                                        <p class=" mb-0 font-weight-bold">Preço</p>
+                                        <span class="text-muted me-2 text-muted ">
+                                            R$ @item.Produto.PrecoPromocional
+                                        </span>
+                                    </div>
+                                </div>
+                                <div class="col-4">
+                                    <div class="">
+                                        <p class="mb-0  font-weight-bold">Quantidae</p>
+                                        <div class="d-inline-flex">
+                                            <select class="form-select form-select-sm w-xl" disabled>
+                                                <option disabled value="@item.Quantidade" selected="">@item.Quantidade</option>
+                                            </select>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-4">
+                                    <div class="">
+                                        <p class="mb-0 font-weight-bold">Total</p>
+                                        <h5 class="text-muted">R$ @resultado </h5>
+                                    </div>
+                                </div>
+                            </div>
+                    </div>
 
-                            }
-                            <tr>
-                                <td colspan="6" class="actions"> 
-                                   
-
-                                    <button type="submit" class="button" name="update_cart" value="Update cart" aria-disabled="false">Update cart</button> 
-                                    <input type="hidden" id="woocommerce-cart-nonce" name="woocommerce-cart-nonce" value="1fcdca8a65">
-                                    <input type="hidden" name="_wp_http_referer" value="/fastfood/cart/">
-                                </td>
-                            </tr>
-                        </tbody>
-
-                        <tfoot>
-                            <tr>
-                                <td colspan="3" class="text-right">Total:</td>
-                                <td class="text-right">
-                                    @Model.CarrinhoCompraTotal.ToString("c")
-                                </td>
-                            </tr>
-                        </tfoot>
-
-                    </table>
-
-
-                    @if (Model.CarrinhoCompraTotal > 0)
-                    {
-                    <a class="btn btn-success" asp-controller="Pedido" asp-action="Checkout">Encerrar Pedido</a>
-
-                    }
-                    <a class="btn btn-primary" asp-controller="Lanche" asp-action="List">Continuar Comprando</a>
                 </div>
             </div>
+            }
+            <!-- end card -->
 
+             
 
+            
+
+                <div class="row my-4  d-none">
+                <div class="col-sm-6">
+                        <a asp-controller="Lanche" asp-action="List" class="btn btn-link text-muted">
+                        <i class="mdi mdi-arrow-left me-1"></i> Continue comprando
+                    </a>
+                </div> <!-- end col -->
+                 
+            </div> <!-- end row-->
         </div>
+
+            <div class="col-xl-4">
+                <div class="mt-5 mt-lg-0">
+                    @if (!escondeOpcoesExtra && Model.CarrinhoCompraTotal > 0)
+                    {
+                    <div class="card border shadow-none">
+                        <div class="card-header bg-transparent border-bottom py-3 px-4">
+                            <h5 class="font-size-16 mb-0">
+                                Inclua também <span class="float-end">
+                                    <div class="direcional ">
+                <div class="swiper-button-next cor_fo1_gen"></div>
+                <div class="swiper-button-prev cor_fo1_gen"></div>
+              </div>
+                                </span>
+                            </h5>
+                        </div>
+
+                      
+                         
+                        <div class="card-body p-4 pt-2">
+
+                         
+                            <!-- Swiper -->
+                            <div class="swiper opcoesExtraCarrrinho" >
+                                <div class="swiper-wrapper">
+                                    @foreach (var opcao in @Model.OpcoesExtra) {
+                                        @if (!opcaoExtraSelecionada.Contains(opcao.ProdutoId)){
+                                            <div class="swiper-slide">
+                                                    <div>
+
+                                        <div class="">
+                                        <img class="img-fluid"
+                                             alt="4ª foto  da cesta"
+                                                         src="@opcao.ImagemUrl" />
+                                                    <div class="preco_opcao_extra">R$ @opcao.PrecoPromocional</div>
+
+                                    </div>
+                                                        <div class="nome_opcao_extra">@opcao.Categoria.NomeCurto @opcao.Nome</div>
+                                                <a asp-controller="CarrinhoCompra"
+                                                   asp-action="AdicionarItemNoCarrinhoCompra" asp-route-produtoId="@opcao.ProdutoId">
+                                                    Adicionar
+                                                </a>
+                                    </div>
+
+                                    </div>
+                                    } 
+                                    }
+ 
+                                </div>
+                               
+                            </div>
+
+                            <!-- end table-responsive -->
+                        </div>
+                     
+                     
+                    </div>
+                        }
+                        
+                    <div class="card border shadow-none">
+                        <div class="card-header bg-transparent border-bottom py-3 px-4">
+                            <h5 class="font-size-16 mb-0">Custos Totais: <span class="float-end"></span></h5>
+                        </div>
+                        <div class="card-body p-4 pt-2">
+
+                            <div class="table-responsive">
+                                <table class="table mb-0">
+                                    <tbody>
+                                        <tr>
+                                            <th>Frete: </th>
+                                            <td class="text-end">
+                                                @if (freteGratis)
+                                                {
+                                                    <div>Frete grátis</div>
+                                                }
+                                                else{
+                                                   <div>Será informado via Whatsapp</div>
+                                                }
+                                                    </td>
+                                    </tr>
+                                    <tr class="bg-light">
+                                        <th>Total:</th>
+                                        <td class="text-end">
+                                            <span class="fw-bold">
+                                                    @Model.CarrinhoCompraTotal.ToString("c")
+                                                </span>
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                        <!-- end table-responsive -->
+                        
+                    </div>
+                    <div class="card-footer">
+                            <a class="btn bt_avancar pt-10 pb-10 pr-40 pl-40 mt-10 mr-auto-xs ml-auto-xs d-block-xs" asp-controller="Pedido" asp-action="Checkout">Confirmar Pedido</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        } else{
+            <div class="col-12">
+                <h1 class="tit2_pradois pb-10">Seu carrinho de compras está vasio</h1>
+                <p>Use o botão abaixo para adicionar um pedido ao seu carrinho</p>
+               <a class="btn btn-primary pt-10 pb-10 pr-40 pl-40 mt-10 mr-auto-xs ml-auto-xs d-block-xs" asp-controller="Produto" asp-action="List">Selecionar Produto</a>
+            </div>
+        }
+
     </div>
+    <!-- end row -->
+
 </div>
 
 
@@ -125,6 +276,7 @@
 
 
 
+ 
 
 
 
@@ -133,14 +285,20 @@
 
 
 
+ 
+   
+        <!-- Swiper JS -->
+        <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
 
+        <!-- Initialize Swiper -->
+        <script>
+            var swiper = new Swiper(".opcoesExtraCarrrinho", {
+        slidesPerView: 2.3,
+        spaceBetween: 4,
 
-
-
-
-
-
-
-
-
-
+                navigation: {
+                    nextEl: ".swiper-button-next",
+                    prevEl: ".swiper-button-prev",
+                },
+            });
+        </script>
