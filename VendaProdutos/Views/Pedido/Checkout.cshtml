@@ -392,7 +392,6 @@
                     <div class="col-6 mb-3">
                          <label for="selectHours">Hora da entrega:</label>
                         <select id="selectHours" required class="form-control">
-                            <options>Disponivelbilidade para o dia selecionado</options>
                         </select>
                         <div class="invalid-feedback">
                             Informe o horário que o pedido deve ser entregue
@@ -505,8 +504,9 @@
 
 
 
-
+@* 
  <script>
+     //original
     document.addEventListener("DOMContentLoaded", function () {
       flatpickr("#datePicker", {
         dateFormat: "l, d/m/Y",
@@ -538,13 +538,63 @@
         allowInput: true,
       });
     });
-  </script>
+  </script> *@
+@* 
+<script>
+    //possibilidade identificando dia atual
+    document.addEventListener("DOMContentLoaded", function () {
+        flatpickr("#datePicker", {
+            dateFormat: "l, d/m/Y",
+            minDate: "today",
+            maxDate: new Date().fp_incr(60),
+            locale: {
+                firstDayOfWeek: 0,
+                weekdays: {
+                    shorthand: ['Dom', 'Seg', 'Ter', 'Qua', 'Qui', 'Sex', 'Sáb'],
+                    longhand: ['Domingo', 'Segunda', 'Terça', 'Quarta', 'Quinta', 'Sexta', 'Sábado'],
+                },
+                months: {
+                    shorthand: ['Jan', 'Fev', 'Mar', 'Abr', 'Mai', 'Jun', 'Jul', 'Ago', 'Set', 'Out', 'Nov', 'Dez'],
+                    longhand: ['Janeiro', 'Fevereiro', 'Março', 'Abril', 'Maio', 'Junho', 'Julho', 'Agosto', 'Setembro', 'Outubro', 'Novembro', 'Dezembro'],
+                },
+            },
+            showMonths: 1,
+            enableTime: false,
+            allowInput: true,
+            onClose: function (selectedDates, dateStr, instance) {
+                // Verificar se a data selecionada é igual à data atual
+                var selectedDate = selectedDates[0];
+                var currentDate = new Date();
+
+                // Ajuste para comparar apenas as datas, sem levar em consideração as horas
+                selectedDate.setHours(0, 0, 0, 0);
+                currentDate.setHours(0, 0, 0, 0);
+
+                if (selectedDate.getTime() === currentDate.getTime()) {
+                    alert("A data selecionada é igual à data atual.");
+                } else {
+                    alert("A data selecionada é diferente da data atual.");
+                }
+            },
+        });
+
+        flatpickr("#timePicker", {
+            enableTime: true,
+            noCalendar: true,
+            dateFormat: "H:i",
+            defaultDate: "12:00",
+            time_24hr: true,
+            minuteIncrement: 1,
+            allowInput: true,
+        });
+    });
+</script>
 
 
 <script>
     //aqui é para o dia atual
 
-    document.addEventListener("DOMContentLoaded", function () {
+    document.addEventListener("DOMContentLoaded", function listaHoraDoDiaAtual() {
         const selectHours = document.getElementById("selectHours");
 
         const now = new Date();
@@ -581,11 +631,11 @@
     });
 </script>
 
-@* 
+
     
     <script>
         //aqui é para dias a frente do dia atual
-    document.addEventListener("DOMContentLoaded", function () {
+    document.addEventListener("DOMContentLoaded", function listaTodosOsHorarios() {
         const selectHours = document.getElementById("selectHours");
 
         // Adiciona opções de horas em intervalos de 30 minutos com texto personalizado
@@ -607,7 +657,7 @@
         }
     });
 </script> 
-*@
+
      <script>
         document.addEventListener("DOMContentLoaded", function () {
             const inputElement = document.getElementById("datePicker");
@@ -648,9 +698,11 @@
 
                 if (data === formattedDate) {
                     outputDiv.textContent = `Dia Igual ao dia de hoje`;
+                    listaHoraDoDiaAtual()
 
                     } else {
                     outputDiv.textContent = `Dia diferente do dia de hoje`;
+                    listaTodosOsHorarios();
 
                     }
 
@@ -661,4 +713,120 @@
             });
         });
 </script>
- 
+  *@
+
+
+<script>
+    document.addEventListener("DOMContentLoaded", function () {
+        const selectHours = document.getElementById("selectHours");
+
+        // Função para verificar se a data selecionada é igual à data atual
+        function isDataSelecionadaIgualDataAtual(selectedDate) {
+            const currentDate = new Date();
+            currentDate.setHours(0, 0, 0, 0);
+            selectedDate.setHours(0, 0, 0, 0);
+            return selectedDate.getTime() === currentDate.getTime();
+        }
+
+        // Função para limpar as opções do select
+        function limparOpcoesSelect() {
+            while (selectHours.options.length > 0) {
+                selectHours.remove(0);
+            }
+        }
+
+        // Função para listar as horas com base na lógica desejada
+        function listaHoraDoDiaAtual(selectedDate) {
+            limparOpcoesSelect();
+
+            const now = new Date();
+            const currentHour = now.getHours();
+            let startHour;
+
+            // Verifica se a data selecionada é igual à data atual
+            if (isDataSelecionadaIgualDataAtual(selectedDate)) {
+                startHour = currentHour + 4; // Inicia 4 horas à frente do horário atual
+                startHour = Math.max(4, startHour);
+            } else {
+                startHour = 6; // Inicia às 6 da manhã se a data selecionada não for igual à data atual
+            }
+
+            const endHour = Math.min(18, 24);
+
+            // Adiciona opções de horas em intervalos de 30 minutos com texto personalizado
+            for (let hour = startHour; hour < endHour; hour++) {
+                for (let minute = 0; minute < 60; minute += 30) {
+                    const formattedHour = (hour < 10 ? '0' : '') + hour.toString();
+                    const formattedMinute = minute === 0 ? '00' : minute.toString();
+                    let optionText;
+
+                    if (hour <= 12) {
+                        optionText = `Manhã, ${formattedHour}h${formattedMinute} às ${formattedHour}h${(minute + 30) - 1}`;
+                    } else {
+                        optionText = `Tarde, ${formattedHour}h${formattedMinute} às ${formattedHour}h${(minute + 30) - 1}`;
+                    }
+
+                    const option = new Option(optionText, `${formattedHour}:${formattedMinute}`);
+                    selectHours.add(option);
+                }
+            }
+
+            if (isDataSelecionadaIgualDataAtual(selectedDate)) {
+                // Adiciona a última opção se o horário atual for menor que 18h
+                if (currentHour < 18) {
+                    const lastOption = new Option(`Tarde 18h00 às 18h${(currentHour + 30) - 1}`, '18:00');
+                    selectHours.add(lastOption);
+                }
+            }
+        }
+
+        // Função para adicionar uma opção inicial desativada ao select
+        function adicionarOpcaoInicial() {
+            const option = new Option('Escolha uma data primeiro', '');
+            option.disabled = true;
+            selectHours.add(option);
+        }
+
+        // Adiciona um evento para chamar a função quando a data for alterada
+        flatpickr("#datePicker", {
+            dateFormat: "l, d/m/Y",
+            minDate: "today",
+            maxDate: new Date().fp_incr(60),
+            locale: {
+                firstDayOfWeek: 0,
+                weekdays: {
+                    shorthand: ['Dom', 'Seg', 'Ter', 'Qua', 'Qui', 'Sex', 'Sáb'],
+                    longhand: ['Domingo', 'Segunda', 'Terça', 'Quarta', 'Quinta', 'Sexta', 'Sábado'],
+                },
+                months: {
+                    shorthand: ['Jan', 'Fev', 'Mar', 'Abr', 'Mai', 'Jun', 'Jul', 'Ago', 'Set', 'Out', 'Nov', 'Dez'],
+                    longhand: ['Janeiro', 'Fevereiro', 'Março', 'Abril', 'Maio', 'Junho', 'Julho', 'Agosto', 'Setembro', 'Outubro', 'Novembro', 'Dezembro'],
+                },
+            },
+            showMonths: 1,
+            enableTime: false,
+            allowInput: true,
+            onClose: function (selectedDates, dateStr, instance) {
+                limparOpcoesSelect();
+                if (selectedDates.length > 0) {
+                    listaHoraDoDiaAtual(selectedDates[0]);
+                } else {
+                    adicionarOpcaoInicial();
+                }
+            }
+        });
+
+        flatpickr("#timePicker", {
+            enableTime: true,
+            noCalendar: true,
+            dateFormat: "H:i",
+            defaultDate: "12:00",
+            time_24hr: true,
+            minuteIncrement: 1,
+            allowInput: true,
+        });
+
+        // Adiciona a opção inicial desativada ao carregar a página
+        adicionarOpcaoInicial();
+    });
+</script>
