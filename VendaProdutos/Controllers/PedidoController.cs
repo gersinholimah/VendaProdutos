@@ -20,9 +20,15 @@ namespace VendaProdutos.Controllers
         [HttpGet]
         public IActionResult Checkout()
         {
+            List<CarrinhoCompraItem> items = _carrinhoCompra.GetCarrinhoCompraItens();
+
+            ViewBag.TotalPedido = _carrinhoCompra.GetCarrinhoCompraTotal();
+             ViewBag.CarrinhoItens = items;
+
             return View();
+
         }
-        
+
         [HttpPost]
         public IActionResult Checkout(Pedido pedido)
         {

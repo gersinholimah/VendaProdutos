@@ -1,222 +1,5 @@
 ﻿@model Pedido
-<div class="container">
-<h3>Você esta a um passo de completar o seu pedido</h3>
-<hr />
-<form asp-action="Checkout" method="post" class="form-horizontal" role="form">
-
-    <!-- Dados do Comprador -->
-    <div class="row">
-        <div class="form-group col-md-6">
-            <label asp-for="NomeComprador" class="control-label"></label>
-            <input asp-for="NomeComprador" class="form-control" />
-            <span asp-validation-for="NomeComprador" class="text-danger"></span>
-        </div>
-
-    </div>
-
- 
-
-    <div class="row">
-        <div class="form-group col-md-6">
-            <label asp-for="WhatsappComprador" class="control-label"></label>
-            <input asp-for="WhatsappComprador" class="form-control" />
-            <span asp-validation-for="WhatsappComprador" class="text-danger"></span>
-        </div>
- 
- 
-        <div class="form-group col-md-6">
-            <label asp-for="NomeRecebedor" class="control-label"></label>
-            <input asp-for="NomeRecebedor" class="form-control" />
-            <span asp-validation-for="NomeRecebedor" class="text-danger"></span>
-        </div>
-  
-    </div>
-
- 
-            
- 
-        <div class="row">
-            <div class="form-group col-md-6">
-                <label asp-for="BairroRecebedor" class="control-label">Bairro</label>
-                <input asp-for="BairroRecebedor" class="form-control" />
-                <span asp-validation-for="BairroRecebedor" class="text-danger"></span>
-            </div>
-            <div class="form-group col-md-6">
-                <label asp-for="RuaRecebedor" class="control-label"></label>
-                <input asp-for="RuaRecebedor" class="form-control" />
-                <span asp-validation-for="RuaRecebedor" class="text-danger"></span>
-            </div>
-        </div>
-
-        <div class="row">
-            <div class="form-group col-md-6">
-                <label asp-for="ComplementoRecebedor" class="control-label">Complemento</label>
-                <input asp-for="ComplementoRecebedor" class="form-control" />
-                <span asp-validation-for="ComplementoRecebedor" class="text-danger"></span>
-            </div>
-            <div class="form-group col-md-6">
-                <label asp-for="NumeroCasaRecebedor" class="control-label">Nº do imóvel</label>
-                <input asp-for="NumeroCasaRecebedor" class="form-control" />
-                <span asp-validation-for="NumeroCasaRecebedor" class="text-danger"></span>
-            </div>
-        </div>
-
-        <div class="tab-content mt-2">
-           
-                 <div class="row">
-                    <div class="form-group col-md-6">
-                        <label asp-for="NomeDaEmpresa" class="control-label">Nome da empresa</label>
-                        <input asp-for="NomeDaEmpresa" class="form-control" />
-                        <span asp-validation-for="NomeDaEmpresa" class="text-danger"></span>
-                    </div>
-                    <div class="form-group col-md-6">
-                        <label asp-for="Setor" class="control-label">Setor que a pessoa trabalha</label>
-                        <input asp-for="Setor" class="form-control" />
-                        <span asp-validation-for="Setor" class="text-danger"></span>
-                    </div>
-                    <div class="form-group col-md-6">
-                        <label asp-for="PontoDeReferencia" class="control-label">Ponto de referencia</label>
-                        <input asp-for="PontoDeReferencia" class="form-control" />
-                        <span asp-validation-for="PontoDeReferencia" class="text-danger"></span>
-                    </div>
-                </div>
- 
-        </div>
-
-
-        <div class="row">
-            <div class="form-group col-md-6">
-                <label asp-for="WhatsappRecebedor" class="control-label"></label>
-                <input asp-for="WhatsappRecebedor" class="form-control" />
-                <span asp-validation-for="WhatsappRecebedor" class="text-danger"></span>
-            </div>
-           
-        </div>
-
-    <!-- Continue adicionando os campos de endereço do Recebedor e outros conforme necessário -->
-    <!-- Dados do Pedido -->
-    <div class="row">
-        <div class="form-group col-md-6">
-                <labe asp-for="DataDeEntrega" class="control-label">
-                    DataDeEntrega</label>
-                    <input asp-for="DataDeEntrega"  class="form-control" />
-
-            <span asp-validation-for="DataDeEntrega" class="text-danger"></span>
-        </div>
-        <div class="form-group col-md-6">
-                <label asp-for="HoraDeEntrega" class="control-label"></label>
-                <input asp-for="HoraDeEntrega" class="form-control" />
-
-                <span asp-validation-for="HoraDeEntrega" class="text-danger"></span>
-        </div>
-    </div>
-
-        <div class="row">
-            <div class="form-group col-md-6">
-                <labe asp-for="Observacoes" class="control-label">
-                    Observacoes</label>
-                    <input asp-for="Observacoes" class="form-control" />
-                    <span asp-validation-for="Observacoes" class="text-danger"></span>
-            </div>
-            <div class="form-group col-md-6">
-                <label asp-for="Cartinha" class="control-label">Cartinha</label>
-                <textarea asp-for="Cartinha" class="form-control"></textarea>
-
-                <span asp-validation-for="Cartinha" class="text-danger"></span>
-            </div>
-        </div>
-
-    <!-- Continue adicionando outros campos do Pedido conforme necessário -->
-    <!-- Campos relacionados aos itens do pedido -->
-    <!-- (Certifique-se de ajustar conforme a estrutura real do PedidoDetalhe) -->
-    <!-- Exemplo para um campo de quantidade de itens -->
-
-
-        <!-- Adicione outros campos dos itens do pedido conforme necessário -->
-        <!--   <div class="row">
-        <div class="form-group col-md-6">
-            <label class="control-label"></label>
-                <input  value="PedidoItens[0].Quantidade" class="form-control" />
-        </div>
-</div> -->
-
-    <br />
-    <div class="row">
-        <div class="form-group col-md-3">
-            <input class="btn btn-success" type="submit" value="Concluir Pedido" />
-        </div>
-        &nbsp;
-        <div class="form-group col-md-3">
-            <a class="btn btn-outline-info" asp-controller="CarrinhoCompra" asp-action="Index">Retornar ao Carrinho</a>
-        </div>
-    </div>
-</form>
-</div>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+    
 
 
 
@@ -231,41 +14,51 @@
 
 
 
+@if (ViewBag.CarrinhoItens != null) { 
 
 
 
 
              <div class="container">
-  <div class="py-5 text-center">
-    <img class="d-block mx-auto mb-4" src="/docs/4.5/assets/brand/bootstrap-solid.svg" alt="" width="72" height="72">
-    <h2>Checkout form</h2>
-    <p class="lead">Below is an example form built entirely with Bootstrap’s form controls. Each required form group has a validation state that can be triggered by attempting to submit the form without completing it.</p>
-  </div>
+        <div class="row mb-30">
+                <div class="col-12 ">
 
+
+                    <h1 class="tit2_pradois pb-10">
+                    Informações para registrar pedido
+                    </h1>
+                <p>Preencha os dados abaixo e selecione o botão VERDE.</p>
+                 </div>
+            </div>
+ 
   <div class="row">
     
     <div class="col-md-8 order-md-1">
       <h4 class="mb-3">Suas informações</h4>
-      <form class="needs-validation" novalidate>
+            <form asp-action="Checkout" method="post" role="form" class="needs-validation" novalidate>
         <div class="row">
           <div class="col-sm-7 mb-3">
-            <label for="firstName">Seu Nome</label>
-            <input type="text" class="form-control" id="firstName" placeholder="" value="" required>
+                        <label asp-for="NomeComprador">Seu Nome</label>
+                        <input type="text" class="form-control" asp-for="NomeComprador" placeholder="" value="" required>
             <div class="invalid-feedback">
              Digite seu nome completo.
             </div>
+                        <span asp-validation-for="NomeComprador" class="text-danger"></span>
+
           </div>
                     <div class="col-sm-5 mb-3">
-            <label for="lastName">Seu Whatsapp</label>
-                        <input type="tel" class="form-control" id="lastName" placeholder="" pattern="[0-9]{3}-[0-9]{3}-[0-9]{4}" required required>
+                        <label asp-for="WhatsappComprador">Seu Whatsapp</label>
+                        <input type="tel" asp-for="WhatsappComprador" class="form-control" placeholder="" required>
             <div class="invalid-feedback">
               Informe um telefone válido.
             </div>
+                        <span asp-validation-for="WhatsappComprador" class="text-danger"></span>
+
           </div>
         </div>
                 <h4 class="mb-3">Endereço da entrega</h4>
-
-                <ul class="nav nav-tabs" id="myTabs">
+                    <label>Tipo de imóvel</label>
+                <ul class="nav nav-tabs mb-3" id="myTabs">
                     <li class="nav-item">
                         <a class=" active btn btn-primary" id="tab1-tab" data-toggle="tab" href="#tab1">RESIDENCIAL</a>
                     </li>
@@ -287,35 +80,43 @@
                         </div>
 
                     <div class="col-sm-6 mb-3">
-                            <label for="address">Bairro</label>
-                            <input type="text" class="form-control" id="address" placeholder="Nome do Bairro da entrega" required>
+                        <label asp-for="BairroRecebedor" >Bairro</label>
+                        <input type="text" class="form-control" asp-for="BairroRecebedor" placeholder="Nome do Bairro da entrega" required>
                             <div class="invalid-feedback">
                                 Informe o nome do bairro onde o pedido será entregue.
                             </div>
+                        <span asp-validation-for="BairroRecebedor" class="text-danger"></span>
+
                         </div>
 
                     <div class="col-sm-8 mb-3">
-                            <label>Rua</label>
-                        <input type="text" class="form-control" placeholder="Nome da rua da entrega" required>
+                        <label asp-for="RuaRecebedor">Rua</label>
+                        <input type="text" class="form-control" asp-for="RuaRecebedor" placeholder="Nome da rua da entrega" required>
                             <div class="invalid-feedback">
                                 Informe o nome da rua onde o pedido será entregue.
                             </div>
+                        <span asp-validation-for="RuaRecebedor" class="text-danger"></span>
+
                         </div>
 
 
                     <div class="col-sm-4 mb-3">
-                            <label for="address2">Nº do imóvel </label>
-                        <input type="text" class="form-control" id="address2" placeholder="Nº do imóvel da entrega" required>
+                        <label asp-for="NumeroCasaRecebedor">Nº do imóvel </label>
+                        <input type="text" class="form-control" asp-for="NumeroCasaRecebedor"  placeholder="Nº do imóvel da entrega" required>
                             <div class="invalid-feedback">
                                 Informe o Nº do imóvel onde o pedido será entregue.
                             </div>
+                        <span asp-validation-for="NumeroCasaRecebedor" class="text-danger"></span>
+
                         </div>
                     <div class="col-sm-12 mb-3">
-                            <label>Ponto de referência <span class="text-muted">(Opcional)</span></label>
-                            <input type="text" class="form-control" id="address2" placeholder="Imóvel próximo a...">
+                        <label asp-for="PontoDeReferencia">Ponto de referência <span class="text-muted">(Opcional)</span></label>
+                        <input type="text" class="form-control" asp-for="PontoDeReferencia" placeholder="Imóvel próximo a...">
                             <div class="invalid-feedback">
                             Informe o Ponto de referência do endereço onde o pedido será entregue.
                             </div>
+                        <span asp-validation-for="PontoDeReferencia" class="text-danger"></span>
+
                         </div>
 
                 </div>
@@ -326,49 +127,65 @@
                     </div>
                     <div class="tab-pane fade row" id="tab2">
                         <div class="col-sm-8 mb-3">
-                            <label>Nome da empresa</label>
-                            <input type="text" class="form-control" id="address2" placeholder="Nome da empresa" required>
+                            <label asp-for="NomeDaEmpresa">Nome da empresa</label>
+                            <input type="text" class="form-control" asp-for="NomeDaEmpresa" placeholder="Nome da empresa" >
                             <div class="invalid-feedback">
                                 Informe o nome da empresa onde o pedido será entregue.
                             </div>
                         </div>
                         <div class="col-sm-4 mb-3">
-                            <label>Setor que a pessoa trabalha</label>
-                            <input type="text" class="form-control" id="address2" placeholder="Nome do setor" required>
+                            <label asp-for="Setor">Setor que a pessoa trabalha</label>
+                            <input type="text" class="form-control" asp-for="Setor"  placeholder="Nome do setor" >
                             <div class="invalid-feedback">
                                 Informe o nome do setor onde a pessoa que vai receber trabalha.
                             </div>
+                            <span asp-validation-for="Setor" class="text-danger"></span>
+
                         </div>
                     </div>
-
+                    
+                    
+                    
+                    
+                    
+                    
+                    
                 </div>
                 <h4 class="mb-3">Informações complementáres</h4>
 
                 <div class="row">
                     <div class="col-sm-6 mb-3">
                         <label>De</label>
-                        <input type="text" class="form-control" id="address2" placeholder="Quem está enviando?" required>
+                        <input type="text" class="form-control" asp-for="QuemEstaEnviando" id="address2" placeholder="Quem está enviando?" required>
+                        <span asp-validation-for="QuemEstaEnviando" class="text-danger"></span>
+
                         <div class="invalid-feedback">
                             Informe Nome da(s) pessoa(s) que está enviando
                         </div>
                     </div>
  
                     <div class="col-sm-6 mb-3">
-                        <label>Para:</label>
-                        <input type="text" class="form-control" id="address2" placeholder="Quem vai receber?" required>
+                        <label asp-for="NomeRecebedor">Para:</label>
+                        <input type="text" class="form-control" asp-for="NomeRecebedor" placeholder="Quem vai receber?" required>
+                        <span asp-validation-for="NomeRecebedor" class="text-danger"></span>
+
                         <div class="invalid-feedback">
                             Informe o nome de quem vai receber
                         </div>
+
                     </div>
 
                     <div class="col-12 mb-3">
-                        <label>Cartinha</label>
-                        <textarea class="form-control"></textarea>
+                        <label asp-for="Cartinha">Cartinha</label>
+                        <textarea asp-for="Cartinha" class="form-control"></textarea>
+                        <span asp-validation-for="Cartinha" class="text-danger"></span>
+
                     </div>
 
                     <div class="col-sm-6 mb-3">
-                        <label>Whatsapp de quem vai receber</label>
-                         <input type="tel" class="form-control" id="lastName" placeholder="" pattern="[0-9]{3}-[0-9]{3}-[0-9]{4}" required >
+                        <label asp-for="WhatsappRecebedor">Whatsapp de quem vai receber</label>
+                        <input type="tel" class="form-control" asp-for="WhatsappRecebedor" placeholder="" required>
+                        <span asp-validation-for="WhatsappRecebedor" class="text-danger"></span>
 
                         <div class="invalid-feedback">
                             Informe o nº telefone de quem vai receber
@@ -378,10 +195,12 @@
 
                    
 
-                    <div class="col-6 mb-3">
-                        <label>Data da entrega</label>
-                        <input type="text" id="datePicker" placeholder="Dia/mês/ano" class="form-control" width="276" required />
-                    
+                        <div class="col-sm-6 mb-3">
+                        <label asp-for="DataDeEntrega">Data da entrega</label>
+                        <input type="text" asp-for="DataDeEntrega" id="datePicker" placeholder="Dia/mês/ano" class="form-control" width="276" autocomplete="off" required />
+                        <span asp-validation-for="DataDeEntrega" class="text-danger"></span>
+                        <span asp-validation-for="DataDeEntrega" class="text-danger"></span>
+
                         <div class="invalid-feedback">
                             Informe a data que o pedido deve ser entregue
                         </div>
@@ -389,55 +208,89 @@
 
                     </div>
              
-                    <div class="col-6 mb-3">
-                         <label for="selectHours">Hora da entrega:</label>
-                        <select id="selectHours" required class="form-control">
+                        <div class="col-sm-6 mb-3">
+                        <label asp-for="HoraDeEntrega" for="selectHours">Hora da entrega:</label>
+                        <select id="selectHours" asp-for="HoraDeEntrega"  class="form-control" required>
                         </select>
+                        <span asp-validation-for="HoraDeEntrega" class="text-danger"></span>
+
                         <div class="invalid-feedback">
                             Informe o horário que o pedido deve ser entregue
                         </div>
+
                     </div>
                     <div class="col-sm-12 mb-3">
-                        <label>Observações</label>
-                        <textarea class="form-control"></textarea>
+                        <label asp-for="Observacoes">Observações</label>
+                        <textarea asp-for="Observacoes" class="form-control"></textarea>
+                        <span asp-validation-for="Observacoes" class="text-danger"></span>
+
                     </div>
                 </div>
                
                     
           
-        <hr class="mb-4">
-        <button class="btn btn-primary btn-lg btn-block" type="submit">Continue to checkout</button>
+                 <button class="btn bt_avancar pt-10 pb-10 pr-40 pl-40 mt-10 mr-auto-xs ml-auto-xs d-block-xs" type="submit">Registrar Pedido</button>
+ 
       </form>
     </div>
-
-        <div class="col-md-4 order-md-2 mb-4">
+        <div class="col-md-4 order-md-2 mb-4 mt-100 d-none">
             <h4 class="d-flex justify-content-between align-items-center mb-3">
-                <span class="text-muted">Your cart</span>
-                <span class="badge badge-secondary badge-pill">3</span>
-            </h4>
+                <span class="text-muted">Seu pedido</span>
+             </h4>
             <ul class="list-group mb-3">
+                 
+                @{
+                    bool freteGratis = false;
+                    // Verifica se alguma opção extra não foi selecionada
+                    foreach (var item in @ViewBag.CarrinhoItens)
+                    {
+                         
+                          if (!item.Produto.OpcaoExtra && item.Produto.TaxaDeEntrega == 0)
+                        {
+                            freteGratis = true;
+                     }
+                  }
+                }
+                
+                @foreach (var item in @ViewBag.CarrinhoItens)                {
+                    <li class="list-group-item d-flex justify-content-between lh-condensed">
+                        <img src="@item.Produto.ImagemUrl" alt="" class="avatar-lg rounded">
+
+                        <div>
+                            <h6 class="text-truncate font-size-18 font-weight-bold">
+                                 @item.Produto.Nome 
+                                </h6>
+
+                             <small class="text-muted">Preço unitário R$ @item.Produto.PrecoPromocional</small>
+
+  
+
+                        </div>
+                        <span class="badge badge-primary badge-pill" style="height: 18px;">@item.Quantidade</span>
+                    </li>
+                        
+                    
+                        
+                }
                 <li class="list-group-item d-flex justify-content-between lh-condensed">
-                    <div>
-                        <h6 class="my-0">Product name</h6>
-                        <small class="text-muted">Brief description</small>
-                    </div>
-                    <span class="text-muted">$12</span>
+                    @if (freteGratis)
+                    {
+                        <div class="text-success">
+                            <h6 class="my-0">Frete Grátis</h6>
+                            <small class="text-muted">@ViewBag.TotalPedido</small>
+                        </div>
+                    }
+                    else
+                    {
+                        <div class="">
+                            <h6 class="my-0">Frete</h6>
+                            <small class="text-muted">Será informado no Whatsapp</small>
+                        </div>
+                     }
+                   
+                    <span class="text-muted"></span>
                 </li>
-                <li class="list-group-item d-flex justify-content-between lh-condensed">
-                    <div>
-                        <h6 class="my-0">Second product</h6>
-                        <small class="text-muted">Brief description</small>
-                    </div>
-                    <span class="text-muted">$8</span>
-                </li>
-                <li class="list-group-item d-flex justify-content-between lh-condensed">
-                    <div>
-                        <h6 class="my-0">Third item</h6>
-                        <small class="text-muted">Brief description</small>
-                    </div>
-                    <span class="text-muted">$5</span>
-                </li>
-                <li class="list-group-item d-flex justify-content-between bg-light">
+                <li class="list-group-item  justify-content-between bg-light d-none">@*d-flex*@                 
                     <div class="text-success">
                         <h6 class="my-0">Promo code</h6>
                         <small>EXAMPLECODE</small>
@@ -445,12 +298,12 @@
                     <span class="text-success">-$5</span>
                 </li>
                 <li class="list-group-item d-flex justify-content-between">
-                    <span>Total (USD)</span>
-                    <strong>$20</strong>
+                    <h6>Soma total</h6>
+                    <strong>R$ @ViewBag.TotalPedido.ToString("c")</strong>
                 </li>
             </ul>
 
-            <form class="card p-2">
+            <form class="card p-2 d-none">
                 <div class="input-group">
                     <input type="text" class="form-control" placeholder="Promo code">
                     <div class="input-group-append">
@@ -459,7 +312,7 @@
                 </div>
             </form>
         </div>
-
+        
   </div>
 
   <footer class="my-5 pt-5 text-muted text-center text-small">
@@ -470,7 +323,21 @@
       <li class="list-inline-item"><a href="#">Support</a></li>
     </ul>
   </footer>
-</div>
+    </div>
+} else
+{
+        <div class="container">
+        <div class="row">
+
+    <div class="col-12">
+        <h1 class="tit2_pradois pb-10">Seu carrinho de compras está vasio</h1>
+        <p>Use o botão abaixo para selecionar o(s) produtos que serão adicionados ao seu carrinho</p>
+        <a class="btn btn-primary pt-10 pb-10 pr-40 pl-40 mt-10 mr-auto-xs ml-auto-xs d-block-xs" asp-controller="Produto" asp-action="List">Selecionar Produto</a>
+    </div>
+    </div>
+    </div>
+
+}
 <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
       <script>window.jQuery || document.write('<script src="/docs/4.5/assets/js/vendor/jquery.slim.min.js"><\/script>')</script><script src="/docs/4.5/dist/js/bootstrap.bundle.min.js" integrity="sha384-ho+j7jyWK8fNQe+A12Hb8AhRq26LrZ/JpcUGGOn+Y7RsweNrtN/tE3MoK7ZeZDyx" crossorigin="anonymous"></script>
         <script>
@@ -504,216 +371,6 @@
 
 
 
-@* 
- <script>
-     //original
-    document.addEventListener("DOMContentLoaded", function () {
-      flatpickr("#datePicker", {
-        dateFormat: "l, d/m/Y",
-        minDate: "today",
-        maxDate: new Date().fp_incr(60),
-        locale: {
-          firstDayOfWeek: 0,
-          weekdays: {
-            shorthand: ['Dom', 'Seg', 'Ter', 'Qua', 'Qui', 'Sex', 'Sáb'],
-            longhand: ['Domingo', 'Segunda', 'Terça', 'Quarta', 'Quinta', 'Sexta', 'Sábado'],
-          },
-          months: {
-            shorthand: ['Jan', 'Fev', 'Mar', 'Abr', 'Mai', 'Jun', 'Jul', 'Ago', 'Set', 'Out', 'Nov', 'Dez'],
-            longhand: ['Janeiro', 'Fevereiro', 'Março', 'Abril', 'Maio', 'Junho', 'Julho', 'Agosto', 'Setembro', 'Outubro', 'Novembro', 'Dezembro'],
-          },
-        },
-        showMonths: 1,
-        enableTime: false, // Configurado como false para desabilitar a seleção de horas no input de data
-        allowInput: true,
-      });
-
-      flatpickr("#timePicker", {
-        enableTime: true,
-        noCalendar: true, // Desabilita o calendário para permitir apenas a seleção de horas
-        dateFormat: "H:i",
-        defaultDate: "12:00", // Pode definir a hora padrão, se desejar
-        time_24hr: true, // Configurado como true para usar o formato de 24 horas
-        minuteIncrement: 1, // Incremento de minutos
-        allowInput: true,
-      });
-    });
-  </script> *@
-@* 
-<script>
-    //possibilidade identificando dia atual
-    document.addEventListener("DOMContentLoaded", function () {
-        flatpickr("#datePicker", {
-            dateFormat: "l, d/m/Y",
-            minDate: "today",
-            maxDate: new Date().fp_incr(60),
-            locale: {
-                firstDayOfWeek: 0,
-                weekdays: {
-                    shorthand: ['Dom', 'Seg', 'Ter', 'Qua', 'Qui', 'Sex', 'Sáb'],
-                    longhand: ['Domingo', 'Segunda', 'Terça', 'Quarta', 'Quinta', 'Sexta', 'Sábado'],
-                },
-                months: {
-                    shorthand: ['Jan', 'Fev', 'Mar', 'Abr', 'Mai', 'Jun', 'Jul', 'Ago', 'Set', 'Out', 'Nov', 'Dez'],
-                    longhand: ['Janeiro', 'Fevereiro', 'Março', 'Abril', 'Maio', 'Junho', 'Julho', 'Agosto', 'Setembro', 'Outubro', 'Novembro', 'Dezembro'],
-                },
-            },
-            showMonths: 1,
-            enableTime: false,
-            allowInput: true,
-            onClose: function (selectedDates, dateStr, instance) {
-                // Verificar se a data selecionada é igual à data atual
-                var selectedDate = selectedDates[0];
-                var currentDate = new Date();
-
-                // Ajuste para comparar apenas as datas, sem levar em consideração as horas
-                selectedDate.setHours(0, 0, 0, 0);
-                currentDate.setHours(0, 0, 0, 0);
-
-                if (selectedDate.getTime() === currentDate.getTime()) {
-                    alert("A data selecionada é igual à data atual.");
-                } else {
-                    alert("A data selecionada é diferente da data atual.");
-                }
-            },
-        });
-
-        flatpickr("#timePicker", {
-            enableTime: true,
-            noCalendar: true,
-            dateFormat: "H:i",
-            defaultDate: "12:00",
-            time_24hr: true,
-            minuteIncrement: 1,
-            allowInput: true,
-        });
-    });
-</script>
-
-
-<script>
-    //aqui é para o dia atual
-
-    document.addEventListener("DOMContentLoaded", function listaHoraDoDiaAtual() {
-        const selectHours = document.getElementById("selectHours");
-
-        const now = new Date();
-        const currentHour = now.getHours();
-        let startHour = currentHour + 4; // A primeira opção será 4 horas à frente do horário atual
-
-        // Limita o início das opções a 4h e o final a 18h
-        startHour = Math.max(4, startHour);
-        const endHour = Math.min(18, 24);
-
-        // Adiciona opções de horas em intervalos de 30 minutos com texto personalizado
-        for (let hour = startHour; hour < endHour; hour++) {
-            for (let minute = 0; minute < 60; minute += 30) {
-                const formattedHour = (hour < 10 ? '0' : '') + hour.toString();
-                const formattedMinute = minute === 0 ? '00' : minute.toString();
-                let optionText;
-
-                if (hour <= 12) {
-                    optionText = `Manhã ${formattedHour}h${formattedMinute} às ${formattedHour}h${(minute + 30) - 1}`;
-                } else {
-                    optionText = `Tarde ${formattedHour}h${formattedMinute} às ${formattedHour}h${(minute + 30) - 1}`;
-                }
-
-                const option = new Option(optionText, `${formattedHour}:${formattedMinute}`);
-                selectHours.add(option);
-            }
-        }
-
-        // Adiciona a última opção se o horário atual for menor que 18h
-        if (currentHour < 18) {
-            const lastOption = new Option('Tarde 18h00 às 18h30', '18:00');
-            selectHours.add(lastOption);
-        }
-    });
-</script>
-
-
-    
-    <script>
-        //aqui é para dias a frente do dia atual
-    document.addEventListener("DOMContentLoaded", function listaTodosOsHorarios() {
-        const selectHours = document.getElementById("selectHours");
-
-        // Adiciona opções de horas em intervalos de 30 minutos com texto personalizado
-        for (let hour = 6; hour < 19; hour++) {
-            for (let minute = 0; minute < 60; minute += 30) {
-                const formattedHour = (hour < 10 ? '0' : '') + hour.toString();
-                const formattedMinute = minute === 0 ? '00' : minute.toString();
-                let optionText;
-
-                if (hour <= 12) {
-                    optionText = `Manhã ${formattedHour}h${formattedMinute} às ${formattedHour}h${(minute + 30) - 1}`;
-                } else {
-                    optionText = `Tarde ${formattedHour}h${formattedMinute} às ${formattedHour}h${(minute + 30) - 1}`;
-                }
-
-                const option = new Option(optionText, `${formattedHour}:${formattedMinute}`);
-                selectHours.add(option);
-            }
-        }
-    });
-</script> 
-
-     <script>
-        document.addEventListener("DOMContentLoaded", function () {
-            const inputElement = document.getElementById("datePicker");
-            const outputDiv = document.getElementById("output");
-
-            inputElement.addEventListener("input", function (event) {
-                const texto = event.target.value;
-
-                // Use uma expressão regular para capturar o texto após a vírgula sem espaço
-                const regex = /([^,]+),\s(\d{2}\/\d{2}\/\d{4})/;
-                const match = texto.match(regex);
-
-                if (match) {
-                    const textoSemEspaco = match[1]; // O texto sem espaço após a vírgula
-                    const data = match[2]; // A data no formato dd/mm/yyyy
-
-                    console.log("Texto sem espaço:", textoSemEspaco);
-                    console.log("Data:", data);
-
-                    // Agora você pode usar 'textoSemEspaco' e 'data' conforme necessário
-
-                    // Exemplo de exibição no elemento de saída (div)
-                    outputDiv.textContent = `Texto sem espaço: ${textoSemEspaco}, Data: ${data}`;
-
-
-
-                const today = new Date();
-
-                // Obtém o dia, mês e ano
-                const day = today.getDate();
-                const month = today.getMonth() + 1; // Os meses começam do zero, então adicionamos 1
-                const year = today.getFullYear();
-
-                // Formata a data no formato "dd/mm/yyyy"
-                const formattedDate = `${day.toString().padStart(2, '0')}/${month.toString().padStart(2, '0')}/${year}`;
-
-
-
-                if (data === formattedDate) {
-                    outputDiv.textContent = `Dia Igual ao dia de hoje`;
-                    listaHoraDoDiaAtual()
-
-                    } else {
-                    outputDiv.textContent = `Dia diferente do dia de hoje`;
-                    listaTodosOsHorarios();
-
-                    }
-
-
-                } else {
-                    outputDiv.textContent = "Formato inválido";
-                }
-            });
-        });
-</script>
-  *@
 
 
 <script>
@@ -747,6 +404,12 @@
             if (isDataSelecionadaIgualDataAtual(selectedDate)) {
                 startHour = currentHour + 4; // Inicia 4 horas à frente do horário atual
                 startHour = Math.max(4, startHour);
+                if (currentHour > 14) {
+                    adicionarAvisoDeFaltaDeHorario();
+                }
+                if (currentHour < 6) {
+                    startHour = 9
+                }
             } else {
                 startHour = 6; // Inicia às 6 da manhã se a data selecionada não for igual à data atual
             }
@@ -755,15 +418,15 @@
 
             // Adiciona opções de horas em intervalos de 30 minutos com texto personalizado
             for (let hour = startHour; hour < endHour; hour++) {
-                for (let minute = 0; minute < 60; minute += 30) {
+                for (let minute = 0; minute < 60; minute += 60) {
                     const formattedHour = (hour < 10 ? '0' : '') + hour.toString();
                     const formattedMinute = minute === 0 ? '00' : minute.toString();
                     let optionText;
 
                     if (hour <= 12) {
-                        optionText = `Manhã, ${formattedHour}h${formattedMinute} às ${formattedHour}h${(minute + 30) - 1}`;
+                        optionText = `Manhã, ${formattedHour}h${formattedMinute} às ${formattedHour}h${(minute + 60) - 1}`;
                     } else {
-                        optionText = `Tarde, ${formattedHour}h${formattedMinute} às ${formattedHour}h${(minute + 30) - 1}`;
+                        optionText = `Tarde, ${formattedHour}h${formattedMinute} às ${formattedHour}h${(minute + 60) - 1}`;
                     }
 
                     const option = new Option(optionText, `${formattedHour}:${formattedMinute}`);
@@ -771,10 +434,21 @@
                 }
             }
 
+
+
+
+
+
+
+
+
+
+
+
             if (isDataSelecionadaIgualDataAtual(selectedDate)) {
                 // Adiciona a última opção se o horário atual for menor que 18h
                 if (currentHour < 18) {
-                    const lastOption = new Option(`Tarde 18h00 às 18h${(currentHour + 30) - 1}`, '18:00');
+                    const lastOption = new Option(`Tarde 18h00 às 18h${(currentHour + 58) - 1}`, '18:00');
                     selectHours.add(lastOption);
                 }
             }
@@ -783,6 +457,12 @@
         // Função para adicionar uma opção inicial desativada ao select
         function adicionarOpcaoInicial() {
             const option = new Option('Escolha uma data primeiro', '');
+            option.disabled = true;
+            selectHours.add(option);
+        }
+        // Função para adicionar uma opção inicial desativada ao select quando não tiver mais horario disponível para entrega no dia
+        function adicionarAvisoDeFaltaDeHorario() {
+            const option = new Option('Não entregamos mais hoje, escolha outra data', '');
             option.disabled = true;
             selectHours.add(option);
         }
@@ -806,6 +486,7 @@
             showMonths: 1,
             enableTime: false,
             allowInput: true,
+            disableMobile: "true",
             onClose: function (selectedDates, dateStr, instance) {
                 limparOpcoesSelect();
                 if (selectedDates.length > 0) {
@@ -813,6 +494,7 @@
                 } else {
                     adicionarOpcaoInicial();
                 }
+               
             }
         });
 
@@ -828,5 +510,28 @@
 
         // Adiciona a opção inicial desativada ao carregar a página
         adicionarOpcaoInicial();
+    });
+</script>
+
+
+
+
+<script>
+    $(document).ready(function () {
+        // Evento que é acionado quando a guia é alterada
+        $('#myTabs a').on('shown.bs.tab', function (e) {
+            var selectedTabId = $(e.target).attr('href'); // Obtém o ID da guia selecionada
+
+            // Verifica se a guia selecionada é a guia2 (COMERCIAL)
+            if (selectedTabId === '#tab2') {
+                // Adiciona o atributo required aos campos desejados
+                $('#tab2 input[id="NomeDaEmpresa"]').prop('required', true);
+                $('#tab2 input[id="Setor"]').prop('required', true);
+            } else {
+                // Remove o atributo required dos campos desejados se a guia for diferente de tab2 (RESIDENCIAL)
+                $('#tab2 input[id="NomeDaEmpresa"]').prop('required', false);
+                $('#tab2 input[id="Setor"]').prop('required', false);
+            }
+        });
     });
 </script>

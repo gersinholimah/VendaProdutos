@@ -35,8 +35,8 @@ namespace VendaProdutos.Models
         public string RuaRecebedor { get; set; }
 
         [StringLength(200)]
-        [Display(Name = "Complemento do endereco")]
-        public string ComplementoRecebedor { get; set; }
+        [Display(Name = "Quem está enviando")]
+        public string QuemEstaEnviando { get; set; }
 
 
         [StringLength(100)]

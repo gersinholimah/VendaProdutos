@@ -306,23 +306,29 @@ font-weight: 800;
    color: rgba(0,0,0,.9);
 }
 
-.container_produto a, .carrinho .bt_avancar {
+.container_produto a, .carrinho .bt_avancar, .bt_avancar {
     background: var(--cor-quaternaria);
     border-radius: 50px;
     color: #fff;
     font-size: 24px;
     display: inline-block;
     font-weight: 800;
+    cursor: pointer;
+    text-decoration: none;
 }
-
-.container_produto .maisdetalhes {
-   color: var(--cor-primaria);
-   background: transparent;
-   padding: 5px 10px 6px 0px;
-   margin: -6px 0 0 0;
-   font-size: 16px;
-   text-decoration: underline;
-}
+    .bt_avancar:hover{
+        color:#fff;
+        cursor: pointer;
+        text-decoration:none;
+    }
+    .container_produto .maisdetalhes {
+        color: var(--cor-primaria);
+        background: transparent;
+        padding: 5px 10px 6px 0px;
+        margin: -6px 0 0 0;
+        font-size: 16px;
+        text-decoration: underline;
+    }
 
 .container_produto .descri{
        font-size: 15px;
@@ -717,7 +723,7 @@ fill:var(--cor-primaria);
 }
 .linkbuild_2 p {
    color: #a6a6a6;
-   font-size: 20;
+   font-size: 20px;
 }
 .linkbuild_2 p a {
    color: var(--cor-primaria);
@@ -1316,21 +1322,33 @@ nav .container {
 }
 
 
-
-
-
-
-
-
-
-
-@media (max-width: 1399.98px) {
-    .pp.-active {
-       height: auto;
-   }
+.nav .btn {
+    background: transparent;
+    color: #007bff;
+    font-weight: 600;
+    margin: 0 5px 0 0;
 }
 
-.pp__box {
+.nav .btn {
+    background: transparent;
+    color: #007bff;
+    font-weight: 600;
+    margin: 0 5px 0 0;
+}
+
+    .nav .btn.active {
+        background: #007bff;
+    }
+
+
+
+    @media (max-width: 1399.98px) {
+        .pp.-active {
+            height: auto;
+        }
+    }
+
+    .pp__box {
    display: flex;
    justify-content: center;
    align-items: center;
@@ -1345,23 +1363,230 @@ nav .container {
    color: #FFF;
 }
 
-@media (max-width: 1399.98px) {
-   .pp__text {
-       width: 70%;
-   }
+
+
+
+ 
+
+/* Main Ticket Style */
+.ticketContainer {
+    display: flex;
+    flex-direction: column;
+/*    align-items: center;
+*/}
+
+.ticket {
+    background-color: #f5f5f5;
+    color: darkslategray;
+    border-radius: 12px;
+    z-index: 9;
 }
 
-@media (max-width: 991.98px) {
+.ticketShadow {
+    animation: bouncingShadow 0.6s ease-out infinite alternate;
+    margin-top: 4px;
+    width: 95%;
+    height: 12px;
+    border-radius: 50%;
+    background-color: rgba(0, 0, 0, 0.4);
+    filter: blur(12px);
+}
 
-    .pp__text {
-        text-align: center;
-        margin: 0 10px 10px 10px;
-        width: auto;
-        line-height: 17px;
+/* Ticket Content */
+.ticketTitle {
+    font-size: 1.5rem;
+    font-weight: 700;
+    padding: 12px 16px 4px;
+}
+
+.ticketContainer hr {
+    width: 90%;
+    border: 1px solid #8f8f8f;
+}
+
+.ticketDetail {
+    font-size: 1.1rem;
+    font-weight: 500;
+    padding: 4px 16px;
+}
+
+.ticketSubDetail {
+    display: flex;
+    justify-content: space-between;
+    font-size: 15px;
+    padding: 12px 16px;
+}
+
+    .ticketSubDetail .code {
+        margin-right: 24px;
+    }
+
+/* Ticket Ripper */
+.ticketRip {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.circleLeft {
+    width: 12px;
+    height: 24px;
+    background-color: #d5d5d5;
+    border-radius: 0 12px 12px 0;
+}
+
+.ripLine {
+    width: 100%;
+    border-top: 3px solid #d5d5d5;
+    border-top-style: dashed;
+}
+
+.circleRight {
+    width: 12px;
+    height: 24px;
+    background-color: #d5d5d5;
+    border-radius: 12px 0 0 12px;
+}
+
+.bgticket {
+    background: #d5d5d5;
+    padding: 50px 0px;
+}
+
+
+
+.resumo_pedido td, .resumo_pedido th {
+    padding: 5px 0;
+    vertical-align: top;
+    border-top: 0px solid #dee2e6;
+}
+
+
+.resumo_pedido table{
+    width: 100%;
+    margin-bottom: 1rem;
+    color: #212529;
+}
+
+
+.resumo_pedido td {
+    font-size: 14px;
+    font-weight: 400;
+}
+
+.resumo_pedido {
+    /*    border-top: 1px solid #959595;
+    border-bottom: 1px solid #959595;*/
+    padding: 15px 15px 1px 15px;
+    background: #ffffff;
+}
+
+    .resumo_pedido td:last-child, .resumo_pedido th:last-child {
+        text-align: right;
+    }
+
+.reumo_pedido2 {
+    padding: 10px;
+}
+.reumo_pedido2 table {
+    width: 100%;
+}
+    .reumo_pedido2 table td:last-child {
+        text-align: right;
+        font-size: 30px;
+        font-weight: 600;
+        color: #000;
+    }
+
+.ticketDetail div {
+    font-weight: 400;
+}
+
+.ticketDetail_titulo {
+    margin-top: 25px;
+    margin-bottom: 10px;
+}
+
+.ticketDetail h3 {
+    font-size: 24px;
+    color: #000;
+}
+
+.reumo_pedido2 {
+    border: 0px solid #000;
+}
+.ticketDetail div {
+ 
+}
+
+.detail_ticket {
+    font-size: 16px;
+    color: #000;
+    line-height: 16px;
+}
+
+@keyframes bouncingCard {
+    from {
+        transform: translateY(0);
+    }
+
+    to {
+        transform: translateY(-18px);
     }
 }
 
-.pp__close {
+@keyframes bouncingShadow {
+    from {
+        transform: translateY(0px);
+    }
+
+    to {
+        transform: translateY(4px);
+    }
+}
+
+.chacoalha_botao {
+    animation: bouncingCard 0.6s ease-out infinite alternate;
+    margin-left: auto;
+    margin-right: auto;
+    color: #fff;
+}
+.botao_deapoio {
+    border-radius: 50px;
+    margin-left: auto;
+    display: block;
+    margin-right: 30px;
+    margin-top: 13px;
+    background: #ff4700;
+    border: #ff4700;
+    color: #fff;
+}
+    .botao_deapoio:hover {
+        background: #ff4700;
+    }
+
+
+
+
+
+
+    @media (max-width: 1399.98px) {
+        .pp__text {
+            width: 70%;
+        }
+    }
+
+    @media (max-width: 991.98px) {
+
+        .pp__text {
+            text-align: center;
+            margin: 0 10px 10px 10px;
+            width: auto;
+            line-height: 17px;
+        }
+    }
+
+    .pp__close {
    position: absolute;
    right: 10px;
    bottom: 0;
@@ -1620,8 +1845,12 @@ h2.tit1_gen {
         max-width: 521px;
     }
     header {
-        margin-top: 190px;
+        margin-top: 130px;
     }
+    .bt_avancar {
+        font-size: 19px;
+    }
+
     }
    
    /* Large devices (desktops, less than 1200px)*/

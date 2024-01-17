@@ -20,7 +20,7 @@
     // Atualiza escondeOpcoesExtra com base nas opções selecionadas
     escondeOpcoesExtra = !Model.OpcoesExtra.Any(opcao => !opcaoExtraSelecionada.Contains(opcao.ProdutoId));
 }
-  }
+ 
 
 
 <div class="container carrinho">
@@ -28,7 +28,7 @@
 
         @if (Model.CarrinhoCompraTotal > 0){
             <div class="col-12">
-                <h1 class="tit2_pradois pb-10">Voce está comprando:</h1>
+                <h1 class="tit2_pradois pb-10">Carrinho de compras:</h1>
                 <p>Verifique as informações abaixo e selecione o botão VERDE</p>
             </div>
         <div class="col-xl-8">
@@ -153,7 +153,7 @@
                 <div class="mt-5 mt-lg-0">
                     @if (!escondeOpcoesExtra && Model.CarrinhoCompraTotal > 0)
                     {
-                    <div class="card border shadow-none">
+                        <div class="card border shadow-none  d-none">
                         <div class="card-header bg-transparent border-bottom py-3 px-4">
                             <h5 class="font-size-16 mb-0">
                                 Inclua também <span class="float-end">
@@ -211,7 +211,7 @@
                         <div class="card-header bg-transparent border-bottom py-3 px-4">
                             <h5 class="font-size-16 mb-0">Custos Totais: <span class="float-end"></span></h5>
                         </div>
-                        <div class="card-body p-4 pt-2">
+                        <div class="">
 
                             <div class="table-responsive">
                                 <table class="table mb-0">
