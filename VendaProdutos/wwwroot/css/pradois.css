@@ -1566,7 +1566,10 @@ nav .container {
     }
 
 
-
+.form_admin label.control-label {
+    font-size: 14px;
+    font-weight: 800;
+}
 
 
 
@@ -1598,6 +1601,54 @@ nav .container {
    opacity: 1;
    margin: auto;
 }
+.admin thead {
+    position: sticky;
+    top: 0;
+    background: #e1e1e1;
+}
+.admin a svg, .admin td svg {
+    width: 16px;
+}
+.admin a svg {
+    margin-right: 10px;
+}
+
+
+
+
+.paginador_admin .page-item.active .page-link {
+    background-color: #343a40 !important;
+    border-color: #343a40 !important;
+    color: #fff !important;
+}
+.paginador_admin .page-link {
+    color: #343a40 !important;
+ }
+
+.admin span {
+    color: #000;
+}
+.admin a:hover svg {
+    fill: #ff4700;
+}
+/*MEIO DO CSS*/
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 @media (max-width: 991.98px) {
    .pp__close {
@@ -1816,42 +1867,54 @@ h2.tit1_gen {
 
    
    /* Medium devices (tablets, less than 992px)*/
-   @media (max-width: 991.98px) {
-       .img_topo{
-           background-image:url(../img/img_topo_xs.png) ; 
-           background-size:605px;
-       }
-       .como_pedir .row_center_right {
-           background-position: bottom right;
-       }
-       .produtos .envolve_produtos span {
-            font-size: 19px;
-        }
-        .produtos .envolve_produtos {
-           max-width: 300px;
-           margin-right: auto;
-           margin-left: auto;
-       }
+@media (max-width: 991.98px) {
+    .img_topo {
+        background-image: url(../img/img_topo_xs.png);
+        background-size: 605px;
+    }
+
+    .como_pedir .row_center_right {
+        background-position: bottom right;
+    }
+
+    .produtos .envolve_produtos span {
+        font-size: 19px;
+    }
+
+    .produtos .envolve_produtos {
+        max-width: 300px;
+        margin-right: auto;
+        margin-left: auto;
+    }
+
     .navbar.nav_nova {
         background: -moz-linear-gradient(left, #fff 0%, #fff 4%, #fff 50%, #830101 50%, #830101 50%, #830101 50%, #830101 50%, #830101 50%, #830101 50%, #830101 50%, #830101 100%) !important;
         background: -webkit-linear-gradient(left, #fff 0%,#fff 4%,#fff 50%,#3c2525 50%,#3c2525 50%,#3c2525 50%,#3c2525 50%,#3c2525 50%,#3c2525 50%,#3c2525 50%,#3c2525 100%) !important;
         background: linear-gradient(to right, white 0%,white 4%,white 50%,#3c2525 50%,#3c2525 50%,#3c2525 50%,#3c2525 50%,#3c2525 50%,#3c2525 50%,#3c2525 50%,#3c2525 100%) !important;
         filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='##fff', endColorstr='#830101',GradientType=1 ) !important;
     }
+
     .navbar_gen .navbar-brand img {
-        width: 100px!important;
+        width: 100px !important;
     }
+
     .galeria_produto {
         max-width: 521px;
     }
+
     header {
         margin-top: 130px;
     }
+
     .bt_avancar {
         font-size: 19px;
     }
 
+    .detalhes_produto h3, .detalhes_produto h2 {
+        text-align: center;
+        font-size: 30px;
     }
-   
+}
+
    /* Large devices (desktops, less than 1200px)*/
    @media (max-width: 1199.98px) { }

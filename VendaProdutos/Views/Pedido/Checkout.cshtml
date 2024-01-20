@@ -336,8 +336,12 @@
     </div>
     </div>
     </div>
-
+     
 }
+
+
+
+
 <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
       <script>window.jQuery || document.write('<script src="/docs/4.5/assets/js/vendor/jquery.slim.min.js"><\/script>')</script><script src="/docs/4.5/dist/js/bootstrap.bundle.min.js" integrity="sha384-ho+j7jyWK8fNQe+A12Hb8AhRq26LrZ/JpcUGGOn+Y7RsweNrtN/tE3MoK7ZeZDyx" crossorigin="anonymous"></script>
         <script>
@@ -391,6 +395,14 @@
                 selectHours.remove(0);
             }
         }
+        // Função para verificar se duas datas estão no mesmo dia
+        function isSameDay(date1, date2) {
+            return (
+                date1.getFullYear() === date2.getFullYear() &&
+                date1.getMonth() === date2.getMonth() &&
+                date1.getDate() === date2.getDate()
+            );
+        }
 
         // Função para listar as horas com base na lógica desejada
         function listaHoraDoDiaAtual(selectedDate) {
@@ -410,9 +422,19 @@
                 if (currentHour < 6) {
                     startHour = 9
                 }
+
             } else {
-                startHour = 6; // Inicia às 6 da manhã se a data selecionada não for igual à data atual
-            }
+                // Verificar se selectedDate é igual ao dia seguinte
+                const tomorrow = new Date();
+                tomorrow.setDate(tomorrow.getDate() + 1);
+
+                if (isSameDay(selectedDate, tomorrow) && currentHour < 6 || isSameDay(selectedDate, tomorrow) && currentHour > 18) {
+                    // Faça algo se selectedDate for igual ao dia seguinte
+                    startHour = 9;
+                 } else {
+                    startHour = 6; // Inicia às 6 da manhã se a data selecionada não for igual à data atual
+                }
+             }
 
             const endHour = Math.min(18, 24);
 

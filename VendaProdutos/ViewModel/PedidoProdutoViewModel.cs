@@ -7,5 +7,9 @@ namespace VendaProdutos.ViewModel
         public Pedido Pedido { get; set; }
         public IEnumerable<PedidoDetalhe> PedidoDetalhes { get; set; }
 
+        public IEnumerable<Produto> Produtos { get; set; }
+
+        
+
     }
 }

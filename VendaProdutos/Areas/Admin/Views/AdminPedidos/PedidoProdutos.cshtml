@@ -3,49 +3,398 @@
 @{
     ViewData["Title"] = "PedidoLanches";
     decimal totalPedido = 0;
-}
-<div class="container">
+} 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+ 
+<div class="container ">
     <div class="row">
-        <div class="col-12">
+        <div class="col-12 ">
+             
+            <h1 class="tit2_pradois pb-10 text-center">
+                Detalhes do pedido
+            </h1>
+            <p class=" text-center">Detalhes do pedido selecionado.</p>
+            @{
+                //esse codigo todo é para alimentar o botão de compartilhar no whatsapp
+                string NomeComprador = @Model.Pedido.NomeComprador.Replace(" ", "+");
+                string IdPedidoAqui = @Model.Pedido.PedidoId.ToString();
+                string ProdutoAqui = "";
+                foreach (var item in @Model.Pedido.PedidoItens)
+                {
+                    //tem que tipar
+                    string nomeCurtoCategoria = "";
+                    foreach (var produto in @Model.Produtos)
+                    {
+                        if (item.Produto.ProdutoId == produto.ProdutoId)
+                        {
+                            if (!string.IsNullOrEmpty(produto.Categoria.NomeCurto))
+                            {
+                                nomeCurtoCategoria = produto.Categoria.NomeCurto;
+                            }
+                        }
 
+                    }
+                    string itemConcatenado = $"{item.Quantidade} {nomeCurtoCategoria} {item.Produto.Nome} de R%24 {(item.Produto.PrecoPromocional * item.Quantidade)}%0A";
 
-<h1>Lanches do Pedido</h1>
-<hr />
+                    // Adicionar a string concatenada à variável QuantidadeItemAqui
+                    ProdutoAqui += itemConcatenado.Replace(" ", "+") + "+";
+                }
+                ProdutoAqui += $"%0A%2ATotal+%3A%2A+{((decimal)@totalPedido).ToString("C2")}";
 
-<h3>Pedido  :  @Html.DisplayFor(model => @Model.Pedido.PedidoId)</h3>
-<h3>Cliente :  @Html.DisplayFor(model => @Model.Pedido.NomeRecebedor)</h3>
-<h3>Data    :  @Html.DisplayFor(model => @Model.Pedido.PedidoEnviado)</h3>
-<h3>Entrega :  @Html.DisplayFor(model => @Model.Pedido.PedidoEntregueEm)</h3>
+                // Sua propriedade do tipo string que contém o horário no formato "HH:mm"
+                string horarioEntrega = @Model.Pedido.HoraDeEntrega;
+                // Dividir a string em horas e minutos
+                string[] pedacosHorario = horarioEntrega.Split(':');
+                int horaInteira = int.Parse(pedacosHorario[0]);
+                int minutoInteiro = int.Parse(pedacosHorario[1]);
+                // Adicionar 1 aos minutos
+                // Verificar se os minutos ultrapassaram 59 e ajustar as horas
+                minutoInteiro = 59;
+                // Formatar a string de horário resultante
+                string HorarioLimite = $"{horaInteira:D2}:{minutoInteiro:D2}";
 
-<table class="table">
-    @foreach (var item in @Model.Pedido.PedidoItens)
-    {
-        totalPedido += (@item.Produto.Preco * @item.Quantidade);
-        <tr>
-            <td align="right">
-                <h3>@Html.DisplayFor(modelItem => item.Produto.Nome)</h3>
-            </td>
-            <td align="right">
-                <img src="@item.Produto.ImagemUrl" class="img-fluid" height="100" width="100">
-            </td>
-            <td align="right">
-                <h3>@string.Format("{0:C}", item.Produto.Preco)</h3>
-            </td>
-            <td align="right">
-                <h3>(@Html.DisplayFor(modelItem => item.Quantidade))</h3>
-            </td>
-        </tr>
-    }
-    <tr>
-        <td colspan="2">&nbsp;</td>
-        <td align="right">
-            <h3>Total do Pedido : @string.Format("{0:C}", @totalPedido)</h3>
-        </td>
-    </tr>
-</table>
-<a asp-action="Index" class="btn btn-outline-info">Retornar</a>
+                string NomeCompradorAqui = @Model.Pedido.NomeComprador.Replace(" ", "+");
+                string QuemEstaEnviandoAqui = "";
+                if (!string.IsNullOrEmpty(@Model.Pedido.QuemEstaEnviando))
+                {
+                    @Model.Pedido.QuemEstaEnviando.Replace(" ", "+")
+                }
+                string NomeDaEmpresa = "";
+                if (!string.IsNullOrEmpty(@Model.Pedido.NomeDaEmpresa))
+                {
+                    NomeDaEmpresa = $"Na+{@Model.Pedido.NomeDaEmpresa.Replace(" ", "+")}";
+                }
 
+                string DiaDaEntregaAqui = @Model.Pedido.DataDeEntrega.Replace(" ", "+");
+                string HorarioInicalAqui = @Model.Pedido.HoraDeEntrega;
+                string HorarioLimiteAqui = @HorarioLimite.Replace(" ", "+");
+                string BairroAqui = @Model.Pedido.BairroRecebedor.Replace(" ", "+");
+                string RuaAqui = @Model.Pedido.RuaRecebedor.Replace(" ", "+");
+                string NumeroDoImovelAqui = @Model.Pedido.NumeroCasaRecebedor.Replace(" ", "+");
+                string PontoDeReferenciaAqui = "";
+                if (!string.IsNullOrEmpty(@Model.Pedido.NomeDaEmpresa)){
+                  PontoDeReferenciaAqui =  @Model.Pedido.PontoDeReferencia.Replace(" ", "+");
+                }
+                string NomeRecebedorAqui = "";
+                if (!string.IsNullOrEmpty(@Model.Pedido.Setor))
+                {
+                    NomeRecebedorAqui = $"{@Model.Pedido.NomeRecebedor.Replace(" ", "+")}+do+setor+de+{@Model.Pedido.Setor.Replace(" ", "+")}";
 
+                }
+                else
+                {
+                    NomeRecebedorAqui = @Model.Pedido.NomeRecebedor.Replace(" ", "+");
+
+                }
+                string ObservacaoAqui = "";
+                string CartinhaAqui = "";
+                if (!string.IsNullOrEmpty(@Model.Pedido.Cartinha))
+                {
+                    CartinhaAqui = @Model.Pedido.Cartinha.Replace(" ", "+");
+                }
+                if (!string.IsNullOrEmpty(@Model.Pedido.Observacoes))
+                {
+                    ObservacaoAqui = @Model.Pedido.Observacoes.Replace(" ", "+");
+                }
+            }
+            <a target="_blank" href="https://api.whatsapp.com/send?phone=+55+5575991702469&text=Olá%2C+@NomeComprador+sou atendente+na+Pradois+😁%0Ae+recebemos+aqui+a+sua+solicitação+do+pedido+de+número%3A+@IdPedidoAqui%0A%0A%2ACom+os+itens%2A%0A+@ProdutoAqui%0A%0A%2AInformando+que%2A%0AÉ+de+@QuemEstaEnviandoAqui%2C+%0APara+@NomeRecebedorAqui.%0AE+é+que+é+para+entregar+@DiaDaEntregaAqui+entre+@HorarioInicalAqui+e+@HorarioLimiteAqui%0A%0A%2AO+endereço+de+entrega+é%2A%0A+@NomeDaEmpresa+Aqui+em+Feira+de+Santana%2C+no+bairro+@BairroAqui%2C+na+rua+@RuaAqui%2C+o+nº+do+imóvel+é+@NumeroDoImovelAqui.%0APonto+de+referência%3A+@PontoDeReferenciaAqui%0A%0A%2APediu+também+para+Adicionar+um+texto+escrito%2A%0ADe%3A+@QuemEstaEnviandoAqui%0APara%3A+@NomeRecebedorAqui%0ACom+o+texto%3A%2A%0A+@CartinhaAqui%0A%0A%2AE+fez+uma+observação+que+%3A%2A%0A+@ObservacaoAqui" class="btn bt_avancar pt-10 pb-10 pr-40 pl-40 mt-10 mr-auto ml-auto d-block mb-30" style=" max-width: 480px; ">Confirmar via Whatsapp</a>
         </div>
     </div>
 </div>
+
+<section class="bgticket">
+    <div class="container" style="
+    max-width: 800px;
+">
+        <div class="ticketContainer">
+            <div class="ticket ">
+
+                <div class="row">
+
+                    <div class="col-12">
+                        <div class="ticketTitle">Seu pedido:</div>
+                    </div>
+
+             
+                </div>
+
+                <hr>
+                <div class="row">
+
+                    <div class=" col-12">
+                        <div class="ticketDetail">
+                            <div class="resumo_pedido">
+                                <table>
+                                    <tbody>
+                                        <tr>
+                                            <th></th>
+                                            <th>Qtd</th>
+                                            <th>Produto</th>
+                                            <th>Preço</th>
+                                        </tr>
+                                        
+                                        @{
+                                            string nomeCurtoCatego = "";
+
+                                                foreach (var item in @Model.Pedido.PedidoItens)
+                                            {
+                                                // totalPedido += (@item.Produto.PrecoPromocional * @item.Quantidade);
+
+                                            //tem que tipar
+                                                foreach (var produto in @Model.Produtos)
+                                                {
+                                                    if (item.Produto.ProdutoId == produto.ProdutoId)
+                                                    {
+                                                       
+                                                            nomeCurtoCatego = produto.Categoria.NomeCurto;
+                                                        
+                                                    }
+                                                
+                                            }
+                                            <tr>
+                                                
+                                                <td><img src="@item.Produto.ImagemUrl" width="40" height="40" /></td>
+                                                <td>@item.Quantidade</td>
+                                                    <td>
+                                                        @if (!string.IsNullOrEmpty(nomeCurtoCatego))
+                                                        {@nomeCurtoCatego<span>&nbsp;</span>
+                                                        } @item.Produto.Nome
+                                                </td>
+                                                    <td>@(item.Produto.PrecoPromocional * @item.Quantidade)</td>
+                                               
+                                                
+                                            </tr>
+                                        }
+                                        }
+                                        <tr>
+                                            <td></td>
+                                            <td></td>
+                                            <td class="">Frete:</td>
+
+                                            <td class="text-success" style="font-size: 18px;">Grátis</td>
+                                        </tr>
+
+                                    </tbody>
+
+                                </table>
+
+                            </div>
+                            <div class="reumo_pedido2">
+                                <table>
+                                    <tbody>
+                                        <tr>
+                                            <td>Total</td>
+                                            <td></td>
+                                            <td></td>
+                                            <td>@string.Format("{0:C}", @totalPedido)</td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                     
+                    </div>
+                </div>
+
+
+                <div class="ticketRip">
+                    <div class="circleLeft"></div>
+                    <div class="ripLine"></div>
+                    <div class="circleRight"></div>
+                </div>
+                <button type="button" class="btn btn-success d-none" style="
+    border-radius: 50px;
+    margin-left: auto;
+    margin-right: auto;
+    display: block;
+    /* margin-right: 30px; */
+    margin-top: 13px;
+">
+                    Pagar Via Whatsapp
+                </button>
+                <div class="row">
+                    @{
+                        // Sua propriedade do tipo string que contém o horário no formato "HH:mm"
+                        string horario = @Model.Pedido.HoraDeEntrega;
+
+                        // Dividir a string em horas e minutos
+                        string[] partesHorario = horario.Split(':');
+                        int horas = int.Parse(partesHorario[0]);
+                        int minutos = int.Parse(partesHorario[1]);
+
+                        // Adicionar 1 aos minutos
+ 
+                        // Verificar se os minutos ultrapassaram 59 e ajustar as horas
+                             minutos = 59;
+  
+                        // Formatar a string de horário resultante
+                        string horarioDaentrega = $"{horas:D2}:{minutos:D2}";
+                    }
+
+                     <div class=" col-md-4">
+
+                        <div class="ticketDetail detail_ticket">
+                            <h3 class="ticketDetail_titulo">
+                                Informação principal
+                            </h3>
+
+                            <div><b>De:</b> @Model.Pedido.QuemEstaEnviando  </div>
+
+                            <div>
+                                <b>
+                                    Para:
+                                </b> @Model.Pedido.NomeRecebedor
+                                @if (!string.IsNullOrEmpty(Model.Pedido.Setor))
+                                {
+                                    <span>- do setor de @Model.Pedido.Setor</span>
+                                }
+                            </div>
+                            <div style="margin-top:10px"><b>Dia da entrega:</b>  @Model.Pedido.DataDeEntrega</div>
+                            <div><b>Horário:</b> entre @Model.Pedido.HoraDeEntrega e @horarioDaentrega </div>
+                             
+                        </div>
+                    </div>
+
+                    <div class=" col-md-4">
+                        <div class="ticketDetail detail_ticket">
+                            <h3 class="ticketDetail_titulo">
+                                Endereço da entrega
+
+                            </h3>
+                            <div>
+                            @{
+                                     @if (!string.IsNullOrEmpty(Model.Pedido.NomeDaEmpresa))
+                            {
+                                        <span>Empresa: @Model.Pedido.NomeDaEmpresa, </span>
+                                 }
+
+                            }
+
+                                  @Model.Pedido.RuaRecebedor, @Model.Pedido.NumeroCasaRecebedor - @Model.Pedido.BairroRecebedor
+                            </div>
+                            <div>
+                                <b>Ponto de referência:</b>
+                                @if (!string.IsNullOrEmpty(Model.Pedido.PontoDeReferencia))
+                                {
+                                    @Model.Pedido.PontoDeReferencia
+                                }
+                            </div>
+                        </div>
+                    </div>
+                    @if (!string.IsNullOrEmpty(Model.Pedido.Cartinha) || !string.IsNullOrEmpty(Model.Pedido.Observacoes))
+                    {
+
+                        <div class=" col-md-4">
+                            <div class="ticketDetail detail_ticket">
+                                <h3 class="ticketDetail_titulo">
+                                    Informações complementáres
+                                </h3>
+                                @if (!string.IsNullOrEmpty(Model.Pedido.Cartinha))
+                                {
+                                    <div><b>De:</b> @Model.Pedido.QuemEstaEnviando  </div>
+
+                                    <div>
+                                        <b>Para:</b> @Model.Pedido.NomeRecebedor
+                                    </div>
+
+                                    <div><b>Cartinha:</b> @Model.Pedido.Cartinha</div>
+                                }
+                                @if (!string.IsNullOrEmpty(Model.Pedido.Observacoes))
+                                {
+
+                                    <div style="margin-top:10px;"><b>Obs:</b> @Model.Pedido.Observacoes </div>
+                                }
+
+                            </div>
+                        </div>
+                    }
+                </div>
+
+                <div class="ticketRip">
+                    <div class="circleLeft"></div>
+                    <div class="ripLine"></div>
+                    <div class="circleRight"></div>
+                </div>
+                <div class="ticketSubDetail">
+                    <div class="code">LO-2024A-@Model.Pedido.PedidoId</div>
+                    <div class="date"> @Model.Pedido.PedidoEnviado</div>
+                </div>
+            </div>
+            <div class="ticketShadow"></div>
+        </div>
+    </div>
+ 
+</section>
+
+<div class="container d-none">
+    <div class="row">
+        <div class="col-12">
+            <div class="form-group" style="text-align :center">
+                <h3>
+                    <a class="nav-link text-info " asp-controller="Home" asp-action="Index">Retornar</a>
+                </h3>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+
+     <script>
+        function scrollToElement(elementId) {
+            var targetElement = document.getElementById(elementId);
+
+            if (targetElement) {
+                var targetPosition = targetElement.offsetTop;
+                var startPosition = window.pageYOffset;
+                var distance = targetPosition - startPosition;
+                var startTime;
+                var duration = 800; // Tempo em milissegundos
+
+                function animation(currentTime) {
+                    if (startTime === undefined) {
+                        startTime = currentTime;
+                    }
+
+                    var timeElapsed = currentTime - startTime;
+                    var progress = Math.min(timeElapsed / duration, 1);
+                    var easing = function (t) {
+                        return t < 0.5 ? 2 * t * t : -1 + (4 - 2 * t) * t;
+                    };
+
+                    window.scrollTo(0, startPosition + distance * easing(progress));
+
+                    if (timeElapsed < duration) {
+                        requestAnimationFrame(animation);
+                    }
+                }
+
+                requestAnimationFrame(animation);
+            }
+        }
+</script>

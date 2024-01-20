@@ -15,8 +15,20 @@
                 string ProdutoAqui = "";
                 foreach (var item in @Model.PedidoItens)
                 {
+                    //tem que tipar
+                    string nomeCurtoCategoria = "";
+                    foreach (var produto in @ViewBag.ProdutosCheckout)
+                    {
+                        if (item.Produto.ProdutoId == produto.ProdutoId)
+                        {
+                            if (!string.IsNullOrEmpty(produto.Categoria.NomeCurto))
+                            {
+                                nomeCurtoCategoria = produto.Categoria.NomeCurto;
+                            }
+                        }
 
-                    string itemConcatenado = $"{item.Quantidade} {item.Produto.Nome} de R%24 {item.Produto.PrecoPromocional}%0A";
+                    }
+                    string itemConcatenado = $"{item.Quantidade} {nomeCurtoCategoria} {item.Produto.Nome} de R%24 {(item.Produto.PrecoPromocional * item.Quantidade)}%0A";
 
                     // Adicionar a string concatenada à variável QuantidadeItemAqui
                     ProdutoAqui += itemConcatenado.Replace(" ", "+") + "+";
@@ -49,8 +61,10 @@
                 string BairroAqui = @Model.BairroRecebedor.Replace(" ", "+");
                 string RuaAqui = @Model.RuaRecebedor.Replace(" ", "+");
                 string NumeroDoImovelAqui = @Model.NumeroCasaRecebedor.Replace(" ", "+");
-                string PontoDeReferenciaAqui = @Model.PontoDeReferencia.Replace(" ", "+");
-
+                string PontoDeReferenciaAqui = "";
+                if (!string.IsNullOrEmpty(@Model.Setor)){
+                  PontoDeReferenciaAqui = @Model.PontoDeReferencia.Replace(" ", "+");
+                }
                 string NomeRecebedorAqui = "";
                 if (!string.IsNullOrEmpty(@Model.Setor))
                 {
@@ -108,18 +122,35 @@
                                             <th>Preço</th>
                                         </tr>
                                         
-                                        
-                                        @foreach (var item in Model.PedidoItens)
-                                        {
+                                        @{
+                                            string nomeCurtoCatego = "";
+                                            foreach (var item in Model.PedidoItens)
+                                            {
+                                            //tem que tipar
+                                                foreach (var produto in @ViewBag.ProdutosCheckout)
+                                                {
+                                                    if (item.Produto.ProdutoId == produto.ProdutoId)
+                                                    {
+                                                       
+                                                            nomeCurtoCatego = produto.Categoria.NomeCurto;
+                                                        
+                                                    }
+                                                
+                                            }
                                             <tr>
                                                 
                                                 <td><img src="@item.Produto.ImagemUrl" width="40" height="40" /></td>
                                                 <td>@item.Quantidade</td>
-                                                <td> @item.Produto.Categoria.CategoriaId @item.Produto.Nome</td>
-                                                <td>@item.Produto.PrecoPromocional</td>
+                                                    <td>
+                                                        @if (!string.IsNullOrEmpty(nomeCurtoCatego))
+                                                        {@nomeCurtoCatego<span>&nbsp;</span>
+                                                        } @item.Produto.Nome
+                                                </td>
+                                                    <td>@(item.Produto.PrecoPromocional * @item.Quantidade)</td>
                                                
                                                 
                                             </tr>
+                                        }
                                         }
                                         <tr>
                                             <td></td>
@@ -279,14 +310,14 @@
         <div class="row">
             <div class="col-12">
 
-    <a target="_blank" href="https://api.whatsapp.com/send?phone=+55+5575991702469&text=Olá%2C+meu+nome+é+@NomeComprador😁%0Ae+eu+encomendei+o+pedido+de+número%3A+@IdPedidoAqui%0A%0A%2ACom+os+itens%2A%0A+@ProdutoAqui%0A%0A%2AImportante+informar+que%2A%0AÉ+de+@QuemEstaEnviandoAqui%2C+%0APara+@NomeRecebedorAqui.%0AE+é+para+entregar+@DiaDaEntregaAqui+entre+@HorarioInicalAqui+e+@HorarioLimiteAqui%0A%0A%2AO+endereço+de+entrega+é%2A%0A+@NomeDaEmpresa+Na+cidade+de+Feira+de+Santana%2C+no+bairro+@BairroAqui%2C+na+rua+@RuaAqui%2C+o+nº+do+imóvel+é+@NumeroDoImovelAqui.%0APonto+de+referência%3A+@PontoDeReferenciaAqui%0A%0A%2AAdicione+uma+carta+escrita%2A%0ADe%3A+@QuemEstaEnviandoAqui%0APara%3A+@NomeRecebedorAqui%0ATexto+@CartinhaAqui%0A%0A%2AObservações%3A%2A%0A+@ObservacaoAqui" class="btn bt_avancar pt-10 pb-10 pr-40 pl-40 mt-10 mr-auto ml-auto d-block mb-30" style=" max-width: 480px; ">Confirmar via Whatsapp</a>
-    </div>
+                <a target="_blank" href="https://api.whatsapp.com/send?phone=+55+5575991702469&text=Olá%2C+meu+nome+é+@NomeComprador😁%0Ae+eu+encomendei+o+pedido+de+número%3A+@IdPedidoAqui%0A%0A%2ACom+os+itens%2A%0A+@ProdutoAqui%0A%0A%2AImportante+informar+que%2A%0AÉ+de+@QuemEstaEnviandoAqui%2C+%0APara+@NomeRecebedorAqui.%0AE+é+para+entregar+@DiaDaEntregaAqui+entre+@HorarioInicalAqui+e+@HorarioLimiteAqui%0A%0A%2AO+endereço+de+entrega+é%2A%0A+@NomeDaEmpresa+Na+cidade+de+Feira+de+Santana%2C+no+bairro+@BairroAqui%2C+na+rua+@RuaAqui%2C+o+nº+do+imóvel+é+@NumeroDoImovelAqui.%0APonto+de+referência%3A+@PontoDeReferenciaAqui%0A%0A%2AAdicione+uma+carta+escrita%2A%0ADe%3A+@QuemEstaEnviandoAqui%0APara%3A+@NomeRecebedorAqui%0ATexto+@CartinhaAqui%0A%0A%2AObservações%3A%2A%0A+@ObservacaoAqui" class="btn bt_avancar pt-10 pb-10 pr-40 pl-40 mt-10 mr-auto ml-auto d-block mb-30" style=" max-width: 480px; ">Confirmar via Whatsapp</a>
+            </div>
         </div>
 
     </div>
 </section>
 
-<div class="container">
+<div class="container d-none">
     <div class="row">
         <div class="col-12">
             <div class="form-group" style="text-align :center">

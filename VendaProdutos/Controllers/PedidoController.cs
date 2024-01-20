@@ -9,12 +9,16 @@ namespace VendaProdutos.Controllers
     {
         private readonly IPedidoRepository _pedidoRepository;
         private readonly CarrinhoCompra _carrinhoCompra;
+        private readonly IProdutoRepository _produtoRepository;
+
 
         public PedidoController(IPedidoRepository pedidoRepository, 
-            CarrinhoCompra carrinhoCompra)
+            CarrinhoCompra carrinhoCompra,
+            IProdutoRepository produtoRepository)
         {
             _pedidoRepository = pedidoRepository;
             _carrinhoCompra = carrinhoCompra;
+            _produtoRepository = produtoRepository;
         }
 
         [HttpGet]
@@ -38,8 +42,10 @@ namespace VendaProdutos.Controllers
             List<CarrinhoCompraItem> items = _carrinhoCompra.GetCarrinhoCompraItens();
             _carrinhoCompra.CarrinhoCompraItens = items;
 
+             ViewBag.ProdutosCheckout = _produtoRepository.Produtos;
+
             //verifica se existem itens de pedido
-            if(_carrinhoCompra.CarrinhoCompraItens.Count == 0)
+            if (_carrinhoCompra.CarrinhoCompraItens.Count == 0)
             {
                 ModelState.AddModelError("", "Seu carrinho está vazio, adicione um produto...");
             }

@@ -10,85 +10,148 @@
 
 <h4>Categoria</h4>
 <hr />
-<div class="row">
-    <div class="col-md-4">
+            <div class="row"></div>
+
+    <div class="col-12">
+                    <img style="max-width:200px" src="@Html.DisplayFor(model => model.ImagemDestaque)" />
+    </div>
+            <div class="row">
+                <div class="col-md-12">
+                </div>
+            </div>
+
         <form asp-action="Edit">
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
-            <input type="hidden" asp-for="CategoriaId" />
-            <div class="form-group">
+                        <input type="hidden" asp-for="CategoriaId" />
+                        <div class="row">
+            <div class="form-group col-md-6">
                 <label asp-for="CategoriaNome" class="control-label"></label>
-                <input asp-for="CategoriaNome" class="form-control" />
+                            <input asp-for="CategoriaNome" class="form-control" id="entrada1" oninput="calcularContador('entrada1', 4, 50)" />
+                            <p id="resultado1"></p>
                 <span asp-validation-for="CategoriaNome" class="text-danger"></span>
             </div>
-                        <div class="form-group">
+
+                    <div class="form-group col-md-6">
                             <label asp-for="NomeCurto" class="control-label"></label>
-                            <input asp-for="NomeCurto" class="form-control" />
+                            <input asp-for="NomeCurto" class="form-control" id="entrada2" oninput="calcularContador('entrada2', 3, 10)" />
+                            <p id="resultado2"></p>
                             <span asp-validation-for="NomeCurto" class="text-danger"></span>
                         </div>
-            <div class="form-group">
+
+                    <div class="form-group col-md-6 d-none">
+                            <label asp-for="CategoriaNome" class="control-label"></label>
+                            <input asp-for="CategoriaNome" class="form-control" id="entrada3" oninput="calcularContador('entrada3', 3, 30)" />
+                            <p id="resultado3"></p>
+                            <span asp-validation-for="CategoriaNome" class="text-danger"></span>
+                        </div>
+                    <div class="form-group col-md-6">
                 <label asp-for="Descricao" class="control-label"></label>
-                <input asp-for="Descricao" class="form-control" />
+                            <input asp-for="Descricao" class="form-control" id="entrada4" oninput="calcularContador('entrada4', 25, 100)" />
+                <p id="resultado4"></p>
                 <span asp-validation-for="Descricao" class="text-danger"></span>
             </div>
-            <div class="form-group">
+                    <div class="form-group col-md-6">
                 <label asp-for="ImagemDestaque" class="control-label"></label>
-                <input asp-for="ImagemDestaque" class="form-control" />
+                            <input asp-for="ImagemDestaque" class="form-control" id="entrada5" oninput="calcularContador('entrada5', 30, 100)" />
+                            <p id="resultado5"></p>
                 <span asp-validation-for="ImagemDestaque" class="text-danger"></span>
             </div>
-            <div class="form-group">
+                    <div class="form-group col-md-6">
                 <label asp-for="DescricaoTagAlt" class="control-label"></label>
-                <input asp-for="DescricaoTagAlt" class="form-control" />
+                            <input asp-for="DescricaoTagAlt" class="form-control" id="entrada6" oninput="calcularContador('entrada6', 25, 100)" />
+                            <p id="resultado6"></p>
                 <span asp-validation-for="DescricaoTagAlt" class="text-danger"></span>
             </div>
-            <div class="form-group">
+                    <div class="form-group col-md-12">
                 <label asp-for="PostSuperior" class="control-label"></label>
-                            <textarea id="tiny" asp-for="PostSuperior" class="form-control" ></textarea>
+                            <textarea id="tiny" asp-for="PostSuperior" class="form-control" id="entrada7" ></textarea>
+                            <p id="resultado7"></p>
                 <span asp-validation-for="PostSuperior" class="text-danger"></span>
             </div>
-            <div class="form-group">
+                    <div class="form-group  col-md-12">
                 <label asp-for="PostInferior" class="control-label"></label>
-                            <textarea id="tiny" asp-for="PostInferior" class="form-control" ></textarea>
+                            <textarea id="tiny" asp-for="PostInferior" class="form-control" id="entrada8"></textarea>
+                            <p id="resultado8"></p>
                 <span asp-validation-for="PostInferior" class="text-danger"></span>
             </div>
-            <div class="form-group">
+                    <div class="form-group  col-md-6">
                 <label asp-for="MetaDescricao" class="control-label"></label>
-                <input asp-for="MetaDescricao" class="form-control" />
+                            <input asp-for="MetaDescricao" class="form-control" id="entrada9" oninput="calcularContador('entrada9', 120, 160)" />
+                            <p id="resultado9"></p>
                 <span asp-validation-for="MetaDescricao" class="text-danger"></span>
             </div>
-            <div class="form-group">
+                    <div class="form-group  col-md-6">
                 <label asp-for="MetaImage" class="control-label"></label>
-                <input asp-for="MetaImage" class="form-control" />
+                            <input asp-for="MetaImage" class="form-control" id="entrada10" oninput="calcularContador('entrada10', 30, 100)" />
+                            <p id="resultado10"></p>
                 <span asp-validation-for="MetaImage" class="text-danger"></span>
             </div>
-            <div class="form-group">
+                    <div class="form-group  col-md-6">
                 <label asp-for="MetaTitle" class="control-label"></label>
-                <input asp-for="MetaTitle" class="form-control" />
+                        <input asp-for="MetaTitle" class="form-control" id="entrada11" oninput="calcularContador('entrada11', 50, 80)" />
+                            <p id="resultado11"></p>
                 <span asp-validation-for="MetaTitle" class="text-danger"></span>
             </div>
-            <div class="form-group">
+                    <div class="form-group  col-md-6">
                 <label asp-for="UrlAmigavel" class="control-label"></label>
-                <input asp-for="UrlAmigavel" class="form-control" />
+                            <input asp-for="UrlAmigavel" class="form-control" id="entrada12" oninput="calcularContador('entrada12', 3, 100)" />
+                            <p id="resultado12"></p>
                 <span asp-validation-for="UrlAmigavel" class="text-danger"></span>
             </div>
 
-                        <div class="form-group form-check">
+                    <div class="form-group form-check  col-md-6">
                             <label class="form-check-label">
                                 <input class="form-check-input" asp-for="EsconderCategoria" /> @Html.DisplayNameFor(model => model.EsconderCategoria)
                             </label>
                         </div>
 
-            <div class="form-group">
+                    <div class="form-group  col-md-12">
                 <input type="submit" value="Save" class="btn btn-primary" />
             </div>
+        </div>
         </form>
-    </div>
-</div>
 
 <div>
-    <a asp-action="Index">Back to List</a>
-</div>
+                <a asp-action="Index">Voltar a listagem</a>
+            </div>
 
 
         </div>
     </div>
 </div>
+
+
+
+
+
+
+
+ 
+
+
+
+<script>
+    function contarCaracteres(entrada) {
+        return entrada.length;
+    }
+
+    function calcularContador(idEntrada, minimo, maximo) {
+        var entrada = document.getElementById(idEntrada).value;
+        var contador = contarCaracteres(entrada);
+        // Extrair apenas os dígitos do ID
+        var idNumerico = idEntrada.match(/\d+/)[0];
+        var resultadoElement = document.getElementById("resultado" + idNumerico);
+
+        resultadoElement.innerHTML = "A entrada tem " + contador + " caracteres.<br>";
+
+        if (contador < minimo) {
+            resultadoElement.style.color = "red";
+            resultadoElement.innerHTML += "(Fora da quantidade mínima de caracteres!)";
+        } else if (contador > maximo) {
+            resultadoElement.style.color = "red";
+            resultadoElement.innerHTML += "(Quantidade máxima de caracteres excedida!)";
+        } else {
+            resultadoElement.style.color = "black";
+        }
+    }
+</script>

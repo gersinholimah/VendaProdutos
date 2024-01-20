@@ -19,7 +19,7 @@ namespace VendaProdutos.Models
         [Display(Name = "Descrição da categoria")]
         public string Descricao { get; set; }
 
-        [StringLength(100, MinimumLength = 4, ErrorMessage = "O tamanho máximo é 100 e o minimo é 4 caracteres")]
+        [StringLength(1000, MinimumLength = 30, ErrorMessage = "O tamanho máximo é 100 e o minimo é 4 caracteres")]
         [Required(ErrorMessage = "Informe a url da Imagem de destaque da categoria Corretamente")]
         [Display(Name = "Url da Imagem da categoria")]
         public string ImagemDestaque { get; set; }
@@ -45,7 +45,7 @@ namespace VendaProdutos.Models
         [Display(Name = "tag de descricao da categoria")]
         public string MetaDescricao { get; set; }
 
-        [StringLength(100, MinimumLength = 30, ErrorMessage = "O tamanho máximo é 100 caracteres")]
+        [StringLength(1000, MinimumLength = 30, ErrorMessage = "O tamanho máximo é 100 caracteres")]
         [Required(ErrorMessage = "Informe a url da Imagem para a tag de SEO da categoria Corretamente")]
         [Display(Name = "Url da tag de Imagem da categoria")]
         public string MetaImage { get; set; }

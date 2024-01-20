@@ -15,38 +15,38 @@ namespace VendaProdutos.Models
 
         public string Sku { get; set; }
 
-        [Required(ErrorMessage = "Informe a Altura do Produto corretamente")]
+        //[Required(ErrorMessage = "Informe a Altura do Produto corretamente")]
         [Display(Name = "Altura do Produto")]
         [Column(TypeName = "decimal(10,2)")]
         [Range(1, 999.99, ErrorMessage = "A {0} deve estar entre 1 e 9999.99")]
 
         public decimal Altura { get; set; }
 
-        [Required(ErrorMessage = "Informe a Largura do Produto corretamente")]
+        //[Required(ErrorMessage = "Informe a Largura do Produto corretamente")]
         [Display(Name = "Largura do Produto")]
         [Column(TypeName = "decimal(10,2)")]
         [Range(1, 999.99, ErrorMessage = "A {0} deve estar entre 1 e 9999.99")]
         public decimal Largura { get; set; }
 
-        [Required(ErrorMessage = "Informe a Profundidade do Produto corretamente")]
+        //[Required(ErrorMessage = "Informe a Profundidade do Produto corretamente")]
         [Display(Name = "Profundidade do Produto")]
         [Column(TypeName = "decimal(10,2)")]
         [Range(1, 999.99, ErrorMessage = "A {0} deve estar entre 1 e 9999.99")]
         public decimal Profundidade { get; set; }
 
-        [Required(ErrorMessage = "Informe o Comprimento do Produto corretamente")]
+        //[Required(ErrorMessage = "Informe o Comprimento do Produto corretamente")]
         [Display(Name = "Comprimento do Produto")]
         [Column(TypeName = "decimal(10,2)")]
         [Range(1, 999.99, ErrorMessage = "A {0} deve estar entre 1 e 9999.99")]
         public decimal Comprimento { get; set; }
 
-        [Required(ErrorMessage = "Informe o Peso do Produto corretamente")]
+        //[Required(ErrorMessage = "Informe o Peso do Produto corretamente")]
         [Display(Name = "Peso do Produto")]
         [Column(TypeName = "decimal(10,2)")]
         [Range(1, 999.99, ErrorMessage = "A {0} deve estar entre 1 e 9999.99")]
         public decimal Peso { get; set; }
 
-        [Required(ErrorMessage = "Informe as Imagens do Produto corretamente")]
+        //[Required(ErrorMessage = "Informe as Imagens do Produto corretamente")]
         [Display(Name = "Imagens do Produto")]
         [StringLength(100, MinimumLength = 25, ErrorMessage = "A {0} deve ter no máximo {1} e no mínimo {2} caracteres")]
         public string GaleriaImagemURL { get; set; }
@@ -64,7 +64,7 @@ namespace VendaProdutos.Models
         public string Imagem4CarolselURL { get; set; }
 
         [StringLength(100, MinimumLength = 25, ErrorMessage = "A {0} deve ter no máximo {1} e no mínimo {2} caracteres")]
-        [Required(ErrorMessage = " Para acessibilidade descreva a imagem Corretamente")]
+        //[Required(ErrorMessage = " Para acessibilidade descreva a imagem Corretamente")]
         [Display(Name = "Descrição da imagem do produto")]
         public string DescricaoImgTagAlt { get; set; }
 
@@ -120,7 +120,7 @@ namespace VendaProdutos.Models
 
         [Required(ErrorMessage = "Informe a Url Amigavel do Produto corretamente")]
         [Display(Name = "Url Amigavel do Produto")]
-        [StringLength(100, MinimumLength = 50, ErrorMessage = "A {0} deve ter no máximo {1} e no mínimo {2} caracteres")]
+        [StringLength(100, MinimumLength = 10, ErrorMessage = "A {0} deve ter no máximo {1} e no mínimo {2} caracteres")]
         public string UrlAmigavel { get; set; }
 
         [Required(ErrorMessage = "Informe a Url da principal imagem do Produto corretamente")]

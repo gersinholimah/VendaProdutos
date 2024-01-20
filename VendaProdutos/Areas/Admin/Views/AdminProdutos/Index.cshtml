@@ -17,6 +17,7 @@
                        value="@Model.RouteValue["nomeFilter"]" />
                 <input name="categoriaFilter" class="form-control" placeholder="Categoria"
                        value="@Model.RouteValue["categoriaFilter"]" />
+                
 
     <button type="submit" class="btn btn-info"> Procurar</button>
 </form>
@@ -29,14 +30,14 @@ Total de produtos : @Model.TotalRecordCount
 <p>
     <a asp-action="Create">Create New</a>
 </p>
-<table class="table">
+            <table class="table table-hover">
     <thead>
         <tr>
             <th>
                
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.Nome)
+                 @Html.DisplayNameFor(model => model.Nome)
             </th>
                
             <th>
@@ -50,15 +51,15 @@ Total de produtos : @Model.TotalRecordCount
             <th></th>
         </tr>
     </thead>
-    <tbody>
+                <tbody>
 @foreach (var item in Model) {
         <tr>
                 <td>
-                                <img class="image-fluid" src="@Html.DisplayFor(modelItem => item.ImagemUrl)" />
+                                <img class="image-fluid" style="max-width:50px;" src="@Html.DisplayFor(modelItem => item.ImagemUrl)" />
                             </td>
             
             <td>
-                @Html.DisplayFor(modelItem => item.Nome)
+                                @Html.DisplayFor(modelItem => item.Categoria.NomeCurto) @Html.DisplayFor(modelItem => item.Nome)
             </td> 
             <td>
                 @Html.DisplayFor(modelItem => item.Preco)

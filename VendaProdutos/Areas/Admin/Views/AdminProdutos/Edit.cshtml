@@ -3,187 +3,272 @@
 @{
     ViewData["Title"] = "Edit";
 }
-<div class="container">
+<div class="container form_admin">
     <div class="row">
         <div class="col-12">
 <h1>Edit</h1>
 
 <h4>Produto</h4>
+           <div>
+                <a asp-action="Index">Voltar para listagem</a>
+            </div>
 <hr />
-<div class="row">
-    <div class="col-md-4">
+
+<div class="col-12">
+                <img style="max-width:200px" src="@Html.DisplayFor(model => model.ImagemUrl)" />
+ </div>
+
         <form asp-action="Edit">
+
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
             <input type="hidden" asp-for="ProdutoId" />
-            <div class="form-group">
+            <div class="row">
+                       <div class="form-group col-4 col-md-4  col-lg-2  ">
                 <label asp-for="Sku" class="control-label"></label>
-                <input asp-for="Sku" class="form-control" />
+                        <input asp-for="Sku" class="form-control" id="entrada1" oninput="calcularContador('entrada1', 4, 10)" />
+                        <p id="resultado1"></p>
+
                 <span asp-validation-for="Sku" class="text-danger"></span>
             </div>
-            <div class="form-group">
-                <label asp-for="Altura" class="control-label"></label>
-                <input asp-for="Altura" class="form-control" />
+                    @* DESATIVADO *@
+
+                   
+                    <div class="form-group col-4 col-md-4  col-lg-2  d-none">
+                        <label asp-for="Altura" class="control-label"></label>
+                        <input asp-for="Altura" class="form-control" id="entrada2" oninput="calcularContador('entrada2', 1, 100)" />
+                        <p id="resultado2"></p>
+
                 <span asp-validation-for="Altura" class="text-danger"></span>
             </div>
-            <div class="form-group">
+                    @* DESATIVADO *@
+
+                    <div class="form-group col-4 col-md-4  col-lg-2  d-none">
                 <label asp-for="Largura" class="control-label"></label>
-                <input asp-for="Largura" class="form-control" />
+                        <input asp-for="Largura" class="form-control" id="entrada3" oninput="calcularContador('entrada3', 1, 100)" />
+                        <p id="resultado3"></p>
+
                 <span asp-validation-for="Largura" class="text-danger"></span>
             </div>
-            <div class="form-group">
+                    @* DESATIVADO *@
+
+                    <div class="form-group  col-4 col-md-4  col-lg-2  d-none">
                 <label asp-for="Profundidade" class="control-label"></label>
-                <input asp-for="Profundidade" class="form-control" />
+                        <input asp-for="Profundidade" class="form-control" id="entrada4" oninput="calcularContador('entrada4', 1, 100)" />
+                        <p id="resultado4"></p>
+
                 <span asp-validation-for="Profundidade" class="text-danger"></span>
             </div>
-            <div class="form-group">
+                    @* DESATIVADO *@
+
+                    <div class="form-group  col-4 col-md-4 col-lg-2  d-none">
                 <label asp-for="Comprimento" class="control-label"></label>
-                <input asp-for="Comprimento" class="form-control" />
+                        <input asp-for="Comprimento" class="form-control" id="entrada5" oninput="calcularContador('entrada5', 1, 100)" />
+                        <p id="resultado5"></p>
+
                 <span asp-validation-for="Comprimento" class="text-danger"></span>
             </div>
-            <div class="form-group">
+                    @* DESATIVADO *@
+
+                    <div class="form-group  col-4 col-md-4 col-lg-2  d-none">
                 <label asp-for="Peso" class="control-label"></label>
-                <input asp-for="Peso" class="form-control" />
+                        <input asp-for="Peso" class="form-control" id="entrada6" oninput="calcularContador('entrada6', 1, 100)" />
+                        <p id="resultado6"></p>
+
                 <span asp-validation-for="Peso" class="text-danger"></span>
             </div>
-            <div class="form-group">
+                    @* DESATIVADO *@
+
+                    <div class="form-group col-6  d-none">
                 <label asp-for="GaleriaImagemURL" class="control-label"></label>
-                <input asp-for="GaleriaImagemURL" class="form-control" />
+                        <input asp-for="GaleriaImagemURL" class="form-control" id="entrada7" oninput="calcularContador('entrada7', 3, 10)" />
+                        <p id="resultad7"></p>
+
                 <span asp-validation-for="GaleriaImagemURL" class="text-danger"></span>
-            </div>
-            <div class="form-group">
+                    </div>
+
+                    
+                   
+                    <div class="form-group  col-12">
+                        <label asp-for="Nome" class="control-label"></label>
+                        <input asp-for="Nome" class="form-control" id="entrada8" oninput="calcularContador('entrada8', 4, 69)" />
+                        <p id="resultado8"></p>
+                        <span asp-validation-for="Nome" class="text-danger"></span>
+                    </div>
+                    <div class="form-group col-4 col-md-4 col-lg-3">
+                        <label asp-for="PrecoPromocional" class="control-label"></label>
+                        <input asp-for="PrecoPromocional" class="form-control" id="entrada9" oninput="calcularContador('entrada9', 3, 6)" />
+                        <p id="resultado9"></p>
+                        <span asp-validation-for="PrecoPromocional" class="text-danger"></span>
+                    </div>
+                    <div class="form-group  col-4 col-md-4 col-lg-3">
+                        <label asp-for="Preco" class="control-label"></label>
+                        <input asp-for="Preco" class="form-control" id="entrada10" oninput="calcularContador('entrada10', 4, 6)" />
+                        <p id="resultado10"></p>
+                        <span asp-validation-for="Preco" class="text-danger"></span>
+                    </div>
+                    <div class="form-group  col-4 col-md-4 col-lg-3">
+                        <label asp-for="Parcela" class="control-label"></label>
+                        <input asp-for="Parcela" class="form-control" id="entrada11" oninput="calcularContador('entrada11', 1, 2)" />
+                        <p id="resultado11"></p>
+                        <span asp-validation-for="Parcela" class="text-danger"></span>
+                    </div>
+                    <div class="form-group  col-4 col-md-4 col-lg-3">
+                        <label asp-for="TaxaDeEntrega" class="control-label"></label>
+                        <input asp-for="TaxaDeEntrega" class="form-control" id="entrada12" oninput="calcularContador('entrada12', 1, 6)" />
+                        <p id="resultado12"></p>
+                        <span asp-validation-for="TaxaDeEntrega" class="text-danger"></span>
+                    </div>
+                    <div class="col-12">
+                        <h3>Imagens</h3>
+
+                    </div>
+
+                    <div class="form-group  col-6">
+                        <label asp-for="ImagemThumbnailUrl" class="control-label"></label>
+                        <input asp-for="ImagemThumbnailUrl" class="form-control" id="entrada13" oninput="calcularContador('entrada13', 30, 99)" />
+                        <p id="resultado13"></p>
+                        <span asp-validation-for="ImagemThumbnailUrl" class="text-danger"></span>
+                    </div>
+                    <div class="form-group  col-6">
+                        <label asp-for="ImagemUrl" class="control-label"></label>
+                        <input asp-for="ImagemUrl" class="form-control" id="entrada14" oninput="calcularContador('entrada14', 30, 99)" />
+                        <p id="resultado14"></p>
+                        <span asp-validation-for="ImagemUrl" class="text-danger"></span>
+                    </div>
+
+                    <div class="form-group  col-6">
                 <label asp-for="Imagem2CarolselURL" class="control-label"></label>
-                <input asp-for="Imagem2CarolselURL" class="form-control" />
+                        <input asp-for="Imagem2CarolselURL" class="form-control" id="entrada15" oninput="calcularContador('entrada15', 30, 99)" />
+                        <p id="resultado15"></p>
                 <span asp-validation-for="Imagem2CarolselURL" class="text-danger"></span>
             </div>
-            <div class="form-group">
+                    <div class="form-group  col-6">
                 <label asp-for="Imagem3CarolselURL" class="control-label"></label>
-                <input asp-for="Imagem3CarolselURL" class="form-control" />
+                        <input asp-for="Imagem3CarolselURL" class="form-control" id="entrada16" oninput="calcularContador('entrada16', 30, 99)" />
+                        <p id="resultado16"></p>
                 <span asp-validation-for="Imagem3CarolselURL" class="text-danger"></span>
             </div>
-            <div class="form-group">
+                    <div class="form-group  col-6">
                 <label asp-for="Imagem4CarolselURL" class="control-label"></label>
-                <input asp-for="Imagem4CarolselURL" class="form-control" />
+                        <input asp-for="Imagem4CarolselURL" class="form-control" id="entrada17" oninput="calcularContador('entrada17', 30, 99)" />
+                        <p id="resultado17"></p>
                 <span asp-validation-for="Imagem4CarolselURL" class="text-danger"></span>
             </div>
-            <div class="form-group">
+
+                  
+
+                    <div class="form-group  col-6">
                 <label asp-for="DescricaoImgTagAlt" class="control-label"></label>
-                <input asp-for="DescricaoImgTagAlt" class="form-control" />
+                        <input asp-for="DescricaoImgTagAlt" class="form-control" id="entrada18" oninput="calcularContador('entrada18', 25, 99)" />
+                        <p id="resultado18"></p>
                 <span asp-validation-for="DescricaoImgTagAlt" class="text-danger"></span>
             </div>
-            <div class="form-group">
-                <label asp-for="Nome" class="control-label"></label>
-                <input asp-for="Nome" class="form-control" />
-                <span asp-validation-for="Nome" class="text-danger"></span>
-            </div>
-            <div class="form-group">
+              
+                    <div class="form-group  col-12">
                 <label asp-for="DescricaoCurta" class="control-label"></label>
-                <input asp-for="DescricaoCurta" class="form-control" />
+                        <input asp-for="DescricaoCurta" class="form-control" id="entrada19" oninput="calcularContador('entrada19', 200, 299)" />
+                        <p id="resultado19"></p>
                 <span asp-validation-for="DescricaoCurta" class="text-danger"></span>
             </div>
-            <div class="form-group">
+                    <div class="col-12">
+                        <h3>Texto para SEO</h3>
+                    </div>
+
+                    <div class="form-group col-12">
                 <label asp-for="DescricaoDetalhada" class="control-label"></label>
-                <input asp-for="DescricaoDetalhada" class="form-control" />
+                        <textarea id="tiny" asp-for="DescricaoDetalhada" class="form-control" id="entrada20" oninput="calcularContador('entrada20', 500, 100000)"></textarea>
+                        <p id="resultado20"></p>
                 <span asp-validation-for="DescricaoDetalhada" class="text-danger"></span>
             </div>
-            <div class="form-group">
+                    <div class="form-group  col-12">
                 <label asp-for="PostInferior" class="control-label"></label>
-                <input asp-for="PostInferior" class="form-control" />
+                        <textarea id="tiny" asp-for="PostInferior" class="form-control" id="entrada21" oninput="calcularContador('entrada21', 500, 100000)"></textarea>
+                        <p id="resultado21"></p>
                 <span asp-validation-for="PostInferior" class="text-danger"></span>
             </div>
-            <div class="form-group">
-                <label asp-for="PrecoPromocional" class="control-label"></label>
-                <input asp-for="PrecoPromocional" class="form-control" />
-                <span asp-validation-for="PrecoPromocional" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="Preco" class="control-label"></label>
-                <input asp-for="Preco" class="form-control" />
-                <span asp-validation-for="Preco" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="Parcela" class="control-label"></label>
-                <input asp-for="Parcela" class="form-control" />
-                <span asp-validation-for="Parcela" class="text-danger"></span>
-            </div>
-            <div class="form-group">
+                    <div class="col-12">
+                        <h3>Meta Tag</h3>
+                    </div>
+
+                    <div class="form-group  col-6">
+
                 <label asp-for="MetaDescricao" class="control-label"></label>
-                <input asp-for="MetaDescricao" class="form-control" />
+                        <input asp-for="MetaDescricao" class="form-control" id="entrada22" oninput="calcularContador('entrada22', 120, 159)" />
+                        <p id="resultado22"></p>
                 <span asp-validation-for="MetaDescricao" class="text-danger"></span>
             </div>
-            <div class="form-group">
-                <label asp-for="MetaImage" class="control-label"></label>
-                <input asp-for="MetaImage" class="form-control" />
-                <span asp-validation-for="MetaImage" class="text-danger"></span>
-            </div>
-            <div class="form-group">
+            
+                    <div class="form-group  col-6">
                 <label asp-for="MetaTitle" class="control-label"></label>
-                <input asp-for="MetaTitle" class="form-control" />
+                        <input asp-for="MetaTitle" class="form-control" id="entrada23" oninput="calcularContador('entrada23', 50, 79)" />
+                        <p id="resultado23"></p>
                 <span asp-validation-for="MetaTitle" class="text-danger"></span>
             </div>
-            <div class="form-group">
+                    <div class="form-group   col-6">
+                        <label asp-for="MetaImage" class="control-label"></label>
+                        <input asp-for="MetaImage" class="form-control" id="entrada24" oninput="calcularContador('entrada24', 30, 99)" />
+                        <p id="resultado24"></p>
+                        <span asp-validation-for="MetaImage" class="text-danger"></span>
+                    </div>
+                    <div class="form-group  col-6">
                 <label asp-for="UrlAmigavel" class="control-label"></label>
-                <input asp-for="UrlAmigavel" class="form-control" />
+                        <input asp-for="UrlAmigavel" class="form-control" id="entrada25" oninput="calcularContador('entrada25', 10, 99)" />
+                        <p id="resultado25"></p>
                 <span asp-validation-for="UrlAmigavel" class="text-danger"></span>
             </div>
-            <div class="form-group">
-                <label asp-for="ImagemUrl" class="control-label"></label>
-                <input asp-for="ImagemUrl" class="form-control" />
-                <span asp-validation-for="ImagemUrl" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="ImagemThumbnailUrl" class="control-label"></label>
-                <input asp-for="ImagemThumbnailUrl" class="form-control" />
-                <span asp-validation-for="ImagemThumbnailUrl" class="text-danger"></span>
-            </div>
-            <div class="form-group form-check">
+              
+                   
+                    
+
+                    <div class="form-group col-6">
+                        <label asp-for="QuantidadeDeItem" class="control-label"></label>
+                        <input asp-for="QuantidadeDeItem" class="form-control" id="entrada26" oninput="calcularContador('entrada26', 1, 2)" />
+                        <p id="resultado26"></p>
+                        <span asp-validation-for="QuantidadeDeItem" class="text-danger"></span>
+                    </div>
+                    <div class="form-group col-6">
+                        <label asp-for="CategoriaId" class="control-label"></label>
+                        <select asp-for="CategoriaId" class="form-control" asp-items="ViewBag.CategoriaId"></select>
+                        <span asp-validation-for="CategoriaId" class="text-danger"></span>
+                    </div>
+
+                    <div class="form-group form-check col-12">
                 <label class="form-check-label">
                     <input class="form-check-input" asp-for="IsProdutoEmAlta" /> @Html.DisplayNameFor(model => model.IsProdutoEmAlta)
                 </label>
             </div>
-            <div class="form-group form-check">
+                    <div class="form-group form-check col-12">
                 <label class="form-check-label">
                     <input class="form-check-input" asp-for="Esgotado" /> @Html.DisplayNameFor(model => model.Esgotado)
                 </label>
             </div>
-            <div class="form-group">
-                <label asp-for="TaxaDeEntrega" class="control-label"></label>
-                <input asp-for="TaxaDeEntrega" class="form-control" />
-                <span asp-validation-for="TaxaDeEntrega" class="text-danger"></span>
-            </div>
-            <div class="form-group form-check">
+
+                    <div class="form-group form-check col-12">
                 <label class="form-check-label">
                     <input class="form-check-input" asp-for="SobEncomenda" /> @Html.DisplayNameFor(model => model.SobEncomenda)
                 </label>
             </div>
 
-                        <div class="form-group form-check">
+
+                    <div class="form-group form-check col-12">
                             <label class="form-check-label">
                                 <input class="form-check-input" asp-for="OpcaoExtra" /> @Html.DisplayNameFor(model => model.OpcaoExtra)
                             </label>
                         </div>
 
-                        <div class="form-group form-check">
+                    <div class="form-group form-check col-12">
                             <label class="form-check-label">
                                 <input class="form-check-input" asp-for="NaoVenderIndividualmente" /> @Html.DisplayNameFor(model => model.NaoVenderIndividualmente)
                             </label>
                         </div>
 
-            <div class="form-group">
-                <label asp-for="QuantidadeDeItem" class="control-label"></label>
-                <input asp-for="QuantidadeDeItem" class="form-control" />
-                <span asp-validation-for="QuantidadeDeItem" class="text-danger"></span>
+           
+            <div class="form-group col-12">
+                <input type="submit" value="SALVAR" class="btn btn-primary btn-lg" />
             </div>
-            <div class="form-group">
-                <label asp-for="CategoriaId" class="control-label"></label>
-                <select asp-for="CategoriaId" class="form-control" asp-items="ViewBag.CategoriaId"></select>
-                <span asp-validation-for="CategoriaId" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <input type="submit" value="Save" class="btn btn-primary" />
-            </div>
+        </div>
         </form>
-    </div>
-</div>
+
 
 <div>
     <a asp-action="Index">Back to List</a>
@@ -192,3 +277,34 @@
         </div>
     </div>
 </div>
+
+
+
+
+
+
+<script>
+    function contarCaracteres(entrada) {
+        return entrada.length;
+    }
+
+    function calcularContador(idEntrada, minimo, maximo) {
+        var entrada = document.getElementById(idEntrada).value;
+        var contador = contarCaracteres(entrada);
+        // Extrair apenas os dígitos do ID
+        var idNumerico = idEntrada.match(/\d+/)[0];
+        var resultadoElement = document.getElementById("resultado" + idNumerico);
+
+        resultadoElement.innerHTML = "A entrada tem " + contador + " caracteres.<br>";
+
+        if (contador < minimo) {
+            resultadoElement.style.color = "red";
+            resultadoElement.innerHTML += "(Fora da quantidade mínima de caracteres!)";
+        } else if (contador > maximo) {
+            resultadoElement.style.color = "red";
+            resultadoElement.innerHTML += "(Quantidade máxima de caracteres excedida!)";
+        } else {
+            resultadoElement.style.color = "black";
+        }
+    }
+</script>

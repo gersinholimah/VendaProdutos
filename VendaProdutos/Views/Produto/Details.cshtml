@@ -236,8 +236,26 @@
 
 
 
+@{
+    bool exibeProdutosRelacionados = false;
+    @foreach (var categoria in Model.Categorias){
+        @if (categoria.CategoriaId == @Model.Produto.Categoria.CategoriaId)
+        {
 
-<section class="detalhes_produto ">
+            @foreach (var produto in categoria.Produtos)
+            {
+                @if (produto.ProdutoId != @Model.Produto.ProdutoId)
+                {
+                    exibeProdutosRelacionados = true;
+                }
+
+    }
+        }
+    }
+}
+
+@if(exibeProdutosRelacionados){
+    <section class="detalhes_produto produtos categorias">
     <div class="container">
         <div class="row">
             <div class="col-12">
@@ -268,7 +286,7 @@
                     </div>
     </div>
 </section>
-
+}
 
 
 
