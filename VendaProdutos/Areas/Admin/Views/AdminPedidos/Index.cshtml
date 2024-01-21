@@ -23,16 +23,20 @@
                 <input name="whatsappFilter" class="form-control" placeholder="Whatsapp Comprador" value="@Model.RouteValue["whatsappFilter"]" />
                 <input name="recebedorFilter" class="form-control" placeholder="Recebedor" value="@Model.RouteValue["recebedorFilter"]" />
                 <input name="dataEntregaFilter" class="form-control" id="datePicker" placeholder="Data de entrega" value="@Model.RouteValue["dataEntregaFilter"]" autocomplete="off" />
+                <input name="produtoFilter" class="form-control" placeholder="Produto" value="@Model.RouteValue["produtoFilter"]" />
 
-                <select input name="horaEntregaFilter" id="selectHours" class="form-control">
+                
+               @{
+    var selectedOption = Model.RouteValue["horaEntregaFilter"];
+}
 
-                    @foreach (var option in (List<SelectListItem>)ViewData["HorasOptions"]){
-
-                        <option value="@option.Value" selected="@option.Text">@option.Text</option>
-                        }
-
+                <select name="horaEntregaFilter" id="selectHours" class="form-control horaEntregaFilterSelect">
+                    @foreach (var option in (List<SelectListItem>)ViewData["HorasOptions"])
+                    {
+                        <option value="@option.Value">@option.Text</option>
+                    }
                 </select>
-              
+                  
 
                 <div class="form-group">
                     <label for="pagamentoEfetuadoFilter" class="mr-2">Status de Pagamento:</label>
@@ -43,22 +47,57 @@
                         }
                     </select>
                 </div>
+
+                <div class="form-group col-6">
+                    <label class="control-label"></label>
+                    <select name="categoriaFilter" class="form-control categoriaFilterSelect">
+                        <option value="">Todas</option>
+                        @foreach (var option in ViewBag.CategoriaOptions)
+                        {
+                            <option value="@option.Value">@option.Text</option>
+                        }
+
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label for="pagamentoNaEntregaFilter" class="mr-2">Optou por pagar na entrega:</label>
+                    <select name="pagamentoNaEntregaFilter" class="form-control">
+                        @foreach (var option in (List<SelectListItem>)ViewData["PagamentoNaEntrega"])
+                        {
+                            <option value="@option.Value" selected="@option.Selected">@option.Text</option>
+                        }
+                    </select>
+                </div>
+
+                <div class="form-group">
+                    <label for="pedidoEntregueFilter" class="mr-2">Entregamos o pedido:</label>
+                    <select name="pedidoEntregueFilter" class="form-control pedidoEntregueFilterSelect">
+                        @foreach (var option in (List<SelectListItem>)ViewData["PedidoEntregue"])
+                        {
+                            <option value="@option.Value" selected="@option.Selected">@option.Text</option>
+                        }
+                    </select>
+                </div>
+                
  
 
     <button type="submit" class="btn btn-info">
         <span class="glyphicon glyphicon-search" aria-hidden="true"> Procurar </span>
     </button>
 </form>
+            <p>
+                <a asp-action="">Limpar</a>
+            </p>
 
 Total de Pedidos : @Model.TotalRecordCount
             @if (ViewBag.SomaPedidosPagos > 0)
             {
-            <p>Total em pedidos pagos: @ViewBag.SomaPedidosPagos</p>
+            <p>Total em pedidos pagos: R$ @ViewBag.SomaPedidosPagos</p>
 
 }
             @if (ViewBag.SomaPedidosNaoPagos > 0)
             {
-                <p>Total em pedidos não pagos: @ViewBag.SomaPedidosNaoPagos</p>
+                <p>Total em pedidos não pagos:  R$ @ViewBag.SomaPedidosNaoPagos</p>
             }
              
 
@@ -69,32 +108,33 @@ Total de Pedidos : @Model.TotalRecordCount
 
        
 <p>
-    <a asp-action="Create">Create New</a>
+    <a asp-action="Create">Novo Pedido</a>
 </p>
 
+         
             <div style="
     padding: 21px 0;
 ">
                 <span class="mr-3">
                     <svg width="15px" xmlns="http://www.w3.org/2000/svg" fill="#ff8100" viewBox="0 0 512 512"><!--!Font Awesome Free 6.5.1 by  https://fontawesome.com License - https://fontawesome.com/license/free Copyright 2024 Fonticons, Inc.--><path d="M256 512A256 256 0 1 0 256 0a256 256 0 1 0 0 512z" /></svg>
-                  Amarelo Entregar 
+                   Entregar 
                 </span>
                 <span class="mr-3">
                     <svg width="15px" xmlns="http://www.w3.org/2000/svg" fill="#f00" viewBox="0 0 512 512"><!--!Font Awesome Free 6.5.1 by  https://fontawesome.com License - https://fontawesome.com/license/free Copyright 2024 Fonticons, Inc.--><path d="M256 512A256 256 0 1 0 256 0a256 256 0 1 0 0 512z" /></svg>
-                    Vermelho Atrasou
+                     Atrasou
                 </span>
                 <span class="mr-3">
                     <svg width="15px" xmlns="http://www.w3.org/2000/svg" fill="#d800ff" viewBox="0 0 512 512"><!--!Font Awesome Free 6.5.1 by  https://fontawesome.com License - https://fontawesome.com/license/free Copyright 2024 Fonticons, Inc.--><path d="M256 512A256 256 0 1 0 256 0a256 256 0 1 0 0 512z" /></svg>
-                    Roza Cobrar
+                     Cobrar
                 </span>
                
                 <span class="mr-3">
                     <svg width="15px" xmlns="http://www.w3.org/2000/svg" fill="#007bff" viewBox="0 0 512 512"><!--!Font Awesome Free 6.5.1 by  https://fontawesome.com License - https://fontawesome.com/license/free Copyright 2024 Fonticons, Inc.--><path d="M256 512A256 256 0 1 0 256 0a256 256 0 1 0 0 512z" /></svg>
-                    Azul Aguardando entrega
+                     Entrega Futura 
                 </span>
                 <span class="mr-3">
                     <svg width="15px" xmlns="http://www.w3.org/2000/svg" fill="#28a745" viewBox="0 0 512 512"><!--!Font Awesome Free 6.5.1 by  https://fontawesome.com License - https://fontawesome.com/license/free Copyright 2024 Fonticons, Inc.--><path d="M256 512A256 256 0 1 0 256 0a256 256 0 1 0 0 512z" /></svg>
-                    Verde Entregou
+                     Entregou
                 </span>
               
 
@@ -187,19 +227,24 @@ Total de Pedidos : @Model.TotalRecordCount
 
                             <td style="
                                     @(item.EntregaPedido && item.PagamentoPedido ? "color:#28a745!important;" : "")
-                                        @(item.PagamentoPedido && !item.EntregaPedido && passouDiaDaEntrega ||
+                                          @(item.PagamentoPedido && !item.EntregaPedido && passouDiaDaEntrega ||
                                             item.PagamentoPedido && entregarHoje && passouDaHoraDaEntrega ||
-                                            item.PagamentoNaEntrega && !item.EntregaPedido && passouDiaDaEntrega ||
-                                            item.PagamentoNaEntrega && entregarHoje && passouDaHoraDaEntrega ? "color:#f00!important;" : "")
+                                         item.PagamentoNaEntrega && !item.EntregaPedido && passouDiaDaEntrega ||
+                                         item.PagamentoNaEntrega && entregarHoje && passouDaHoraDaEntrega ||
+                                       item.PagamentoParcial > 0 && entregarHoje && passouDaHoraDaEntrega ||
+                                       item.PagamentoParcial > 0 && !item.EntregaPedido && passouDiaDaEntrega ? "color:#f00!important;" : "")
  
-          @(item.PagamentoPedido && !item.EntregaPedido && !entregarHoje && !entregarAmanha && !passouDiaDaEntrega ||
-            item.PagamentoNaEntrega && !item.EntregaPedido && !entregarHoje && !entregarAmanha && !passouDiaDaEntrega  ? "color:#007bff!important;" : "")
+             @(item.PagamentoPedido && !item.EntregaPedido && !entregarHoje && !entregarAmanha && !passouDiaDaEntrega ||
+            item.PagamentoNaEntrega && !item.EntregaPedido && !entregarHoje && !entregarAmanha && !passouDiaDaEntrega || 
+          item.PagamentoParcial > 0 && !item.EntregaPedido && !entregarHoje && !entregarAmanha && !passouDiaDaEntrega ? "color:#007bff!important;" : "")
           
               @(item.PagamentoPedido && !item.EntregaPedido && entregarHoje && !passouDaHoraDaEntrega ||
                   item.PagamentoPedido && !item.EntregaPedido &&  entregarAmanha ||
                   item.PagamentoNaEntrega && !item.EntregaPedido && entregarHoje && !passouDaHoraDaEntrega || 
-                  item.PagamentoNaEntrega && !item.EntregaPedido &&  entregarAmanha ? "color:#ff8100!important;" : "")
-
+                  item.PagamentoNaEntrega && !item.EntregaPedido && entregarAmanha ||
+                item.PagamentoParcial > 0 && !item.EntregaPedido && entregarAmanha ||
+                item.PagamentoParcial > 0 && !item.EntregaPedido && entregarHoje && !passouDaHoraDaEntrega? "color:#ff8100!important;" : "")
+                   
               
 
                                 ">
@@ -208,7 +253,7 @@ Total de Pedidos : @Model.TotalRecordCount
                                             <div><b>Pedido Entregue</b></div>
  
                                 }
-                                 @if (!item.EntregaPedido && item.PagamentoPedido || !item.EntregaPedido && item.PagamentoNaEntrega)
+                                        @if (!item.EntregaPedido && item.PagamentoPedido || !item.EntregaPedido && item.PagamentoNaEntrega || !item.EntregaPedido && item.PagamentoParcial > 0)
 
                                 {
                                             if (passouDiaDaEntrega)
@@ -219,9 +264,24 @@ Total de Pedidos : @Model.TotalRecordCount
                                                 <div class=""><b>Aguardando Entrega</b></div>
                                               
                                             }
-                                            @if (item.PagamentoNaEntrega && !item.PagamentoPedido)
+                                            @if (item.PagamentoNaEntrega && !item.PagamentoPedido || item.PagamentoParcial > 0 && !item.PagamentoPedido)
                                             {
-                                                <span><b>Cobrar:</b>Na entrega </span>
+                                                
+                                                <span>
+                                                    <b>
+                                                        Cobrar: R$@if (item.PagamentoParcial > 0)
+                                                        {<span>@(item.TotalPedido - @item.PagamentoParcial)
+                                                                </span>}
+                                                        else
+                                                        {<span>@item.TotalPedido</span>
+
+                                                        }@if (item.PagamentoNaEntrega) { 
+                                                            <span>no ato da entrega</span>}
+                                                        else
+                                                        {<span>antes da entrega</span>}
+                                                    </b>
+                                                    
+                                                </span>
 
                                             }
                                         }
@@ -239,19 +299,28 @@ Total de Pedidos : @Model.TotalRecordCount
                                         <span>Antes da enterga</span>
 
                                     }
-                                    </div>
-                                }
-                                else
-                                {
-                                    if (item.EntregaPedido)
-                                    {
-                                                <div style="color:#d800ff;font-weight:bold;">Aguardando pagamento</div>
-                                    }
-                                    else {
-                                        if(!item.PagamentoNaEntrega){
-                                        <div class="">Não confirmado</div>
-                                       }
-                                    }
+                                            </div>
+                                        }
+                                        else
+                                        {
+                                            if (item.EntregaPedido)
+                                            {
+                                                <div style="color:#d800ff;font-weight:bold;">
+                                                Devendo R$@if (item.PagamentoParcial > 0) {
+                                                        @(item.TotalPedido - @item.PagamentoParcial)
+                                                    }
+                                                    else
+                                                    {
+                                                        @item.TotalPedido
+                                                    }
+                                                </div>
+                                            }
+                                            else {
+                                                if (!item.PagamentoNaEntrega && item.PagamentoParcial == 0)
+                                                {
+                                                     <div class="">Não confirmado</div>
+                                                }
+                                            }
 
                                 }
                                         @if (!item.PagamentoPedido && item.PagamentoNaEntrega && item.EntregaPedido)
@@ -407,3 +476,27 @@ Detalhes                </a>
         adicionarOpcaoInicial();
     });
 </script>
+
+@section scripts {
+    <script>
+        document.addEventListener("DOMContentLoaded", function () {
+            setSelectOption('.categoriaFilterSelect', "@Model.RouteValue["categoriaFilter"]");
+            setSelectOption('.horaEntregaFilterSelect', "@Model.RouteValue["horaEntregaFilter"]");
+            setSelectOption('.pedidoEntregueFilterSelect', "@Model.RouteValue["pedidoEntregueFilter"]");
+
+        });
+
+        function setSelectOption(selector, selectedValue) {
+            var selectElement = document.querySelector(selector);
+
+            if (selectElement) {
+                for (var i = 0; i < selectElement.options.length; i++) {
+                    if (selectElement.options[i].value === selectedValue) {
+                        selectElement.options[i].selected = true;
+                        break;
+                    }
+                }
+            }
+        }
+    </script>
+}

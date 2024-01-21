@@ -119,6 +119,14 @@
 
                         </div>
 
+                        <div class="col-sm-12 mb-3">
+                            <label asp-for="Complemento">Ponto de referência <span class="text-muted">(Opcional)</span></label>
+                            <input type="text" class="form-control" asp-for="Complemento" placeholder="É um condominio">
+                            
+                            <span asp-validation-for="Complemento" class="text-danger"></span>
+
+                        </div>
+                        
                 </div>
 
                 <div class="tab-content mt-2 ">
@@ -436,7 +444,7 @@
                 }
              }
 
-            const endHour = Math.min(18, 24);
+            const endHour = Math.min(19, 24);
 
             // Adiciona opções de horas em intervalos de 30 minutos com texto personalizado
             for (let hour = startHour; hour < endHour; hour++) {
@@ -469,10 +477,10 @@
 
             if (isDataSelecionadaIgualDataAtual(selectedDate)) {
                 // Adiciona a última opção se o horário atual for menor que 18h
-                if (currentHour < 18) {
-                    const lastOption = new Option(`Tarde 18h00 às 18h${(currentHour + 58) - 1}`, '18:00');
-                    selectHours.add(lastOption);
-                }
+                // if (currentHour < 18) {
+                //     const lastOption = new Option(`Tarde 18h00 às 18h59`, '18:00');
+                //     selectHours.add(lastOption);
+                // }
             }
         }
 

@@ -3,6 +3,7 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using VendaProdutos.Context;
 
@@ -11,9 +12,11 @@ using VendaProdutos.Context;
 namespace VendaProdutos.Migrations
 {
     [DbContext(typeof(AppDbContext))]
-    partial class AppDbContextModelSnapshot : ModelSnapshot
+    [Migration("20240120223508_VinteDeJaneiroDoisMilEVinteEQuatro")]
+    partial class VinteDeJaneiroDoisMilEVinteEQuatro
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -384,13 +387,13 @@ namespace VendaProdutos.Migrations
                         .HasColumnType("bit");
 
                     b.Property<decimal>("PagamentoParcial")
-                        .HasColumnType("decimal(10,2)");
+                        .HasColumnType("decimal(18,2)");
 
                     b.Property<bool>("PagamentoPedido")
                         .HasColumnType("bit");
 
-                    b.Property<string>("PedidoEntregueEm")
-                        .HasColumnType("nvarchar(max)");
+                    b.Property<DateTime?>("PedidoEntregueEm")
+                        .HasColumnType("datetime2");
 
                     b.Property<DateTime>("PedidoEnviado")
                         .HasColumnType("datetime2");

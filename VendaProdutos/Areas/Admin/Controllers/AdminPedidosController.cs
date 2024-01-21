@@ -76,7 +76,7 @@ namespace VendaProdutos.Areas.Admin.Controllers
 
 
 
-        public async Task<IActionResult> Index(string compradorFilter, string whatsappFilter, string recebedorFilter, string dataEntregaFilter, int? idPedidoFilter, bool? pagamentoEfetuadoFilter, string horaEntregaFilter, int pageindex = 1, string sort = "NomeComprador")
+        public async Task<IActionResult> Index(string compradorFilter, string whatsappFilter, string recebedorFilter, string dataEntregaFilter, int? idPedidoFilter, bool? pagamentoEfetuadoFilter, string horaEntregaFilter, string produtoFilter, int? categoriaFilter, bool? pagamentoNaEntregaFilter, bool? pedidoEntregueFilter, int pageindex = 1, string sort = "NomeComprador")
 {
     var resultado = _context.Pedidos.AsNoTracking().AsQueryable();
 
@@ -87,8 +87,22 @@ var pagamentoOptions = new List<SelectListItem>
     new SelectListItem { Text = "Não pagou", Value = "False", Selected = pagamentoEfetuadoFilter == false }
 };
 
-            var horasOptions = new List<SelectListItem>
+            var pagamentoNaEntrega = new List<SelectListItem>
 {
+    new SelectListItem { Text = "Todos", Value = "", Selected = !pagamentoNaEntregaFilter.HasValue },
+    new SelectListItem { Text = "Optou", Value = "True", Selected = pagamentoNaEntregaFilter == true },
+    new SelectListItem { Text = "Não optou", Value = "False", Selected = pagamentoNaEntregaFilter == false }
+};
+            var pedidoEntregue = new List<SelectListItem>
+{
+    new SelectListItem { Text = "Todos", Value = "", Selected = !pedidoEntregueFilter.HasValue },
+    new SelectListItem { Text = "Entregamos", Value = "True", Selected = pedidoEntregueFilter == true },
+    new SelectListItem { Text = "Não entregamos", Value = "False", Selected = pedidoEntregueFilter == false }
+};
+            
+                        var horasOptions = new List<SelectListItem>
+{
+                 new SelectListItem { Value = "", Text = "Todos os horários"},
  new SelectListItem { Value = "06:00", Text = "Manhã, 06h00 às 06h59"},
  new SelectListItem { Value = "07:00", Text = "Manhã, 07h00 às 07h59"},
  new SelectListItem { Value = "08:00", Text = "Manhã, 08h00 às 08h59"},
@@ -101,31 +115,7 @@ var pagamentoOptions = new List<SelectListItem>
  new SelectListItem { Value = "15:00", Text = "Tarde, 15h00 às 15h59"},
  new SelectListItem { Value = "16:00", Text = "Tarde, 16h00 às 16h59"},
  new SelectListItem { Value = "17:00", Text = "Tarde, 17h00 às 17h59"},
- new SelectListItem { Value = "06:00", Text = "Manhã, 06h00 às 06h59"},
- new SelectListItem { Value = "07:00", Text = "Manhã, 07h00 às 07h59"},
- new SelectListItem { Value = "08:00", Text = "Manhã, 08h00 às 08h59"},
- new SelectListItem { Value = "09:00", Text = "Manhã, 09h00 às 09h59"},
- new SelectListItem { Value = "10:00", Text = "Manhã, 10h00 às 10h59"},
- new SelectListItem { Value = "11:00", Text = "Manhã, 11h00 às 11h59"},
- new SelectListItem { Value = "12:00", Text = "Manhã, 12h00 às 12h59"},
- new SelectListItem { Value = "13:00", Text = "Tarde, 13h00 às 13h59"},
- new SelectListItem { Value = "14:00", Text = "Tarde, 14h00 às 14h59"},
- new SelectListItem { Value = "15:00", Text = "Tarde, 15h00 às 15h59"},
- new SelectListItem { Value = "16:00", Text = "Tarde, 16h00 às 16h59"},
- new SelectListItem { Value = "17:00", Text = "Tarde, 17h00 às 17h59"},
- new SelectListItem { Value = "06:00", Text = "Manhã, 06h00 às 06h59"},
- new SelectListItem { Value = "07:00", Text = "Manhã, 07h00 às 07h59"},
- new SelectListItem { Value = "08:00", Text = "Manhã, 08h00 às 08h59"},
- new SelectListItem { Value = "09:00", Text = "Manhã, 09h00 às 09h59"},
- new SelectListItem { Value = "10:00", Text = "Manhã, 10h00 às 10h59"},
- new SelectListItem { Value = "11:00", Text = "Manhã, 11h00 às 11h59"},
- new SelectListItem { Value = "12:00", Text = "Manhã, 12h00 às 12h59"},
- new SelectListItem { Value = "13:00", Text = "Tarde, 13h00 às 13h59"},
- new SelectListItem { Value = "14:00", Text = "Tarde, 14h00 às 14h59"},
- new SelectListItem { Value = "15:00", Text = "Tarde, 15h00 às 15h59"},
- new SelectListItem { Value = "16:00", Text = "Tarde, 16h00 às 16h59"},
- new SelectListItem { Value = "17:00", Text = "Tarde, 17h00 às 17h59"},
-                      new SelectListItem { Value = "", Text = "Todos os horários"}
+  new SelectListItem { Value = "18:00", Text = "Tarde, 18h00 às 18h59"},
 
 }; 
 
@@ -134,7 +124,10 @@ var pagamentoOptions = new List<SelectListItem>
             ViewData["PagamentoOptions"] = pagamentoOptions;
             // Passar a lista para a view
             ViewData["HorasOptions"] = horasOptions;
+            ViewData["PagamentoNaEntrega"] = pagamentoNaEntrega;
+            ViewData["PedidoEntregue"] = pedidoEntregue;
 
+ 
             if (!string.IsNullOrWhiteSpace(compradorFilter))
     {
         resultado = resultado.Where(p => p.NomeComprador.Contains(compradorFilter));
@@ -168,10 +161,23 @@ var pagamentoOptions = new List<SelectListItem>
             if (!string.IsNullOrWhiteSpace(horaEntregaFilter))
             {
                 resultado = resultado.Where(p => p.HoraDeEntrega.Contains(horaEntregaFilter));
-
-
             }
-
+            if (!string.IsNullOrWhiteSpace(produtoFilter))
+            {
+                resultado = resultado.Where(p => p.PedidoItens.Any(pi => pi.Produto.Nome.Contains(produtoFilter)));
+            }
+            if (categoriaFilter.HasValue)
+            {
+                resultado = resultado.Where(p => p.PedidoItens.Any(pi => pi.Produto.CategoriaId == categoriaFilter.Value));
+            }
+            if (pagamentoNaEntregaFilter.HasValue)
+            {
+                resultado = resultado.Where(p => p.PagamentoNaEntrega == pagamentoNaEntregaFilter.Value);
+            }
+            if (pedidoEntregueFilter.HasValue)
+            {
+                resultado = resultado.Where(p => p.EntregaPedido == pedidoEntregueFilter.Value);
+            }
 
 
 
@@ -193,8 +199,13 @@ var pagamentoOptions = new List<SelectListItem>
 
             ViewBag.SomaPedidosPagos = somaPagos;
             ViewBag.SomaPedidosNaoPagos = somaNaoPagos;
-
-
+            ViewBag.CategoriaOptions = _context.Categorias
+                .Select(c => new SelectListItem
+                {
+                    Value = c.CategoriaId.ToString(),
+                    Text = c.CategoriaNome
+                })
+                .ToList();
 
             var model = await PagingList.CreateAsync(resultado, 10, pageindex, sort, "DataDeEntrega");
 
@@ -207,10 +218,20 @@ var pagamentoOptions = new List<SelectListItem>
         {"dataEntregaFilter", dataEntregaFilter},
        {"pagamentoEfetuadoFilter",pagamentoEfetuadoFilter },
         {"idPedidoFilter", idPedidoFilter},
-                        {"horaEntregaFilter", horaEntregaFilter}
+{"horaEntregaFilter", horaEntregaFilter},
+{"produtoFilter", produtoFilter},
+{"categoriaFilter", categoriaFilter},
+                {"pagamentoNaEntregaFilter", pagamentoNaEntregaFilter},
+                                {"pedidoEntregueFilter", pedidoEntregueFilter}
 
-                
+
+
+
+
+
     };
+
+
 
     return View(model);
 }
@@ -245,7 +266,7 @@ var pagamentoOptions = new List<SelectListItem>
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("PedidoId,NomeComprador,WhatsappComprador,NomeRecebedor,BairroRecebedor,RuaRecebedor,QuemEstaEnviando,NumeroCasaRecebedor,NomeDaEmpresa,Setor,PontoDeReferencia,WhatsappRecebedor,DataDeEntrega,HoraDeEntrega,TelefoneCompradorDiferenteDoCadastro,Observacoes,Cartinha,ComprovanteDePagamento,PedidoEnviado,PedidoEntregueEm,PagamentoPedido,PagamentoNaEntrega,EntregaPedido")] Pedido pedido)
+        public async Task<IActionResult> Create([Bind("PedidoId,NomeComprador,WhatsappComprador,NomeRecebedor,BairroRecebedor,RuaRecebedor,QuemEstaEnviando,NumeroCasaRecebedor,NomeDaEmpresa,Setor,PontoDeReferencia,WhatsappRecebedor,DataDeEntrega,HoraDeEntrega,TelefoneCompradorDiferenteDoCadastro,Observacoes,Cartinha,ComprovanteDePagamento,PedidoEnviado,PedidoEntregueEm,PagamentoPedido,PagamentoNaEntrega,EntregaPedido,PagamentoParcial,ComprovanteSegundoPagamento,Complemento")] Pedido pedido)
         {
             if (ModelState.IsValid)
             {
@@ -277,7 +298,8 @@ var pagamentoOptions = new List<SelectListItem>
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("PedidoId,NomeComprador,WhatsappComprador,NomeRecebedor,BairroRecebedor,RuaRecebedor,QuemEstaEnviando,NumeroCasaRecebedor,NomeDaEmpresa,Setor,PontoDeReferencia,WhatsappRecebedor,DataDeEntrega,HoraDeEntrega,TelefoneCompradorDiferenteDoCadastro,Observacoes,Cartinha,ComprovanteDePagamento,PedidoEnviado,PedidoEntregueEm,PagamentoPedido,PagamentoNaEntrega,EntregaPedido,PagamentoParcial,ComprovanteSegundoPagamento,Complemento")] Pedido pedido)
+        public async Task<IActionResult> Edit(int id, [Bind(
+"PedidoId,NomeComprador,WhatsappComprador,NomeRecebedor,BairroRecebedor,RuaRecebedor,QuemEstaEnviando,NumeroCasaRecebedor,NomeDaEmpresa,Setor,PontoDeReferencia,Complemento,WhatsappRecebedor,DataDeEntrega,HoraDeEntrega,TelefoneCompradorDiferenteDoCadastro,Observacoes,Cartinha,ComprovanteDePagamento,ComprovanteSegundoPagamento,TotalPedido,PagamentoParcial,TotalItensPedido,PedidoEnviado,PedidoEntregueEm,PagamentoPedido,PagamentoNaEntrega,EntregaPedido,PedidoItens")] Pedido pedido)
         {
             if (id != pedido.PedidoId)
             {

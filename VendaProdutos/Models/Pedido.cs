@@ -55,6 +55,10 @@ namespace VendaProdutos.Models
         [Display(Name = "Ponto de Referencia")]
         public string PontoDeReferencia { get; set; }
 
+        [StringLength(100)]
+        [Display(Name = "Complemento do endereço")]
+        public string Complemento { get; set; }
+
         [Required(ErrorMessage = "Informe o Whatsapp do Recebedor")]
         [StringLength(25)]
         [DataType(DataType.PhoneNumber)]
@@ -98,18 +102,26 @@ namespace VendaProdutos.Models
         public string Observacoes { get; set; }
 
         [StringLength(450)]
-        [Display(Name = "Complemento do Recebedor")]
+        [Display(Name = "Cartinha")]
         public string Cartinha { get; set; }
 
 
-        [StringLength(450)]
+        [StringLength(500)]
         [Display(Name = "Comprovante de Pagamento")]
         public string ComprovanteDePagamento { get; set; }
+
+        [StringLength(500)]
+        [Display(Name = "Comprovante segundo Pagamento")]
+        public string ComprovanteSegundoPagamento { get; set; }
 
         [Column(TypeName = "decimal(18,2)")]
         [Display(Name = "Total do Pedido")]
         public decimal TotalPedido { get; set; }
 
+        [Column(TypeName = "decimal(10,2)")]
+        [Display(Name = "Pagou apenas")]
+
+        public decimal PagamentoParcial { get; set; }
 
 
         [Display(Name = "Itens no Pedido")]
@@ -122,9 +134,7 @@ namespace VendaProdutos.Models
         public DateTime PedidoEnviado { get; set; }
 
         [Display(Name = "Data Envio Pedido")]
-        [DataType(DataType.Text)]
-        [DisplayFormat(DataFormatString = "{0: dd/MM/yyyy hh:mm}", ApplyFormatInEditMode = true)]
-        public DateTime? PedidoEntregueEm { get; set; }
+        public string PedidoEntregueEm { get; set; }
 
 
 
