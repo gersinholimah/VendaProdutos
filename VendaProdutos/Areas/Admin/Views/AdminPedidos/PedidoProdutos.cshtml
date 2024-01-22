@@ -99,6 +99,11 @@
                 if (!string.IsNullOrEmpty(@Model.Pedido.NomeDaEmpresa)){
                   PontoDeReferenciaAqui =  @Model.Pedido.PontoDeReferencia.Replace(" ", "+");
                 }
+                string ComplementoAqui = "";
+                if (!string.IsNullOrEmpty(@Model.Pedido.Complemento))
+                {
+                    ComplementoAqui = @Model.Pedido.Complemento.Replace(" ", "+");
+                }
                 string NomeRecebedorAqui = "";
                 if (!string.IsNullOrEmpty(@Model.Pedido.Setor))
                 {
@@ -121,7 +126,7 @@
                     ObservacaoAqui = @Model.Pedido.Observacoes.Replace(" ", "+");
                 }
             }
-            <a target="_blank" href="https://api.whatsapp.com/send?phone=+55+5575991702469&text=Olá%2C+@NomeComprador+sou atendente+na+Pradois+😁%0Ae+recebemos+aqui+a+sua+solicitação+do+pedido+de+número%3A+@IdPedidoAqui%0A%0A%2ACom+os+itens%2A%0A+@ProdutoAqui%0A%0A%2AInformando+que%2A%0AÉ+de+@QuemEstaEnviandoAqui%2C+%0APara+@NomeRecebedorAqui.%0AE+é+que+é+para+entregar+@DiaDaEntregaAqui+entre+@HorarioInicalAqui+e+@HorarioLimiteAqui%0A%0A%2AO+endereço+de+entrega+é%2A%0A+@NomeDaEmpresa+Aqui+em+Feira+de+Santana%2C+no+bairro+@BairroAqui%2C+na+rua+@RuaAqui%2C+o+nº+do+imóvel+é+@NumeroDoImovelAqui.%0APonto+de+referência%3A+@PontoDeReferenciaAqui%0A%0A%2APediu+também+para+Adicionar+um+texto+escrito%2A%0ADe%3A+@QuemEstaEnviandoAqui%0APara%3A+@NomeRecebedorAqui%0ACom+o+texto%3A%2A%0A+@CartinhaAqui%0A%0A%2AE+fez+uma+observação+que+%3A%2A%0A+@ObservacaoAqui" class="btn bt_avancar pt-10 pb-10 pr-40 pl-40 mt-10 mr-auto ml-auto d-block mb-30" style=" max-width: 480px; ">Confirmar via Whatsapp</a>
+            <a target="_blank" href="https://api.whatsapp.com/send?phone=+55+5575991702469&text=Olá%2C+@NomeComprador+sou atendente+na+Pradois+😁%0Ae+recebemos+aqui+a+sua+solicitação+do+pedido+de+número%3A+@IdPedidoAqui%0A%0A%2ACom+os+itens%2A%0A+@ProdutoAqui%0A%0A%2AInformando+que%2A%0AÉ+de+@QuemEstaEnviandoAqui%2C+%0APara+@NomeRecebedorAqui.%0AE+é+que+é+para+entregar+@DiaDaEntregaAqui+entre+@HorarioInicalAqui+e+@HorarioLimiteAqui%0A%0A%2AO+endereço+de+entrega+é%2A%0A+@NomeDaEmpresa+Aqui+em+Feira+de+Santana%2C+no+bairro+@BairroAqui%2C+na+rua+@RuaAqui%2C+o+nº+do+imóvel+é+@NumeroDoImovelAqui.%0AComplemento%3A+@ComplementoAqui.%0APonto+de+referência%3A+@PontoDeReferenciaAqui%0A%0A%2APediu+também+para+Adicionar+um+texto+escrito%2A%0ADe%3A+@QuemEstaEnviandoAqui%0APara%3A+@NomeRecebedorAqui%0ACom+o+texto%3A%2A%0A+@CartinhaAqui%0A%0A%2AE+fez+uma+observação+que+%3A%2A%0A+@ObservacaoAqui" class="btn bt_avancar pt-10 pb-10 pr-40 pl-40 mt-10 mr-auto ml-auto d-block mb-30" style=" max-width: 480px; ">Confirmar via Whatsapp</a>
         </div>
     </div>
 </div>

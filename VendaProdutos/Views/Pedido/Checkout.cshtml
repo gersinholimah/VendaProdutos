@@ -12,6 +12,16 @@
 
 
 
+ 
+
+
+
+
+
+
+
+
+
 
 
 @if (ViewBag.CarrinhoItens != null) { 
@@ -120,8 +130,8 @@
                         </div>
 
                         <div class="col-sm-12 mb-3">
-                            <label asp-for="Complemento">Ponto de referência <span class="text-muted">(Opcional)</span></label>
-                            <input type="text" class="form-control" asp-for="Complemento" placeholder="É um condominio">
+                            <label asp-for="Complemento">Complemento do endereço <span class="text-muted">(Opcional)</span></label>
+                            <input type="text" class="form-control" asp-for="Complemento" placeholder="Condominio, hospital, prédio">
                             
                             <span asp-validation-for="Complemento" class="text-danger"></span>
 
@@ -521,11 +531,11 @@
                 limparOpcoesSelect();
                 if (selectedDates.length > 0) {
                     listaHoraDoDiaAtual(selectedDates[0]);
+                    horariosEsgotados()
                 } else {
                     adicionarOpcaoInicial();
                 }
-               
-            }
+             }
         });
 
         flatpickr("#timePicker", {
@@ -565,3 +575,95 @@
         });
     });
 </script>
+
+
+ 
+
+ 
+<script>
+    function horariosEsgotados() {
+    var entregasPorData = @Html.Raw(Newtonsoft.Json.JsonConvert.SerializeObject(ViewBag.EntregasPorData));
+        const dataSelecionada = document.getElementById("datePicker").value;;
+
+    // Exemplo de acesso aos dados
+    for (var data in entregasPorData) {
+        var horasRepetidas = contarHorasRepetidas(entregasPorData[data]);
+            if (data == dataSelecionada) { 
+        // Exibir alerta com as horas repetidas para cada data
+        if (horasRepetidas.length > 0) {
+            // alert("Data: " + data + "\nHoras Repetidas: " + horasRepetidas.join(", "));
+                    // document.getElementById("aviso").textContent = "lista de horas" + horasRepetidas;
+
+                    verificarHorasDoSelect(horasRepetidas)
+        }
+            }
+
+    }
+    }
+    // Função para contar horas que se repetem
+    function contarHorasRepetidas(horas) {
+        var contadorHoras = {};
+        var horasRepetidas = [];
+        var limiteDePedidosPorDia = "@ViewBag.limiteDePedidoPorHora"
+        // Conta as ocorrências de cada hora
+        for (var i = 0; i < horas.length; i++) {
+            var hora = horas[i];
+            contadorHoras[hora] = (contadorHoras[hora] || 0) + 1;
+        }
+
+        // Filtra as horas que se repetem mais de 1 vez
+        for (var hora in contadorHoras) {
+            if (contadorHoras[hora] > limiteDePedidosPorDia) {
+                // horasRepetidas.push(hora + " se repete " + contadorHoras[hora] + " vezes");
+                 horasRepetidas.push(hora);
+
+            }
+        }
+
+        return horasRepetidas;
+    }
+
+    function verificarHorasDoSelect(horasRepetidas) {
+        // Obtém o elemento select
+        var selectHoras = document.getElementById("selectHours");
+
+        // Salva o índice da opção selecionada
+        var indiceSelecionado = selectHoras.selectedIndex;
+
+        // Percorre as opções do select
+        for (var i = 0; i < selectHoras.options.length; i++) {
+            // Obtém o valor do atributo "value" da opção atual
+            var valorDaOpcao = selectHoras.options[i].value;
+
+            // Verifica se o valor da opção está presente nas horas repetidas
+            if (horasRepetidas.includes(valorDaOpcao)) {
+                // Substitui a palavra antes da vírgula pelo novo texto
+                selectHoras.options[i].text = "Esgotado" + selectHoras.options[i].text.substring(selectHoras.options[i].text.indexOf(','));
+
+                // Desativa a opção
+                selectHoras.options[i].disabled = true;
+            } else {
+                // Remove o texto "Esgotado" do label da opção, se existir
+                selectHoras.options[i].text = selectHoras.options[i].text.replace("Esgotado", "");
+
+                // Ativa a opção
+                selectHoras.options[i].disabled = false;
+            }
+        }
+
+        // Verifica se a opção selecionada inicialmente está desativada
+        if (selectHoras.options[indiceSelecionado].disabled) {
+            // Encontra a primeira opção válida e a seleciona
+            for (var i = 0; i < selectHoras.options.length; i++) {
+                if (!selectHoras.options[i].disabled) {
+                    selectHoras.options[i].selected = true;
+                    break;
+                }
+            }
+        }
+    }
+</script>
+
+
+
+ 

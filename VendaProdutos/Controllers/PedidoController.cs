@@ -1,5 +1,7 @@
 ﻿using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Mvc.Rendering;
+using VendaProdutos.Context;
 using VendaProdutos.Models;
 using VendaProdutos.Repositories.Interfaces;
 
@@ -10,15 +12,17 @@ namespace VendaProdutos.Controllers
         private readonly IPedidoRepository _pedidoRepository;
         private readonly CarrinhoCompra _carrinhoCompra;
         private readonly IProdutoRepository _produtoRepository;
+        private readonly AppDbContext _context;
 
 
         public PedidoController(IPedidoRepository pedidoRepository, 
             CarrinhoCompra carrinhoCompra,
-            IProdutoRepository produtoRepository)
+            IProdutoRepository produtoRepository, AppDbContext context)
         {
             _pedidoRepository = pedidoRepository;
             _carrinhoCompra = carrinhoCompra;
             _produtoRepository = produtoRepository;
+            _context = context;
         }
 
         [HttpGet]
@@ -28,6 +32,40 @@ namespace VendaProdutos.Controllers
 
             ViewBag.TotalPedido = _carrinhoCompra.GetCarrinhoCompraTotal();
              ViewBag.CarrinhoItens = items;
+
+
+
+
+
+
+          var  PedidosFeitos = _context.Pedidos.ToList();
+
+            Dictionary<string, List<string>> entregasPorData = new Dictionary<string, List<string>>();
+
+            foreach (var pedido in PedidosFeitos)
+            {
+                if (pedido.PagamentoParcial > 0 || pedido.PagamentoNaEntrega) { 
+                string dataEntrega = pedido.DataDeEntrega;
+                string horaEntrega = pedido.HoraDeEntrega;
+
+                // Verifica se a chave (dataEntrega) já existe no dicionário
+                if (entregasPorData.ContainsKey(dataEntrega))
+                {
+                    // Adiciona a horaEntrega ao array existente
+                    entregasPorData[dataEntrega].Add(horaEntrega);
+                }
+                else
+                {
+                    // Cria uma nova entrada no dicionário com a chave e um novo array contendo a horaEntrega
+                    entregasPorData[dataEntrega] = new List<string> { horaEntrega };
+                }
+                }
+            }
+
+            ViewBag.EntregasPorData = entregasPorData;
+            ViewBag.limiteDePedidoPorHora = 9;
+
+
 
             return View();
 
