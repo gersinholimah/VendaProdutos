@@ -138,13 +138,13 @@ namespace VendaProdutos.Models
 
 
 
-        [Display(Name = "Pagamento Pedido")]
+        [Display(Name = "Pedido pago")]
         public bool PagamentoPedido { get; set; }
 
-        [Display(Name = "Pagamento na Entrega")]
+        [Display(Name = "Pagamento na entrega")]
         public bool PagamentoNaEntrega { get; set; }
 
-        [Display(Name = "Pedido Eentregue")]
+        [Display(Name = "Pedido entregue")]
         public bool EntregaPedido { get; set; }
 
 

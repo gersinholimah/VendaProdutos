@@ -90,14 +90,14 @@ var pagamentoOptions = new List<SelectListItem>
             var pagamentoNaEntrega = new List<SelectListItem>
 {
     new SelectListItem { Text = "Todos", Value = "", Selected = !pagamentoNaEntregaFilter.HasValue },
-    new SelectListItem { Text = "Optou", Value = "True", Selected = pagamentoNaEntregaFilter == true },
-    new SelectListItem { Text = "Não optou", Value = "False", Selected = pagamentoNaEntregaFilter == false }
+    new SelectListItem { Text = "Pagar na entrega", Value = "True", Selected = pagamentoNaEntregaFilter == true },
+    new SelectListItem { Text = "Pagar antes", Value = "False", Selected = pagamentoNaEntregaFilter == false }
 };
             var pedidoEntregue = new List<SelectListItem>
 {
     new SelectListItem { Text = "Todos", Value = "", Selected = !pedidoEntregueFilter.HasValue },
     new SelectListItem { Text = "Entregamos", Value = "True", Selected = pedidoEntregueFilter == true },
-    new SelectListItem { Text = "Não entregamos", Value = "False", Selected = pedidoEntregueFilter == false }
+    new SelectListItem { Text = "Falta entregar", Value = "False", Selected = pedidoEntregueFilter == false }
 };
             
                         var horasOptions = new List<SelectListItem>

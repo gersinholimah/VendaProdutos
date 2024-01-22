@@ -27,7 +27,7 @@
 
 
 
-                <div class=" ">
+                <div class=" row ">
                     <div asp-validation-summary="ModelOnly" class="text-danger"></div>
                     <input type="hidden" asp-for="PedidoId" />
 
@@ -42,57 +42,57 @@
                     <div class="tab-pane fade show active" id="tab1">
                     </div>
                     <div class="tab-pane fade row" id="tab2">
-                        <div class="form-group col-md-4">
+                        <div class="form-group col-sm-4">
                             <label asp-for="NomeComprador" class="control-label"></label>
                             <input autocomplete="off" asp-for="NomeComprador" class="form-control" />
                             <span asp-validation-for="NomeComprador" class="text-danger"></span>
                         </div>
-                        <div class="form-group col-md-4">
+                        <div class="form-group col-sm-4">
                             <label asp-for="WhatsappComprador" class="control-label"></label>
                             <input autocomplete="off" asp-for="WhatsappComprador" class="form-control" />
                             <span asp-validation-for="WhatsappComprador" class="text-danger"></span>
                         </div>
-                        <div class="form-group col-md-4">
+                        <div class="form-group col-sm-4">
                             <label asp-for="TelefoneCompradorDiferenteDoCadastro" class="control-label">Whatsapp diferente do informado</label>
                             <input autocomplete="off" asp-for="TelefoneCompradorDiferenteDoCadastro" class="form-control" />
                             <span asp-validation-for="TelefoneCompradorDiferenteDoCadastro" class="text-danger"></span>
                         </div>
-                        <div class=" col-md-12">
+                        <div class=" col-sm-12">
                             <h4 class="mb-3">Endereço da entrega</h4>
                         </div>
 
-                        <div class="form-group col-md-4">
+                        <div class="form-group col-sm-4">
                             <label asp-for="BairroRecebedor" class="control-label"></label>
                             <input autocomplete="off" asp-for="BairroRecebedor" class="form-control" />
                             <span asp-validation-for="BairroRecebedor" class="text-danger"></span>
                         </div>
-                        <div class="form-group col-md-4">
+                        <div class="form-group col-sm-4">
                             <label asp-for="RuaRecebedor" class="control-label"></label>
                             <input autocomplete="off" asp-for="RuaRecebedor" class="form-control" />
                             <span asp-validation-for="RuaRecebedor" class="text-danger"></span>
                         </div>
-                        <div class="form-group col-md-4">
+                        <div class="form-group col-sm-4">
                             <label asp-for="NumeroCasaRecebedor" class="control-label"></label>
                             <input autocomplete="off" asp-for="NumeroCasaRecebedor" class="form-control" />
                             <span asp-validation-for="NumeroCasaRecebedor" class="text-danger"></span>
                         </div>
-                        <div class="form-group col-md-4">
+                        <div class="form-group col-sm-4">
                             <label asp-for="PontoDeReferencia" class="control-label"></label>
                             <input autocomplete="off" asp-for="PontoDeReferencia" class="form-control" />
                             <span asp-validation-for="PontoDeReferencia" class="text-danger"></span>
                         </div>
-                        <div class="form-group col-md-4">
+                        <div class="form-group col-sm-4">
                             <label asp-for="Complemento" class="control-label"></label>
                             <input autocomplete="off" asp-for="Complemento" class="form-control" />
                             <span asp-validation-for="Complemento" class="text-danger"></span>
                         </div>
 
-                        <div class="form-group col-md-4">
+                        <div class="form-group col-sm-4">
                             <label asp-for="NomeDaEmpresa" class="control-label"></label>
                             <input autocomplete="off" asp-for="NomeDaEmpresa" class="form-control" />
                             <span asp-validation-for="NomeDaEmpresa" class="text-danger"></span>
                         </div>
-                        <div class="form-group col-md-4">
+                        <div class="form-group col-sm-4">
                             <label asp-for="Setor" class="control-label"></label>
                             <input autocomplete="off" asp-for="Setor" class="form-control" />
                             <span asp-validation-for="Setor" class="text-danger"></span>
@@ -101,27 +101,27 @@
                         <div class=" col-12">
                             <h4 class="mb-3">Informações complementáres</h4>
                         </div>
-                        <div class="form-group col-md-4">
+                        <div class="form-group col-sm-4">
                             <label asp-for="QuemEstaEnviando" class="control-label"></label>
                             <input autocomplete="off" asp-for="QuemEstaEnviando" class="form-control" />
                             <span asp-validation-for="QuemEstaEnviando" class="text-danger"></span>
                         </div>
 
-                        <div class="form-group col-md-4">
+                        <div class="form-group col-sm-4">
 
                             <label asp-for="NomeRecebedor" class="control-label"></label>
                             <input autocomplete="off" asp-for="NomeRecebedor" class="form-control" />
                             <span asp-validation-for="NomeRecebedor" class="text-danger"></span>
                         </div>
 
-                        <div class="form-group col-md-4">
+                        <div class="form-group col-sm-4">
                             <label asp-for="WhatsappRecebedor" class="control-label"></label>
                             <input autocomplete="off" asp-for="WhatsappRecebedor" class="form-control" />
                             <span asp-validation-for="WhatsappRecebedor" class="text-danger"></span>
                         </div>
 
 
-                        <div class="form-group col-md-4">
+                        <div class="form-group col-sm-4">
                             <label asp-for="DataDeEntrega" class="control-label"></label>
                             <input autocomplete="off" asp-for="DataDeEntrega" id="datePicker" required class="form-control" />
                             <span asp-validation-for="DataDeEntrega" class="text-danger"></span>
@@ -145,7 +145,7 @@
                             string horarioDaentrega = $"{horas:D2}:{minutos:D2}";
                         }
 
-                        <div class="form-group col-md-4">
+                        <div class="form-group col-sm-4">
                             <label asp-for="HoraDeEntrega" class="control-label">Horário da entrega:<b> @Model.HoraDeEntrega às @horarioDaentrega</b></label>
                             <select asp-for="HoraDeEntrega" id="selectHours" class="form-control">
                                 <option value="@Model.HoraDeEntrega">@Model.HoraDeEntrega às @horarioDaentrega</option>
@@ -154,44 +154,45 @@
                         </div>
 
 
-                        <div class="form-group col-md-6">
+                        <div class="form-group col-sm-6">
                             <label asp-for="Cartinha" class="control-label"></label>
                             <textarea asp-for="Cartinha" class="form-control"></textarea>
                             <span asp-validation-for="Cartinha" class="text-danger"></span>
                         </div>
-                        <div class="form-group col-md-6">
+                        <div class="form-group col-sm-6">
                             <label asp-for="Observacoes" class="control-label"></label>
                             <textarea asp-for="Observacoes" class="form-control"></textarea>
                             <span asp-validation-for="Observacoes" class="text-danger"></span>
                         </div>
-                        <div class=" col-md-12">
+                        <div class=" col-sm-12">
                         </div>
-                        <div class="form-group col-md-4">
+                        <div class="form-group col-sm-4">
                             <label asp-for="PedidoEnviado" class="control-label"></label>
                             <input autocomplete="off" asp-for="PedidoEnviado" class="form-control" readOnly />
                             <span asp-validation-for="PedidoEnviado" class="text-danger"></span>
                         </div>
-                        <div class="form-group col-md-4">
+                        <div class="form-group col-sm-4">
                             <label asp-for="PedidoEntregueEm" class="control-label"></label>
                             <input autocomplete="off" asp-for="PedidoEntregueEm" id="dataDois" class="form-control" />
                             <span asp-validation-for="PedidoEntregueEm" class="text-danger"></span>
                         </div>
-                        <div class=" col-md-12">
-                            <h4 class="mb-3">Cobrança</h4>
-                        </div>
-                        <div class="form-group col-md-4">
-                            <label asp-for="TotalPedido" class="control-label"></label>
-                            <input autocomplete="off" asp-for="TotalPedido" class="form-control" readOnly />
-                            <span asp-validation-for="TotalPedido" class="text-danger"></span>
-                        </div>
-
-                        <div class="form-group col-md-4">
-                            <label asp-for="TotalItensPedido" class="control-label"></label>
-                            <input autocomplete="off" asp-for="TotalItensPedido" class="form-control" readOnly />
-                            <span asp-validation-for="TotalItensPedido" class="text-danger"></span>
-                        </div>
+                       
                     </div>
-                    <div class=" col-md-12">
+                    <div class=" col-sm-12">
+                        <h4 class="mb-3">Cobrança</h4>
+                    </div>
+                    <div class="form-group col-sm-4">
+                        <label asp-for="TotalPedido" class="control-label"></label>
+                        <input autocomplete="off" asp-for="TotalPedido" class="form-control" readOnly />
+                        <span asp-validation-for="TotalPedido" class="text-danger"></span>
+                    </div>
+
+                    <div class="form-group col-sm-4">
+                        <label asp-for="TotalItensPedido" class="control-label"></label>
+                        <input autocomplete="off" asp-for="TotalItensPedido" class="form-control" readOnly />
+                        <span asp-validation-for="TotalItensPedido" class="text-danger"></span>
+                    </div>
+                    <div class=" col-sm-12">
                         <h4 class="mb-3">Pagamento</h4>
                     </div>
                     @{
@@ -200,7 +201,7 @@
 
                     }
 
-                    <div class="form-group col-md-4">
+                    <div class="form-group col-sm-4">
                         <label asp-for="ComprovanteDePagamento" class="control-label">Comprovante 1º pagamento</label>
                         <input autocomplete="off" asp-for="ComprovanteDePagamento" class="form-control" />
                         <span asp-validation-for="ComprovanteDePagamento" class="text-danger"></span>
@@ -213,7 +214,7 @@
                     @if (desabilitaComprovanteUm)
                     {
                         
-                        <div class="form-group col-md-4">
+                        <div class="form-group col-sm-4">
                             <label asp-for="ComprovanteSegundoPagamento" class="control-label">Comprovante 2º pagamento</label>
                             <input autocomplete="off" asp-for="ComprovanteSegundoPagamento" class="form-control" />
                             <span asp-validation-for="ComprovanteSegundoPagamento" class="text-danger"></span>
@@ -224,34 +225,36 @@
                         </div>
                         
                     }
+                    <div class="col-12"></div>
 
-                    <div class="form-group col-md-4" id="pagamentoParcialDiv">
-                        <label asp-for="PagamentoParcial" class="control-label"></label>
+                    <div class="form-group col-sm-4" id="pagamentoParcialDiv">
+                        <label id="pagouApenas" class="control-label"></label>
                         <input asp-for="PagamentoParcial" class="form-control" oninput="calcularTotal(this)" />
                         <span asp-validation-for="PagamentoParcial" class="text-danger"></span>
                          <span style="font-weight:bold;" id="totalResultante"></span>
                     </div>
 
-                    <div class="form-group form-check col-md-12">
+                    <div class="form-group form-check col-sm-12">
                         <label class="form-check-label">
                             <input autocomplete="off" class="form-check-input" asp-for="PagamentoPedido" onchange="verificarCheckbox()" /> @Html.DisplayNameFor(model => model.PagamentoPedido)
                              <div class="text-danger" id="selecioneOpcaoDiv" style="display:none; margin-left: 10px;">
-                                <b>Selecione essa opção</b>
+                                <b>*</b>
                             </div>
                         </label>
                     </div>
-                    <div class="form-group form-check col-md-12">
+                    <div class="form-group form-check col-sm-12">
                         <label class="form-check-label">
-                            <input autocomplete="off" class="form-check-input" asp-for="PagamentoNaEntrega" /> @Html.DisplayNameFor(model => model.PagamentoNaEntrega)
+                            <input autocomplete="off" class="form-check-input" asp-for="PagamentoNaEntrega" onchange="verificarCheckbox()" /> @Html.DisplayNameFor(model => model.PagamentoNaEntrega)
                         </label>
                     </div>
-                    <div class="form-group form-check col-md-12">
+                    <div class="form-group form-check col-sm-12">
                         <label class="form-check-label">
-                            <input autocomplete="off" class="form-check-input" asp-for="EntregaPedido" /> @Html.DisplayNameFor(model => model.EntregaPedido)
+                            <input autocomplete="off" class="form-check-input" asp-for="EntregaPedido" onchange="verificarCheckbox()" /> @Html.DisplayNameFor(model => model.EntregaPedido)
                         </label>
                     </div>
                     <div class="form-group">
-                        <button type="submit" class="btn btn-success btn-lg"> Salvar </button>
+                        <span id="erroAoSalvar"></span><br />
+                        <button type="submit" id="botaoSalvar" class="btn btn-success btn-lg"> Salvar </button>
                     </div>
                 </div>
             </form>
@@ -507,9 +510,11 @@
             var pagamentoParcialInput = document.getElementById("PagamentoParcial");
             var pagamentoParcial = parseFloat(pagamentoParcialInput.value.replace(",", ".")) || 0;
 
+
             // Exiba o resultado no span com formatação
             var totalResultanteSpan = document.getElementById("totalResultante");
-
+            var pagouApenasSpan = document.getElementById("pagouApenas");
+            pagouApenasSpan.textContent = "Quanto pagou?"
             // Chamada da função verificarCheckbox no início
 
             // Calcule o resultado
@@ -527,12 +532,22 @@
                 totalResultanteSpan.classList.remove("text-warning");
                 totalResultanteSpan.classList.remove("text-danger");
                 totalResultanteSpan.textContent = "Pedido completamente pago"
+                pagouApenasSpan.textContent = "Pagou"
                 clientePagouTudo = true;
+            } else if (pagamentoParcial > 0 && pagamentoParcial < totalPedido) {
+                pagouApenasSpan.textContent = "Pagou apenas"
+                totalResultanteSpan.classList.add("text-danger");
+                totalResultanteSpan.classList.remove("text-success");
+                totalResultanteSpan.classList.remove("text-warning");
+                totalResultanteSpan.textContent = "Falta pagar:" + resultado.toLocaleString('pt-BR', { minimumFractionDigits: 2, maximumFractionDigits: 2 }) ;
+                ;
+                        
+                clientePagouTudo = false;
             } else {
                 totalResultanteSpan.classList.add("text-danger");
                 totalResultanteSpan.classList.remove("text-success");
                 totalResultanteSpan.classList.remove("text-warning");
-                totalResultanteSpan.textContent = "Falta pagar:" + resultado.toLocaleString('pt-BR', { minimumFractionDigits: 2, maximumFractionDigits: 2 });
+                totalResultanteSpan.textContent = "Falta pagar: R$ " + resultado.toLocaleString('pt-BR', { minimumFractionDigits: 2, maximumFractionDigits: 2 });
                 clientePagouTudo = false;
             }
  verificarCheckbox();
@@ -540,11 +555,20 @@
         }
 
         function verificarCheckbox() {
-            var checkbox = document.getElementById("PagamentoPedido");
+
+            var entregaPedido = document.getElementById("EntregaPedido");
+            var pagamentoNaEntrega = document.getElementById("PagamentoNaEntrega");
+            var pagamentoPedido = document.getElementById("PagamentoPedido");
             var selecioneOpcaoDiv = document.getElementById("selecioneOpcaoDiv");
             var pagamentoParcialDiv = document.getElementById("pagamentoParcialDiv");
 
-            if (!checkbox.checked && clientePagouTudo) {
+            var totalPedido = parseFloat('@Model.TotalPedido.ToString("0.00", System.Globalization.CultureInfo.InvariantCulture)'.replace(",", "."));
+            var pagamentoParcialInput = document.getElementById("PagamentoParcial");
+            var pagamentoParcial = parseFloat(pagamentoParcialInput.value.replace(",", ".")) || 0;
+            var resultado = totalPedido - pagamentoParcial;
+            var quarentaPorcento = totalPedido * 0.4;
+
+            if (!pagamentoPedido.checked && clientePagouTudo || pagamentoPedido.checked && pagamentoParcial < totalPedido) {
                 selecioneOpcaoDiv.style.display = "inline"; // Exibe a div
                 pagamentoParcialDiv.style.display = "block";
 
@@ -552,12 +576,46 @@
                 selecioneOpcaoDiv.style.display = "none"; // Oculta a div               
              }
 
-            if (checkbox.checked) {
+            if (pagamentoPedido.checked && pagamentoParcial === totalPedido) {
                 pagamentoParcialDiv.style.display = "none";
 
              }else{
                 pagamentoParcialDiv.style.display = "block";
             }
+            if (pagamentoPedido.checked && pagamentoParcial === 0) {
+                document.getElementById("botaoSalvar").disabled = true;
+                document.getElementById("erroAoSalvar").textContent = "Não é possível marcar Pedido pago, sem informar antes o valor que o cliente pagou (para salvarinforme corretamente ou desmarque a opção)";
+                document.getElementById("erroAoSalvar").style.color = "#f00"
+            } else if (pagamentoPedido.checked && pagamentoParcial < totalPedido) {
+                document.getElementById("botaoSalvar").disabled = true;
+                document.getElementById("erroAoSalvar").textContent = "Ainda falta o cliente pagar R$ " + resultado.toLocaleString('pt-BR', { minimumFractionDigits: 2, maximumFractionDigits: 2 }) + ", desmarque a opção pedido pago, ou informe corretamente o valor que o cliente pagou";
+                document.getElementById("erroAoSalvar").style.color = "#f00"
+            } else if (!pagamentoPedido.checked && clientePagouTudo) {
+                document.getElementById("botaoSalvar").disabled = true;
+                document.getElementById("erroAoSalvar").textContent = `De acordo ao valor informado o cliente já pagou tudo, então selecione a opção Pedido pago`;
+                document.getElementById("erroAoSalvar").style.color = "#f00"
+            } else if (pagamentoParcial > totalPedido) {
+                document.getElementById("botaoSalvar").disabled = true;
+                document.getElementById("erroAoSalvar").textContent = `O valor informado é maior que o cliente deve`;
+                document.getElementById("erroAoSalvar").style.color = "#f00"
+            } else if (pagamentoParcial < totalPedido * 0.4) {
+                document.getElementById("botaoSalvar").disabled = false;
+                document.getElementById("erroAoSalvar").textContent = "Para confirmar o pedido é preciso pagar 50% ou no minimo R$" + quarentaPorcento.toFixed(2);
+                document.getElementById("erroAoSalvar").style.color = "#f00"
+            } else if (pagamentoPedido.checked && pagamentoNaEntrega.checked && !entregaPedido.checked) {
+                document.getElementById("botaoSalvar").disabled = true;
+                document.getElementById("erroAoSalvar").textContent = "O pagamento é na entrega, então se não foi entregue não tem como ter sido pago";
+                document.getElementById("erroAoSalvar").style.color = "#f00"
+            } else if (!pagamentoPedido.checked && entregaPedido.checked) {
+                document.getElementById("botaoSalvar").disabled = false;
+                document.getElementById("erroAoSalvar").textContent = "Não entregamos pedidos antes de ser pago";
+                document.getElementById("erroAoSalvar").style.color = "#f00"
+            }
+            else {
+                document.getElementById("botaoSalvar").disabled = false;
+                document.getElementById("erroAoSalvar").textContent = "";
+             }
+
         }
 
       

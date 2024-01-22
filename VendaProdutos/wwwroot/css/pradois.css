@@ -1625,13 +1625,13 @@ nav .container {
     color: #343a40 !important;
  }
 
-.admin span {
+.admin td span {
     color: #000;
 }
 .admin a:hover svg {
     fill: #ff4700;
 }
-/*MEIO DO CSS*/
+
 
 
 
@@ -1640,11 +1640,13 @@ nav .container {
     display: none;
 }
 
-    .tab-pane.fade.row.active {
-        display: flex;
-    }
-
-
+ .tab-pane.fade.row.active {
+ display: flex;
+ }
+.busca_admin label {
+    margin: 0;
+}
+/*MEIO DO CSS*/
 
 
 
@@ -1919,6 +1921,15 @@ h2.tit1_gen {
         text-align: center;
         font-size: 30px;
     }
+
+    .busca_admin  label {
+    display: none;
+}
+
+    .busca_admin .form-group {
+        padding: 0 2px 0 2px;
+    }
+
 }
 
    /* Large devices (desktops, less than 1200px)*/
