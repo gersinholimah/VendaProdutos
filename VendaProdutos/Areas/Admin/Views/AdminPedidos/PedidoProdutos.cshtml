@@ -2,8 +2,50 @@
 
 @{
     ViewData["Title"] = "PedidoLanches";
-    decimal totalPedido = 0;
-} 
+}
+
+
+
+
+
+
+
+
+@{
+    //verifica dia atual
+    // Suponha que a propriedade diaDaEntrega tenha o valor "Terça, 16/01/2024"
+    string diaDaEntrega = @Model.Pedido.DataDeEntrega;
+    string[] partes = diaDaEntrega.Split(',');
+    DateTime horaAtual = DateTime.Now;
+    string horaEntregaString = @Model.Pedido.HoraDeEntrega;
+    DateTime horaEntrega = DateTime.ParseExact(horaEntregaString, "HH:mm", null);
+    // DateTime horaEntregaMais1Hora = horaEntrega.AddHours(1);
+    bool passouDaHoraDaEntrega = false;
+    if (horaAtual == horaEntrega)
+    {
+        passouDaHoraDaEntrega = true;
+    }
+   
+
+        // Divida a string para obter o dia da semana e a data
+
+        // Obtenha o dia da semana e a data
+        string diaSemana = partes[0].Trim();
+        string dataString = partes[1].Trim();
+
+        // Converta a data de string para DateTime
+        DateTime dataEntrega = DateTime.ParseExact(dataString, "dd/MM/yyyy", null);
+
+        // Verifique se o dia da semana é igual ao dia atual ou ao dia seguinte
+        bool entregarHoje = dataEntrega.Date == DateTime.Today.Date;
+        bool entregarAmanha = dataEntrega.Date == DateTime.Today.AddDays(1).Date;
+        bool passouDiaDaEntrega = dataEntrega.Date < DateTime.Today.Date;
+
+
+
+
+
+    }
 
 
 
@@ -15,33 +57,28 @@
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
- 
 <div class="container ">
     <div class="row">
         <div class="col-12 ">
-             
+
             <h1 class="tit2_pradois pb-10 text-center">
                 Detalhes do pedido
             </h1>
             <p class=" text-center">Detalhes do pedido selecionado.</p>
             @{
+                // string quebraDeLinha = "%0A";
+                // string textoBold = "%2A";
+                // string doisPontos = "%3A";
+
+                string TelefoneVendedor = "5575991702469";
+                string ChavePixAqui = Model.ChavePix.Chave; //ATENÇÃO Si mudar aqui mudar no Whatsapp também
+                String TipoChavePixAqui = Model.ChavePix.Tipo;
+                decimal totalPedido = Model.Pedido.TotalPedido;
+                string TelefoneCompradorAqui = @Model.Pedido.WhatsappComprador.Trim();
+                string TelefoneRecebedorAqui = @Model.Pedido.WhatsappRecebedor.Trim();
                 //esse codigo todo é para alimentar o botão de compartilhar no whatsapp
                 string NomeComprador = @Model.Pedido.NomeComprador.Replace(" ", "+");
-                string IdPedidoAqui = @Model.Pedido.PedidoId.ToString();
+                string IdPedidoAqui = "LO-2024A-" + @Model.Pedido.PedidoId.ToString();
                 string ProdutoAqui = "";
                 foreach (var item in @Model.Pedido.PedidoItens)
                 {
@@ -81,7 +118,7 @@
                 string QuemEstaEnviandoAqui = "";
                 if (!string.IsNullOrEmpty(@Model.Pedido.QuemEstaEnviando))
                 {
-                    @Model.Pedido.QuemEstaEnviando.Replace(" ", "+")
+                    QuemEstaEnviandoAqui = @Model.Pedido.QuemEstaEnviando.Replace(" ", "+");
                 }
                 string NomeDaEmpresa = "";
                 if (!string.IsNullOrEmpty(@Model.Pedido.NomeDaEmpresa))
@@ -94,15 +131,18 @@
                 string HorarioLimiteAqui = @HorarioLimite.Replace(" ", "+");
                 string BairroAqui = @Model.Pedido.BairroRecebedor.Replace(" ", "+");
                 string RuaAqui = @Model.Pedido.RuaRecebedor.Replace(" ", "+");
-                string NumeroDoImovelAqui = @Model.Pedido.NumeroCasaRecebedor.Replace(" ", "+");
+                string NumeroDoImovelAqui = @Model.Pedido.NumeroCasaRecebedor.Replace(" ", "+") + ".%0A";
                 string PontoDeReferenciaAqui = "";
-                if (!string.IsNullOrEmpty(@Model.Pedido.NomeDaEmpresa)){
-                  PontoDeReferenciaAqui =  @Model.Pedido.PontoDeReferencia.Replace(" ", "+");
+                if (!string.IsNullOrEmpty(@Model.Pedido.PontoDeReferencia))
+                {
+                    PontoDeReferenciaAqui = "%0A%2APonto+de+referência%3A%2A%0A" + @Model.Pedido.PontoDeReferencia.Replace(" ", "+") + "%0A";
+
+
                 }
                 string ComplementoAqui = "";
                 if (!string.IsNullOrEmpty(@Model.Pedido.Complemento))
                 {
-                    ComplementoAqui = @Model.Pedido.Complemento.Replace(" ", "+");
+                    ComplementoAqui = "Complemento%3A" + @Model.Pedido.Complemento.Replace(" ", "+") + ".%0A";
                 }
                 string NomeRecebedorAqui = "";
                 if (!string.IsNullOrEmpty(@Model.Pedido.Setor))
@@ -113,20 +153,91 @@
                 else
                 {
                     NomeRecebedorAqui = @Model.Pedido.NomeRecebedor.Replace(" ", "+");
-
                 }
                 string ObservacaoAqui = "";
                 string CartinhaAqui = "";
                 if (!string.IsNullOrEmpty(@Model.Pedido.Cartinha))
                 {
-                    CartinhaAqui = @Model.Pedido.Cartinha.Replace(" ", "+");
+                    string textoCartinha = @Model.Pedido.Cartinha.Replace(" ", "+");
+                    CartinhaAqui = "+%0A%0A%2APediu+também+para+Adicionar+um+texto+escrito%2A%0ADe%3A+@QuemEstaEnviandoAqui+%0APara%3A+@NomeRecebedorAqui%0ACom+o+texto%3A%2A%0A+" + @textoCartinha + "%0A%0A%2AE";
                 }
                 if (!string.IsNullOrEmpty(@Model.Pedido.Observacoes))
                 {
-                    ObservacaoAqui = @Model.Pedido.Observacoes.Replace(" ", "+");
+                    ObservacaoAqui = "%0A+%2AVocê+também+fez+uma+observação+que%3A%2A%0A+" + @Model.Pedido.Observacoes.Replace(" ", "+");
                 }
-            }
-            <a target="_blank" href="https://api.whatsapp.com/send?phone=+55+5575991702469&text=Olá%2C+@NomeComprador+sou atendente+na+Pradois+😁%0Ae+recebemos+aqui+a+sua+solicitação+do+pedido+de+número%3A+@IdPedidoAqui%0A%0A%2ACom+os+itens%2A%0A+@ProdutoAqui%0A%0A%2AInformando+que%2A%0AÉ+de+@QuemEstaEnviandoAqui%2C+%0APara+@NomeRecebedorAqui.%0AE+é+que+é+para+entregar+@DiaDaEntregaAqui+entre+@HorarioInicalAqui+e+@HorarioLimiteAqui%0A%0A%2AO+endereço+de+entrega+é%2A%0A+@NomeDaEmpresa+Aqui+em+Feira+de+Santana%2C+no+bairro+@BairroAqui%2C+na+rua+@RuaAqui%2C+o+nº+do+imóvel+é+@NumeroDoImovelAqui.%0AComplemento%3A+@ComplementoAqui.%0APonto+de+referência%3A+@PontoDeReferenciaAqui%0A%0A%2APediu+também+para+Adicionar+um+texto+escrito%2A%0ADe%3A+@QuemEstaEnviandoAqui%0APara%3A+@NomeRecebedorAqui%0ACom+o+texto%3A%2A%0A+@CartinhaAqui%0A%0A%2AE+fez+uma+observação+que+%3A%2A%0A+@ObservacaoAqui" class="btn bt_avancar pt-10 pb-10 pr-40 pl-40 mt-10 mr-auto ml-auto d-block mb-30" style=" max-width: 480px; ">Confirmar via Whatsapp</a>
+                string DiaDaEntregaRecebedorAqui = "";
+                if (entregarHoje)
+                {
+                    DiaDaEntregaRecebedorAqui = "Hoje";
+                }
+                if (entregarAmanha)
+                {
+                    DiaDaEntregaRecebedorAqui = "Amanhã";
+                }
+
+                 decimal jaPagou = Model.Pedido.PagamentoParcial;
+
+                decimal faltaPagar = totalPedido - jaPagou;
+            }      
+ 
+
+            <div class="container mt-4">
+                <div class="row">
+@*                     @if (Model.Pedido.) { }
+ *@                              <div class="form-group mr-2">
+                                <label>Saindo para entrega</label><br />
+                        <a target="_blank" href="https://api.whatsapp.com/send?phone=+@TelefoneCompradorAqui&text=Olá+@NomeCompradorAqui%2C+o+pedido+que+você+pediu+está+saindo+para+entrega%2C+agorinha😊👏" class="btn btn-success ">Avisar comprador</a>
+                        <a target="_blank" href="https://api.whatsapp.com/send?phone=+@TelefoneRecebedorAqui&text=Olá+@NomeRecebedorAqui%2C+um+de+nossos+entregadores+já+está+levando+sua+encomenda%2C+jaja+ele+chega+aí😁👍" class="btn btn-secondary ">Avisar ao recebedor</a>
+                            </div>
+ 
+                             <div class="form-group mr-2">
+                                <label>Facilitar entrega</label><br />
+                        <a target="_blank" href="https://api.whatsapp.com/send?phone=+@TelefoneRecebedorAqui&text=Olá+@NomeRecebedorAqui%2C+recebi+uma+solicitação+de+entrega+que+deve+ser+entregue+diretamente+a+você+@DiaDaEntregaRecebedorAqui%2C+entre+@HorarioInicalAqui+e+@HorarioLimiteAqui.%0A%0AO+ID+da+mercadoria+é:+@IdPedidoAqui+%0A%0AO+endereço+de+entrega+que+tenho+aqui+é:+@NomeDaEmpresa+em+Feira+de+Santana%2C+no+bairro+@BairroAqui%2C+na+rua+@RuaAqui%2C+o+nº+do+imóvel+é+@NumeroDoImovelAqui@ComplementoAqui+@PontoDeReferenciaAqui+%0A%0A+O+endereço+está+correto?" class="btn btn-dark ">Comunicar destinatário</a>
+                            </div>
+ 
+                             <div class="form-group mr-2">
+                                <label>Endereço Errado</label><br />
+                        <a target="_blank" href="https://api.whatsapp.com/send?phone=+@TelefoneCompradorAqui&text=Eu+novamente😞%0Atenho+uma+noticia+chata+referente+ao+pedido+que+você+pediu+para+ser+entregue+hoje%2C+para+@NomeRecebedorAqui.%0A%0AO+entregador+foi+no+endereço+e+infelizmente+por+não+conseguir+encontrar+retornou+com+a+surpresa.%0A%0AO+tem+certeza+que+o+endeerço+está+correto🙄%3F" class="btn btn-danger ">Solicitar o correto</a>
+                     </div>
+
+                  
+                            <div class="form-group mr-2">
+                                <label>Não comprou</label><br />
+                        <a target="_blank" href="https://api.whatsapp.com/send?phone=+55+@TelefoneCompradorAqui&text=Olá%2C+@NomeCompradorAqui+sou+atendente+na+Pradois+😁%0A+E+vou+dar+continuidade+ao+atendimento+referente+a+solicitação+que+você+fez+do+pedido+com+identificação%3A+@IdPedidoAqui%0A%0A%2ACom+os+itens%2A%0A+@ProdutoAqui%0A%0A%2AInformando+que%2A%0AÉ+de+@QuemEstaEnviandoAqui+para+@NomeRecebedorAqui.%0AE+é+que+é+para+entregar+@DiaDaEntregaAqui+entre+@HorarioInicalAqui+e+@HorarioLimiteAqui%0A%0A%2AO+endereço+de+entrega+é%2A%0A+@NomeDaEmpresa+Aqui+em+Feira+de+Santana%2C+no+bairro+@BairroAqui%2C+na+rua+@RuaAqui%2C+o+nº+do+imóvel+é+@NumeroDoImovelAqui@ComplementoAqui+@PontoDeReferenciaAqui+@ObservacaoAqui" class="btn btn-warning ">Recuperar Carrinho</a>
+                             </div>
+
+                    
+                    
+
+                    
+                            <div class="form-group mr-2">
+                                <label>Está pronto, falta pagar</label><br />
+                        <a target="_blank" href="https://api.whatsapp.com/send?phone=+@TelefoneCompradorAqui&text=Oie%2C+já+está+tudo+prontinho+pra+entrega!%0AAssim+que+você+enviar+o+comprovante+da+outra+parte+do+pagamento,+já+colocaremos+em+trânsito.🥰%0A%0A%2AValor+que+falta%2A%3A+@faltaPagar%0A%2AChave+Pix+@TipoChavePixAqui%2A%3A+@ChavePixAqui%0A%2ANome%2A%3A+Viviane+Oliveira+Lima%0A%0AVou+enviar+a+chave+separada,+para+ficar+mais+fácil+copiar%0A+👇%EF%B8%8F" class="btn btn-warning ">Solicitar pagamento</a>
+                          
+                    </div>
+
+
+ 
+                            <div class="form-group mr-2">
+                                <label>Está devendo</label><br />
+                        <a target="_blank" href="https://api.whatsapp.com/send?phone=+@TelefoneCompradorAqui&text=Oilá+@NomeCompradorAqui%21+%0AReferente+a+entrega+que+você+solicitou+qu+enviássemos+para+@NomeRecebedorAqui+e+entregamos+@diaDaEntrega🥰%0AVou+te+passar+abaixo+a+chave+pix+para+pagamento%0A%0A%2AValor+que+falta%2A%3A+@faltaPagar%0A%2AChave+Pix+@TipoChavePixAqui%2A%3A+@ChavePixAqui%0A%2ANome%2A%3A+Viviane+Oliveira+Lima%0A%0AVou+enviar+a+chave+separada,+para+ficar+mais+fácil+copiar%0A+👇%EF%B8%8F" class="btn btn-danger ">Cobrar</a>
+                            </div>
+                     
+
+                </div>
+            </div>
+          
+              
+
+
+         @*    <button type="button" class="btn btn-primary  pt-10 pb-10 pr-10 pl-10 mt-10   mb-30">recebedor</button>
+            <button type="button" class="btn btn-secondary  pt-10 pb-10 pr-10 pl-10 mt-10   mb-30">Secondary</button>
+            <button type="button" class="btn btn-success  pt-10 pb-10 pr-10 pl-10 mt-10   mb-30">Success</button>
+            <button type="button" class="btn btn-danger  pt-10 pb-10 pr-10 pl-10 mt-10   mb-30">Danger</button>
+            <button type="button" class="btn btn-warning  pt-10 pb-10 pr-10 pl-10 mt-10   mb-30">Warning</button>
+            <button type="button" class="btn btn-info  pt-10 pb-10 pr-10 pl-10 mt-10   mb-30">Info</button>
+            <button type="button" class="btn btn-light  pt-10 pb-10 pr-10 pl-10 mt-10   mb-30">Light</button>
+            <button type="button" class="btn btn-dark  pt-10 pb-10 pr-10 pl-10 mt-10   mb-30">Dark</button> *@
         </div>
     </div>
 </div>
@@ -144,7 +255,7 @@
                         <div class="ticketTitle">Seu pedido:</div>
                     </div>
 
-             
+
                 </div>
 
                 <hr>
@@ -155,47 +266,54 @@
                             <div class="resumo_pedido">
                                 <table>
                                     <tbody>
-                                        <tr>
+                                        <tr style="
+    background: #e9e9e9;
+">
                                             <th></th>
                                             <th>Qtd</th>
                                             <th>Produto</th>
                                             <th>Preço</th>
                                         </tr>
-                                        
+
                                         @{
                                             string nomeCurtoCatego = "";
 
-                                                foreach (var item in @Model.Pedido.PedidoItens)
+                                            foreach (var item in @Model.Pedido.PedidoItens)
                                             {
                                                 // totalPedido += (@item.Produto.PrecoPromocional * @item.Quantidade);
 
-                                            //tem que tipar
+                                                //tem que tipar
                                                 foreach (var produto in @Model.Produtos)
                                                 {
                                                     if (item.Produto.ProdutoId == produto.ProdutoId)
                                                     {
-                                                       
-                                                            nomeCurtoCatego = produto.Categoria.NomeCurto;
-                                                        
+
+                                                        nomeCurtoCatego = produto.Categoria.NomeCurto;
+
                                                     }
-                                                
-                                            }
-                                            <tr>
-                                                
-                                                <td><img src="@item.Produto.ImagemUrl" width="40" height="40" /></td>
-                                                <td>@item.Quantidade</td>
+
+                                                }
+                                                <tr>
+
+                                                    <td><img src="@item.Produto.ImagemUrl" width="40" height="40" /></td>
+                                                    <td>@item.Quantidade</td>
                                                     <td>
                                                         @if (!string.IsNullOrEmpty(nomeCurtoCatego))
-                                                        {@nomeCurtoCatego<span>&nbsp;</span>
+                                                        {
+                                                            @nomeCurtoCatego
+
+                                                            <span>&nbsp;</span>
                                                         } @item.Produto.Nome
-                                                </td>
+                                                    </td>
                                                     <td>@(item.Produto.PrecoPromocional * @item.Quantidade)</td>
-                                               
-                                                
-                                            </tr>
+
+
+                                                </tr>
+                                            }
                                         }
-                                        }
-                                        <tr>
+                                        <tr style="
+    background: #e9e9e9;
+">
                                             <td></td>
                                             <td></td>
                                             <td class="">Frete:</td>
@@ -221,7 +339,7 @@
                                 </table>
                             </div>
                         </div>
-                     
+
                     </div>
                 </div>
 
@@ -252,15 +370,15 @@
                         int minutos = int.Parse(partesHorario[1]);
 
                         // Adicionar 1 aos minutos
- 
+
                         // Verificar se os minutos ultrapassaram 59 e ajustar as horas
-                             minutos = 59;
-  
+                        minutos = 59;
+
                         // Formatar a string de horário resultante
                         string horarioDaentrega = $"{horas:D2}:{minutos:D2}";
                     }
 
-                     <div class=" col-md-4">
+                    <div class=" col-md-4">
 
                         <div class="ticketDetail detail_ticket">
                             <h3 class="ticketDetail_titulo">
@@ -278,9 +396,9 @@
                                     <span>- do setor de @Model.Pedido.Setor</span>
                                 }
                             </div>
-                            <div style="margin-top:10px"><b>Dia da entrega:</b>  @Model.Pedido.DataDeEntrega</div>
+                            <div style="margin-top:10px"><b>Dia:</b>  @Model.Pedido.DataDeEntrega</div>
                             <div><b>Horário:</b> entre @Model.Pedido.HoraDeEntrega e @horarioDaentrega </div>
-                             
+
                         </div>
                     </div>
 
@@ -291,21 +409,28 @@
 
                             </h3>
                             <div>
-                            @{
-                                     @if (!string.IsNullOrEmpty(Model.Pedido.NomeDaEmpresa))
-                            {
+                                @{
+                                    @if (!string.IsNullOrEmpty(Model.Pedido.NomeDaEmpresa))
+                                    {
                                         <span>Empresa: @Model.Pedido.NomeDaEmpresa, </span>
-                                 }
+                                    }
 
-                            }
+                                }
 
-                                  @Model.Pedido.RuaRecebedor, @Model.Pedido.NumeroCasaRecebedor - @Model.Pedido.BairroRecebedor
+                                @Model.Pedido.RuaRecebedor, @Model.Pedido.NumeroCasaRecebedor - @Model.Pedido.BairroRecebedor
                             </div>
                             <div>
                                 <b>Ponto de referência:</b>
                                 @if (!string.IsNullOrEmpty(Model.Pedido.PontoDeReferencia))
                                 {
                                     @Model.Pedido.PontoDeReferencia
+                                }
+                            </div>
+                            <div style="margin-top:10px">
+                                <b>Complemento:</b>
+                                @if (!string.IsNullOrEmpty(Model.Pedido.Complemento))
+                                {
+                                    @Model.Pedido.Complemento
                                 }
                             </div>
                         </div>
@@ -352,7 +477,7 @@
             <div class="ticketShadow"></div>
         </div>
     </div>
- 
+
 </section>
 
 <div class="container d-none">
@@ -370,36 +495,36 @@
 
 
 
-     <script>
-        function scrollToElement(elementId) {
-            var targetElement = document.getElementById(elementId);
+<script>
+    function scrollToElement(elementId) {
+        var targetElement = document.getElementById(elementId);
 
-            if (targetElement) {
-                var targetPosition = targetElement.offsetTop;
-                var startPosition = window.pageYOffset;
-                var distance = targetPosition - startPosition;
-                var startTime;
-                var duration = 800; // Tempo em milissegundos
+        if (targetElement) {
+            var targetPosition = targetElement.offsetTop;
+            var startPosition = window.pageYOffset;
+            var distance = targetPosition - startPosition;
+            var startTime;
+            var duration = 800; // Tempo em milissegundos
 
-                function animation(currentTime) {
-                    if (startTime === undefined) {
-                        startTime = currentTime;
-                    }
-
-                    var timeElapsed = currentTime - startTime;
-                    var progress = Math.min(timeElapsed / duration, 1);
-                    var easing = function (t) {
-                        return t < 0.5 ? 2 * t * t : -1 + (4 - 2 * t) * t;
-                    };
-
-                    window.scrollTo(0, startPosition + distance * easing(progress));
-
-                    if (timeElapsed < duration) {
-                        requestAnimationFrame(animation);
-                    }
+            function animation(currentTime) {
+                if (startTime === undefined) {
+                    startTime = currentTime;
                 }
 
-                requestAnimationFrame(animation);
+                var timeElapsed = currentTime - startTime;
+                var progress = Math.min(timeElapsed / duration, 1);
+                var easing = function (t) {
+                    return t < 0.5 ? 2 * t * t : -1 + (4 - 2 * t) * t;
+                };
+
+                window.scrollTo(0, startPosition + distance * easing(progress));
+
+                if (timeElapsed < duration) {
+                    requestAnimationFrame(animation);
+                }
             }
+
+            requestAnimationFrame(animation);
         }
+    }
 </script>

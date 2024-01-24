@@ -1646,6 +1646,11 @@ nav .container {
 .busca_admin label {
     margin: 0;
 }
+
+.readonly-checkbox {
+    opacity: 0.5; /* Adiciona opacidade para simular desativado */
+    pointer-events: none; /* Impede eventos do mouse, incluindo cliques */
+}
 /*MEIO DO CSS*/
 
 

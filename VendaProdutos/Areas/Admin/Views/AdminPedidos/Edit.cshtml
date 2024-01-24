@@ -176,7 +176,7 @@
                             <input autocomplete="off" asp-for="PedidoEntregueEm" id="dataDois" class="form-control" />
                             <span asp-validation-for="PedidoEntregueEm" class="text-danger"></span>
                         </div>
-                       
+
                     </div>
                     <div class=" col-sm-12">
                         <h4 class="mb-3">Cobrança</h4>
@@ -213,7 +213,7 @@
 
                     @if (desabilitaComprovanteUm)
                     {
-                        
+
                         <div class="form-group col-sm-4">
                             <label asp-for="ComprovanteSegundoPagamento" class="control-label">Comprovante 2º pagamento</label>
                             <input autocomplete="off" asp-for="ComprovanteSegundoPagamento" class="form-control" />
@@ -223,35 +223,59 @@
                                 <script>document.getElementById("ComprovanteSegundoPagamento").readOnly = true;</script>
                             }
                         </div>
-                        
+
                     }
                     <div class="col-12"></div>
 
-                    <div class="form-group col-sm-4" id="pagamentoParcialDiv">
+                    <div class="form-group col-sm-5" id="pagamentoParcialDiv">
                         <label id="pagouApenas" class="control-label"></label>
-                        <input asp-for="PagamentoParcial" class="form-control" oninput="calcularTotal(this)" />
+                        <div class="form-inline">
+                            <input asp-for="PagamentoParcial" class="form-control" oninput="calcularTotal(this)" />
+                            <button type="button" id="botaoConfirmaPagamento" class="btn btn-primary" style="display:none;" onclick="pagouTudo()">Confirmar</button>
+                        </div>
                         <span asp-validation-for="PagamentoParcial" class="text-danger"></span>
-                         <span style="font-weight:bold;" id="totalResultante"></span>
+                        <span style="font-weight:bold;" id="totalResultante"></span>
+                        @if (Model.PagamentoPedido)
+                        {
+                            <script>document.getElementById("PagamentoParcial").readOnly = true;</script>
+                        }
+
                     </div>
 
-                    <div class="form-group form-check col-sm-12">
-                        <label class="form-check-label">
-                            <input autocomplete="off" class="form-check-input" asp-for="PagamentoPedido" onchange="verificarCheckbox()" /> @Html.DisplayNameFor(model => model.PagamentoPedido)
-                             <div class="text-danger" id="selecioneOpcaoDiv" style="display:none; margin-left: 10px;">
-                                <b>*</b>
+                    <div class="col-12">
+                        <div class="row" id="todosOsCheckbox">
+
+                            <div id="pagamentoPedidoDiv" class="form-group form-check col-sm-12" style="display:none;">
+                                <label asp-for="PagamentoPedido" class="form-check-label">
+                                    <input autocomplete="off" class="form-check-input" asp-for="PagamentoPedido" onchange="verificarCheckbox()" /> @Html.DisplayNameFor(model => model.PagamentoPedido)
+                                    <div class="text-danger" id="selecioneOpcaoDiv" style="display:none; margin-left: 10px;">
+                                        <b>*</b>
+                                    </div>
+                                </label>
                             </div>
-                        </label>
+                            <div id="pagamentoNaEntregaDiv" class="form-group form-check col-sm-12">
+                                <label asp-for="PagamentoNaEntrega" class="form-check-label">
+                                    <input autocomplete="off" class="form-check-input" asp-for="PagamentoNaEntrega" onchange="verificarCheckbox()" /> @Html.DisplayNameFor(model => model.PagamentoNaEntrega)
+                                </label>
+                            </div>
+                            <div id="pedidoPreparadoDiv" class="form-group form-check col-sm-12" style="display:none;">
+                                <label asp-for="PedidoPreparado" class="form-check-label">
+                                    <input autocomplete="off" class="form-check-input" asp-for="PedidoPreparado" onchange="verificarCheckbox()" /> @Html.DisplayNameFor(model => model.PedidoPreparado)
+                                </label>
+                            </div>
+                            <div id="saiuPraEntregaDiv" class="form-group form-check col-sm-12" style="display:none;">
+                                <label asp-for="SaiuPraEntrega" class="form-check-label">
+                                    <input autocomplete="off" class="form-check-input" asp-for="SaiuPraEntrega" onchange="verificarCheckbox()" /> @Html.DisplayNameFor(model => model.SaiuPraEntrega)
+                                </label>
+                            </div>
+                            <div id="entregaPedidoDiv" class="form-group form-check col-sm-12" style="display:none;">
+                                <label asp-for="EntregaPedido" class="form-check-label">
+                                    <input autocomplete="off" class="form-check-input" asp-for="EntregaPedido" onchange="verificarCheckbox()" /> @Html.DisplayNameFor(model => model.EntregaPedido)
+                                </label>
+                            </div>
+                        </div>
                     </div>
-                    <div class="form-group form-check col-sm-12">
-                        <label class="form-check-label">
-                            <input autocomplete="off" class="form-check-input" asp-for="PagamentoNaEntrega" onchange="verificarCheckbox()" /> @Html.DisplayNameFor(model => model.PagamentoNaEntrega)
-                        </label>
-                    </div>
-                    <div class="form-group form-check col-sm-12">
-                        <label class="form-check-label">
-                            <input autocomplete="off" class="form-check-input" asp-for="EntregaPedido" onchange="verificarCheckbox()" /> @Html.DisplayNameFor(model => model.EntregaPedido)
-                        </label>
-                    </div>
+
                     <div class="form-group">
                         <span id="erroAoSalvar"></span><br />
                         <button type="submit" id="botaoSalvar" class="btn btn-success btn-lg"> Salvar </button>
@@ -498,127 +522,261 @@
 
 
     <script>
+                  var veioPagoDoBanco = false;
 
-        var clientePagouTudo = false;
-        window.onload = function () {
-            calcularTotal();
-         };
-        function calcularTotal(input) {
-            formatarMoeda(input)
-            // Obtenha os valores dos inputs
-            var totalPedido = parseFloat('@Model.TotalPedido.ToString("0.00", System.Globalization.CultureInfo.InvariantCulture)'.replace(",", "."));
-            var pagamentoParcialInput = document.getElementById("PagamentoParcial");
-            var pagamentoParcial = parseFloat(pagamentoParcialInput.value.replace(",", ".")) || 0;
+   
+
+                var clientePagouTudo = false;
+                      var confirmouTudoPago = false;
+                window.onload = function () {
+                    calcularTotal();
+                 };
+                function calcularTotal(input) {
+                    formatarMoeda(input)
+                    // Obtenha os valores dos inputs
+                    var totalPedido = parseFloat('@Model.TotalPedido.ToString("0.00", System.Globalization.CultureInfo.InvariantCulture)'.replace(",", "."));
+                    var pagamentoParcialInput = document.getElementById("PagamentoParcial");
+                    var pagamentoParcial = parseFloat(pagamentoParcialInput.value.replace(",", ".")) || 0;
 
 
-            // Exiba o resultado no span com formatação
-            var totalResultanteSpan = document.getElementById("totalResultante");
-            var pagouApenasSpan = document.getElementById("pagouApenas");
-            pagouApenasSpan.textContent = "Quanto pagou?"
-            // Chamada da função verificarCheckbox no início
+                    // Exiba o resultado no span com formatação
+                    var totalResultanteSpan = document.getElementById("totalResultante");
+                    var pagouApenasSpan = document.getElementById("pagouApenas");
+                    pagouApenasSpan.textContent = "Quanto pagou?"
+                    // Chamada da função verificarCheckbox no início
 
-            // Calcule o resultado
-            var resultado = totalPedido - pagamentoParcial;
+                    // Calcule o resultado
+                    var resultado = totalPedido - pagamentoParcial;
 
-            // Adicione classe vermelha se pagamentoParcial ultrapassar totalPedido
-            if (pagamentoParcial > totalPedido) {
-                totalResultanteSpan.classList.add("text-warning");
-                totalResultanteSpan.classList.remove("text-success");
-                totalResultanteSpan.classList.remove("text-danger");
-                totalResultanteSpan.textContent = "Pagamento maior que a divida";
-                clientePagouTudo = false;
-            } else if (pagamentoParcial === totalPedido) {
-                totalResultanteSpan.classList.add("text-success");
-                totalResultanteSpan.classList.remove("text-warning");
-                totalResultanteSpan.classList.remove("text-danger");
-                totalResultanteSpan.textContent = "Pedido completamente pago"
-                pagouApenasSpan.textContent = "Pagou"
-                clientePagouTudo = true;
-            } else if (pagamentoParcial > 0 && pagamentoParcial < totalPedido) {
-                pagouApenasSpan.textContent = "Pagou apenas"
-                totalResultanteSpan.classList.add("text-danger");
-                totalResultanteSpan.classList.remove("text-success");
-                totalResultanteSpan.classList.remove("text-warning");
-                totalResultanteSpan.textContent = "Falta pagar:" + resultado.toLocaleString('pt-BR', { minimumFractionDigits: 2, maximumFractionDigits: 2 }) ;
-                ;
-                        
-                clientePagouTudo = false;
-            } else {
-                totalResultanteSpan.classList.add("text-danger");
-                totalResultanteSpan.classList.remove("text-success");
-                totalResultanteSpan.classList.remove("text-warning");
-                totalResultanteSpan.textContent = "Falta pagar: R$ " + resultado.toLocaleString('pt-BR', { minimumFractionDigits: 2, maximumFractionDigits: 2 });
-                clientePagouTudo = false;
+                    // Adicione classe vermelha se pagamentoParcial ultrapassar totalPedido
+                    if (pagamentoParcial > totalPedido) {
+                        totalResultanteSpan.classList.add("text-warning");
+                        totalResultanteSpan.classList.remove("text-success");
+                        totalResultanteSpan.classList.remove("text-danger");
+                        totalResultanteSpan.textContent = "Pagamento maior que a divida";
+                        clientePagouTudo = false;
+                    } else if (pagamentoParcial === totalPedido) {
+                        totalResultanteSpan.classList.add("text-success");
+                        totalResultanteSpan.classList.remove("text-warning");
+                        totalResultanteSpan.classList.remove("text-danger");
+                        totalResultanteSpan.textContent = "Pedido completamente pago"
+                        pagouApenasSpan.textContent = "Pagou"
+                        clientePagouTudo = true;
+                    } else if (pagamentoParcial > 0 && pagamentoParcial < totalPedido) {
+                        pagouApenasSpan.textContent = "Pagou apenas"
+                        totalResultanteSpan.classList.add("text-danger");
+                        totalResultanteSpan.classList.remove("text-success");
+                        totalResultanteSpan.classList.remove("text-warning");
+                        totalResultanteSpan.textContent = "Falta pagar:" + resultado.toLocaleString('pt-BR', { minimumFractionDigits: 2, maximumFractionDigits: 2 }) ;
+                        ;
+
+                        clientePagouTudo = false;
+                    } else {
+                        totalResultanteSpan.classList.add("text-danger");
+                        totalResultanteSpan.classList.remove("text-success");
+                        totalResultanteSpan.classList.remove("text-warning");
+                        totalResultanteSpan.textContent = "Falta pagar: R$ " + resultado.toLocaleString('pt-BR', { minimumFractionDigits: 2, maximumFractionDigits: 2 });
+                        clientePagouTudo = false;
+                    }
+         verificarCheckbox(false);
+
+                }
+
+                function pagouTudo(){
+               confirmouTudoPago = true;
+              verificarCheckbox()
+              }
+
+                function verificarCheckbox() {
+                   var pagamentoPedidoDiv = document.getElementById("pagamentoPedidoDiv");
+                   var pagamentoNaEntregaDiv = document.getElementById("pagamentoNaEntregaDiv");
+                   var pedidoPreparadoDiv = document.getElementById("pedidoPreparadoDiv");
+                   var saiuPraEntregaDiv = document.getElementById("saiuPraEntregaDiv");
+                   var entregaPedidoDiv = document.getElementById("entregaPedidoDiv");
+
+
+
+                    var saiuPraEntregaInput = document.getElementById("SaiuPraEntrega");
+                    var pedidoPreparadoInput = document.getElementById("PedidoPreparado");
+                    var entregaPedidoInput = document.getElementById("EntregaPedido");
+                    var pagamentoNaEntregaInput = document.getElementById("PagamentoNaEntrega");
+                    var pagamentoPedidoInput = document.getElementById("PagamentoPedido");
+
+                    var selecioneOpcaoDiv = document.getElementById("selecioneOpcaoDiv");
+                    var pagamentoParcialDiv = document.getElementById("pagamentoParcialDiv");
+
+
+                    var saiuPraEntregaLabel = document.querySelector('label[for="SaiuPraEntrega"]');
+                    var pedidoPreparadoLabel = document.querySelector('label[for="PedidoPreparado"]');
+                    var entregaPedidoLabel = document.querySelector('label[for="EntregaPedido"]');
+                    var pagamentoNaEntregaLabel = document.querySelector('label[for="PagamentoNaEntrega"]');
+                    var pagamentoPedidoLabel = document.querySelector('label[for="PagamentoPedido"]');
+
+
+                    var totalPedido = parseFloat('@Model.TotalPedido.ToString("0.00", System.Globalization.CultureInfo.InvariantCulture)'.replace(",", "."));
+                    var pagamentoParcialInput = document.getElementById("PagamentoParcial");
+                    var pagamentoParcial = parseFloat(pagamentoParcialInput.value.replace(",", ".")) || 0;
+                    var resultado = totalPedido - pagamentoParcial;
+
+                    var pedidoTaPago = pagamentoParcial == totalPedido;
+                    var pagouParteDoValor =  pagamentoParcial < totalPedido && pagamentoParcial > 0;
+                    var naoPagouNada = pagamentoParcial == 0;
+                     
+                    var quarentaPorcento = totalPedido * 0.4;
+       
+
+ 
+
+
+        //pagar tudo na entrega e o pedido foi preparado
+        if(naoPagouNada &&  pedidoPreparadoInput.checked){
+        pagamentoNaEntregaLabel.classList.remove("readonly-checkbox"); //impede que alterem o valor do checkbox de pagamento na entrega
+
+        }
+        if( naoPagouNada &&   pedidoPreparadoInput.checked && saiuPraEntregaInput.checked ){
+        pagamentoNaEntregaInput.checked = true; // descheca o checkbox de pagamento na entrega
+        }
+        //esconder preparado antes de preparar
+        if(!saiuPraEntregaInput.checked && !pedidoPreparadoInput.checked && !pagamentoNaEntregaInput.checked && naoPagouNada){
+                pedidoPreparadoDiv.style.display = "none";
+        }
+
+
+         //pedido pago
+        if(!pedidoTaPago){
+         pagamentoPedidoDiv.style.display = "none"; //esconde div com o input text
+         pagamentoPedidoInput.checked = false;  //descheca o checkbox que informa se foi pago
+        }
+        // tá pago e ta na loja
+        if(pedidoTaPago && confirmouTudoPago){
+        pagamentoPedidoInput.checked = true;  //checa o checkbox que informa se foi pago
+        pagamentoPedidoDiv.style.display = "block"; // exibe a div que com o checkbox que informa se foi pago
+        pagamentoPedidoLabel.classList.add("readonly-checkbox"); //impede que alterem o valor do checkbox que informa se foi pago
+
+        }
+        if(pedidoTaPago && !saiuPraEntregaInput.checked){
+            pagamentoNaEntregaLabel.classList.add("readonly-checkbox"); //impede que alterem o valor do checkbox de pagamento na entrega
+        pagamentoNaEntregaInput.checked = false; // descheca o checkbox de pagamento na entrega
+
+        }
+        if(saiuPraEntregaInput.checked && !entregaPedidoInput.checked){
+            if(pagouParteDoValor){
+        pagamentoNaEntregaInput.checked = true; // descheca o checkbox de pagamento na entrega
+        pagamentoNaEntregaLabel.classList.add("readonly-checkbox"); //impede que alterem o valor do checkbox de pagamento na entrega
+
             }
- verificarCheckbox();
+        }
+
+        //Se informar que pagou tudo tem que confirmar
+        if(pedidoTaPago  && !pagamentoPedidoInput.checked){
+            if(confirmouTudoPago){
+                document.getElementById("PagamentoParcial").readOnly = true;
+                document.getElementById("todosOsCheckbox").style.display = "block";
+        document.getElementById("botaoSalvar").disabled = false;
+ // document.getElementById("botaoConfirmaPagamento").style.display = "none";
+        document.getElementById("erroAoSalvar").textContent = "";
+
+        }else{
+            document.getElementById("botaoSalvar").disabled = true;
+        document.getElementById("todosOsCheckbox").style.display = "none";
+
+        document.getElementById("erroAoSalvar").textContent = "Confirme que o pedido está pago, clique no botão azul ";
+        }
+        }else{
+                document.getElementById("todosOsCheckbox").style.display = "block";
+        document.getElementById("botaoSalvar").disabled = false;
+        // document.getElementById("botaoConfirmaPagamento").style.display = "block";
+        document.getElementById("erroAoSalvar").textContent = "";
+        }
+         
+        if(pedidoTaPago && !pagamentoPedidoInput.checked){
+        document.getElementById("botaoConfirmaPagamento").style.display = "block";
+        }
+        if(pagamentoPedidoInput.checked){
+                    document.getElementById("botaoConfirmaPagamento").style.display = "none";
+                document.getElementById("PagamentoParcial").readOnly = true;
+        }
+
+        //pagamento total na entrega
+        if(naoPagouNada && pagamentoNaEntregaInput.checked){
+                pedidoPreparadoDiv.style.display = "block";
+                 document.getElementById("erroAoSalvar").textContent = "5";
+
 
         }
 
-        function verificarCheckbox() {
-
-            var entregaPedido = document.getElementById("EntregaPedido");
-            var pagamentoNaEntrega = document.getElementById("PagamentoNaEntrega");
-            var pagamentoPedido = document.getElementById("PagamentoPedido");
-            var selecioneOpcaoDiv = document.getElementById("selecioneOpcaoDiv");
-            var pagamentoParcialDiv = document.getElementById("pagamentoParcialDiv");
-
-            var totalPedido = parseFloat('@Model.TotalPedido.ToString("0.00", System.Globalization.CultureInfo.InvariantCulture)'.replace(",", "."));
-            var pagamentoParcialInput = document.getElementById("PagamentoParcial");
-            var pagamentoParcial = parseFloat(pagamentoParcialInput.value.replace(",", ".")) || 0;
-            var resultado = totalPedido - pagamentoParcial;
-            var quarentaPorcento = totalPedido * 0.4;
-
-            if (!pagamentoPedido.checked && clientePagouTudo || pagamentoPedido.checked && pagamentoParcial < totalPedido) {
-                selecioneOpcaoDiv.style.display = "inline"; // Exibe a div
-                pagamentoParcialDiv.style.display = "block";
-
-            } else {
-                selecioneOpcaoDiv.style.display = "none"; // Oculta a div               
-             }
-
-            if (pagamentoPedido.checked && pagamentoParcial === totalPedido) {
-                pagamentoParcialDiv.style.display = "none";
-
-             }else{
-                pagamentoParcialDiv.style.display = "block";
-            }
-            if (pagamentoPedido.checked && pagamentoParcial === 0) {
-                document.getElementById("botaoSalvar").disabled = true;
-                document.getElementById("erroAoSalvar").textContent = "Não é possível marcar Pedido pago, sem informar antes o valor que o cliente pagou (para salvarinforme corretamente ou desmarque a opção)";
-                document.getElementById("erroAoSalvar").style.color = "#f00"
-            } else if (pagamentoPedido.checked && pagamentoParcial < totalPedido) {
-                document.getElementById("botaoSalvar").disabled = true;
-                document.getElementById("erroAoSalvar").textContent = "Ainda falta o cliente pagar R$ " + resultado.toLocaleString('pt-BR', { minimumFractionDigits: 2, maximumFractionDigits: 2 }) + ", desmarque a opção pedido pago, ou informe corretamente o valor que o cliente pagou";
-                document.getElementById("erroAoSalvar").style.color = "#f00"
-            } else if (!pagamentoPedido.checked && clientePagouTudo) {
-                document.getElementById("botaoSalvar").disabled = true;
-                document.getElementById("erroAoSalvar").textContent = `De acordo ao valor informado o cliente já pagou tudo, então selecione a opção Pedido pago`;
-                document.getElementById("erroAoSalvar").style.color = "#f00"
-            } else if (pagamentoParcial > totalPedido) {
-                document.getElementById("botaoSalvar").disabled = true;
-                document.getElementById("erroAoSalvar").textContent = `O valor informado é maior que o cliente deve`;
-                document.getElementById("erroAoSalvar").style.color = "#f00"
-            } else if (pagamentoParcial < totalPedido * 0.4) {
-                document.getElementById("botaoSalvar").disabled = false;
-                document.getElementById("erroAoSalvar").textContent = "Para confirmar o pedido é preciso pagar 50% ou no minimo R$" + quarentaPorcento.toFixed(2);
-                document.getElementById("erroAoSalvar").style.color = "#f00"
-            } else if (pagamentoPedido.checked && pagamentoNaEntrega.checked && !entregaPedido.checked) {
-                document.getElementById("botaoSalvar").disabled = true;
-                document.getElementById("erroAoSalvar").textContent = "O pagamento é na entrega, então se não foi entregue não tem como ter sido pago";
-                document.getElementById("erroAoSalvar").style.color = "#f00"
-            } else if (!pagamentoPedido.checked && entregaPedido.checked) {
-                document.getElementById("botaoSalvar").disabled = false;
-                document.getElementById("erroAoSalvar").textContent = "Não entregamos pedidos antes de ser pago";
-                document.getElementById("erroAoSalvar").style.color = "#f00"
-            }
-            else {
-                document.getElementById("botaoSalvar").disabled = false;
-                document.getElementById("erroAoSalvar").textContent = "";
-             }
+        //pagou parte
+        if(pagouParteDoValor){
+          pedidoPreparadoDiv.style.display = "block"; // exibe a div  com o checkbox que informa se foi preparado
 
         }
+        //pedido foi preparado só exibe si
+        if(pagouParteDoValor || pagamentoNaEntregaInput.checked || pedidoTaPago ){
+                pedidoPreparadoDiv.style.display = "block"; // exibe a div  com o checkbox que informa se foi preparado
 
-      
+        }else{
+                if(!naoPagouNada && !pagamentoNaEntregaInput.checked && !pedidoPreparadoInput.checked){
+                pedidoPreparadoDiv.style.display = "none"; // exibe a div  com o checkbox que informa se foi preparado
+        }
+
+        }
+        //pedido preparado
+        if(pedidoPreparadoInput.checked){
+            pedidoPreparadoLabel.classList.add("readonly-checkbox"); //impede que alterem o valor do checkbox de pedido preparado
+            saiuPraEntregaDiv.style.display = "block"; // exibe a div  com o checkbox que informa se saiu para entrega
+        }
+        //saiu para entrega
+        if(saiuPraEntregaInput.checked){
+            pedidoPreparadoLabel.classList.add("readonly-checkbox"); //impede que alterem o valor do checkbox de pedido preparado
+            entregaPedidoDiv.style.display = "block"; // exibe a div  com o checkbox que informa se o pedido foi entregue
+            pagamentoNaEntregaLabel.classList.add("readonly-checkbox"); //impede que alterem o valor do checkbox de pagamento na entrega
+
+            //não saiu para entrega
+        } else{
+            entregaPedidoDiv.style.display = "none"; // esconde a div  com o checkbox que informa se o pedido foi entregue
+        @* if(!naoPagouNada && !pagamentoNaEntregaInput.checked && !pedidoPreparadoInput.checked){     }*@
+           if(!pedidoTaPago){
+             pagamentoNaEntregaLabel.classList.remove("readonly-checkbox"); //permite que alterem o valor do checkbox de pagamento na entrega*
+             }
+        }
+
+
+        //saiu mas não foi entregue
+         if(saiuPraEntregaInput.checked && !entregaPedidoInput.checked){
+         saiuPraEntregaLabel.classList.remove("readonly-checkbox"); //permite que alterem o valor do checkbox de saiu para entrega
+        }
+
+         //foi entregue
+        if(entregaPedidoInput.checked){
+        saiuPraEntregaLabel.classList.add("readonly-checkbox"); //impede que alterem o valor do checkbox de saiu para entrega
+            pagamentoNaEntregaLabel.classList.add("readonly-checkbox"); //impede que alterem o valor do checkbox de pagamento na entrega
+                entregaPedidoLabel.classList.add("readonly-checkbox"); //impede que alterem o valor do checkbox de pedido entregue
+        }
+          
+    if (pagamentoParcial > totalPedido) {
+                        document.getElementById("botaoSalvar").disabled = true;
+                        document.getElementById("erroAoSalvar").textContent = `O valor informado é maior que o cliente deve`;
+                        document.getElementById("erroAoSalvar").style.color = "#f00"
+                    }
+         else if (pagamentoParcial < totalPedido * 0.4) {
+                    document.getElementById("botaoSalvar").disabled = false;
+                    document.getElementById("erroAoSalvar").textContent = "Para confirmar o pedido é preciso pagar 50% ou no minimo R$" + quarentaPorcento.toFixed(2);
+                    document.getElementById("erroAoSalvar").style.color = "#f00"
+             } else if (pagamentoPedido.checked && pagamentoNaEntrega.checked && !entregaPedido.checked) {
+                        document.getElementById("botaoSalvar").disabled = true;
+                        document.getElementById("erroAoSalvar").textContent = "Se o cliente pagou antes da entrega, desmarque a opção pagamento na entrega";
+                        document.getElementById("erroAoSalvar").style.color = "#f00"
+                    } else if (!pagamentoPedido.checked && entregaPedido.checked) {
+                        document.getElementById("botaoSalvar").disabled = false;
+                        document.getElementById("erroAoSalvar").textContent = "Não entregamos pedidos antes de ser pago";
+                        document.getElementById("erroAoSalvar").style.color = "#f00"
+                    }
+                    else {
+                        document.getElementById("botaoSalvar").disabled = false;
+                        document.getElementById("erroAoSalvar").textContent = "";
+                     }
+                }
+
 
     </script>
     <script>
@@ -643,5 +801,12 @@
             input.value = valor.replace('.', ',');
         }
     </script>
- 
+
+       
+
 }
+ 
+         
+         
+ 
+

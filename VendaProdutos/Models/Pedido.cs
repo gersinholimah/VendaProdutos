@@ -147,7 +147,12 @@ namespace VendaProdutos.Models
         [Display(Name = "Pedido entregue")]
         public bool EntregaPedido { get; set; }
 
+        [Display(Name = "Pedido foi preparado")]
+        public bool PedidoPreparado { get; set; }
 
+        [Display(Name = "Saiu para entrega")]
+
+        public bool SaiuPraEntrega { get; set; }
         public List<PedidoDetalhe> PedidoItens { get; set; }
 
     }

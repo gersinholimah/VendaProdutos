@@ -161,7 +161,7 @@ Total de Pedidos : @Model.TotalRecordCount
 </div>
 
 
-
+<div class="table-responsive">
             <table class="table table-hover ">
     <thead>
         <tr>
@@ -284,10 +284,35 @@ Total de Pedidos : @Model.TotalRecordCount
                                 {
                                             if (passouDiaDaEntrega)
                                             {
-                                                <div class=""><b>Entregar Urgentemente </b></div>
+                                                <div class="">
+                                                    @if (item.PedidoPreparado)
+                                                    {
+                                                        if(item.SaiuPraEntrega){
+                                                           <b>Em trânsito</b>
+                                                        }
+                                                        else
+                                                        {
+                                                            <b>Entregar Urgentemente</b>
+                                                        }
+                                                    }
+                                                    else
+                                                    {
+                                                        <b>Preparar com Urgência</b>
+                                                    }
+                                                
+                                                </div>
                                             }
                                             else{
-                                                <div class=""><b>Aguardando Entrega</b></div>
+                                                <div class="">
+                                                    @if (item.PedidoPreparado)
+                                                    {
+                                                    <b>Aguardando Entrega</b>
+                                                    }
+                                                    else
+                                                    {
+                                                        <b>Não está pronto</b>
+                                                    }
+                                                </div>
                                               
                                             }
                                             @if (item.PagamentoNaEntrega && !item.PagamentoPedido || item.PagamentoParcial > 0 && !item.PagamentoPedido)
@@ -463,7 +488,7 @@ Detalhes                </a>
 }
     </tbody>
 </table>
-
+            </div>
 
             <div class="paginador_admin">
                 <vc:pager paging-list="@Model"></vc:pager>
