@@ -17,6 +17,7 @@
     string diaDaEntrega = @Model.Pedido.DataDeEntrega;
     string[] partes = diaDaEntrega.Split(',');
     DateTime horaAtual = DateTime.Now;
+    int horaAtualEmHoras = horaAtual.Hour;
     string horaEntregaString = @Model.Pedido.HoraDeEntrega;
     DateTime horaEntrega = DateTime.ParseExact(horaEntregaString, "HH:mm", null);
     // DateTime horaEntregaMais1Hora = horaEntrega.AddHours(1);
@@ -41,10 +42,8 @@
         bool entregarAmanha = dataEntrega.Date == DateTime.Today.AddDays(1).Date;
         bool passouDiaDaEntrega = dataEntrega.Date < DateTime.Today.Date;
 
-
-
-
-
+        bool amanhaPrimeirosHorarios = entregarAmanha && horaEntregaString == "06:00" || horaEntregaString == "07:00";
+        bool estaNofimDetarde = horaAtualEmHoras >= 17;
     }
 
 
@@ -175,55 +174,74 @@
                     DiaDaEntregaRecebedorAqui = "Amanhã";
                 }
 
-                 decimal jaPagou = Model.Pedido.PagamentoParcial;
+                decimal jaPagou = Model.Pedido.PagamentoParcial;
 
                 decimal faltaPagar = totalPedido - jaPagou;
+
+                bool naoPagouNada = jaPagou == 0;
+
+                bool pagouParte = faltaPagar > 0;
             }      
  
 
             <div class="container mt-4">
                 <div class="row">
-@*                     @if (Model.Pedido.) { }
- *@                              <div class="form-group mr-2">
+                   @if (Model.Pedido.SaiuPraEntrega && !Model.Pedido.EntregaPedido && !Model.Pedido.DestinatarioNaoLocalizado && !Model.Pedido.EnderecoNaoEncontrado) {
+                             <div class="form-group mr-2">
                                 <label>Saindo para entrega</label><br />
                         <a target="_blank" href="https://api.whatsapp.com/send?phone=+@TelefoneCompradorAqui&text=Olá+@NomeCompradorAqui%2C+o+pedido+que+você+pediu+está+saindo+para+entrega%2C+agorinha😊👏" class="btn btn-success ">Avisar comprador</a>
                         <a target="_blank" href="https://api.whatsapp.com/send?phone=+@TelefoneRecebedorAqui&text=Olá+@NomeRecebedorAqui%2C+um+de+nossos+entregadores+já+está+levando+sua+encomenda%2C+jaja+ele+chega+aí😁👍" class="btn btn-secondary ">Avisar ao recebedor</a>
                             </div>
- 
+                             }
+
+                    @if(Model.Pedido.SaiuParaEntegaNovamente)
+                    {
+                       <div class="form-group mr-2">
+                       <label>Saindo para entrega Novamente</label><br />
+                        <a target="_blank" href="" class="btn btn-success ">Avisar comprador</a>
+                        <a target="_blank" href="" class="btn btn-secondary ">Avisar ao recebedor</a>
+                       </div> 
+                    }
+
+                             @if (Model.Pedido.PedidoPreparado && entregarHoje || Model.Pedido.PedidoPreparado && amanhaPrimeirosHorarios && estaNofimDetarde){
                              <div class="form-group mr-2">
                                 <label>Facilitar entrega</label><br />
                         <a target="_blank" href="https://api.whatsapp.com/send?phone=+@TelefoneRecebedorAqui&text=Olá+@NomeRecebedorAqui%2C+recebi+uma+solicitação+de+entrega+que+deve+ser+entregue+diretamente+a+você+@DiaDaEntregaRecebedorAqui%2C+entre+@HorarioInicalAqui+e+@HorarioLimiteAqui.%0A%0AO+ID+da+mercadoria+é:+@IdPedidoAqui+%0A%0AO+endereço+de+entrega+que+tenho+aqui+é:+@NomeDaEmpresa+em+Feira+de+Santana%2C+no+bairro+@BairroAqui%2C+na+rua+@RuaAqui%2C+o+nº+do+imóvel+é+@NumeroDoImovelAqui@ComplementoAqui+@PontoDeReferenciaAqui+%0A%0A+O+endereço+está+correto?" class="btn btn-dark ">Comunicar destinatário</a>
                             </div>
- 
+                            }
+                            
+                            @if(Model.Pedido.EnderecoNaoEncontrado && !Model.Pedido.EntregaPedido){
                              <div class="form-group mr-2">
                                 <label>Endereço Errado</label><br />
                         <a target="_blank" href="https://api.whatsapp.com/send?phone=+@TelefoneCompradorAqui&text=Eu+novamente😞%0Atenho+uma+noticia+chata+referente+ao+pedido+que+você+pediu+para+ser+entregue+hoje%2C+para+@NomeRecebedorAqui.%0A%0AO+entregador+foi+no+endereço+e+infelizmente+por+não+conseguir+encontrar+retornou+com+a+surpresa.%0A%0AO+tem+certeza+que+o+endeerço+está+correto🙄%3F" class="btn btn-danger ">Solicitar o correto</a>
                      </div>
-
+                     }
                   
-                            <div class="form-group mr-2">
+                     @if(naoPagouNada && !Model.Pedido.PagamentoNaEntrega){ 
+                    <div class="form-group mr-2">
                                 <label>Não comprou</label><br />
                         <a target="_blank" href="https://api.whatsapp.com/send?phone=+55+@TelefoneCompradorAqui&text=Olá%2C+@NomeCompradorAqui+sou+atendente+na+Pradois+😁%0A+E+vou+dar+continuidade+ao+atendimento+referente+a+solicitação+que+você+fez+do+pedido+com+identificação%3A+@IdPedidoAqui%0A%0A%2ACom+os+itens%2A%0A+@ProdutoAqui%0A%0A%2AInformando+que%2A%0AÉ+de+@QuemEstaEnviandoAqui+para+@NomeRecebedorAqui.%0AE+é+que+é+para+entregar+@DiaDaEntregaAqui+entre+@HorarioInicalAqui+e+@HorarioLimiteAqui%0A%0A%2AO+endereço+de+entrega+é%2A%0A+@NomeDaEmpresa+Aqui+em+Feira+de+Santana%2C+no+bairro+@BairroAqui%2C+na+rua+@RuaAqui%2C+o+nº+do+imóvel+é+@NumeroDoImovelAqui@ComplementoAqui+@PontoDeReferenciaAqui+@ObservacaoAqui" class="btn btn-warning ">Recuperar Carrinho</a>
                              </div>
-
+                             }
                     
                     
 
-                    
+                    @if(Model.Pedido.PedidoPreparado && !Model.Pedido.PagamentoNaEntrega && entregarHoje && pagouParte && !Model.Pedido.SaiuPraEntrega
+                    ||Model.Pedido.PedidoPreparado && !Model.Pedido.PagamentoNaEntrega && passouDiaDaEntrega && pagouParte && !Model.Pedido.SaiuPraEntrega){
                             <div class="form-group mr-2">
                                 <label>Está pronto, falta pagar</label><br />
                         <a target="_blank" href="https://api.whatsapp.com/send?phone=+@TelefoneCompradorAqui&text=Oie%2C+já+está+tudo+prontinho+pra+entrega!%0AAssim+que+você+enviar+o+comprovante+da+outra+parte+do+pagamento,+já+colocaremos+em+trânsito.🥰%0A%0A%2AValor+que+falta%2A%3A+@faltaPagar%0A%2AChave+Pix+@TipoChavePixAqui%2A%3A+@ChavePixAqui%0A%2ANome%2A%3A+Viviane+Oliveira+Lima%0A%0AVou+enviar+a+chave+separada,+para+ficar+mais+fácil+copiar%0A+👇%EF%B8%8F" class="btn btn-warning ">Solicitar pagamento</a>
                           
                     </div>
+                    }
 
-
- 
+ @if(Model.Pedido.EntregaPedido && naoPagouNada ||Model.Pedido.EntregaPedido && pagouParte){
                             <div class="form-group mr-2">
                                 <label>Está devendo</label><br />
                         <a target="_blank" href="https://api.whatsapp.com/send?phone=+@TelefoneCompradorAqui&text=Oilá+@NomeCompradorAqui%21+%0AReferente+a+entrega+que+você+solicitou+que+enviássemos+para+@NomeRecebedorAqui+e+entregamos+@diaDaEntrega🥰%0AVou+te+passar+abaixo+a+chave+pix+para+pagamento%0A%0A%2AValor+que+falta%2A%3A+@faltaPagar%0A%2AChave+Pix+@TipoChavePixAqui%2A%3A+@ChavePixAqui%0A%2ANome%2A%3A+Viviane+Oliveira+Lima%0A%0AVou+enviar+a+chave+separada,+para+ficar+mais+fácil+copiar%0A+👇%EF%B8%8F" class="btn btn-danger ">Cobrar</a>
                             </div>
                      
-
+}
                 </div>
             </div>
           
@@ -252,7 +270,7 @@
                 <div class="row">
 
                     <div class="col-12">
-                        <div class="ticketTitle">Seu pedido:</div>
+                        <div class="ticketTitle">Pedido: @Model.Pedido.PedidoId</div>
                     </div>
 
 
@@ -333,8 +351,18 @@
                                             <td>Total</td>
                                             <td></td>
                                             <td></td>
-                                            <td>@string.Format("{0:C}", @totalPedido)</td>
+                                            <td>@string.Format("{0:C}", @totalPedido)
+                                            </td>
                                         </tr>
+                                        @if(faltaPagar > 0){
+                                        <tr>
+                                            <td style="color:#f00">Falta pagar</td>
+                                            <td></td>
+                                            <td></td>
+                                            <td style="color:#f00">@string.Format("{0:C}", faltaPagar)
+                                            </td>
+                                        </tr>
+                                        }
                                     </tbody>
                                 </table>
                             </div>

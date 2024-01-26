@@ -557,13 +557,28 @@
 
 
 <script>
+    // NÃO RECUPERA NADA, MAS AO MENOS LIMPA
     $(document).ready(function () {
+        // Variáveis para armazenar os valores dos campos
+        var nomeDaEmpresaValue = '';
+        var setorValue = '';
+
         // Evento que é acionado quando a guia é alterada
         $('#myTabs a').on('shown.bs.tab', function (e) {
             var selectedTabId = $(e.target).attr('href'); // Obtém o ID da guia selecionada
 
             // Verifica se a guia selecionada é a guia2 (COMERCIAL)
             if (selectedTabId === '#tab2') {
+                // Se já tiver valores armazenados, restaura os campos
+                if (nomeDaEmpresaValue !== '' && setorValue !== '') {
+                    $('#tab2 input[id="NomeDaEmpresa"]').val(nomeDaEmpresaValue);
+                    $('#tab2 input[id="Setor"]').val(setorValue);
+                } else {
+                    // Se não houver valores armazenados, limpa os campos
+                    $('#tab2 input[id="NomeDaEmpresa"]').val('');
+                    $('#tab2 input[id="Setor"]').val('');
+                }
+
                 // Adiciona o atributo required aos campos desejados
                 $('#tab2 input[id="NomeDaEmpresa"]').prop('required', true);
                 $('#tab2 input[id="Setor"]').prop('required', true);
@@ -572,9 +587,27 @@
                 $('#tab2 input[id="NomeDaEmpresa"]').prop('required', false);
                 $('#tab2 input[id="Setor"]').prop('required', false);
             }
+
+            // Se a guia "RESIDENCIAL" for selecionada novamente, limpa os valores armazenados
+            if (selectedTabId === '#tab1') {
+                nomeDaEmpresaValue = '';
+                setorValue = '';
+
+                // Limpa os valores dos campos
+                $('#tab2 input[id="NomeDaEmpresa"]').val('');
+                $('#tab2 input[id="Setor"]').val('');
+            }
+        });
+
+        // Evento ao clicar novamente no botão comercial
+        $('#tab2-tab').on('click', function () {
+            // Armazena os valores dos campos
+            nomeDaEmpresaValue = $('#tab2 input[id="NomeDaEmpresa"]').val();
+            setorValue = $('#tab2 input[id="Setor"]').val();
         });
     });
 </script>
+
 
 
  

@@ -296,8 +296,18 @@ Total de Pedidos : @Model.TotalRecordCount
                                                     @if (item.PedidoPreparado)
                                                     {
                                                         if(item.SaiuPraEntrega){
-                                                           <b>Em trânsito</b>
-                                                        }
+                                                                    @if (item.EnderecoNaoEncontrado && !item.SaiuParaEntegaNovamente) {
+                                                                        <b> Endereço não encontrado</b>
+                                                                    }
+                                                                    else if (item.DestinatarioNaoLocalizado && !item.SaiuParaEntegaNovamente) {
+                                                                        <b>Destinatario não localizado</b>
+                                                                    } else if (item.SaiuParaEntegaNovamente)
+                                                                    {
+                                                                        <b>Em transito novamente</b>
+                                                                    } else {
+                                                                        <b>Em trânsito</b>
+                                                                    }
+                                                                }
                                                         else
                                                         {
                                                             <b>Entregar Urgentemente</b>
@@ -351,11 +361,15 @@ Total de Pedidos : @Model.TotalRecordCount
                                         <span class="">Pagou</span>
                                     @if (item.PagamentoNaEntrega)
                                     {
-                                        <span>Quando recebeu</span>
-                                    }
-                                    else
-                                    {
-                                        <span>Antes da enterga</span>
+                                                            <span>Quando recebeu</span>
+                                                        }
+                                                        else
+                                                        {
+                                                            if(item.DestinatarioNaoLocalizado && !item.SaiuParaEntegaNovamente || item.EnderecoNaoEncontrado && !item.SaiuParaEntegaNovamente)
+                                                            {
+                                                                <span>Verificar endereço correto</span>
+                                                            }else{<span>Antes da enterga</span>}
+                                                            
 
                                     }
                                             </div>
