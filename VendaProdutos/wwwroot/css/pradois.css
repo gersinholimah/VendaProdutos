@@ -1610,7 +1610,7 @@ nav .container {
     width: 16px;
 }
 .admin a svg {
-    margin-right: 10px;
+    margin-right: 15px;
 }
 
 
@@ -1647,10 +1647,33 @@ nav .container {
     margin: 0;
 }
 
-.readonly-checkbox {
+.readonly-checkbox, #readonly-checkbox {
     opacity: 0.5; /* Adiciona opacidade para simular desativado */
     pointer-events: none; /* Impede eventos do mouse, incluindo cliques */
 }
+
+/*
+.espaca_td2 {
+    width: 130px;
+}
+
+
+.espaca_td3 {
+    width: 80px;
+}
+.espaca_td4 {
+}
+.espaca_td5 {
+    width: 130px;
+}
+.espaca_td6 {
+    width: 100px;
+}
+.espaca_td7 {
+    width: 100px;
+}*/
+
+
 /*MEIO DO CSS*/
 
 
@@ -1933,6 +1956,32 @@ h2.tit1_gen {
 
     .busca_admin .form-group {
         padding: 0 2px 0 2px;
+    }
+    .admin .table {
+        font-size: 12px;
+    }
+
+    .espaca_td2 {
+        width: 130px;
+    }
+
+    .espaca_td3 {
+        width: 80px;
+    }
+
+    .espaca_td4 {
+    }
+
+    .espaca_td5 {
+        width: 130px;
+    }
+
+    .espaca_td6 {
+        width: 100px;
+    }
+
+    .espaca_td7 {
+        width: 100px;
     }
 
 }

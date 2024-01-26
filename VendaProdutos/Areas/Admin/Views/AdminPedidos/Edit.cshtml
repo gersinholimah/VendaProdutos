@@ -267,7 +267,55 @@
                                 <label asp-for="SaiuPraEntrega" class="form-check-label">
                                     <input autocomplete="off" class="form-check-input" asp-for="SaiuPraEntrega" onchange="verificarCheckbox()" /> @Html.DisplayNameFor(model => model.SaiuPraEntrega)
                                 </label>
+                         @if (Model.SaiuPraEntrega){
+                            <script> 
+                                 document.querySelector('label[for="SaiuPraEntrega"]').setAttribute("id", "readonly-checkbox");
+                            </script>
+                        }
                             </div>
+
+                           
+
+                            <div id="enderecoNaoEncontradoDiv" class="form-group form-check col-sm-12" style="display:none;">
+                                <label asp-for="EnderecoNaoEncontrado" class="form-check-label">
+                                    <input autocomplete="off" class="form-check-input" asp-for="EnderecoNaoEncontrado" onchange="verificarCheckbox()" /> @Html.DisplayNameFor(model => model.EnderecoNaoEncontrado)
+                                </label>
+                                @if ( Model.EnderecoNaoEncontrado){
+                                    <script>document.querySelector('label[for="EnderecoNaoEncontrado"]').setAttribute("id", "readonly-checkbox");</script>
+                                    }
+                            </div>
+                            <div id="destinatarioNaoLocalizadoDiv" class="form-group form-check col-sm-12" style="display:none;">
+                                <label asp-for="DestinatarioNaoLocalizado" class="form-check-label">
+                                    <input autocomplete="off" class="form-check-input" asp-for="DestinatarioNaoLocalizado" onchange="verificarCheckbox()" /> @Html.DisplayNameFor(model => model.DestinatarioNaoLocalizado)
+                                </label>
+                                  @if (Model.DestinatarioNaoLocalizado ){
+                                       <script>document.querySelector('label[for="DestinatarioNaoLocalizado"]').setAttribute("id", "readonly-checkbox");</script>
+                                    }
+                            </div>
+                         
+                            
+                            <div id="observacaoNaoEntregueDiv" class="form-group col-sm-4" style="display:none;">
+                                <label asp-for="ObservacaoNaoEntregue" class="control-label"></label>
+                                <textarea autocomplete="off" asp-for="ObservacaoNaoEntregue" class="form-control"></textarea>
+                                <span asp-validation-for="ObservacaoNaoEntregue" class="text-danger"></span>
+                                  @if ( Model.EnderecoNaoEncontrado || Model.DestinatarioNaoLocalizado ){
+                            <script> 
+                              conteudoInputSemEspaco = document.getElementById("ObservacaoNaoEntregue").value.trim();
+                              if(conteudoInputSemEspaco !== ""){
+                                  document.getElementById("ObservacaoNaoEntregue").readOnly = true;
+                              }else{
+                                  document.getElementById("observacaoNaoEntregueDiv").classList.add("d-none");
+                              }
+                            </script>
+                        }
+                            </div>
+
+                             <div id="saiuParaEntegaNovamenteDiv" class="form-group form-check col-sm-12" style="display:none;">
+                                <label asp-for="SaiuParaEntegaNovamente" class="form-check-label">
+                                    <input autocomplete="off" class="form-check-input" asp-for="SaiuParaEntegaNovamente" onchange="verificarCheckbox()" /> @Html.DisplayNameFor(model => model.SaiuParaEntegaNovamente)
+                                </label>
+                            </div>
+
                             <div id="entregaPedidoDiv" class="form-group form-check col-sm-12" style="display:none;">
                                 <label asp-for="EntregaPedido" class="form-check-label">
                                     <input autocomplete="off" class="form-check-input" asp-for="EntregaPedido" onchange="verificarCheckbox()" /> @Html.DisplayNameFor(model => model.EntregaPedido)
@@ -286,7 +334,7 @@
 
 
             <div>
-                <a asp-action="Index">Back to List</a>
+                <a asp-action="Index">Voltar a listagem</a>
             </div>
 
 
@@ -593,7 +641,10 @@
                    var pedidoPreparadoDiv = document.getElementById("pedidoPreparadoDiv");
                    var saiuPraEntregaDiv = document.getElementById("saiuPraEntregaDiv");
                    var entregaPedidoDiv = document.getElementById("entregaPedidoDiv");
-
+            var destinatarioNaoLocalizadoDiv = document.getElementById("destinatarioNaoLocalizadoDiv");
+            var enderecoNaoEncontradoDiv = document.getElementById("enderecoNaoEncontradoDiv");
+            var observacaoNaoEntregueDiv = document.getElementById("observacaoNaoEntregueDiv");
+                    var saiuParaEntegaNovamenteDiv = document.getElementById("saiuParaEntegaNovamenteDiv");
 
 
                     var saiuPraEntregaInput = document.getElementById("SaiuPraEntrega");
@@ -601,6 +652,11 @@
                     var entregaPedidoInput = document.getElementById("EntregaPedido");
                     var pagamentoNaEntregaInput = document.getElementById("PagamentoNaEntrega");
                     var pagamentoPedidoInput = document.getElementById("PagamentoPedido");
+            var destinatarioNaoLocalizadoInput = document.getElementById("DestinatarioNaoLocalizado");
+            var enderecoNaoEncontradoInput = document.getElementById("EnderecoNaoEncontrado");
+            var observacaoNaoEntregueInput = document.getElementById("ObservacaoNaoEntregue");
+            var saiuParaEntegaNovamenteInput = document.getElementById("SaiuParaEntegaNovamente");
+            
 
                     var selecioneOpcaoDiv = document.getElementById("selecioneOpcaoDiv");
                     var pagamentoParcialDiv = document.getElementById("pagamentoParcialDiv");
@@ -611,7 +667,12 @@
                     var entregaPedidoLabel = document.querySelector('label[for="EntregaPedido"]');
                     var pagamentoNaEntregaLabel = document.querySelector('label[for="PagamentoNaEntrega"]');
                     var pagamentoPedidoLabel = document.querySelector('label[for="PagamentoPedido"]');
+                    var saiuParaEntegaNovamenteLabel = document.querySelector('label[for="SaiuParaEntegaNovamente"]');
 
+
+            var destinatarioNaoLocalizadoLabel = document.querySelector('label[for="DestinatarioNaoLocalizado"]');
+            var enderecoNaoEncontradoLabel = document.querySelector('label[for="EnderecoNaoEncontrado"]');
+ 
 
                     var totalPedido = parseFloat('@Model.TotalPedido.ToString("0.00", System.Globalization.CultureInfo.InvariantCulture)'.replace(",", "."));
                     var pagamentoParcialInput = document.getElementById("PagamentoParcial");
@@ -633,9 +694,9 @@
         pagamentoNaEntregaLabel.classList.remove("readonly-checkbox"); //impede que alterem o valor do checkbox de pagamento na entrega
 
         }
-        if( naoPagouNada &&   pedidoPreparadoInput.checked && saiuPraEntregaInput.checked ){
-        pagamentoNaEntregaInput.checked = true; // descheca o checkbox de pagamento na entrega
-        }
+        if(naoPagouNada && pedidoPreparadoInput.checked && saiuPraEntregaInput.checked && !enderecoNaoEncontradoInput.checked && !destinatarioNaoLocalizadoInput.checked){
+        pagamentoNaEntregaInput.checked = true; // checa o checkbox de pagamento na entrega@**@
+         }
         //esconder preparado antes de preparar
         if(!saiuPraEntregaInput.checked && !pedidoPreparadoInput.checked && !pagamentoNaEntregaInput.checked && naoPagouNada){
                 pedidoPreparadoDiv.style.display = "none";
@@ -652,8 +713,16 @@
         pagamentoPedidoInput.checked = true;  //checa o checkbox que informa se foi pago
         pagamentoPedidoDiv.style.display = "block"; // exibe a div que com o checkbox que informa se foi pago
         pagamentoPedidoLabel.classList.add("readonly-checkbox"); //impede que alterem o valor do checkbox que informa se foi pago
+       
 
         }
+
+        if(pedidoTaPago && !confirmouTudoPago && saiuPraEntregaInput.checked && enderecoNaoEncontradoInput.checked && !saiuParaEntegaNovamenteInput.checked
+   ||   pedidoTaPago && !confirmouTudoPago && saiuPraEntregaInput.checked && destinatarioNaoLocalizadoInput.checked && !saiuParaEntegaNovamenteInput.checked){
+             pagamentoNaEntregaLabel.classList.add("readonly-checkbox"); //impede que alterem o valor do checkbox de pagamento na entrega
+            pagamentoNaEntregaInput.checked = false; // descheca o checkbox de pagamento na entrega
+
+         }
         if(pedidoTaPago && !saiuPraEntregaInput.checked){
             pagamentoNaEntregaLabel.classList.add("readonly-checkbox"); //impede que alterem o valor do checkbox de pagamento na entrega
         pagamentoNaEntregaInput.checked = false; // descheca o checkbox de pagamento na entrega
@@ -661,8 +730,11 @@
         }
         if(saiuPraEntregaInput.checked && !entregaPedidoInput.checked){
             if(pagouParteDoValor){
-        pagamentoNaEntregaInput.checked = true; // descheca o checkbox de pagamento na entrega
-        pagamentoNaEntregaLabel.classList.add("readonly-checkbox"); //impede que alterem o valor do checkbox de pagamento na entrega
+                        if (!enderecoNaoEncontradoInput.checked && !destinatarioNaoLocalizadoInput.checked) {
+ pagamentoNaEntregaInput.checked = true; // checa o checkbox de pagamento na entrega@**@
+ pagamentoNaEntregaLabel.classList.add("readonly-checkbox"); //impede que alterem o valor do checkbox de pagamento na entrega
+
+                        }
 
             }
         }
@@ -694,15 +766,13 @@
         }
         if(pagamentoPedidoInput.checked){
                     document.getElementById("botaoConfirmaPagamento").style.display = "none";
-                document.getElementById("PagamentoParcial").readOnly = true;
-        }
+                       document.getElementById("PagamentoParcial").readOnly = true;
+               }
 
         //pagamento total na entrega
         if(naoPagouNada && pagamentoNaEntregaInput.checked){
                 pedidoPreparadoDiv.style.display = "block";
                  document.getElementById("erroAoSalvar").textContent = "5";
-
-
         }
 
         //pagou parte
@@ -725,34 +795,145 @@
             pedidoPreparadoLabel.classList.add("readonly-checkbox"); //impede que alterem o valor do checkbox de pedido preparado
             saiuPraEntregaDiv.style.display = "block"; // exibe a div  com o checkbox que informa se saiu para entrega
         }
-        //saiu para entrega
+        //saiu para entrega pela primeira vez
         if(saiuPraEntregaInput.checked){
             pedidoPreparadoLabel.classList.add("readonly-checkbox"); //impede que alterem o valor do checkbox de pedido preparado
             entregaPedidoDiv.style.display = "block"; // exibe a div  com o checkbox que informa se o pedido foi entregue
-            pagamentoNaEntregaLabel.classList.add("readonly-checkbox"); //impede que alterem o valor do checkbox de pagamento na entrega
 
-            //não saiu para entrega
+            if (!enderecoNaoEncontradoInput.checked && !destinatarioNaoLocalizadoInput.checked) {
+                pagamentoNaEntregaLabel.classList.add("readonly-checkbox"); //impede que alterem o valor do checkbox de pagamento na entrega
+            } else {
+                if(!pedidoTaPago){
+                    pagamentoNaEntregaLabel.classList.remove("readonly-checkbox"); //permite que alterem o valor do checkbox de pagamento na entrega             
+                    }else{
+                    pagamentoNaEntregaLabel.classList.add("readonly-checkbox"); //impede que alterem o valor do checkbox de pagamento na entrega
+                    }
+                }
+
+                if (!enderecoNaoEncontradoInput.checked) {
+                destinatarioNaoLocalizadoDiv.style.display = "block"; // exibe a div  com o checkbox que informa se o destinatário não foi  localizado
+            } else {
+                    destinatarioNaoLocalizadoDiv.style.display = "none"; // esconde a div  com o checkbox que informa se o destinatário não foi  localizado
+            }
+                if (!destinatarioNaoLocalizadoInput.checked) {
+                enderecoNaoEncontradoDiv.style.display = "block"; // exibe a div  com o checkbox que informa se o endereço não foi encontrado
+            } else {
+                    enderecoNaoEncontradoDiv.style.display = "none"; // exibe a div  com o checkbox que informa se o endereço não foi encontrado
+            }
+            //não saiu para entrega pela primeira vez
         } else{
             entregaPedidoDiv.style.display = "none"; // esconde a div  com o checkbox que informa se o pedido foi entregue
-        @* if(!naoPagouNada && !pagamentoNaEntregaInput.checked && !pedidoPreparadoInput.checked){     }*@
-           if(!pedidoTaPago){
+                destinatarioNaoLocalizadoDiv.style.display = "none"; // esconde a div  com o checkbox que informa se o destinatário não foi  localizado
+                enderecoNaoEncontradoDiv.style.display = "none"; // esconde a div  com o checkbox que informa se o endereço não foi encontrado
+ 
+                if(!pedidoTaPago){
              pagamentoNaEntregaLabel.classList.remove("readonly-checkbox"); //permite que alterem o valor do checkbox de pagamento na entrega*
              }
         }
 
 
-        //saiu mas não foi entregue
+        //saiu primeira vez mas ainda não foi entregue
          if(saiuPraEntregaInput.checked && !entregaPedidoInput.checked){
          saiuPraEntregaLabel.classList.remove("readonly-checkbox"); //permite que alterem o valor do checkbox de saiu para entrega
         }
 
+
+
+
+
+
+
+
+
+
+        
+
+
+            if (enderecoNaoEncontradoInput.checked || destinatarioNaoLocalizadoInput.checked ) {
+                observacaoNaoEntregueDiv.style.display = "block";
+                saiuPraEntregaLabel.classList.add("readonly-checkbox");
+                entregaPedidoDiv.style.display = "none";
+                saiuParaEntegaNovamenteDiv.style.display ="block"
+
+            }else{
+                observacaoNaoEntregueDiv.style.display = "none"
+                saiuParaEntegaNovamenteDiv.display ="none"
+                saiuPraEntregaLabel.classList.remove("readonly-checkbox");
+                pagamentoNaEntregaLabel.classList.remove("readonly-checkbox"); //permite que alterem o valor do checkbox de pagamento na entrega
+            }
+
+
+            if(saiuParaEntegaNovamenteInput.checked){
+                pagamentoNaEntregaLabel.classList.add("readonly-checkbox"); //impede que alterem o valor do checkbox de pagamento na entrega
+                enderecoNaoEncontradoLabel.classList.add("readonly-checkbox");
+                destinatarioNaoLocalizadoLabel.classList.add("readonly-checkbox");
+                saiuPraEntregaLabel.classList.add("readonly-checkbox");
+                entregaPedidoDiv.style.display = "block";
+
+                var obsSemConteudo = observacaoNaoEntregueInput.value.trim();
+                if(obsSemConteudo !== ""){
+                observacaoNaoEntregueInput.readOnly = true;
+                }else{
+                observacaoNaoEntregueDiv.style.display = "none"
+                }
+
+                if(naoPagouNada || pagouParteDoValor){
+                   pagamentoNaEntregaInput.checked = true; // checa o checkbox de pagamento na entrega@**@
+                }
+
+
+            }else{
+                enderecoNaoEncontradoLabel.classList.remove("readonly-checkbox");
+                destinatarioNaoLocalizadoLabel.classList.remove("readonly-checkbox");
+                            if (enderecoNaoEncontradoInput.checked || destinatarioNaoLocalizadoInput.checked ) {
+                entregaPedidoDiv.style.display = "none";
+                            }
+            }
+
+
+            
          //foi entregue
         if(entregaPedidoInput.checked){
         saiuPraEntregaLabel.classList.add("readonly-checkbox"); //impede que alterem o valor do checkbox de saiu para entrega
             pagamentoNaEntregaLabel.classList.add("readonly-checkbox"); //impede que alterem o valor do checkbox de pagamento na entrega
-                entregaPedidoLabel.classList.add("readonly-checkbox"); //impede que alterem o valor do checkbox de pedido entregue
+            entregaPedidoLabel.classList.add("readonly-checkbox"); //impede que alterem o valor do checkbox de pedido entregue
+            saiuParaEntegaNovamenteLabel.classList.add("readonly-checkbox");
+
+                                        if (!enderecoNaoEncontradoInput.checked && !destinatarioNaoLocalizadoInput.checked ) {
+                                            enderecoNaoEncontradoDiv.style.display = "none";
+                                                    destinatarioNaoLocalizadoDiv.style.display = "none";
+                                        }
+
+@*
+                if (!destinatarioNaoLocalizadoInput.checked) {
+                destinatarioNaoLocalizadoDiv.style.display = "none"; // esconde a div  com o checkbox que informa se o destinatário não foi  localizado
+            }
+            if (!enderecoNaoEncontradoInput.checked) {
+                enderecoNaoEncontradoDiv.style.display = "none"; // exibe a div  com o checkbox que informa se o endereço não foi encontrado
+            }*@
         }
-          
+
+
+
+
+
+
+
+
+                if(saiuPraEntregaInput.checked && pagamentoPedidoInput.checked){
+               pagamentoNaEntregaLabel.classList.add("readonly-checkbox");
+        }
+
+
+
+
+
+
+
+
+
+
+        //Alertas
     if (pagamentoParcial > totalPedido) {
                         document.getElementById("botaoSalvar").disabled = true;
                         document.getElementById("erroAoSalvar").textContent = `O valor informado é maior que o cliente deve`;

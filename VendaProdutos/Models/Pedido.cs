@@ -136,6 +136,8 @@ namespace VendaProdutos.Models
         [Display(Name = "Data Envio Pedido")]
         public string PedidoEntregueEm { get; set; }
 
+        [Display(Name = "O que houve?")]
+        public string ObservacaoNaoEntregue { get; set; }
 
 
         [Display(Name = "Pedido pago")]
@@ -150,8 +152,22 @@ namespace VendaProdutos.Models
         [Display(Name = "Pedido foi preparado")]
         public bool PedidoPreparado { get; set; }
 
-        [Display(Name = "Saiu para entrega")]
 
+
+        [Display(Name = "Destinatario não localizado")]
+        public bool DestinatarioNaoLocalizado { get; set; }
+
+        [Display(Name = "Endereço não encontrado")]
+        public bool EnderecoNaoEncontrado { get; set; }
+
+        [Display(Name = "Saiu para entrega novamente")]
+        public bool SaiuParaEntegaNovamente { get; set; }
+
+
+
+
+
+        [Display(Name = "Saiu para entrega")]
         public bool SaiuPraEntrega { get; set; }
         public List<PedidoDetalhe> PedidoItens { get; set; }
 
