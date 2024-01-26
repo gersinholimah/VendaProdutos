@@ -119,8 +119,8 @@ namespace VendaProdutos
             app.UseAuthorization();
             app.UseEndpoints(endpoints =>
             {
-
-                endpoints.MapControllerRoute(
+                //remover se não quiser passar nome e id do produto na url
+endpoints.MapControllerRoute(
      name: "produto-details",
      pattern: "Produto/{nome}-{produtoId}",
      defaults: new { controller = "Produto", action = "Details" }
