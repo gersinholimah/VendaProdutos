@@ -120,8 +120,12 @@ namespace VendaProdutos
             app.UseEndpoints(endpoints =>
             {
 
-               
-                    endpoints.MapControllerRoute(
+                endpoints.MapControllerRoute(
+     name: "produto-details",
+     pattern: "Produto/{nome}-{produtoId}",
+     defaults: new { controller = "Produto", action = "Details" }
+ );
+                endpoints.MapControllerRoute(
                       name: "areas",
                       pattern: "{area:exists}/{controller=Admin}/{action=Index}/{id?}"
                     );

@@ -75,7 +75,7 @@ namespace VendaProdutos.Controllers
             };
             return View(produtosListViewModel);
         }
-        public IActionResult Details(int produtoId) 
+        public IActionResult Details(string nome, int produtoId) 
         {
 
              IEnumerable<Produto> listaOpcoesExtra = _produtoRepository.Produtos.Where(c => c.OpcaoExtra).ToList();
