@@ -86,11 +86,17 @@ namespace VendaProdutos
             services.AddMemoryCache();
             services.AddSession();
 
+            //Registra Sitemap aqui no startup
+            services.AddTransient<ISitemapService, SitemapService>();
+
+
         }
         // This method gets called by the runtime. Use this method to public void Configure(IApplicationBuilder app, IWebHostEnviro {
 
         public void Configure(IApplicationBuilder app, 
-            IWebHostEnvironment env, ISeedUserRoleInitial seedUserRoleInitial)
+            IWebHostEnvironment env, ISeedUserRoleInitial seedUserRoleInitial,
+            //chama o serviço do sitemap aqui no startup
+             ISitemapService sitemapService)
         {
 
             if (env.IsDevelopment())
@@ -142,6 +148,15 @@ endpoints.MapControllerRoute(
 
 
             });
+
+
+
+
+
+            // Gera o sitemap e armazena na pasta wwwroot
+            string sitemapXml = sitemapService.GenerateSitemap();
+            string sitemapPath = Path.Combine(env.WebRootPath, "sitemap.xml");
+            File.WriteAllText(sitemapPath, sitemapXml);
         }
     }
 }

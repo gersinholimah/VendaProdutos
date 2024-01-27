@@ -24,6 +24,23 @@
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
                         <input type="hidden" asp-for="CategoriaId" />
                         <div class="row">
+                   
+                    <div class="form-group col-6 col-md-4  col-lg-3">
+                        @{
+                            // Obtenha a data atual
+                            DateTime dataAtual = DateTime.Now;
+                            // Converta a data para o formato desejado (YYYY-MM-DD)
+                            string dataFormatada = dataAtual.ToString("yyyy-MM-dd");
+                        }
+                        <label asp-for="UltimaImplementacao" class="control-label"></label>
+                        <input asp-for="UltimaImplementacao" value="@dataFormatada" class="form-control" style="display:none;" />
+                        <input id="UltimaImplementacaoFake" value="@Model.UltimaImplementacao" class="form-control" />
+
+                        <span asp-validation-for="UltimaImplementacao" class="text-danger"></span>
+                        <script>document.getElementById("UltimaImplementacaoFake").readOnly = true;</script>
+                         
+                    </div>
+
             <div class="form-group col-md-6">
                 <label asp-for="CategoriaNome" class="control-label"></label>
                             <input asp-for="CategoriaNome" class="form-control" id="entrada1" oninput="calcularContador('entrada1', 4, 50)" />

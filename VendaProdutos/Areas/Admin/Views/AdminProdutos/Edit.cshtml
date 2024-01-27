@@ -30,6 +30,23 @@
 
                 <span asp-validation-for="Sku" class="text-danger"></span>
             </div>
+
+                    <div class="form-group col-4 col-md-4  col-lg-2">
+                        @{
+                            // Obtenha a data atual
+                            DateTime dataAtual = DateTime.Now;
+                            // Converta a data para o formato desejado (YYYY-MM-DD)
+                            string dataFormatada = dataAtual.ToString("yyyy-MM-dd");
+                        }
+                        <label asp-for="UltimaImplementacao" class="control-label"></label>
+                        <input asp-for="UltimaImplementacao" value="@dataFormatada" class="form-control" style="display:none;"/>
+                        <input id="UltimaImplementacaoFake" value="@Model.UltimaImplementacao" class="form-control" />
+                        <script>document.getElementById("UltimaImplementacaoFake").readOnly = true;</script>
+
+                        <span asp-validation-for="UltimaImplementacao" class="text-danger"></span>
+
+                    </div>
+
                     @* DESATIVADO *@
 
                    

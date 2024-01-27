@@ -1,0 +1,126 @@
+﻿using System;
+using System.Text;
+using System.Xml;
+using VendaProdutos.Models;
+using VendaProdutos.Repositories.Interfaces;
+
+namespace VendaProdutos.Services
+{
+    public class SitemapService : ISitemapService
+    {
+        private readonly IProdutoRepository _produtoRepository;
+        private readonly ICategoriaRepository _categoriaRepository;
+
+        public SitemapService(IProdutoRepository produtoRepository, ICategoriaRepository categoriaRepository)
+        {
+            _produtoRepository = produtoRepository;
+            _categoriaRepository = categoriaRepository;
+        }
+
+        public string GenerateSitemap()
+        {
+            XmlDocument xmlDocument = new XmlDocument();
+            XmlElement rootElement = xmlDocument.CreateElement("urlset");
+
+            //SiteMap da home
+            // Adicione a URL da home
+            XmlElement homeUrlElement = xmlDocument.CreateElement("url");
+
+            XmlElement homeLocElement = xmlDocument.CreateElement("loc");
+            homeLocElement.InnerText = "https://localhost:7106/"; // URL da home
+            homeUrlElement.AppendChild(homeLocElement);
+
+            // Adicione as novas tags para a home
+            XmlElement homeLastModElement = xmlDocument.CreateElement("lastmod");
+            homeLastModElement.InnerText = DateTime.Now.ToString("yyyy-MM-dd"); // Atualize conforme necessário
+            homeUrlElement.AppendChild(homeLastModElement);
+
+            XmlElement homeChangeFreqElement = xmlDocument.CreateElement("changefreq");
+            homeChangeFreqElement.InnerText = "weekly"; // Defina a frequência de mudança conforme necessário
+            homeUrlElement.AppendChild(homeChangeFreqElement);
+
+            XmlElement homePriorityElement = xmlDocument.CreateElement("priority");
+            homePriorityElement.InnerText = "1.0"; // Defina a prioridade conforme necessário (1.0 para a home)
+            homeUrlElement.AppendChild(homePriorityElement);
+
+            rootElement.AppendChild(homeUrlElement);
+
+             
+
+            // Adicione URLs de produtos
+            foreach (var produto in _produtoRepository.Produtos)
+            {
+                string nomeProduto = produto.Nome.Replace(" ", "-");
+
+                XmlElement urlElement = xmlDocument.CreateElement("url");
+
+                XmlElement locElement = xmlDocument.CreateElement("loc");
+                locElement.InnerText = $"https://localhost:7106/Produto/{nomeProduto}-{produto.ProdutoId}";
+                urlElement.AppendChild(locElement);
+
+                // Adicione as novas tags
+                XmlElement lastModElement = xmlDocument.CreateElement("lastmod");
+                lastModElement.InnerText = produto.UltimaImplementacao;
+                urlElement.AppendChild(lastModElement);
+
+                XmlElement changeFreqElement = xmlDocument.CreateElement("changefreq");
+                changeFreqElement.InnerText = "weekly"; // Defina a frequência de mudança conforme necessário
+                urlElement.AppendChild(changeFreqElement);
+
+                XmlElement priorityElement = xmlDocument.CreateElement("priority");
+                priorityElement.InnerText = "0.8"; // Defina a prioridade conforme necessário (de 0.0 a 1.0)
+                urlElement.AppendChild(priorityElement);
+
+                rootElement.AppendChild(urlElement);
+            }
+
+            // Adicione URLs de categorias
+            foreach (var categoria in _categoriaRepository.Categorias)
+            {
+                string nomeCategoria = categoria.CategoriaNome.Replace(" ", "-");
+
+                XmlElement urlElement = xmlDocument.CreateElement("url");
+
+                XmlElement locElement = xmlDocument.CreateElement("loc");
+                locElement.InnerText = $"https://localhost:7106/Categoria/{nomeCategoria}-{categoria.CategoriaId}";
+                urlElement.AppendChild(locElement);
+
+                // Adicione as novas tags
+                XmlElement lastModElement = xmlDocument.CreateElement("lastmod");
+                lastModElement.InnerText = categoria.UltimaImplementacao;
+                urlElement.AppendChild(lastModElement);
+
+                XmlElement changeFreqElement = xmlDocument.CreateElement("changefreq");
+                changeFreqElement.InnerText = "monthly"; // Defina a frequência de mudança conforme necessário
+                urlElement.AppendChild(changeFreqElement);
+
+                XmlElement priorityElement = xmlDocument.CreateElement("priority");
+                priorityElement.InnerText = "0.9"; // Defina a prioridade conforme necessário (de 0.0 a 1.0)
+                urlElement.AppendChild(priorityElement);
+
+                rootElement.AppendChild(urlElement);
+            }
+
+            xmlDocument.AppendChild(rootElement);
+
+            return FormatXml(xmlDocument);
+        }
+
+        private string FormatXml(XmlDocument xmlDocument)
+        {
+            StringBuilder stringBuilder = new StringBuilder();
+            XmlWriterSettings settings = new XmlWriterSettings
+            {
+                OmitXmlDeclaration = true,
+                Indent = true
+            };
+
+            using (XmlWriter writer = XmlWriter.Create(stringBuilder, settings))
+            {
+                xmlDocument.Save(writer);
+            }
+
+            return stringBuilder.ToString();
+        }
+    }
+}

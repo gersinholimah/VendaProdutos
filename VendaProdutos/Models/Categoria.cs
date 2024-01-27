@@ -64,6 +64,9 @@ namespace VendaProdutos.Models
         [Required(ErrorMessage = "Informe o Nome Curto para a categoria Corretamente")]
         public string NomeCurto { get; set; }
 
+        [Display(Name = "Última alteração")]
+        public string UltimaImplementacao { get; set; }
+
         [Display(Name = "Esconder Categoria")]
         public bool EsconderCategoria { get; set; }
 

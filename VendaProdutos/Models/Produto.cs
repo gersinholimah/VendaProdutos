@@ -138,6 +138,10 @@ namespace VendaProdutos.Models
         [StringLength(100, MinimumLength = 50, ErrorMessage = "A {0} deve ter no máximo {1} e no mínimo {2} caracteres")]
         public string ImagemThumbnailUrl { get; set; }
 
+        [Display(Name = "Última alteração")]
+        public string UltimaImplementacao { get; set; }
+
+
         [Display(Name = "Produto Em Alta")]
         public bool IsProdutoEmAlta { get; set; }
 
