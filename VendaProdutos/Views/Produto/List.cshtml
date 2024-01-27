@@ -180,26 +180,15 @@
                             string categoriaUrl = categoria.CategoriaNome.Replace(" ", "-");
                         }
                         <h2>@categoria.CategoriaNome
-                            <form action="/Produtos/@categoriaUrl" method="post">
-                                <input type="hidden" name="categoria" value="@categoria.CategoriaNome" />
-                                <input type="hidden" name="postSuperior" value="@categoria.PostSuperior" />
-                                <input type="hidden" name="postInferior" value="@categoria.PostInferior" />
-                                <input type="hidden" name="metaDescricao" value="@categoria.MetaDescricao" />
-                                <input type="hidden" name="metaTitle" value="@categoria.MetaTitle" />
-                                <input type="hidden" name="metaImage" value="@categoria.MetaImage" />
-                                <input type="hidden" name="urlAmigavel" value="@categoria.UrlAmigavel" />
-                                <input type="hidden" name="categoriaCompleta" value="@categoria" />
-                                <input type="hidden" name="categoriaId " value="@categoria.CategoriaId " />
-                                 
-                                <button type="submit" >
+
+                            <a asp-controller="Produto" asp-action="List" asp-route-categoria="@categoriaUrl" asp-route-categoriaid="@categoria.CategoriaId">
                                     Ver tudo
                                     <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 384 512">
                                         <!--! Font Awesome Pro 6.2.0 Copyright 2022 Fonticons, Inc. -->
                                         <path d="M342.6 233.4c12.5 12.5 12.5 32.8 0 45.3l-192 192c-12.5 12.5-32.8 12.5-45.3 0s-12.5-32.8 0-45.3L274.7 256 105.4 86.6c-12.5-12.5-12.5-32.8 0-45.3s32.8-12.5 45.3 0l192 192z" />
                                     </svg>
-                                </button>
-                            </form>
-                            </h2>
+                                </a>
+                             </h2>
             </div>
             <div class="col-12">
                 <div class=" swiper mySwiper">
@@ -258,106 +247,7 @@
 
 
 
-
-<section class="faq pt-50 pb-70 ">
-@*     pt-50-xs
- *@    <div class="container ">
-        <div class="row">
-            <div class="col-12">
-                <h2 class="tit1_gen pb-40">Principais Dúvidas</h2>
-                <div class="accordion accordion_gen mt_60_gen" id="accordionExample">
-                    <article class="card ">
-                        <div class="card-header p-0" id="headingOne">
-                            <h3 class="mb-0 ">
-                                <button class="btn btn-link btn-block text-left tit2_gen p-4" type="button" data-toggle="collapse" data-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
-                                    Quais as vantagens de usar um Gateway de pagamento?
-                                    <svg aria-hidden="true" focusable="false" data-prefix="far" data-icon="chevron-down" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512" class="svg-inline--fa fa-chevron-down fa-w-14">
-                                        <path fill="currentColor" d="M441.9 167.3l-19.8-19.8c-4.7-4.7-12.3-4.7-17 0L224 328.2 42.9 147.5c-4.7-4.7-12.3-4.7-17 0L6.1 167.3c-4.7 4.7-4.7 12.3 0 17l209.4 209.4c4.7 4.7 12.3 4.7 17 0l209.4-209.4c4.7-4.7 4.7-12.3 0-17z" class=""></path>
-                                    </svg>
-                                </button>
-                            </h3>
-                        </div>
-                        <div id="collapseOne" class="collapse show" aria-labelledby="headingOne" data-parent="#accordionExample">
-                            <div class="card-body color_fr0_gen descri2_gen pt-0 px-4">
-                                A integração de gateways de
-                            </div>
-                        </div>
-                    </article>
-                    <article class="card">
-                        <div class="card-header p-0" id="headingTwo">
-                            <h3 class="mb-0">
-                                <button class="btn btn-link btn-block text-left collapsed tit2_gen p-4" type="button" data-toggle="collapse" data-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
-                                    Quais as formas de pagamento aceitas?
-                                    <svg aria-hidden="true" focusable="false" data-prefix="far" data-icon="chevron-down" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512" class="svg-inline--fa fa-chevron-down fa-w-14">
-                                        <path fill="currentColor" d="M441.9 167.3l-19.8-19.8c-4.7-4.7-12.3-4.7-17 0L224 328.2 42.9 147.5c-4.7-4.7-12.3-4.7-17 0L6.1 167.3c-4.7 4.7-4.7 12.3 0 17l209.4 209.4c4.7 4.7 12.3 4.7 17 0l209.4-209.4c4.7-4.7 4.7-12.3 0-17z" class=""></path>
-                                    </svg>
-                                </button>
-                            </h3>
-                        </div>
-                        <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionExample">
-                            <div class="card-body color_fr0_gen descri2_gen pt-0 px-4">
-                                As formas de pagamento
-                            </div>
-                        </div>
-                    </article>
-                    <article class="card">
-                        <div class="card-header p-0" id="headingThree">
-                            <h3 class="mb-0">
-                                <button class="btn btn-link btn-block text-left collapsed tit2_gen p-4" type="button" data-toggle="collapse" data-target="#collapseThree" aria-expanded="false" aria-controls="collapseTwo">
-                                    O que é um split de pagamento e como posso me beneficiar dele?
-                                    <svg aria-hidden="true" focusable="false" data-prefix="far" data-icon="chevron-down" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512" class="svg-inline--fa fa-chevron-down fa-w-14">
-                                        <path fill="currentColor" d="M441.9 167.3l-19.8-19.8c-4.7-4.7-12.3-4.7-17 0L224 328.2 42.9 147.5c-4.7-4.7-12.3-4.7-17 0L6.1 167.3c-4.7 4.7-4.7 12.3 0 17l209.4 209.4c4.7 4.7 12.3 4.7 17 0l209.4-209.4c4.7-4.7 4.7-12.3 0-17z" class=""></path>
-                                    </svg>
-                                </button>
-                            </h3>
-                        </div>
-                        <div id="collapseThree" class="collapse" aria-labelledby="headingThree" data-parent="#accordionExample">
-                            <div class="card-body color_fr0_gen descri2_gen pt-0 px-4">
-                                O split de pagamento é
-
-                            </div>
-                        </div>
-                    </article>
-                    <article class="card">
-                        <div class="card-header p-0" id="headingFour">
-                            <h3 class="mb-0">
-                                <button class="btn btn-link btn-block text-left collapsed tit2_gen p-4" type="button" data-toggle="collapse" data-target="#collapseFour" aria-expanded="false" aria-controls="collapseTwo">
-                                    O que é ambiente de Sandbox?
-                                    <svg aria-hidden="true" focusable="false" data-prefix="far" data-icon="chevron-down" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512" class="svg-inline--fa fa-chevron-down fa-w-14">
-                                        <path fill="currentColor" d="M441.9 167.3l-19.8-19.8c-4.7-4.7-12.3-4.7-17 0L224 328.2 42.9 147.5c-4.7-4.7-12.3-4.7-17 0L6.1 167.3c-4.7 4.7-4.7 12.3 0 17l209.4 209.4c4.7 4.7 12.3 4.7 17 0l209.4-209.4c4.7-4.7 4.7-12.3 0-17z" class=""></path>
-                                    </svg>
-                                </button>
-                            </h3>
-                        </div>
-                        <div id="collapseFour" class="collapse" aria-labelledby="headingFour" data-parent="#accordionExample">
-                            <div class="card-body color_fr0_gen descri2_gen pt-0 px-4">
-                                O ambiente de sandbox é um ambiente de teste
-                            </div>
-                        </div>
-                    </article>
-                    <article class="card">
-                        <div class="card-header p-0" id="headingFive">
-                            <h3 class="mb-0">
-                                <button class="btn btn-link btn-block text-left collapsed tit2_gen p-4" type="button" data-toggle="collapse" data-target="#collapseFive" aria-expanded="false" aria-controls="collapseTwo">
-                                    A Genpag tem selo antifraude?
-                                    <svg aria-hidden="true" focusable="false" data-prefix="far" data-icon="chevron-down" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512" class="svg-inline--fa fa-chevron-down fa-w-14">
-                                        <path fill="currentColor" d="M441.9 167.3l-19.8-19.8c-4.7-4.7-12.3-4.7-17 0L224 328.2 42.9 147.5c-4.7-4.7-12.3-4.7-17 0L6.1 167.3c-4.7 4.7-4.7 12.3 0 17l209.4 209.4c4.7 4.7 12.3 4.7 17 0l209.4-209.4c4.7-4.7 4.7-12.3 0-17z" class=""></path>
-                                    </svg>
-                                </button>
-                            </h3>
-                        </div>
-                        <div id="collapseFive" class="collapse" aria-labelledby="headingFive" data-parent="#accordionExample">
-                            <div class="card-body color_fr0_gen descri2_gen pt-0 px-4">
-                                Nossa infraestrutura conta com o si
-
-                            </div>
-                        </div>
-                    </article>
-                </div>
-            </div>
-        </div>
-    </div>
-</section>
+<partial name="_Faq"/>
 
 
 

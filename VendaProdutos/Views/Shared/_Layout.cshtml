@@ -90,8 +90,13 @@
                         <a class="nav-link text-light" asp-area="Admin" asp-controller="Admin" asp-action="Index">Admin</a>
                     }
                     <li class="nav-item">
-                        <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Index">Home</a>
-
+                        <a class="nav-link text-dark" id="linkHome" asp-area="" asp-controller="Home" asp-action="Index">Home</a>
+                        @if (ViewBag.MenuHomeAtivo != null && (bool)ViewBag.MenuHomeAtivo)
+                        {
+                            <script>
+                                document.getElementById("linkHome").classList.add("active");
+                            </script>
+                        }
                     </li>
                     <li class="nav-item d-none">
                         <a class="nav-link text-dark" asp-area="" asp-controller="Produto" asp-action="List">Produtos</a>
@@ -160,7 +165,14 @@
 
 
 
-    
+    <footer class="my-5 pt-5 text-muted text-center text-small">
+        <p class="mb-1">&copy; Pradois Cestas 2020 - <span id="anoAtual"></span> | Todos os direitos reservados.</p>
+        <ul class="list-inline d-none">
+            <li class="list-inline-item"><a href="#">Privacy</a></li>
+            <li class="list-inline-item"><a href="#">Terms</a></li>
+            <li class="list-inline-item"><a href="#">Support</a></li>
+        </ul>
+    </footer>
 
     
 
@@ -272,6 +284,13 @@
 
 
 
+    <script>
+        // Obter o ano atual usando JavaScript
+        var anoAtual = new Date().getFullYear();
+
+        // Exibir o ano atual na página
+        document.getElementById("anoAtual").innerText = anoAtual;
+    </script>
 
 
 

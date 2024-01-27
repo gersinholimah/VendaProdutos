@@ -37,11 +37,11 @@
 	padding: 8px 12px
 }
 
-.navbar_gen .nav-item .active,
-.navbar_gen .nav-item .nav-link:hover, .navbar_gen .nav-item:hover .nav-link {
-	color: rgb(35 73 159) !important;
-    font-weight: 500;
-}
+	.navbar_gen .nav-item .active,
+	.navbar_gen .nav-item .nav-link:hover, .navbar_gen .nav-item:hover .nav-link {
+		color: var(--cor-primaria) !important;
+		font-weight: 500;
+	}
 
 .navbar_gen .navbar-nav {
 	margin-left: 30px

@@ -130,10 +130,10 @@ endpoints.MapControllerRoute(
                       pattern: "{area:exists}/{controller=Admin}/{action=Index}/{id?}"
                     );
  
-
+                
                 endpoints.MapControllerRoute(
                     name: "categoriaFiltro",
-                        pattern: "Produtos/{categoria?}",/*pattern: "Produto/{action}/{categoria?}"*/
+                        pattern: "Categoria/{categoria}-{categoriaid}",/*pattern: "Produto/{action}/{categoria?}"*/
                     defaults: new {Controller = "Produto", action = "List" });
  
                 endpoints.MapControllerRoute(

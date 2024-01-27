@@ -7,6 +7,7 @@ using System.Drawing.Imaging;
 using VendaProdutos.Context;
 using System.Collections.Generic;
 using Microsoft.EntityFrameworkCore;
+using VendaProdutos.Repositories;
 
 namespace VendaProdutos.Controllers
 {
@@ -23,14 +24,14 @@ namespace VendaProdutos.Controllers
 
         }
 
-        public IActionResult List(string categoria, [FromForm] string postSuperior,
-           [FromForm] string metaDescricao,
-          [FromForm] string metaTitle,
-           [FromForm] string metaImage,
-          [FromForm] string postInferior
+        //         [FromForm]
+        //, string postSuperior
+        //   [FromForm] string metaDescricao,
+        //  [FromForm] string metaTitle,
+        //   [FromForm] string metaImage,
+        //  [FromForm] string postInferior
 
-
-            )
+        public IActionResult List( string categoria, int categoriaid)
         {
             IEnumerable<Produto> produtos;
             IEnumerable<Categoria> listaCategorias = _context.Categorias.Include(c => c.Produtos).Where(c => !c.EsconderCategoria).ToList();
@@ -38,16 +39,30 @@ namespace VendaProdutos.Controllers
             bool exibeCategoria = false;
             string pathProduto = "Produtos/";
             ViewBag.PathProduto = pathProduto;
-            Categoria produtoAtual = null;
- 
+            Categoria categoriaSelecionada = null;
 
+            //Produto produtoAtivo = null;
+            {
+                categoriaSelecionada = _context.Categorias.Where(c => c.CategoriaId == categoriaid).FirstOrDefault();
+            };
+            string metaTitle = categoriaSelecionada?.MetaTitle ?? ""; ;
+            string postSuperior = categoriaSelecionada?.PostSuperior ?? "";
+            string metaDescricao = categoriaSelecionada?.MetaDescricao ?? "";
+            string metaImage = categoriaSelecionada?.MetaImage ?? "";
+            string postInferior = categoriaSelecionada?.PostInferior ?? "";
+            string nomeCategoria = categoriaSelecionada?.CategoriaNome ?? "";
+            //var listaDeProdutos = _context.Produtos;
+            //IProdutoRepository produtoss =
+            ViewBag.idDaCategoriaAtual = categoriaid;
+            ViewBag.menuTodosProdutosAtivo = false;
 
-            if (string.IsNullOrEmpty(categoria))
+            if (string.IsNullOrEmpty(nomeCategoria))
             {
                 produtos = _produtoRepository.Produtos.OrderBy(p => p.ProdutoId);
                 categoriaAtual = "Categorias";
                 exibeCategoria = true;
                 ViewBag.MetaTitle = "Cestas, festa na caixa e presentes em Feira de Santana: Entrega rápida e segura.";
+                ViewBag.menuTodosProdutosAtivo = true;
             }
             else
             {
@@ -55,12 +70,12 @@ namespace VendaProdutos.Controllers
  
                  exibeCategoria = false;
                 produtos = _produtoRepository.Produtos
-                    .Where(p => p.Categoria.CategoriaNome.Equals(categoria))
+                    .Where(p => p.Categoria.CategoriaNome.Equals(nomeCategoria))
                     .OrderBy(c => c.Nome);
-                categoriaAtual = categoria; 
+                categoriaAtual = nomeCategoria; 
                 ViewBag.CategoriaAtual = categoriaAtual;
                 ViewBag.MetaDescricao = metaDescricao;
-                 ViewBag.MetaTitle = categoria;
+                 ViewBag.MetaTitle = nomeCategoria;
                 ViewBag.MetaImage = metaImage;
             }
 
@@ -105,8 +120,7 @@ namespace VendaProdutos.Controllers
             }
             else
             {
-                produtos = _produtoRepository.Produtos
-                          .Where(p => p.Nome.ToLower().Contains(searchString.ToLower()) && !p.Categoria.EsconderCategoria);
+                produtos = _produtoRepository.Produtos.Where(p => p.TagsSearch.ToLower().Contains(searchString.ToLower()) && !p.Categoria.EsconderCategoria);
 
                 if (produtos.Any())
                     categoriaAtual = "Produtos";

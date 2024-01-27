@@ -37,9 +37,26 @@
 @foreach(var categoria in Model){
     @if (!categoria.EsconderCategoria)
     {
-        
-   
-    <li class="nav-item">
+
+        <li class="nav-item">
+            @{
+                // Obtém a string da propriedade e substitui espaços por hifens
+                string categoriaUrl = categoria.CategoriaNome.Replace(" ", "-");
+                string categoriaIdString = categoria.CategoriaId.ToString();
+
+               
+            }
+            <a class="nav-link text-dark" id="@categoria.CategoriaId" asp-controller="Produto" asp-action="List" style="color:black"
+               asp-route-categoria="@categoriaUrl" asp-route-categoriaid="@categoria.CategoriaId">@categoria.CategoriaNome</a>
+            @if (categoria.CategoriaId == ViewBag.idDaCategoriaAtual)
+            {
+            <script>
+                    document.getElementById("@categoriaIdString").classList.add("active");
+            </script>
+            }
+        </li>
+        @*  <li class="nav-item">
+
         @{
             // Obtém a string da propriedade e substitui espaços por hifens
             string categoriaUrl = categoria.CategoriaNome.Replace(" ", "-");
@@ -60,11 +77,21 @@
                 @categoria.CategoriaNome
             </button>
         </form>
-    </li>
+    </li>*@
     }
 
  }
+
 <li class="nav-item">
-    <a class="nav-link text-dark" asp-controller="Produto" asp-action="List"
+    <a class="nav-link text-dark" id="todosProdutos" asp-controller="Produto" asp-action="List"
        asp-route-categoria=""> Todos os Produtos</a>
 </li>
+@if (ViewBag.menuTodosProdutosAtivo != null && (bool)ViewBag.menuTodosProdutosAtivo)
+{
+    <script>
+        document.getElementById("todosProdutos").classList.add("active");
+    </script>
+}
+
+            
+

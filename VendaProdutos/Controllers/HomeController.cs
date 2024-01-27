@@ -28,7 +28,7 @@ namespace VendaProdutos.Controllers
             {
                 ProdutosEmAlta = _produtoRepository.ProdutosEmAlta
             };
-
+            ViewBag.MenuHomeAtivo = true;
             return View(homeViewModel);
         }
 

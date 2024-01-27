@@ -288,9 +288,9 @@
                                 <label asp-for="DestinatarioNaoLocalizado" class="form-check-label">
                                     <input autocomplete="off" class="form-check-input" asp-for="DestinatarioNaoLocalizado" onchange="verificarCheckbox()" /> @Html.DisplayNameFor(model => model.DestinatarioNaoLocalizado)
                                 </label>
-                                  @if (Model.DestinatarioNaoLocalizado ){
+                                  @* @if (Model.DestinatarioNaoLocalizado ){
                                        <script>document.querySelector('label[for="DestinatarioNaoLocalizado"]').setAttribute("id", "readonly-checkbox");</script>
-                                    }
+                                    } *@
                             </div>
                          
                             
@@ -302,8 +302,8 @@
                             <script> 
                               conteudoInputSemEspaco = document.getElementById("ObservacaoNaoEntregue").value.trim();
                               if(conteudoInputSemEspaco !== ""){
-                                  document.getElementById("ObservacaoNaoEntregue").readOnly = true;
-                              }else{
+@*                                   document.getElementById("ObservacaoNaoEntregue").readOnly = true;
+ *@                              }else{
                                   document.getElementById("observacaoNaoEntregueDiv").classList.add("d-none");
                               }
                             </script>
@@ -889,6 +889,8 @@
                             if (enderecoNaoEncontradoInput.checked || destinatarioNaoLocalizadoInput.checked ) {
                 entregaPedidoDiv.style.display = "none";
                             }
+                observacaoNaoEntregueInput.readOnly = false;
+
             }
 
 

@@ -83,7 +83,7 @@ namespace VendaProdutos.Areas.Admin.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("ProdutoId,Sku,Altura,Largura,Profundidade,Comprimento,Peso,GaleriaImagemURL,Imagem2CarolselURL,Imagem3CarolselURL,Imagem4CarolselURL,DescricaoImgTagAlt,Nome,DescricaoCurta,DescricaoDetalhada,PostInferior,PrecoPromocional,Preco,Parcela,MetaDescricao,MetaImage,MetaTitle,UrlAmigavel,ImagemUrl,ImagemThumbnailUrl,IsProdutoEmAlta,Esgotado,TaxaDeEntrega,SobEncomenda,QuantidadeDeItem,CategoriaId,OpcaoExtra,NaoVenderIndividualmente")] Produto produto)
+        public async Task<IActionResult> Create([Bind("ProdutoId,Sku,Altura,Largura,Profundidade,Comprimento,Peso,GaleriaImagemURL,Imagem2CarolselURL,Imagem3CarolselURL,Imagem4CarolselURL,DescricaoImgTagAlt,Nome,DescricaoCurta,DescricaoDetalhada,PostInferior,PrecoPromocional,Preco,Parcela,MetaDescricao,MetaImage,MetaTitle,UrlAmigavel,ImagemUrl,ImagemThumbnailUrl,IsProdutoEmAlta,Esgotado,TaxaDeEntrega,SobEncomenda,QuantidadeDeItem,CategoriaId,OpcaoExtra,NaoVenderIndividualmente,TagsSearch")] Produto produto)
 
         {
             if (ModelState.IsValid)
@@ -118,7 +118,7 @@ namespace VendaProdutos.Areas.Admin.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("ProdutoId,Sku,Altura,Largura,Profundidade,Comprimento,Peso,GaleriaImagemURL,Imagem2CarolselURL,Imagem3CarolselURL,Imagem4CarolselURL,DescricaoImgTagAlt,Nome,DescricaoCurta,DescricaoDetalhada,PostInferior,PrecoPromocional,Preco,Parcela,MetaDescricao,MetaImage,MetaTitle,UrlAmigavel,ImagemUrl,ImagemThumbnailUrl,IsProdutoEmAlta,Esgotado,TaxaDeEntrega,SobEncomenda,QuantidadeDeItem,CategoriaId,OpcaoExtra,NaoVenderIndividualmente")] Produto produto)
+        public async Task<IActionResult> Edit(int id, [Bind("ProdutoId,Sku,Altura,Largura,Profundidade,Comprimento,Peso,GaleriaImagemURL,Imagem2CarolselURL,Imagem3CarolselURL,Imagem4CarolselURL,DescricaoImgTagAlt,Nome,DescricaoCurta,DescricaoDetalhada,PostInferior,PrecoPromocional,Preco,Parcela,MetaDescricao,MetaImage,MetaTitle,UrlAmigavel,ImagemUrl,ImagemThumbnailUrl,IsProdutoEmAlta,Esgotado,TaxaDeEntrega,SobEncomenda,QuantidadeDeItem,CategoriaId,OpcaoExtra,NaoVenderIndividualmente,TagsSearch")] Produto produto)
         {
             if (id != produto.ProdutoId)
             {

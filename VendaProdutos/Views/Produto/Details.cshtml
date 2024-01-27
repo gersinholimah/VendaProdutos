@@ -226,7 +226,8 @@
             <div class="col-md-12">
 
 
-                <p class="mt-20">@Model.Produto.DescricaoDetalhada</p>
+                <p class="mt-20">@Html.Raw(@Model.Produto.DescricaoDetalhada)</p>
+                
 
             </div>
         </div>
@@ -290,7 +291,7 @@
 
 
 
-
+<partial name="_Faq" />
 
 <script src="https://code.jquery.com/jquery-3.6.4.min.js" integrity="sha256-oP6HI/t1qEzB53L0R6JLY2zkiq0I6a0+PRAkFO9uqrs=" crossorigin="anonymous"></script>
  

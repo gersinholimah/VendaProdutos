@@ -46,6 +46,11 @@ namespace VendaProdutos.Models
         [Range(1, 999.99, ErrorMessage = "A {0} deve estar entre 1 e 9999.99")]
         public decimal Peso { get; set; }
 
+        
+        [Display(Name = "Tag para pesquisa")]
+        [StringLength(300, MinimumLength = 3, ErrorMessage = "A {0} deve ter no máximo {1} e no mínimo {2} caracteres")]
+        public string TagsSearch { get; set; }
+
         //[Required(ErrorMessage = "Informe as Imagens do Produto corretamente")]
         [Display(Name = "Imagens do Produto")]
         [StringLength(100, MinimumLength = 25, ErrorMessage = "A {0} deve ter no máximo {1} e no mínimo {2} caracteres")]
