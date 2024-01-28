@@ -26,10 +26,12 @@ namespace VendaProdutos.Controllers
         {
             var homeViewModel = new HomeViewModel
             {
-                ProdutosEmAlta = _produtoRepository.ProdutosEmAlta
+                ProdutosEmAlta = _produtoRepository.ProdutosEmAlta,
             };
+            ViewBag.ProdutosCadastrados = _produtoRepository.Produtos;
             ViewBag.MenuHomeAtivo = true;
             return View(homeViewModel);
+
         }
 
         //public IActionResult Privacy()

@@ -2,5 +2,6 @@
 {
     public interface IProductFeedService
     {
+        string GenerateProductFeed();
     }
 }

@@ -38,7 +38,7 @@ namespace VendaProdutos.Controllers
 
 
 
-          var  PedidosFeitos = _context.Pedidos.ToList();
+            var PedidosFeitos = _context.Pedidos.ToList();
 
             Dictionary<string, List<string>> entregasPorData = new Dictionary<string, List<string>>();
 
@@ -64,6 +64,7 @@ namespace VendaProdutos.Controllers
 
             ViewBag.EntregasPorData = entregasPorData;
             ViewBag.limiteDePedidoPorHora = 9;
+            ViewBag.ProdutosCadastrados = _produtoRepository.Produtos;
 
 
 
@@ -81,6 +82,7 @@ namespace VendaProdutos.Controllers
             _carrinhoCompra.CarrinhoCompraItens = items;
 
              ViewBag.ProdutosCheckout = _produtoRepository.Produtos;
+            ViewBag.ProdutosCadastrados = _produtoRepository.Produtos;
 
             //verifica se existem itens de pedido
             if (_carrinhoCompra.CarrinhoCompraItens.Count == 0)

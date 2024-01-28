@@ -27,7 +27,7 @@ namespace VendaProdutos.Services
             XmlElement homeUrlElement = xmlDocument.CreateElement("url");
 
             XmlElement homeLocElement = xmlDocument.CreateElement("loc");
-            homeLocElement.InnerText = "https://localhost:7106/"; // URL da home
+            homeLocElement.InnerText = "https://pradois.com.br/"; // URL da home
             homeUrlElement.AppendChild(homeLocElement);
 
             // Adicione as novas tags para a home
@@ -55,7 +55,7 @@ namespace VendaProdutos.Services
                 XmlElement urlElement = xmlDocument.CreateElement("url");
 
                 XmlElement locElement = xmlDocument.CreateElement("loc");
-                locElement.InnerText = $"https://localhost:7106/Produto/{nomeProduto}-{produto.ProdutoId}";
+                locElement.InnerText = $"https://pradois.com.br/Produto/{nomeProduto}-{produto.ProdutoId}";
                 urlElement.AppendChild(locElement);
 
                 // Adicione as novas tags
@@ -82,7 +82,7 @@ namespace VendaProdutos.Services
                 XmlElement urlElement = xmlDocument.CreateElement("url");
 
                 XmlElement locElement = xmlDocument.CreateElement("loc");
-                locElement.InnerText = $"https://localhost:7106/Categoria/{nomeCategoria}-{categoria.CategoriaId}";
+                locElement.InnerText = $"https://pradois.com.br/Categoria/{nomeCategoria}-{categoria.CategoriaId}";
                 urlElement.AppendChild(locElement);
 
                 // Adicione as novas tags

@@ -32,6 +32,8 @@ namespace VendaProdutos.Controllers
             OpcoesExtra = listaOpcoesExtra
 
             };
+            ViewBag.ProdutosCadastrados = _produtoRepository.Produtos;
+
             return View(carrinhCompraVM);
         }
 

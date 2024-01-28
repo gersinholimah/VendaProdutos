@@ -88,6 +88,8 @@ namespace VendaProdutos
 
             //Registra Sitemap aqui no startup
             services.AddTransient<ISitemapService, SitemapService>();
+            //Registra Feed de Produtos aqui no startup
+            services.AddTransient<IProductFeedService, ProductFeedService>();
 
 
         }
@@ -96,7 +98,9 @@ namespace VendaProdutos
         public void Configure(IApplicationBuilder app, 
             IWebHostEnvironment env, ISeedUserRoleInitial seedUserRoleInitial,
             //chama o serviço do sitemap aqui no startup
-             ISitemapService sitemapService)
+             ISitemapService sitemapService,
+             //chama o serviço do feed de produtos aqui no startup
+             IProductFeedService productFeedService)
         {
 
             if (env.IsDevelopment())
@@ -157,6 +161,11 @@ endpoints.MapControllerRoute(
             string sitemapXml = sitemapService.GenerateSitemap();
             string sitemapPath = Path.Combine(env.WebRootPath, "sitemap.xml");
             File.WriteAllText(sitemapPath, sitemapXml);
+
+            // Gera o feed de produtos e armazena no mesmo diretório do sitemap
+            string productFeedXml = productFeedService.GenerateProductFeed();
+            string productFeedPath = Path.Combine(env.WebRootPath, "productfeed.xml");
+            File.WriteAllText(productFeedPath, productFeedXml);
         }
     }
 }

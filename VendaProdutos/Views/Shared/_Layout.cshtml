@@ -49,9 +49,224 @@
     <meta name="twitter:description" content="@Html.Raw((ViewBag.metaDescricao != null) ? ViewBag.metaDescricao : "Entrega de cestas em Feira de Santana")" />
     <meta name="twitter:image" content="@((ViewBag.metaImage != null) ? ViewBag.metaImage : "https://pradois.com.br/img/cesta.png")" />
 
+     
+
+
+
+
+
+
+    <script type="application/ld+json">
+        @{
+            static string TrocarVirgulaPorPonto(decimal valor)
+            {
+                return valor.ToString().Replace(',', '.');
+            }
+
+            string jsonLd = @"
+            {
+              ""@context"": ""http://schema.org"",
+              ""@type"": ""LocalBusiness"",
+              ""name"": ""Pradois Cestas"",
+              ""description"": ""Cesta completa, Simples, light, infantil, fitness, festa na caixa, romantica, com rosas, fotos, balões frete e entrega grátis para toda região de Feira? Você só encontra aqui na Pradois!"",
+              ""url"": ""https://www.pradois.com.br/"",
+              ""logo"": ""https://www.pradois.com.br/img/site/logo.webp"",
+              ""image"": ""https://www.pradois.com.br/img/site/destaque-site.webp"",
+              ""telephone"": ""+55 (75) 9 9170-2469"",
+              ""email"": ""atendimento@pradois.com.br"",
+              ""address"": {
+                ""@type"": ""PostalAddress"",
+                ""streetAddress"": ""Tv Paraguai, 465-B - Caseb"",
+                ""addressLocality"": ""Feira de Santana"",
+                ""addressRegion"": ""Bahia"",
+                ""postalCode"": ""44052-082"",
+                ""addressCountry"": ""Brasil""
+              },
+              ""geo"": {
+                ""@type"": ""GeoCoordinates"",
+                ""latitude"": ""-12.241885"",
+                ""longitude"": ""-38.946866""
+              },
+              ""sameAs"": [
+                ""https://www.facebook.com/cestadecafedamanhafestanacaixa"",
+                ""https://www.instagram.com/cestasdecafedamanhafestanacaixa""
+              ],
+              ""openingHours"": ""Segunda a Domingo: 6h às 18h, Sábado: 6h às 18h"",
+              ""priceRange"": ""R$"",
+              ""acceptsPaymentMethods"": [""Dinheiro"", ""Cartão de Crédito"", ""Cartão de Débito"", ""PIX""],
+              ""seller"": {
+                ""@type"": ""Organization"",
+                ""name"": ""Pradois Cestas"",
+                ""legalName"": ""Viviane Oliveira Lima"",
+                ""taxID"": ""39.702.792/0001-81""
+              },
+              ""hasPart"": [";
+
+           
+                // Adicione informações de produtos aqui
+                foreach (var produto in ViewBag.ProdutosCadastrados)
+                {
+
+                var descricao = "com" + " " + produto.QuantidadeDeItem + " " + "itens," + " " + produto.DescricaoCurta;
+
+                   @if (ViewBag.menuTodosProdutosAtivo != null && (bool)ViewBag.menuTodosProdutosAtivo || ViewBag.MenuHomeAtivo != null && (bool)ViewBag.MenuHomeAtivo){
+                    jsonLd += $@"
+                {{
+                  ""@type"": ""Product"",
+                  ""name"": ""{produto.Categoria.NomeCurto} {produto.Nome}"",
+                  ""description"": ""{descricao}"",
+                  ""image"": ""{produto.ImagemUrl}"",
+                  ""brand"": ""Pradois Cestas"",
+                  ""mpn"": ""{produto.Sku}"",
+                  ""price"": ""{TrocarVirgulaPorPonto(produto.Preco).ToString()}"",
+                  ""availability"": ""InStock"",
+                  ""offers"": {{
+                    ""@type"": ""Offer"",
+                    ""price"": ""{TrocarVirgulaPorPonto(produto.PrecoPromocional).ToString()}"",
+                    ""priceCurrency"": ""BRL"",
+                    ""availability"": ""InStock"",
+                    ""seller"": {{
+                      ""@type"": ""Organization"",
+                      ""name"": ""Pradois Cestas""
+                    }}
+                  }}
+                }},";
+                }
+
+                if (produto.Categoria.CategoriaId == ViewBag.idDaCategoriaAtual)
+                {
+                    jsonLd += $@"
+                {{
+                  ""@type"": ""Product"",
+                  ""name"": ""{produto.Categoria.NomeCurto} {produto.Nome}"",
+                  ""description"": ""{descricao}"",
+                  ""image"": ""{produto.ImagemUrl}"",
+                  ""brand"": ""Pradois Cestas"",
+                  ""mpn"": ""{produto.Sku}"",
+                  ""price"": ""{TrocarVirgulaPorPonto(produto.Preco).ToString()}"",
+                  ""availability"": ""InStock"",
+                  ""offers"": {{
+                    ""@type"": ""Offer"",
+                    ""price"": ""{TrocarVirgulaPorPonto(produto.PrecoPromocional).ToString()}"",
+                    ""priceCurrency"": ""BRL"",
+                    ""availability"": ""InStock"",
+                    ""seller"": {{
+                      ""@type"": ""Organization"",
+                      ""name"": ""Pradois Cestas""
+                    }}
+                  }}
+                }},";
+                }
+
+                if (ViewBag.IdDoDetalheDoProdutoAtivo != null && ViewBag.IdDoDetalheDoProdutoAtivo == produto.ProdutoId)
+                {
+                        jsonLd += $@"
+                {{
+                  ""@type"": ""Product"",
+                  ""name"": ""{produto.Categoria.NomeCurto} {produto.Nome}"",
+                  ""description"": ""{descricao}"",
+                  ""image"": ""{produto.ImagemUrl}"",
+                  ""brand"": ""Pradois Cestas"",
+                  ""mpn"": ""{produto.Sku}"",
+                  ""price"": ""{TrocarVirgulaPorPonto(produto.Preco).ToString()}"",
+                  ""availability"": ""InStock"",
+                  ""offers"": {{
+                    ""@type"": ""Offer"",
+                    ""price"": ""{TrocarVirgulaPorPonto(produto.PrecoPromocional).ToString()}"",
+                    ""priceCurrency"": ""BRL"",
+                    ""availability"": ""InStock"",
+                    ""seller"": {{
+                      ""@type"": ""Organization"",
+                      ""name"": ""Pradois Cestas""
+                    }}
+                  }}
+                }},";
+                }
+            }
+
+            
+
+
+
+            jsonLd = jsonLd.TrimEnd(',') + @"
+              ]
+            }";
+            @Html.Raw(jsonLd)
+        }
+    </script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+    @{
+        // Função para substituir vírgulas por pontos em uma string
+        static string MudarrVirgulaPorPonto(string valor)
+        {
+            return valor.Replace(',', '.');
+        }
+
+        // Inicializa a variável fora do bloco if
+        string jsonLdProduct = "";
+
+        foreach (var produto in ViewBag.ProdutosCadastrados)
+        {
+            // Substitui a vírgula por ponto no valor do preço
+ 
+            var descricao = "com " + produto.QuantidadeDeItem + " itens, " + produto.DescricaoCurta;
+
+            if (ViewBag.IdDoDetalheDoProdutoAtivo != null && ViewBag.IdDoDetalheDoProdutoAtivo == produto.ProdutoId)
+            {
+                // Atualiza o valor da variável dentro do bloco if
+                jsonLdProduct = $@"
+    {{
+    ""@context"": ""http://schema.org"",
+    ""@type"": ""Product"",
+    ""name"": ""{produto.Categoria.NomeCurto} {produto.Nome}"",
+    ""description"": ""{descricao}"",
+    ""image"": ""https://www.seudominio.com.br/imagem-do-produto.jpg"",
+    ""brand"": ""Pradois Cestas"",
+    ""gtin"": ""{produto.Sku}"",
+    ""mpn"": ""{produto.Sku}"",
+    ""sku"": ""{produto.Sku}"",
+    ""price"": ""{MudarrVirgulaPorPonto(produto.Preco.ToString())}"",
+    ""availability"": ""InStock"",
+    ""aggregateRating"": {{
+    ""@type"": ""AggregateRating"",
+    }},
+    ""offers"": {{
+    ""@type"": ""Offer"",
+    ""price"": ""{MudarrVirgulaPorPonto(produto.PrecoPromocional.ToString())}"",
+    ""priceCurrency"": ""BRL"",
+    ""availability"": ""InStock"",
+    ""seller"": {{
+    ""@type"": ""Organization"",
+    ""name"": ""Pradois Cestas""
+    }}
+    }}
+    }}";
+            }
+        }
+    }
+
+    @if (!string.IsNullOrEmpty(jsonLdProduct))
+    {
+        <script type="application/ld+json">
+            @Html.Raw(jsonLdProduct)
+        </script>
+    }
+
 </head>
 <body>
-
+     
     <nav class="navbar nav_nova navbar_gen navbar-expand-lg navbar-light bg-light fixed-top ">
         <div class="container">
             <a class="navbar-brand mouse_gen" asp-area="" asp-controller="Home" asp-action="Index">

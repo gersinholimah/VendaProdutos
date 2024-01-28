@@ -3,6 +3,7 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using VendaProdutos.Context;
 
@@ -11,9 +12,11 @@ using VendaProdutos.Context;
 namespace VendaProdutos.Migrations
 {
     [DbContext(typeof(AppDbContext))]
-    partial class AppDbContextModelSnapshot : ModelSnapshot
+    [Migration("20240128002906_AlteraMaximoMinimoGoogleYtpe")]
+    partial class AlteraMaximoMinimoGoogleYtpe
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -530,11 +533,6 @@ namespace VendaProdutos.Migrations
                         .HasMaxLength(200)
                         .HasColumnType("nvarchar(200)");
 
-                    b.Property<string>("GoogleProductType")
-                        .IsRequired()
-                        .HasMaxLength(200)
-                        .HasColumnType("nvarchar(200)");
-
                     b.Property<string>("Imagem2CarolselURL")
                         .HasMaxLength(100)
                         .HasColumnType("nvarchar(100)");
@@ -605,6 +603,11 @@ namespace VendaProdutos.Migrations
 
                     b.Property<decimal>("PrecoPromocional")
                         .HasColumnType("decimal(10,2)");
+
+                    b.Property<string>("ProductType")
+                        .IsRequired()
+                        .HasMaxLength(200)
+                        .HasColumnType("nvarchar(200)");
 
                     b.Property<decimal>("Profundidade")
                         .HasColumnType("decimal(10,2)");

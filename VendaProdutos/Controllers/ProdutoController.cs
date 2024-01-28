@@ -55,6 +55,7 @@ namespace VendaProdutos.Controllers
             //IProdutoRepository produtoss =
             ViewBag.idDaCategoriaAtual = categoriaid;
             ViewBag.menuTodosProdutosAtivo = false;
+            ViewBag.ProdutosCadastrados = _produtoRepository.Produtos;
 
             if (string.IsNullOrEmpty(nomeCategoria))
             {
@@ -96,6 +97,10 @@ namespace VendaProdutos.Controllers
              IEnumerable<Produto> listaOpcoesExtra = _produtoRepository.Produtos.Where(c => c.OpcaoExtra).ToList();
             var produto = _produtoRepository.Produtos.FirstOrDefault(p => p.ProdutoId == produtoId);
             IEnumerable<Categoria> listaCategorias = _context.Categorias.Include(c => c.Produtos).Where(c => !c.EsconderCategoria).ToList();
+           
+
+            ViewBag.ProdutosCadastrados = _produtoRepository.Produtos;
+            ViewBag.IdDoDetalheDoProdutoAtivo = produtoId;
 
             // Adicione outros dados necessários ao ViewModel
             var produtosListViewModel = new ProdutoListViewModel
@@ -112,6 +117,9 @@ namespace VendaProdutos.Controllers
         {
             IEnumerable<Produto> produtos;
             string categoriaAtual = string.Empty;
+
+            ViewBag.ProdutosCadastrados = _produtoRepository.Produtos;
+
 
             if (string.IsNullOrEmpty(searchString))
             {

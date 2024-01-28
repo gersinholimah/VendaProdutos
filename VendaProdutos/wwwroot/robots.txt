@@ -1,0 +1,26 @@
+﻿# Este é um arquivo robots.txt
+# Ele informa aos robôs da web quais páginas do seu site eles podem e não podem acessar
+
+# Permitir que todos os robôs acessem todo o site
+User-agent: *
+Allow: /
+
+# Bloquear o acesso do robô do Google à pasta /admin
+User-agent: Googlebot
+Disallow: /Admin/
+
+# Bloquear o acesso de todos os robôs aos arquivos .jpg
+User-agent: *
+Disallow: *.jpg
+
+# Permitir que o robô do Bing acesse apenas as páginas do sitemap
+User-agent: Bingbot
+Allow: /sitemap.xml
+
+# bloquear página login e cadastro
+Disallow: /Account/Login
+Disallow: /Account/Register
+
+
+# Mapa do site
+Sitemap: https://www.pradois.com.br/sitemap.xml

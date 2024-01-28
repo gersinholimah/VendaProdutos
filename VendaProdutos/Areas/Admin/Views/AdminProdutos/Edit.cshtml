@@ -141,7 +141,21 @@
                         <p id="resultado112"></p>
                         <span asp-validation-for="TagsSearch" class="text-danger"></span>
                     </div>
-                    
+                    <div class="col-12">
+                        <h3>Google Feed de produtos</h3>
+                    </div>
+                    <div class="form-group  col-4 col-md-4 col-lg-3">
+                        <label asp-for="GoogleProductType" class="control-label"></label>
+                        <input asp-for="GoogleProductType" class="form-control" id="entrada113" oninput="calcularContador('entrada113', 3, 200)" />
+                        <p id="resultado113"></p>
+                        <span asp-validation-for="GoogleProductType" class="text-danger"></span>
+                    </div>
+                    <div class="form-group  col-4 col-md-4 col-lg-3">
+                        <label asp-for="GoogleProductCategory" class="control-label"></label>
+                        <input asp-for="GoogleProductCategory" class="form-control" id="entrada114" oninput="calcularContador('entrada114', 3, 200)" />
+                        <p id="resultado114"></p>
+                        <span asp-validation-for="GoogleProductCategory" class="text-danger"></span>
+                    </div>
                     <div class="col-12">
                         <h3>Imagens</h3>
 

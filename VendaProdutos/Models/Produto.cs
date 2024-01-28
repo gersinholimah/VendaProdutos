@@ -138,6 +138,19 @@ namespace VendaProdutos.Models
         [StringLength(100, MinimumLength = 50, ErrorMessage = "A {0} deve ter no máximo {1} e no mínimo {2} caracteres")]
         public string ImagemThumbnailUrl { get; set; }
 
+
+        [Required(ErrorMessage = "Informe o google_product_category corretamente")]
+        [Display(Name = "google_product_category")]
+        [StringLength(200, MinimumLength = 3, ErrorMessage = "A {0} deve ter no máximo {1} e no mínimo {2} caracteres")]
+
+        public string GoogleProductCategory { get; set; }
+
+        [Required(ErrorMessage = "Informe o google_product_category corretamente")]
+        [Display(Name = "google_product_type")]
+        [StringLength(200, MinimumLength = 3, ErrorMessage = "A {0} deve ter no máximo {1} e no mínimo {2} caracteres")]
+
+        public string GoogleProductType { get; set; }
+
         [Display(Name = "Última alteração")]
         public string UltimaImplementacao { get; set; }
 
