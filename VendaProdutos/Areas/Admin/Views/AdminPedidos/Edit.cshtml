@@ -183,11 +183,7 @@
                         <h4 class="mb-3">Controle interno</h4>
                     </div>
                    
-                     <div class="form-group col-sm-4">
-                        <label asp-for="Frete" class="control-label"></label>
-                        <input autocomplete="off" oninput="formatarMoeda(this)" asp-for="Frete" class="form-control" />
-                        <span asp-validation-for="Frete" class="text-danger"></span>
-                    </div>
+                    
                     <div class="form-group col-sm-4">
                         <label asp-for="ObservacoesInterna" class="control-label"></label>
                         <textarea autocomplete="off" asp-for="ObservacoesInterna" class="form-control"></textarea>
@@ -197,17 +193,33 @@
                     <div class=" col-sm-12">
                         <h4 class="mb-3">Cobrança</h4>
                     </div>
-                    <div class="form-group col-sm-4">
-                        <label asp-for="TotalPedido" class="control-label"></label>
-                        <input autocomplete="off" asp-for="TotalPedido" class="form-control" readOnly />
-                        <span asp-validation-for="TotalPedido" class="text-danger"></span>
-                    </div>
-
-                    <div class="form-group col-sm-4">
+                    <div class="form-group col-sm-4" style="display:none;">
                         <label asp-for="TotalItensPedido" class="control-label"></label>
                         <input autocomplete="off" asp-for="TotalItensPedido" class="form-control" readOnly />
                         <span asp-validation-for="TotalItensPedido" class="text-danger"></span>
                     </div>
+                    <div class="form-group col-sm-4">
+                        <label asp-for="Frete" class="control-label"></label>
+                        <input autocomplete="off" oninput="formatarMoeda(this)" asp-for="Frete" class="form-control" />
+                        <span asp-validation-for="Frete" class="text-danger"></span>
+                        @if (Model.Frete > 0)
+                        {
+                            <script>document.getElementById("Frete").readOnly = true;</script>
+                        }
+                    </div>
+                    <div class=" col-12"></div>
+
+                    <div class="form-group col-sm-4">
+                        <label asp-for="TotalPedido" class="control-label">Valor Total do pedido</label>
+                        <input autocomplete="off" asp-for="TotalPedido" class="form-control" readOnly />
+                        <span asp-validation-for="TotalPedido" class="text-danger"></span>
+                        <br />
+                        <label class="control-label">Pedido + Frete</label>
+                        <input id="valorPedidoMaisFreteF" class="form-control" readOnly>
+                        
+                    </div>
+                    
+                    
                     <div class=" col-sm-12">
                         <h4 class="mb-3">Pagamento</h4>
                     </div>
@@ -593,13 +605,23 @@
 
                 var clientePagouTudo = false;
                       var confirmouTudoPago = false;
-                window.onload = function () {
-                    calcularTotal();
-                 };
+            //     window.onload = function () {
+            //         calcularTotal();
+            // somaPedidoMaisFrete();
+            // document.getElementById("TotalPedido").addEventListener("input", somaPedidoMaisFrete);
+            // document.getElementById("Frete").addEventListener("input", somaPedidoMaisFrete);
+            //      };
                 function calcularTotal(input) {
                     formatarMoeda(input)
                     // Obtenha os valores dos inputs
-                    var totalPedido = parseFloat('@Model.TotalPedido.ToString("0.00", System.Globalization.CultureInfo.InvariantCulture)'.replace(",", "."));
+                    var TotalDoPedido = parseFloat('@Model.TotalPedido.ToString("0.00", System.Globalization.CultureInfo.InvariantCulture)'.replace(",", "."));
+
+            var freteInputF = document.getElementById("Frete");
+            var CalcTotalDoFrete = parseFloat(freteInputF.value.replace(",", ".")) || 0;
+
+            var TotalDoFrete = CalcTotalDoFrete;
+                    var ValorDoPedidoMaisFrete =  TotalDoPedido + TotalDoFrete ;
+                    var totalPedido = ValorDoPedidoMaisFrete;
                     var pagamentoParcialInput = document.getElementById("PagamentoParcial");
                     var pagamentoParcial = parseFloat(pagamentoParcialInput.value.replace(",", ".")) || 0;
 
@@ -689,9 +711,18 @@
 
             var destinatarioNaoLocalizadoLabel = document.querySelector('label[for="DestinatarioNaoLocalizado"]');
             var enderecoNaoEncontradoLabel = document.querySelector('label[for="EnderecoNaoEncontrado"]');
- 
 
-                    var totalPedido = parseFloat('@Model.TotalPedido.ToString("0.00", System.Globalization.CultureInfo.InvariantCulture)'.replace(",", "."));
+
+            var TotalDoPedido = parseFloat('@Model.TotalPedido.ToString("0.00", System.Globalization.CultureInfo.InvariantCulture)'.replace(",", "."));
+
+            var freteInputF = document.getElementById("Frete");
+            var CalcTotalDoFrete = parseFloat(freteInputF.value.replace(",", ".")) || 0;
+
+
+            var TotalDoFrete = CalcTotalDoFrete;
+            var ValorDoPedidoMaisFrete = TotalDoPedido + TotalDoFrete;
+            var totalPedido = ValorDoPedidoMaisFrete;
+
                     var pagamentoParcialInput = document.getElementById("PagamentoParcial");
                     var pagamentoParcial = parseFloat(pagamentoParcialInput.value.replace(",", ".")) || 0;
                     var resultado = totalPedido - pagamentoParcial;
@@ -945,8 +976,7 @@
 
 
 
-
-
+         
 
 
 
@@ -975,8 +1005,53 @@
                         document.getElementById("botaoSalvar").disabled = false;
                         document.getElementById("erroAoSalvar").textContent = "";
                      }
+
+
+
                 }
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        function somaPedidoMaisFrete() {
+            var valorPedidoMaisFreteInputF = document.getElementById("valorPedidoMaisFreteF");
+            var totalPedidoInputF = document.getElementById("TotalPedido");
+            var freteInputF = document.getElementById("Frete");
+
+            // Obter os valores dos inputs
+            var CalcTotalDoPedido = parseFloat(totalPedidoInputF.value.replace(",", ".")) || 0;
+            var CalcTotalDoFrete = parseFloat(freteInputF.value.replace(",", ".")) || 0;
+
+            var valorPedidoMaisFreteF = CalcTotalDoPedido + CalcTotalDoFrete;
+
+            // Verificar se o resultado é um número antes de usar toFixed
+            if (!isNaN(valorPedidoMaisFreteF)) {
+                valorPedidoMaisFreteInputF.value = valorPedidoMaisFreteF.toFixed(2);
+            } else {
+                valorPedidoMaisFreteInputF.value = ""; // ou qualquer valor padrão desejado
+            }
+        }
+
+
+        window.onload = function () {
+            somaPedidoMaisFrete();
+            document.getElementById("TotalPedido").addEventListener("input", somaPedidoMaisFrete);
+            document.getElementById("Frete").addEventListener("input", somaPedidoMaisFrete);
+            calcularTotal();
+
+        };
 
     </script>
     <script>
@@ -999,10 +1074,11 @@
 
             // Atualiza o valor no campo de entrada
             input.value = valor.replace('.', ',');
+            somaPedidoMaisFrete()
         }
     </script>
 
-       
+        
 
 }
  
