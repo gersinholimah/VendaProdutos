@@ -12,7 +12,9 @@ bod y{
    -ms-transition: all ease .2s;
    transition: all ease .2s;
 }
- 
+body, html {
+    overflow-x: hidden;
+} 
 .bg_topo{
    background: linear-gradient(315deg, var(--gradiente-primario) 30%, var(--gradiente-secuntario) 90%);
 }
@@ -1682,16 +1684,37 @@ nav .container {
     outline: none;
     box-shadow: none; /* Opcional: remover qualquer sombra adicionada pelo Bootstrap */
 }
+
+
+.baner_principal .bannerSite .swiper-button-prev,
+.baner_principal .bannerSite .swiper-button-next {
+    background: #fff;
+    border-radius: 35px !important;
+    height: 40px !important;
+    width: 40px !important;
+}
+
+.baner_principal .bannerSite .swiper-button-next:after, .baner_principal .bannerSite .swiper-button-prev:after {
+    font-size: 20px !important;
+}
+
+
+.home_titulo {
+    margin-top:50px;
+    margin-bottom: 50px!important;
+}
+.padding_home {
+    padding-top: 50px;
+    padding-bottom: 50px;
+}
+.baner_principal .bannerSite .swiper-slide img {
+    width: 100% !important;
+    max-width: 100% !important;
+    height: 100%;
+}
 /*MEIO DO CSS*/
 
-
-
-
-
-
-
-
-
+ 
 
 @media (max-width: 991.98px) {
    .pp__close {
@@ -1747,7 +1770,10 @@ nav .container {
     .envolve_menu_mobi {
         display: none !important;
     }
-
+    .baner_principal .bannerSite .swiper-slide img {
+        width: auto;
+        height: 100%;
+    }
 
 }
 
@@ -1885,9 +1911,9 @@ nav .container {
 button.btn.btn-link.btn-block.text-left.tit2_gen.p-4 {
    font-size: 20px;
 }
-h2.tit1_gen {
-   font-size: 38px!important;
-}
+    h2.tit1_gen {
+        font-size: 30px !important;
+    }
 .descricao h2 {
    font-size: 30px;
 }
@@ -1928,6 +1954,7 @@ h2.tit1_gen {
         max-width: 300px;
         margin-right: auto;
         margin-left: auto;
+        padding-bottom: 8px;
     }
 
     .navbar.nav_nova {
@@ -1946,7 +1973,7 @@ h2.tit1_gen {
     }
 
     header {
-        margin-top: 130px;
+        margin-top: 105px;
     }
 
     .bt_avancar {
@@ -1958,13 +1985,14 @@ h2.tit1_gen {
         font-size: 30px;
     }
 
-    .busca_admin  label {
-    display: none;
-}
+    .busca_admin label {
+        display: none;
+    }
 
     .busca_admin .form-group {
         padding: 0 2px 0 2px;
     }
+
     .admin .table {
         font-size: 12px;
     }
@@ -1990,6 +2018,75 @@ h2.tit1_gen {
 
     .espaca_td7 {
         width: 100px;
+    }
+
+    .baner_principal .bannerSite .swiper-slide img {
+        width: 100%;
+        height: 100%;
+    }
+
+    .produtos .envolve_produtos {
+        border-radius: 8px;
+    }
+
+    .envolve_produtos img {
+        border-top-left-radius: 8px;
+        border-top-right-radius: 8px;
+    }
+
+    .produtos .envolve_produtos h4 {
+        margin: 5px 5px 0px 5px;
+    }
+
+    .produtos .envolve_produtos p {
+        padding: 4px 5px 0px 5px;
+        line-height: 15px;
+        margin-bottom: 4px;
+        font-size: 14px;
+    }
+
+    .produtos .envolve_produtos span {
+        padding: 0 0px 8px 5px;
+    }
+
+    .produtos .envolve_produtos h4 {
+        font-size: 14px;
+        font-weight: 600;
+    }
+
+    #preco_card_super_top {
+        font-size: 14px;
+        letter-spacing: -0.3px;
+    }
+
+    .produtos .envolve_produtos .parcelas {
+        line-height: 8px;
+        font-size: 12px;
+        letter-spacing: -0.3px;
+    }
+
+    .envolve_produtos .d-flex .ml-auto.mr-20 {
+        font-size: 12px;
+        margin-right: 5px;
+        margin-left: auto !important;
+        text-align: right;
+        display: block;
+    }
+
+    .searchbox {
+        border-radius: 10px;
+    }
+
+    .searchbox input{
+        font-size: 24px;
+    }
+    .home_titulo {
+        margin-top: 20px;
+        margin-bottom: 0 !important;
+    }
+    .padding_home {
+        padding-top: 20px;
+        padding-bottom: 20px;
     }
 
 }

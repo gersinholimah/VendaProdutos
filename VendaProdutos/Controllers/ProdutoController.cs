@@ -113,7 +113,7 @@ namespace VendaProdutos.Controllers
             };
             return View(produtosListViewModel);
                 }
-        public ViewResult Search(string searchString)
+        public ViewResult Pesquisa(string buscarPor)
         {
             IEnumerable<Produto> produtos;
             string categoriaAtual = string.Empty;
@@ -121,14 +121,14 @@ namespace VendaProdutos.Controllers
             ViewBag.ProdutosCadastrados = _produtoRepository.Produtos;
 
 
-            if (string.IsNullOrEmpty(searchString))
+            if (string.IsNullOrEmpty(buscarPor))
             {
                 produtos = _produtoRepository.Produtos.OrderBy(p => p.ProdutoId).Where(p => !p.NaoVenderIndividualmente);
                 categoriaAtual = "Todos os Produtos";
             }
             else
             {
-                produtos = _produtoRepository.Produtos.Where(p => p.TagsSearch.ToLower().Contains(searchString.ToLower()) && !p.Categoria.EsconderCategoria);
+                produtos = _produtoRepository.Produtos.Where(p => p.TagsSearch.ToLower().Contains(buscarPor.ToLower()) && !p.Categoria.EsconderCategoria);
 
                 if (produtos.Any())
                     categoriaAtual = "Produtos";

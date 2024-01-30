@@ -178,6 +178,22 @@
                         </div>
 
                     </div>
+
+                    <div class=" col-sm-12">
+                        <h4 class="mb-3">Controle interno</h4>
+                    </div>
+                   
+                     <div class="form-group col-sm-4">
+                        <label asp-for="Frete" class="control-label"></label>
+                        <input autocomplete="off" oninput="formatarMoeda(this)" asp-for="Frete" class="form-control" />
+                        <span asp-validation-for="Frete" class="text-danger"></span>
+                    </div>
+                    <div class="form-group col-sm-4">
+                        <label asp-for="ObservacoesInterna" class="control-label"></label>
+                        <textarea autocomplete="off" asp-for="ObservacoesInterna" class="form-control"></textarea>
+                        <span asp-validation-for="ObservacoesInterna" class="text-danger"></span>
+                    </div>
+
                     <div class=" col-sm-12">
                         <h4 class="mb-3">Cobrança</h4>
                     </div>

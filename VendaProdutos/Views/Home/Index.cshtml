@@ -1,5 +1,7 @@
 ﻿@model HomeViewModel
 
+@* <partial name="_Stories">
+ *@
  <partial name="_Carousel"/>
 
 
@@ -8,22 +10,32 @@
 
 
 
-
-<section class="pb-50 pt-100 pt-20-sm pt-20-xs">
+<section class="padding_home pt-20-sm pt-20-xs">
     <div class="container">
         <div class="row">
-            <div class="col-md-4  pt-20-sm  pt-20-xs">
-                <a href="categoria.html"><img class="img-fluid  mr-auto ml-auto d-block" src="img/_1_home_box___vaso_monobloco_07_10_84be_380x400.png"></a>
+            <div class="col-12">
+                <h2 class="tit1_gen home_titulo" style="
+    color: #3c2525;
+">
+                    Por <span style="
+    color: #ff4700;
+">categoria</span>
+                </h2>
+            </div>
+            <div class="col-6 col-md-3 pl-2 pr-2 pt-20-sm  pt-20-xs">
+                <a href="categoria.html"><img class="img-fluid  mr-auto ml-auto d-block" src="~/img/banner_categoria-01.png"></a>
             </div>
 
-            <div class="col-md-4  pt-20-sm  pt-20-xs">
-                <a href="categoria.html"><img class="img-fluid  mr-auto ml-auto d-block" src="img/_1_home_box___vaso_monobloco_07_10_84be_380x400.png"></a>
+            <div class="col-6 col-md-3 pl-2 pr-2 pt-20-sm  pt-20-xs">
+                <a href="categoria.html"><img class="img-fluid  mr-auto ml-auto d-block" src="~/img/banner_categoria-02.png"></a>
             </div>
 
-            <div class="col-md-4  pt-20-sm  pt-20-xs">
-                <a href="categoria.html"><img class="img-fluid  mr-auto ml-auto d-block" src="img/_1_home_box___vaso_monobloco_07_10_84be_380x400.png"></a>
+            <div class="col-6 col-md-3 pl-2 pr-2 pt-20-sm  pt-20-xs">
+                <a href="categoria.html"><img class="img-fluid  mr-auto ml-auto d-block" src="~/img/banner_categoria-03.png"></a>
             </div>
-
+            <div class="col-6 col-md-3 pl-2 pr-2 pt-20-sm  pt-20-xs">
+                <a href="categoria.html"><img class="img-fluid  mr-auto ml-auto d-block" src="~/img/banner_categoria-01.png"></a>
+            </div>
         </div>
     </div>
 </section>
@@ -31,19 +43,28 @@
 
 
 
-<section class=" container mt-50 mb-100">
+<section class=" container padding_home">
     <div class="row">
+        <div class="col-12">
+            <h2 class="tit1_gen home_titulo" style="
+    color: #3c2525;
+">
+                Por <span style="
+    color: #ff4700;
+">ocasião</span>
+            </h2>
+        </div>
         <div class="col-md-6 pr-5-lg pr-5-md  mt-25-xs">
-            <a href="#"> <img src="img/banner2.webp" class="img-fluid "></a>
+            <a href="#"> <img src="~/img/banner_modalidade-01.png" class="img-fluid "></a>
         </div>
         <div class="col-md-6  pl-5-lg pl-5-md  mt-25-xs">
-            <a href="#"> <img src="img/banner2.webp" class="img-fluid  "></a>
+            <a href="#"> <img src="~/img/banner_modalidade-02.png" class="img-fluid "></a>
         </div>
         <div class="col-md-6 pr-5-lg pr-5-md mt-25-lg mt-25-md mt-25-sm mt-25-xs ">
-            <a href="#"> <img src="img/banner2.webp" class="img-fluid "></a>
+            <a href="#"> <img src="~/img/banner_modalidade-03.png" class="img-fluid "></a>
         </div>
         <div class="col-md-6 pl-5-lg pl-5-md mt-25-lg mt-25-md mt-25-sm mt-25-xs ">
-            <a href="#"> <img src="img/banner2.webp" class="img-fluid  "></a>
+            <a href="#"> <img src="~/img/banner_modalidade-04.png" class="img-fluid "></a>
         </div>
     </div>
 </section>
@@ -62,8 +83,16 @@
     <div class="container">
 
         <div class="row   mt-50 mb-20">
-
             <div class="col-12">
+                <h2 class="tit1_gen home_titulo" style="
+    color: #3c2525;
+">
+                    Produtos em <span style="
+    color: #ff4700;
+">destaque</span>
+                </h2>
+            </div>
+            <div class="col-12  mt-25-xs">
                 @*      <h1>@ViewBag.totalprodutos </h1>
 
 

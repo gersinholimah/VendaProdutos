@@ -1,24 +1,35 @@
 ﻿using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
+using VendaProdutos.Repositories;
+using VendaProdutos.Repositories.Interfaces;
 using VendaProdutos.ViewModel;
 
 namespace VendaProdutos.Controllers
 {
+    //chave site recaptcha: 6LdN718pAAAAAKnPnww6nDonTgR_OiPrNZhxjpaC
+    //copia da chave secreta recaptcha: 6LdN718pAAAAAEaB-5pAIGFiPT4CaQO_L7Alw5hg
+
     public class AccountController : Controller
     {
         private readonly UserManager<IdentityUser> _userManager;
         private readonly SignInManager<IdentityUser> _signInManager;
+        private readonly IProdutoRepository _produtoRepository;
+
 
         public AccountController(UserManager<IdentityUser> userManager,
-            SignInManager<IdentityUser> signInManager)
+            SignInManager<IdentityUser> signInManager, IProdutoRepository produtoRepository)
         {
             _userManager = userManager;
             _signInManager = signInManager;
+            _produtoRepository = produtoRepository;
+
         }
 
         public IActionResult Login(string returnUrl = null)
         {
+            ViewBag.ProdutosCadastrados = _produtoRepository.Produtos;
+
             return View(new LoginViewModel()
             {
                 ReturnUrl = returnUrl
@@ -28,6 +39,8 @@ namespace VendaProdutos.Controllers
         [HttpPost]
         public async Task<IActionResult> Login(LoginViewModel loginVM)
         {
+            ViewBag.ProdutosCadastrados = _produtoRepository.Produtos;
+
             if (!ModelState.IsValid)
                 return View(loginVM);
 
@@ -50,6 +63,8 @@ namespace VendaProdutos.Controllers
 
         public IActionResult Register()
         {
+            ViewBag.ProdutosCadastrados = _produtoRepository.Produtos;
+
             return View();
         }
         [HttpPost]
@@ -57,6 +72,8 @@ namespace VendaProdutos.Controllers
 
         public async Task<IActionResult> Register(LoginViewModel registroVM)
         {
+            ViewBag.ProdutosCadastrados = _produtoRepository.Produtos;
+
             if (ModelState.IsValid)
             {
                 var user = new IdentityUser { UserName = registroVM.UserName, };
@@ -78,6 +95,8 @@ namespace VendaProdutos.Controllers
         [HttpPost]
       public async Task<IActionResult> Logout()
         {
+            ViewBag.ProdutosCadastrados = _produtoRepository.Produtos;
+
             HttpContext.Session.Clear();
             HttpContext.User = null;
             await _signInManager.SignOutAsync();
@@ -86,6 +105,8 @@ namespace VendaProdutos.Controllers
 
         public IActionResult AccessDenied()
         {
+            ViewBag.ProdutosCadastrados = _produtoRepository.Produtos;
+
             return View();
         }
 

@@ -273,7 +273,7 @@ namespace VendaProdutos.Areas.Admin.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("PedidoId,NomeComprador,WhatsappComprador,NomeRecebedor,BairroRecebedor,RuaRecebedor,QuemEstaEnviando,NumeroCasaRecebedor,NomeDaEmpresa,Setor,PontoDeReferencia,WhatsappRecebedor,DataDeEntrega,HoraDeEntrega,TelefoneCompradorDiferenteDoCadastro,Observacoes,Cartinha,ComprovanteDePagamento,PedidoEnviado,PedidoEntregueEm,PagamentoPedido,PagamentoNaEntrega,EntregaPedido,PagamentoParcial,ComprovanteSegundoPagamento,Complemento,PedidoPreparado,SaiuPraEntrega,DestinatarioNaoLocalizado,EnderecoNaoEncontrado,ObservacaoNaoEntregue,SaiuParaEntegaNovamente")] Pedido pedido)
+        public async Task<IActionResult> Create([Bind("PedidoId,NomeComprador,WhatsappComprador,NomeRecebedor,BairroRecebedor,RuaRecebedor,QuemEstaEnviando,NumeroCasaRecebedor,NomeDaEmpresa,Setor,PontoDeReferencia,WhatsappRecebedor,DataDeEntrega,HoraDeEntrega,TelefoneCompradorDiferenteDoCadastro,Observacoes,Cartinha,ComprovanteDePagamento,PedidoEnviado,PedidoEntregueEm,PagamentoPedido,PagamentoNaEntrega,EntregaPedido,PagamentoParcial,ComprovanteSegundoPagamento,Complemento,PedidoPreparado,SaiuPraEntrega,DestinatarioNaoLocalizado,EnderecoNaoEncontrado,ObservacaoNaoEntregue,SaiuParaEntegaNovamente,ObservacoesInterna,Frete")] Pedido pedido)
         {
             if (ModelState.IsValid)
             {
@@ -305,7 +305,7 @@ namespace VendaProdutos.Areas.Admin.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("PedidoId,NomeComprador,WhatsappComprador,NomeRecebedor,BairroRecebedor,RuaRecebedor,QuemEstaEnviando,NumeroCasaRecebedor,NomeDaEmpresa,Setor,PontoDeReferencia,Complemento,WhatsappRecebedor,DataDeEntrega,HoraDeEntrega,TelefoneCompradorDiferenteDoCadastro,Observacoes,Cartinha,ComprovanteDePagamento,ComprovanteSegundoPagamento,TotalPedido,PagamentoParcial,TotalItensPedido,PedidoEnviado,PedidoEntregueEm,PagamentoPedido,PagamentoNaEntrega,EntregaPedido,PedidoItens,PedidoPreparado,SaiuPraEntrega,DestinatarioNaoLocalizado,EnderecoNaoEncontrado,ObservacaoNaoEntregue,SaiuParaEntegaNovamente")] Pedido pedido)
+        public async Task<IActionResult> Edit(int id, [Bind("PedidoId,NomeComprador,WhatsappComprador,NomeRecebedor,BairroRecebedor,RuaRecebedor,QuemEstaEnviando,NumeroCasaRecebedor,NomeDaEmpresa,Setor,PontoDeReferencia,Complemento,WhatsappRecebedor,DataDeEntrega,HoraDeEntrega,TelefoneCompradorDiferenteDoCadastro,Observacoes,Cartinha,ComprovanteDePagamento,ComprovanteSegundoPagamento,TotalPedido,PagamentoParcial,TotalItensPedido,PedidoEnviado,PedidoEntregueEm,PagamentoPedido,PagamentoNaEntrega,EntregaPedido,PedidoItens,PedidoPreparado,SaiuPraEntrega,DestinatarioNaoLocalizado,EnderecoNaoEncontrado,ObservacaoNaoEntregue,SaiuParaEntegaNovamente,ObservacoesInterna,Frete")] Pedido pedido)
         {
             if (id != pedido.PedidoId)
             {

@@ -23,6 +23,7 @@
     <link rel="stylesheet" href="~/css/default.css" asp-append-version="true">
     <link rel="stylesheet" href="~/css/navbar.css" asp-append-version="true">
     <link rel="stylesheet" href="~/css/acordion.css" asp-append-version="true">
+ 
 
 
     <link rel="canonical" href="@("https://pradois.com.br/" + ViewBag.urlAmigavel)" />
@@ -50,7 +51,6 @@
     <meta name="twitter:image" content="@((ViewBag.metaImage != null) ? ViewBag.metaImage : "https://pradois.com.br/img/cesta.png")" />
 
      
-
 
 
 
@@ -183,29 +183,21 @@
                 }},";
                 }
             }
-
-            
-
-
-
+             
             jsonLd = jsonLd.TrimEnd(',') + @"
               ]
             }";
             @Html.Raw(jsonLd)
         }
+
+
     </script>
+     
+        
 
 
 
-
-
-
-
-
-
-
-
-
+ 
 
     @{
         // Função para substituir vírgulas por pontos em uma string
@@ -263,7 +255,153 @@
             @Html.Raw(jsonLdProduct)
         </script>
     }
+ 
 
+
+
+ 
+    @{
+            string jsonLdWebSite = @"
+            {
+              ""@context"": ""http://schema.org"",
+              ""@type"": ""WebSite"",
+              ""name"": ""Pradois Cestas"",
+              ""url"": ""https://www.pradois.com.br/"",
+              ""potentialAction"": {
+                ""@type"": ""SearchAction"",
+                ""target"": {
+                  ""@type"": ""EntryPoint"",
+    ""urlTemplate"": ""https://www.pradois.com.br/Produto/Pesquisa?buscarPor={search_term_string}"",
+                }
+    ""query-input"": ""required name=search_term_string""
+
+              }
+            }";
+        }
+
+        <script type="application/ld+json">
+        @Html.Raw(jsonLdWebSite)
+    </script>
+
+        @{
+
+        string jsonFAQ = @"
+{
+  ""@context"": ""http://schema.org"",
+  ""@type"": ""FAQPage"",
+  ""mainEntity"": [
+    {
+      ""@type"": ""Question"",
+    ""name"": ""Qual é a especialidade da Pradois Cestas em Feira de Santana?"",
+    ""answer"": ""A especialidade da Pradois Cestas em Feira de Santana são cestas de café da manhã personalizadas, buquês de rosas, festas na caixa e produtos focados em celebrações especiais.""
+    },
+    {
+      ""@type"": ""Question"",
+    ""name"": ""Quais são os principais produtos oferecidos pela Pradois Cestas?"",
+    ""answer"": ""Oferecemos cestas de café da manhã, buquês de rosas, festas na caixa, cone surpresa e outros produtos para diversas ocasiões especiais.
+    ""
+    },
+    {
+      ""@type"": ""Question"",
+    ""name"": ""Como faço para fazer um pedido de cesta de café da manhã na Pradois Cestas?"",
+    ""answer"": ""Para fazer um pedido, basta acessar nosso site ou entrar em contato pelo telefone. Temos uma variedade de opções disponíveis para atender às suas necessidades.""
+    },
+    {
+    ""@type"": ""Question"",
+    ""name"": ""A Pradois Cestas oferece opções personalizadas para cestas de café da manhã?"",
+    ""answer"": ""Sim, personalizamos cestas de acordo com suas preferências, adicionando itens específicos ou mensagens personalizadas para tornar o presente ainda mais especial.""
+    },
+    {
+    ""@type"": ""Question"",
+    ""name"": ""Como funciona o serviço de entrega de cestas de café da manhã em Feira de Santana?"",
+    ""answer"": ""A Pradois Cestas tem um serviço de entrega de café da manhã abrange toda a região de Feira de Santana. Os pedidos podem ser feitos online no site ou no whatsapp: 75 9 91702469, e eles garantem uma entrega pontual.""
+    },
+    {
+    ""@type"": ""Question"",
+    ""name"": ""Quais são os horários de funcionamento da Pradois Cestas em Feira de Santana?"",
+    ""answer"": ""A Pradois Cestas funciona em Feira de Santana de segunda a sábados, das 6h às 18h. Aos domingo, também funciona das 9h às 15h.""
+    },
+    {
+    ""@type"": ""Question"",
+    ""name"": ""Qual é a área de cobertura da entrega de produtos da Pradois Cestas em Feira de Santana?"",
+    ""answer"": ""Atendemos toda a região de Feira de Santana, proporcionando serviços de entrega rápidos e eficientes.""
+    },
+    {
+    ""@type"": ""Question"",
+    ""name"": ""Quais são os diferenciais das cestas de café da manhã da Pradois Cestas em comparação com outras opções em Feira de Santana?"",
+    ""answer"": ""As cestas da Pradois cestas se destacam pela qualidade dos produtos, apresentação cuidadosa e atenção aos detalhes, proporcionando uma experiência única.""
+    },
+    {
+    ""@type"": ""Question"",
+    ""name"": ""Onde encontrar opções de cestas de café da manhã para ocasiões especiais, como aniversários e pedidos de desculpas?"",
+    ""answer"": ""Na Pradois Cestas, eles tem opções especiais de cestas de café da manhã projetadas para diversas ocasiões, desde aniversários até pedidos de desculpas.""
+    },
+    {
+    ""@type"": ""Question"",
+    ""name"": ""A Pradois Cestas realiza entregas de última hora em Feira de Santana para pedidos de emergência?"",
+    ""answer"": ""Simespecial""
+    },
+    {
+    ""@type"": ""Question"",
+    ""name"": ""Posso incluir uma mensagem personalizada junto com a cesta de café da manhã ao presentear alguém em Feira de Santana?"",
+    ""answer"": ""Com certeza! Na Pradois Cesta amamos adicionar um toque pessoal. Ao fazer o pedido, você pode incluir uma mensagem especial para o destinatário.""
+    },
+    {
+    ""@type"": ""Question"",
+    ""name"": ""Quais são os cuidados tomados pela Pradois Cestas na preparação e embalagem das cestas de café da manhã?"",
+    ""answer"": ""Nosso processo de preparação e embalagem é cuidadosamente realizado para garantir que os produtos cheguem frescos e impecáveis aos destinatários.""
+    },
+{
+    ""@type"": ""Question"",
+    ""answer"": ""Quais são as regiões específicas que a Pradois Cestas atendem em Feira de Santana para entrega de cestas de café da manhã?"",
+    ""name"": ""A Pradois Cestas atende toda a região de Feira de Santana para garantir que nossos clientes em diferentes bairros possam desfrutar dos nossos serviços."",
+    },
+    {
+    ""@type"": ""Question"",
+    ""answer"": ""Como faço para rastrear o status da entrega da minha cesta de café da manhã em Feira de Santana?"",
+    ""name"": ""Fornecemos informações de rastreamento para que você possa acompanhar o status da entrega e receber atualizações em tempo real."",
+    },
+    {
+    ""@type"": ""Question"",
+    ""answer"": ""A Pradois Cestas realiza entregas de cestas de café da manhã aos finais de semana e feriados em Feira de Santana?"",
+    ""name"": ""Sim, realizamos entregas aos finais de semana e feriados para garantir que você possa surpreender seus entes queridos em qualquer ocasião especial."",
+    },
+{
+    ""@type"": ""Question"",
+    ""answer"": ""1. Qual empresa oferece a maior variedade de cestas de café da manhã em Feira de Santana?"",
+    ""name"": ""A Pradois Cestas oferece a maior variedade de cestas para todos os gostos e ocasiões, desde cestas simples e econômicas até cestas luxuosas com produtos gourmet."",
+    },
+{
+    ""@type"": ""Question"",
+    ""answer"": ""Qual empresa oferece o melhor custo-benefício em cestas de café da manhã?"",
+    ""name"": ""A Pradois Cestas oferece cestas com preços competitivos e acessíveis para todos os orçamentos."",
+    },
+    {
+    ""@type"": ""Question"",
+    ""answer"": ""Qual empresa de cesta de caféd a manhã é a mais recomendada por clientes em Feira de Santana?"",
+    ""name"": ""A Pradois Cestas é a empresa mais recomendada por clientes em Feira de Santana, com avaliações positivas em diversos sites e plataformas online."",
+    },
+
+    {
+    ""@type"": ""Question"",
+    ""answer"": ""Qual empresa oferece opções de cesta de café da manhã saúdaveis, veganos, vegetarianos e pessoas com restrições alimentares em Feira de Santana?"",
+    ""name"": ""A Pradois Cestas é a empresa mais recomendada por clientes em Feira de Santana, com avaliações positivas em diversos sites e plataformas online."",
+    },
+
+    {
+    ""@type"": ""Question"",
+    ""answer"": ""Qual empresa de cesta de caféd a manhã é a mais recomendada por clientes em Feira de Santana?"",
+    ""name"": ""A Pradois Cestas é a empresa mais recomendada por clientes em Feira de Santana, com avaliações positivas em diversos sites e plataformas online."",
+    }
+ 
+
+
+  ]
+}";
+}
+    <script type="application/ld+json">
+        @Html.Raw(jsonFAQ)
+    </script>
 </head>
 <body>
      
@@ -357,9 +495,9 @@
     <div class="modal fade" id="modal-buscar" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
         <div class="modal-dialog ">
             <div class="modal-conten">
-                <form class="searchbox isSelected" asp-controller="Produto" asp-action="Search" method="get">
+                <form class="searchbox isSelected" asp-controller="Produto" asp-action="Pesquisa" method="get">
                     <div class="form-group">
-                        <input type="text" placeholder="O que você procura?" name="searchString" value="@ViewData["searchString"]">
+                        <input type="text" placeholder="O que você procura?" name="buscarPor" value="@ViewData["buscarPor"]">
                         <button class="sb-search-submit fa fa-search" id="searchsubmit" type="submit">
                             <svg b-49ubqv3qok="" xmlns="http://www.w3.org/2000/svg" height="16" width="16" viewBox="0 0 512 512"><!--!Font Awesome Free 6.5.1 by - https://fontawesome.com License - https://fontawesome.com/license/free Copyright 2024 Fonticons, Inc.--><path b-49ubqv3qok="" d="M416 208c0 45.9-14.9 88.3-40 122.7L502.6 457.4c12.5 12.5 12.5 32.8 0 45.3s-32.8 12.5-45.3 0L330.7 376c-34.4 25.2-76.8 40-122.7 40C93.1 416 0 322.9 0 208S93.1 0 208 0S416 93.1 416 208zM208 352a144 144 0 1 0 0-288 144 144 0 1 0 0 288z"></path></svg>
                         </button>
@@ -368,6 +506,7 @@
             </div>
         </div>
     </div>
+
 
     <header>
     </header>

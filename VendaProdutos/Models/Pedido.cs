@@ -114,15 +114,21 @@ namespace VendaProdutos.Models
         [Display(Name = "Comprovante segundo Pagamento")]
         public string ComprovanteSegundoPagamento { get; set; }
 
+        [StringLength(500)]
+        [Display(Name = "Observação Interna")]
+        public string ObservacoesInterna { get; set; }
+
+        [Column(TypeName = "decimal(10,2)")]
+        [Display(Name = "Frete")]
+        public decimal Frete { get; set; }
+
         [Column(TypeName = "decimal(18,2)")]
         [Display(Name = "Total do Pedido")]
         public decimal TotalPedido { get; set; }
 
         [Column(TypeName = "decimal(10,2)")]
         [Display(Name = "Pagou apenas")]
-
         public decimal PagamentoParcial { get; set; }
-
 
         [Display(Name = "Itens no Pedido")]
         public int TotalItensPedido { get; set; }

@@ -1,40 +1,92 @@
-﻿<header class="bg_topo bg_topo_banner ">
-    <div class="container">
+﻿    @* bg_topo bg_topo_banner *@
 
+
+     
+    <div class="container-fluid baner_principal" style="max-width:1900px;overflow: hidden;">
         <div class="row">
-            <div class="col-md-3">
-                <h1 class="mt-40">Presentes especiais</h1>
-            </div>
-            <div class="col-md-9">
-                <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
-                    <ol class="carousel-indicators">
-                        <li data-target="#carouselExampleIndicators" data-slide-to="0" class="active"></li>
-                        <li data-target="#carouselExampleIndicators" data-slide-to="1"></li>
-                        <li data-target="#carouselExampleIndicators" data-slide-to="2"></li>
-                    </ol>
-                    <div class="carousel-inner">
-                        <div class="carousel-item active">
-                            <img src="~/img/banner2.webp" class="d-block w-100" alt="...">
+            <div class="col-12 col_0_xl">
+                <div class="swiper-container bannerSite">
+                    <div class="swiper-wrapper">
+
+                        <div class="swiper-slide">
+                            <img src="~/img/temporario/banner1.png" />
                         </div>
-                        <div class="carousel-item">
-                            <img src="~/img/banner2.webp" class="d-block w-100" alt="...">
+                        <div class="swiper-slide">
+                            <img src="~/img/temporario/banner2.png" />
                         </div>
-                        <div class="carousel-item">
-                            <img src="~/img/banner2.webp" class="d-block w-100" alt="...">
+                        <div class="swiper-slide">
+                            <img src="~/img/temporario/banner4.png" />
+                        </div>
+                        <div class="swiper-slide">
+                            <img src="~/img/temporario/banner3.png" />
                         </div>
                     </div>
-                    <a class="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-slide="prev">
-                        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-                        <span class="sr-only">Previous</span>
-                    </a>
-                    <a class="carousel-control-next" href="#carouselExampleIndicators" role="button" data-slide="next">
-                        <span class="carousel-control-next-icon" aria-hidden="true"></span>
-                        <span class="sr-only">Next</span>
-                    </a>
+                    <div class="swiper-button-next"></div>
+                    <div class="swiper-button-prev"></div>
+                    <div class="swiper-pagination"></div>
                 </div>
             </div>
         </div>
     </div>
 
 
-</header>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+
+
+
+    <script>
+        //stilo app
+        var swiper = new Swiper(".bannerSite", {
+            freeMode: true,
+            loop: true,
+            centeredSlides: true,
+            navigation: {
+                nextEl: ".swiper-button-next",
+                prevEl: ".swiper-button-prev",
+            },
+            autoplay: {
+                delay: 2000,
+            },
+            breakpoints: {
+                0: {
+                    slidesPerView: 1.2,
+                    spaceBetween: 10,
+                },
+                360: {
+                    slidesPerView: 1.2,
+                    spaceBetween: 10,
+                },
+                411: {
+                    slidesPerView: 1.2,
+                    spaceBetween: 10,
+                },
+                640: {
+                    slidesPerView: 2,
+                    spaceBetween: 20,
+                },
+                768: {
+                    slidesPerView: 2,
+                    spaceBetween: 20,
+                },
+                1024: {
+                    slidesPerView: 3,
+                    spaceBetween: 20,
+                },
+            },
+        });
+    </script>
+ 
