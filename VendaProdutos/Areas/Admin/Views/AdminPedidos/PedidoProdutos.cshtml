@@ -72,7 +72,7 @@
                 string TelefoneVendedor = "5575991702469";
                 string ChavePixAqui = Model.ChavePix.Chave; //ATENÇÃO Si mudar aqui mudar no Whatsapp também
                 String TipoChavePixAqui = Model.ChavePix.Tipo;
-                decimal totalPedido = Model.Pedido.TotalPedido;
+                decimal totalPedido = Model.Pedido.TotalPedido + Model.Pedido.Frete;
                 string TelefoneCompradorAqui = @Model.Pedido.WhatsappComprador.Trim();
                 string TelefoneRecebedorAqui = @Model.Pedido.WhatsappRecebedor.Trim();
                 //esse codigo todo é para alimentar o botão de compartilhar no whatsapp
