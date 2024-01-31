@@ -49,7 +49,7 @@
         <div class="row">
           <div class="col-sm-7 mb-3">
                         <label asp-for="NomeComprador">Seu Nome</label>
-                        <input type="text" class="form-control" asp-for="NomeComprador" placeholder="" value="" required>
+                        <input oninput="procuraErro(this)"  type="text" class="form-control" asp-for="NomeComprador" placeholder="" value="" required>
             <div class="invalid-feedback">
              Digite seu nome completo.
             </div>
@@ -58,7 +58,7 @@
           </div>
                     <div class="col-sm-5 mb-3">
                         <label asp-for="WhatsappComprador">Seu Whatsapp</label>
-                        <input type="tel" asp-for="WhatsappComprador" class="form-control" placeholder="" required>
+                        <input oninput="procuraErro(this)"  type="tel" asp-for="WhatsappComprador" class="form-control" placeholder="" required>
             <div class="invalid-feedback">
               Informe um telefone válido.
             </div>
@@ -84,14 +84,14 @@
 
                     <div class="col-sm-6 mb-3">
                             <label>Cidade</label>
-                            <select class="custom-select d-block w-100">
+                            <select oninput="procuraErro(this)"  class="custom-select d-block w-100">
                                 <option>Feira de Santana / BA</option>
                             </select>
                         </div>
 
                     <div class="col-sm-6 mb-3">
                         <label asp-for="BairroRecebedor" >Bairro</label>
-                        <input type="text" class="form-control" asp-for="BairroRecebedor" placeholder="Nome do Bairro da entrega" required>
+                        <input oninput="procuraErro(this)"  type="text" class="form-control" asp-for="BairroRecebedor" placeholder="Nome do Bairro da entrega" required>
                             <div class="invalid-feedback">
                                 Informe o nome do bairro onde o pedido será entregue.
                             </div>
@@ -101,7 +101,7 @@
 
                     <div class="col-sm-8 mb-3">
                         <label asp-for="RuaRecebedor">Rua</label>
-                        <input type="text" class="form-control" asp-for="RuaRecebedor" placeholder="Nome da rua da entrega" required>
+                        <input oninput="procuraErro(this)"  type="text" class="form-control" asp-for="RuaRecebedor" placeholder="Nome da rua da entrega" required>
                             <div class="invalid-feedback">
                                 Informe o nome da rua onde o pedido será entregue.
                             </div>
@@ -112,7 +112,7 @@
 
                     <div class="col-sm-4 mb-3">
                         <label asp-for="NumeroCasaRecebedor">Nº do imóvel </label>
-                        <input type="text" class="form-control" asp-for="NumeroCasaRecebedor"  placeholder="Nº do imóvel da entrega" required>
+                        <input oninput="procuraErro(this)"  type="text" class="form-control" asp-for="NumeroCasaRecebedor"  placeholder="Nº do imóvel da entrega" required>
                             <div class="invalid-feedback">
                                 Informe o Nº do imóvel onde o pedido será entregue.
                             </div>
@@ -121,7 +121,7 @@
                         </div>
                     <div class="col-sm-12 mb-3">
                         <label asp-for="PontoDeReferencia">Ponto de referência <span class="text-muted">(Opcional)</span></label>
-                        <input type="text" class="form-control" asp-for="PontoDeReferencia" placeholder="Imóvel próximo a...">
+                        <input oninput="procuraErro(this)"  type="text" class="form-control" asp-for="PontoDeReferencia" placeholder="Imóvel próximo a...">
                             <div class="invalid-feedback">
                             Informe o Ponto de referência do endereço onde o pedido será entregue.
                             </div>
@@ -131,7 +131,7 @@
 
                         <div class="col-sm-12 mb-3">
                             <label asp-for="Complemento">Complemento do endereço <span class="text-muted">(Opcional)</span></label>
-                            <input type="text" class="form-control" asp-for="Complemento" placeholder="Condominio, hospital, prédio">
+                            <input oninput="procuraErro(this)"  type="text" class="form-control" asp-for="Complemento" placeholder="Condominio, hospital, prédio">
                             
                             <span asp-validation-for="Complemento" class="text-danger"></span>
 
@@ -146,14 +146,14 @@
                     <div class="tab-pane fade row" id="tab2">
                         <div class="col-sm-8 mb-3">
                             <label asp-for="NomeDaEmpresa">Nome da empresa</label>
-                            <input type="text" class="form-control" asp-for="NomeDaEmpresa" placeholder="Nome da empresa" >
+                            <input oninput="procuraErro(this)"  type="text" class="form-control" asp-for="NomeDaEmpresa" placeholder="Nome da empresa" >
                             <div class="invalid-feedback">
                                 Informe o nome da empresa onde o pedido será entregue.
                             </div>
                         </div>
                         <div class="col-sm-4 mb-3">
                             <label asp-for="Setor">Setor que a pessoa trabalha</label>
-                            <input type="text" class="form-control" asp-for="Setor"  placeholder="Nome do setor" >
+                            <input oninput="procuraErro(this)"  type="text" class="form-control" asp-for="Setor"  placeholder="Nome do setor" >
                             <div class="invalid-feedback">
                                 Informe o nome do setor onde a pessoa que vai receber trabalha.
                             </div>
@@ -174,7 +174,7 @@
                 <div class="row">
                     <div class="col-sm-6 mb-3">
                         <label>De</label>
-                        <input type="text" class="form-control" asp-for="QuemEstaEnviando" id="address2" placeholder="Quem está enviando?" required>
+                        <input oninput="procuraErro(this)"  type="text" class="form-control" asp-for="QuemEstaEnviando" id="address2" placeholder="Quem está enviando?" required>
                         <span asp-validation-for="QuemEstaEnviando" class="text-danger"></span>
 
                         <div class="invalid-feedback">
@@ -184,7 +184,7 @@
  
                     <div class="col-sm-6 mb-3">
                         <label asp-for="NomeRecebedor">Para:</label>
-                        <input type="text" class="form-control" asp-for="NomeRecebedor" placeholder="Quem vai receber?" required>
+                        <input oninput="procuraErro(this)"  type="text" class="form-control" asp-for="NomeRecebedor" placeholder="Quem vai receber?" required>
                         <span asp-validation-for="NomeRecebedor" class="text-danger"></span>
 
                         <div class="invalid-feedback">
@@ -202,7 +202,7 @@
 
                     <div class="col-sm-6 mb-3">
                         <label asp-for="WhatsappRecebedor">Whatsapp de quem vai receber</label>
-                        <input type="tel" class="form-control" asp-for="WhatsappRecebedor" placeholder="" required>
+                        <input oninput="procuraErro(this)"  type="tel" class="form-control" asp-for="WhatsappRecebedor" placeholder="" required>
                         <span asp-validation-for="WhatsappRecebedor" class="text-danger"></span>
 
                         <div class="invalid-feedback">
@@ -215,7 +215,7 @@
 
                         <div class="col-sm-6 mb-3">
                         <label asp-for="DataDeEntrega">Data da entrega</label>
-                        <input type="text" asp-for="DataDeEntrega" id="datePicker" placeholder="Dia/mês/ano" class="form-control" width="276" autocomplete="off" required />
+                        <input oninput="procuraErro(this)"  type="text" asp-for="DataDeEntrega" id="datePicker" placeholder="Dia/mês/ano" class="form-control" width="276" autocomplete="off" required />
                         <span asp-validation-for="DataDeEntrega" class="text-danger"></span>
                         <span asp-validation-for="DataDeEntrega" class="text-danger"></span>
 
@@ -228,7 +228,7 @@
              
                         <div class="col-sm-6 mb-3">
                         <label asp-for="HoraDeEntrega" for="selectHours">Hora da entrega:</label>
-                        <select id="selectHours" asp-for="HoraDeEntrega"  class="form-control" required>
+                        <select oninput="procuraErro(this)"  id="selectHours" asp-for="HoraDeEntrega"  class="form-control" required>
                         </select>
                         <span asp-validation-for="HoraDeEntrega" class="text-danger"></span>
 
@@ -244,10 +244,10 @@
 
                     </div>
                 </div>
-               
-                    
-          
-                 <button class="btn bt_avancar pt-10 pb-10 pr-40 pl-40 mt-10 mr-auto-xs ml-auto-xs d-block-xs" type="submit">Registrar Pedido</button>
+
+                <span id="temCampoInvalido" class="text-danger" style="display:none">Alguns campos não foram preenchidos</span>
+
+                    <button class="btn bt_avancar pt-10 pb-10 pr-40 pl-40 mt-10 mr-auto-xs ml-auto-xs d-block-xs" type="submit" onclick="procuraErro(this)">Registrar Pedido</button>
  
       </form>
     </div>
@@ -272,7 +272,7 @@
                 
                 @foreach (var item in @ViewBag.CarrinhoItens)                {
                     <li class="list-group-item d-flex justify-content-between lh-condensed">
-                        <img src="@item.Produto.ImagemUrl" alt="" class="avatar-lg rounded">
+                        <img onload="obterAlturaLargura(this)" src="@item.Produto.ImagemUrl" alt="" class="avatar-lg rounded">
 
                         <div>
                             <h6 class="text-truncate font-size-18 font-weight-bold">
@@ -350,8 +350,53 @@
      
 }
 
+<script>
+    function procuraErro(element) {
+        var textoSemEspaco = element.value.trim();
+        var feedbackElement = element.nextElementSibling;
+
+        // Encontrar o próximo irmão com a classe 'invalid-feedback'
+        while (feedbackElement && !feedbackElement.classList.contains('invalid-feedback')) {
+            feedbackElement = feedbackElement.nextElementSibling;
+        }
+        if (feedbackElement) {
+            // Se o elemento de feedback foi encontrado
+            if (!textoSemEspaco) {
+                feedbackElement.style.display = "block";
+            } else {
+                feedbackElement.style.display = "none";
+            }
+        }
+
+        if (!textoSemEspaco) {
+            element.style.borderColor = "#f00";
+            element.value = "";
+            document.getElementById("temCampoInvalido").style.display = "block"
+        } else {
+            element.style.borderColor = "";
+            document.getElementById("temCampoInvalido").style.display = "none"
+
+        }
+        if (element.id == "WhatsappRecebedor") {
+            formatarTelefone(element)
+        }
+    }
 
 
+    function formatarTelefone(element) {
+        var phoneNumber = element.value.replace(/\D/g, ''); // Remove caracteres não numéricos
+
+        if (phoneNumber.length <= 2) {
+            element.value = phoneNumber;
+        } else if (phoneNumber.length <= 7) {
+            element.value = `(${phoneNumber.substring(0, 2)}) ${phoneNumber.substring(2)}`;
+        } else if (phoneNumber.length <= 11) {
+            element.value = `(${phoneNumber.substring(0, 2)}) ${phoneNumber.substring(2, 3)} ${phoneNumber.substring(3, 7)}-${phoneNumber.substring(7)}`;
+        } else {
+            element.value = `(${phoneNumber.substring(0, 2)}) ${phoneNumber.substring(2, 3)} ${phoneNumber.substring(3, 7)}-${phoneNumber.substring(7, 12)}`;
+        }
+    }
+</script>
 
 <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
       <script>window.jQuery || document.write('<script src="/docs/4.5/assets/js/vendor/jquery.slim.min.js"><\/script>')</script><script src="/docs/4.5/dist/js/bootstrap.bundle.min.js" integrity="sha384-ho+j7jyWK8fNQe+A12Hb8AhRq26LrZ/JpcUGGOn+Y7RsweNrtN/tE3MoK7ZeZDyx" crossorigin="anonymous"></script>
@@ -692,4 +737,19 @@
 
 
 
- 
+
+
+<script>
+    function obterAlturaLargura(imagem) {
+        // Obter altura e largura renderizadas da imagem
+        var alturaRenderizada = imagem.clientHeight;
+        var larguraRenderizada = imagem.clientWidth;
+
+        // Adicionar os atributos height e width à imagem
+        imagem.setAttribute('height', alturaRenderizada);
+        imagem.setAttribute('width', larguraRenderizada);
+
+        console.log('Altura renderizada: ' + alturaRenderizada + ' pixels');
+        console.log('Largura renderizada: ' + larguraRenderizada + ' pixels');
+    }
+</script>

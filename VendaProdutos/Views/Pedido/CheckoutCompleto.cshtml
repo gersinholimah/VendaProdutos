@@ -144,7 +144,7 @@
                                             }
                                             <tr>
                                                 
-                                                <td><img src="@item.Produto.ImagemUrl" width="40" height="40" /></td>
+                                                <td><img onload="obterAlturaLargura(this)" src="@item.Produto.ImagemUrl" width="40" height="40" /></td>
                                                 <td>@item.Quantidade</td>
                                                     <td>
                                                         @if (!string.IsNullOrEmpty(nomeCurtoCatego))
@@ -162,7 +162,7 @@
                                             <td></td>
                                             <td class="">Frete:</td>
 
-                                            <td class="text-success" style="font-size: 18px;">Grátis</td>
+                                            <td class="text-success" style="font-size: 18px;">Será verificado e informado no Whatsapp</td>
                                         </tr>
 
                                     </tbody>
@@ -374,4 +374,21 @@
                 requestAnimationFrame(animation);
             }
         }
+</script>
+
+
+
+<script>
+    function obterAlturaLargura(imagem) {
+        // Obter altura e largura renderizadas da imagem
+        var alturaRenderizada = imagem.clientHeight;
+        var larguraRenderizada = imagem.clientWidth;
+
+        // Adicionar os atributos height e width à imagem
+        imagem.setAttribute('height', alturaRenderizada);
+        imagem.setAttribute('width', larguraRenderizada);
+
+        console.log('Altura renderizada: ' + alturaRenderizada + ' pixels');
+        console.log('Largura renderizada: ' + larguraRenderizada + ' pixels');
+    }
 </script>

@@ -13,7 +13,7 @@
                             @if (!string.IsNullOrEmpty(Model.Produto.ImagemUrl))
                             {
                             <div class="swiper-slide">
-                                <img class="img-fluid"
+                                <img onload="obterAlturaLargura(this)" class="img-fluid"
                                      width="345"
                                      height="352"
                                      alt="4ª foto  da cesta"
@@ -23,7 +23,7 @@
                             @if (!string.IsNullOrEmpty(Model.Produto.Imagem2CarolselURL))
                             {
                                 <div class="swiper-slide">
-                                    <img class="img-fluid"
+                                    <img onload="obterAlturaLargura(this)" class="img-fluid"
                                      width="345"
                                      height="352"
                                      alt="1ª foto  da cesta"
@@ -33,7 +33,7 @@
                             @if (!string.IsNullOrEmpty(Model.Produto.Imagem3CarolselURL))
                             {
                                 <div class="swiper-slide">
-                                    <img class="img-fluid"
+                                    <img onload="obterAlturaLargura(this)" class="img-fluid"
                                     width="345"
                                     height="352"
                                     alt="2ª foto  da cesta"
@@ -43,7 +43,7 @@
                             @if (!string.IsNullOrEmpty(Model.Produto.Imagem4CarolselURL))
                             {
                                 <div class="swiper-slide">
-                                    <img class="img-fluid"
+                                    <img onload="obterAlturaLargura(this)" class="img-fluid"
                                     width="345"
                                     height="352"
                                     alt="3ª foto  da cesta"
@@ -61,7 +61,7 @@
                             {
                             <div class="swiper-slide">
                                 
-                                <img class="img-fluid"
+                                <img onload="obterAlturaLargura(this)" class="img-fluid"
                                      width="74"
                                      height="75"
                                      alt="1ª miniatura da cesta"
@@ -71,7 +71,7 @@
                             @if (!string.IsNullOrEmpty(Model.Produto.Imagem2CarolselURL))
                             {
                                 <div class="swiper-slide">
-                                    <img class="img-fluid"
+                                    <img onload="obterAlturaLargura(this)" class="img-fluid"
                                     width="74"
                                     height="75"
                                     alt="2ª miniatura da cesta"
@@ -81,7 +81,7 @@
                             @if (!string.IsNullOrEmpty(Model.Produto.Imagem3CarolselURL))
                             {
                                 <div class="swiper-slide">
-                                    <img class="img-fluid"
+                                    <img onload="obterAlturaLargura(this)" class="img-fluid"
                                     width="74"
                                     height="75"
                                     alt="3ª miniatura da cesta"
@@ -91,7 +91,7 @@
                             @if (!string.IsNullOrEmpty(Model.Produto.Imagem4CarolselURL))
                             {
                                 <div class="swiper-slide">
-                                    <img class="img-fluid"
+                                    <img onload="obterAlturaLargura(this)" class="img-fluid"
                                     width="74"
                                     height="75"
                                     alt="4ª miniatura da cesta"
@@ -159,18 +159,45 @@
                             // Seu código aqui
                                                 <div class="form-row">
                         <div class="opcao_extra" id="minhaDiv">
-                             <img src="@opcoesExtra.ImagemUrl" class="lafka-addon-image-icon" alt="" loading="lazy">
+                                    <img onload="obterAlturaLargura(this)" src="@opcoesExtra.ImagemUrl" data-toggle="modal" data-target="#modal-@opcoesExtra.ProdutoId" class="lafka-addon-image-icon" alt="">
                             <div class="envolve_opcoes">
                                 @{
                                     int parteInteiraPrecoPromocional = (int)opcoesExtra.PrecoPromocional;
                                 }
-                                     @opcoesExtra.Nome (@(parteInteiraPrecoPromocional == 0 ? "GRÁTIS" : $"R$ {parteInteiraPrecoPromocional}"))                                
-                                    <button id="adicionar_@opcoesExtra.ProdutoId" class="btn btn-primary btn-sm" onclick="adicionaNaListaDeCompra(@opcoesExtra.ProdutoId, @opcoesExtra.PrecoPromocional)">Adicionar</button>
+                                        @opcoesExtra.Categoria.NomeCurto @opcoesExtra.Nome (@(parteInteiraPrecoPromocional == 0 ? "GRÁTIS" : $"R$ {parteInteiraPrecoPromocional}"))
+                                        <button id="adicionar_@opcoesExtra.ProdutoId" class="btn btn-primary btn-sm" onclick="adicionaNaListaDeCompra(@opcoesExtra.ProdutoId, @opcoesExtra.PrecoPromocional)">Adicionar</button>
                                     <button id="remover_@opcoesExtra.ProdutoId" class="btn btn-danger" onclick="removeDaListaDeCompra(@opcoesExtra.ProdutoId, @opcoesExtra.PrecoPromocional)" style="display: none;">Remover</button>
 
                                 </div>
                          </div>
                         </div>
+
+
+
+                            <!-- Modal -->
+                            <div class="modal" id="modal-@opcoesExtra.ProdutoId">
+                                <div class="modal-dialog">
+                                    <div class="modal-content">
+
+                                        <!-- Cabeçalho do Modal -->
+                                        <div class="modal-header">
+                                            <h4 class="modal-title"> @opcoesExtra.Categoria.NomeCurto @opcoesExtra.Nome</h4>
+                                            <button type="button" class="close" data-dismiss="modal">&times;</button>
+                                        </div>
+
+                                        <!-- Corpo do Modal -->
+                                        <div class="modal-body">
+                                            <img onload="obterAlturaLargura(this)" class="img-fluid"  src="@opcoesExtra.ImagemUrl" alt="Imagem Modal">
+                                        </div>
+                                        <!-- Rodapé do Modal -->
+                                        <div class="modal-footer">
+                                            <button type="button" class="btn btn-secondary" data-dismiss="modal">Fechar</button>
+                                        </div>
+
+                                    </div>
+                                </div>
+                            </div>
+
                         }
 
                     }
@@ -298,6 +325,19 @@
 
 
 <partial name="_Faq" />
+
+
+
+
+
+
+
+
+
+
+ 
+
+
 
 <script src="https://code.jquery.com/jquery-3.6.4.min.js" integrity="sha256-oP6HI/t1qEzB53L0R6JLY2zkiq0I6a0+PRAkFO9uqrs=" crossorigin="anonymous"></script>
  
@@ -440,4 +480,30 @@
 </script>
 
 
- 
+
+
+<script>
+    // Espera até que o DOM esteja carregado
+    document.addEventListener("DOMContentLoaded", function () {
+        // Percorre todas as imagens e adiciona um ouvinte de evento 'load'
+        var imagens = document.querySelectorAll('.opcao_extra img');
+        imagens.forEach(function (imagem) {
+            imagem.addEventListener('load', function () {
+                obterAlturaLargura(imagem);
+            });
+        });
+    });
+
+    function obterAlturaLargura(imagem) {
+        // Obter altura e largura renderizadas da imagem
+        var alturaRenderizada = imagem.clientHeight;
+        var larguraRenderizada = imagem.clientWidth;
+
+        // Adicionar os atributos height e width à imagem
+        imagem.setAttribute('height', alturaRenderizada);
+        imagem.setAttribute('width', larguraRenderizada);
+
+        console.log('Altura renderizada: ' + alturaRenderizada + ' pixels');
+        console.log('Largura renderizada: ' + larguraRenderizada + ' pixels');
+    }
+</script>

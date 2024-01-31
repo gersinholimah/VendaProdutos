@@ -94,7 +94,7 @@ namespace VendaProdutos.Controllers
             foreach(var item in items)
             {
                 totalItensPedido += item.Quantidade;
-                precoTotalPedido += (item.Produto.Preco * item.Quantidade);
+                precoTotalPedido += (item.Produto.PrecoPromocional * item.Quantidade);
             }
 
             //atribui os valores obtidos ao pedido

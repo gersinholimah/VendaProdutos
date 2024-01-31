@@ -9,6 +9,7 @@ using Microsoft.CodeAnalysis.Options;
 using Microsoft.EntityFrameworkCore;
 using ReflectionIT.Mvc.Paging;
 using VendaProdutos.Context;
+using VendaProdutos.Migrations;
 using VendaProdutos.Models;
 using VendaProdutos.Repositories.Interfaces;
 using VendaProdutos.ViewModel;
@@ -189,23 +190,35 @@ namespace VendaProdutos.Areas.Admin.Controllers
 
             decimal somaPagos = 0;
             decimal somaNaoPagos = 0;
+            decimal pagamentoInicial = 0;
+            decimal faltaPagar = 0;
 
             foreach (var pedido in resultado)
             {
+                decimal pedidoMaisFrete = pedido.TotalPedido + pedido.Frete;
 
                 if (pedido.PagamentoPedido)
                 {
-                    somaPagos += pedido.TotalPedido;
+                    somaPagos += pedido.PagamentoParcial;
                 }
 
                 if (!pedido.PagamentoPedido)
                 {
                     somaNaoPagos += pedido.TotalPedido;
                 }
+                if (pedido.PagamentoParcial > 0 && pedido.PagamentoParcial < pedidoMaisFrete)
+                {
+                    pagamentoInicial += pedido.PagamentoParcial;
+                    faltaPagar += pedidoMaisFrete - pedido.PagamentoParcial;
+                }
+               
             }
 
             ViewBag.SomaPedidosPagos = somaPagos;
             ViewBag.SomaPedidosNaoPagos = somaNaoPagos;
+            ViewBag.SomaPagamentoMetadeJaPaga = pagamentoInicial;
+            ViewBag.SomaPagamentoMetadeNaoPaga = faltaPagar;
+
             ViewBag.CategoriaOptions = _context.Categorias
                 .Select(c => new SelectListItem
                 {
@@ -273,7 +286,7 @@ namespace VendaProdutos.Areas.Admin.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("PedidoId,NomeComprador,WhatsappComprador,NomeRecebedor,BairroRecebedor,RuaRecebedor,QuemEstaEnviando,NumeroCasaRecebedor,NomeDaEmpresa,Setor,PontoDeReferencia,WhatsappRecebedor,DataDeEntrega,HoraDeEntrega,TelefoneCompradorDiferenteDoCadastro,Observacoes,Cartinha,ComprovanteDePagamento,PedidoEnviado,PedidoEntregueEm,PagamentoPedido,PagamentoNaEntrega,EntregaPedido,PagamentoParcial,ComprovanteSegundoPagamento,Complemento,PedidoPreparado,SaiuPraEntrega,DestinatarioNaoLocalizado,EnderecoNaoEncontrado,ObservacaoNaoEntregue,SaiuParaEntegaNovamente,ObservacoesInterna,Frete")] Pedido pedido)
+        public async Task<IActionResult> Create([Bind("PedidoId,NomeComprador,WhatsappComprador,NomeRecebedor,BairroRecebedor,RuaRecebedor,QuemEstaEnviando,NumeroCasaRecebedor,NomeDaEmpresa,Setor,PontoDeReferencia,WhatsappRecebedor,DataDeEntrega,HoraDeEntrega,TelefoneCompradorDiferenteDoCadastro,Observacoes,Cartinha,ComprovanteDePagamento,PedidoEnviado,PedidoEntregueEm,PagamentoPedido,PagamentoNaEntrega,EntregaPedido,PagamentoParcial,ComprovanteSegundoPagamento,Complemento,PedidoPreparado,SaiuPraEntrega,DestinatarioNaoLocalizado,EnderecoNaoEncontrado,ObservacaoNaoEntregue,SaiuParaEntegaNovamente,ObservacoesInterna,Frete,RetirarNaLoja,TemFrete,Cancelado")] Pedido pedido)
         {
             if (ModelState.IsValid)
             {
@@ -305,7 +318,7 @@ namespace VendaProdutos.Areas.Admin.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("PedidoId,NomeComprador,WhatsappComprador,NomeRecebedor,BairroRecebedor,RuaRecebedor,QuemEstaEnviando,NumeroCasaRecebedor,NomeDaEmpresa,Setor,PontoDeReferencia,Complemento,WhatsappRecebedor,DataDeEntrega,HoraDeEntrega,TelefoneCompradorDiferenteDoCadastro,Observacoes,Cartinha,ComprovanteDePagamento,ComprovanteSegundoPagamento,TotalPedido,PagamentoParcial,TotalItensPedido,PedidoEnviado,PedidoEntregueEm,PagamentoPedido,PagamentoNaEntrega,EntregaPedido,PedidoItens,PedidoPreparado,SaiuPraEntrega,DestinatarioNaoLocalizado,EnderecoNaoEncontrado,ObservacaoNaoEntregue,SaiuParaEntegaNovamente,ObservacoesInterna,Frete")] Pedido pedido)
+        public async Task<IActionResult> Edit(int id, [Bind("PedidoId,NomeComprador,WhatsappComprador,NomeRecebedor,BairroRecebedor,RuaRecebedor,QuemEstaEnviando,NumeroCasaRecebedor,NomeDaEmpresa,Setor,PontoDeReferencia,Complemento,WhatsappRecebedor,DataDeEntrega,HoraDeEntrega,TelefoneCompradorDiferenteDoCadastro,Observacoes,Cartinha,ComprovanteDePagamento,ComprovanteSegundoPagamento,TotalPedido,PagamentoParcial,TotalItensPedido,PedidoEnviado,PedidoEntregueEm,PagamentoPedido,PagamentoNaEntrega,EntregaPedido,PedidoItens,PedidoPreparado,SaiuPraEntrega,DestinatarioNaoLocalizado,EnderecoNaoEncontrado,ObservacaoNaoEntregue,SaiuParaEntegaNovamente,ObservacoesInterna,Frete,RetirarNaLoja,TemFrete,Cancelado")] Pedido pedido)
         {
             if (id != pedido.PedidoId)
             {

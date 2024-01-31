@@ -199,7 +199,7 @@
                         <div class="swiper-slide">
                             <div class=" cesta_super_top">
                                             <a asp-controller="Produto" asp-action="Details" asp-route-produtoId="@produto.ProdutoId" class="envolve_produtos mb-30-xs mb-70">
-                                    <img class="img-fluid" src="@produto.ImagemThumbnailUrl">
+                                    <img onload="obterAlturaLargura(this)" class="img-fluid" src="@produto.ImagemThumbnailUrl">
                                                 <h4>
                                                     @produto.Categoria.NomeCurto @produto.Nome</h4>
                                                 <p> Possuii @produto.QuantidadeDeItem Itens </p>
@@ -376,4 +376,21 @@ else
 
 
 
+</script>
+
+
+
+<script>
+    function obterAlturaLargura(imagem) {
+        // Obter altura e largura renderizadas da imagem
+        var alturaRenderizada = imagem.clientHeight;
+        var larguraRenderizada = imagem.clientWidth;
+
+        // Adicionar os atributos height e width à imagem
+        imagem.setAttribute('height', alturaRenderizada);
+        imagem.setAttribute('width', larguraRenderizada);
+
+        console.log('Altura renderizada: ' + alturaRenderizada + ' pixels');
+        console.log('Largura renderizada: ' + larguraRenderizada + ' pixels');
+    }
 </script>

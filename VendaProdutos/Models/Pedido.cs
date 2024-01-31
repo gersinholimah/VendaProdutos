@@ -142,9 +142,18 @@ namespace VendaProdutos.Models
         [Display(Name = "Data Envio Pedido")]
         public string PedidoEntregueEm { get; set; }
 
-        [Display(Name = "O que houve?")]
+        [Display(Name = "O que houve na entrega?")]
         public string ObservacaoNaoEntregue { get; set; }
 
+        
+        [Display(Name = "Retirar na loja")]
+        public bool RetirarNaLoja { get; set; }
+
+        [Display(Name = "Tem frete")]
+        public bool TemFrete { get; set; }
+
+        [Display(Name = "Pedido Cancelado")]
+        public bool Cancelado { get; set; }
 
         [Display(Name = "Pedido pago")]
         public bool PagamentoPedido { get; set; }

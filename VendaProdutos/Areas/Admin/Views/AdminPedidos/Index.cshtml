@@ -112,16 +112,23 @@
 Total de Pedidos : @Model.TotalRecordCount
             @if (ViewBag.SomaPedidosPagos > 0)
             {
-            <p>Total em pedidos pagos: R$ @ViewBag.SomaPedidosPagos</p>
+                <p class="mt-0 mb-0">Total de pedidos 100% pagos: R$ @ViewBag.SomaPedidosPagos</p>
 
 }
             @if (ViewBag.SomaPedidosNaoPagos > 0)
             {
-                <p>Total em pedidos não pagos:  R$ @ViewBag.SomaPedidosNaoPagos</p>
+                <p class="mt-0 mb-0">Total de pedidos não confirmados:  R$ @ViewBag.SomaPedidosNaoPagos</p>
             }
              
-
-
+            @if (ViewBag.SomaPagamentoMetadeJaPaga > 0)
+            {
+                <p class="mt-0 mb-0">Total de pedidos pagos pela metade:  R$ @ViewBag.SomaPagamentoMetadeJaPaga</p>
+            }
+            
+            @if (ViewBag.SomaPagamentoMetadeNaoPaga > 0)
+            {
+                <p class="mt-0 mb-0">Total de pagamentos a receber: R$ @ViewBag.SomaPagamentoMetadeNaoPaga</p>
+            }
             <div class="paginador_admin">
     <vc:pager paging-list="@Model"></vc:pager>
 </div>
@@ -319,9 +326,16 @@ Total de Pedidos : @Model.TotalRecordCount
                                                                         <b>Em trânsito</b>
                                                                     }
                                                                 }
-                                                        else
-                                                        {
-                                                            <b>Entregar Urgentemente</b>
+                                                                else
+                                                                {
+                                                                    if (item.RetirarNaLoja)
+                                                                    {
+                                                                        <b>Cliente vindo buscar</b>
+                                                                    }
+                                                                    else
+                                                                    {
+                                                                        <b>Entregar Urgentemente</b>
+                                                                    }
                                                         }
                                                     }
                                                     else
@@ -335,7 +349,15 @@ Total de Pedidos : @Model.TotalRecordCount
                                                 <div class="">
                                                     @if (item.PedidoPreparado)
                                                     {
-                                                    <b>Aguardando Entrega</b>
+                                                                if (item.RetirarNaLoja)
+                                                                {
+                                                                    <b>Cliente vem buscar</b>
+                                                                }
+                                                                else
+                                                                {
+                                                                    <b>Aguardando Entrega</b>
+                                                                }
+
                                                     }
                                                     else
                                                     {

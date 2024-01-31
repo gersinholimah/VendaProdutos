@@ -40,7 +40,7 @@
 
                     <div class="d-flex align-items-start">
                         <div class="me-4">
-                                <img src="@item.Produto.ImagemUrl" alt="" class="avatar-lg rounded">
+                                    <img src="@item.Produto.ImagemUrl" alt="" class="avatar-lg rounded" onload="obterAlturaLargura(this)">
                         </div>
                         <div class="flex-grow-1 align-self-center overflow-hidden">
                             <div class="col-12">
@@ -178,7 +178,7 @@
                                         <div class="">
                                         <img class="img-fluid"
                                              alt="4ª foto  da cesta"
-                                                         src="@opcao.ImagemUrl" />
+                                                                 src="@opcao.ImagemUrl" onload="obterAlturaLargura(this)" />
                                                     <div class="preco_opcao_extra">R$ @opcao.PrecoPromocional</div>
 
                                     </div>
@@ -302,3 +302,20 @@
                 },
             });
         </script>
+
+
+
+<script>
+    function obterAlturaLargura(imagem) {
+        // Obter altura e largura renderizadas da imagem
+        var alturaRenderizada = imagem.clientHeight;
+        var larguraRenderizada = imagem.clientWidth;
+
+        // Adicionar os atributos height e width à imagem
+        imagem.setAttribute('height', alturaRenderizada);
+        imagem.setAttribute('width', larguraRenderizada);
+
+        console.log('Altura renderizada: ' + alturaRenderizada + ' pixels');
+        console.log('Largura renderizada: ' + larguraRenderizada + ' pixels');
+    }
+</script>

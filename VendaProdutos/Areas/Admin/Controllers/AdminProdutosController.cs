@@ -99,6 +99,22 @@ namespace VendaProdutos.Areas.Admin.Controllers
         // GET: Admin/AdminProdutos/Edit/5
         public async Task<IActionResult> Edit(int? id)
         {
+            var categorias = await _context.Categorias.ToListAsync();
+
+            foreach (var oProduto in _context.Produtos)
+            {
+                if (oProduto.ProdutoId == id)
+                {
+                    foreach (var categoria in categorias)
+                    {
+                        if (oProduto.CategoriaId == categoria.CategoriaId)
+                        {
+                            ViewBag.NomeDaCategoriaDoProduto = categoria.NomeCurto;
+                        }
+                    }
+                }
+            }
+
             if (id == null)
             {
                 return NotFound();

@@ -23,18 +23,18 @@
                 </h2>
             </div>
             <div class="col-6 col-md-3 pl-2 pr-2 pt-20-sm  pt-20-xs">
-                <a href="categoria.html"><img class="img-fluid  mr-auto ml-auto d-block" src="~/img/banner_categoria-01.png"></a>
+                <a href="categoria.html"><img onload="obterAlturaLargura(this)" class="img-fluid  mr-auto ml-auto d-block" src="~/img/banner_categoria-01.png"></a>
             </div>
 
             <div class="col-6 col-md-3 pl-2 pr-2 pt-20-sm  pt-20-xs">
-                <a href="categoria.html"><img class="img-fluid  mr-auto ml-auto d-block" src="~/img/banner_categoria-02.png"></a>
+                <a href="categoria.html"><img onload="obterAlturaLargura(this)" class="img-fluid  mr-auto ml-auto d-block" src="~/img/banner_categoria-02.png"></a>
             </div>
 
             <div class="col-6 col-md-3 pl-2 pr-2 pt-20-sm  pt-20-xs">
-                <a href="categoria.html"><img class="img-fluid  mr-auto ml-auto d-block" src="~/img/banner_categoria-03.png"></a>
+                <a href="categoria.html"><img onload="obterAlturaLargura(this)" class="img-fluid  mr-auto ml-auto d-block" src="~/img/banner_categoria-03.png"></a>
             </div>
             <div class="col-6 col-md-3 pl-2 pr-2 pt-20-sm  pt-20-xs">
-                <a href="categoria.html"><img class="img-fluid  mr-auto ml-auto d-block" src="~/img/banner_categoria-01.png"></a>
+                <a href="categoria.html"><img onload="obterAlturaLargura(this)" class="img-fluid  mr-auto ml-auto d-block" src="~/img/banner_categoria-01.png"></a>
             </div>
         </div>
     </div>
@@ -55,16 +55,16 @@
             </h2>
         </div>
         <div class="col-md-6 pr-5-lg pr-5-md  mt-25-xs">
-            <a href="#"> <img src="~/img/banner_modalidade-01.png" class="img-fluid "></a>
+            <a href="https://pradois.com.br/Produto/Pesquisa?buscarPor=aniversario"> <img onload="obterAlturaLargura(this)" src="~/img/banner_modalidade-01.png" class="img-fluid "></a>
         </div>
         <div class="col-md-6  pl-5-lg pl-5-md  mt-25-xs">
-            <a href="#"> <img src="~/img/banner_modalidade-02.png" class="img-fluid "></a>
+            <a href="https://pradois.com.br/Produto/Pesquisa?buscarPor=bodas"> <img onload="obterAlturaLargura(this)" src="~/img/banner_modalidade-02.png" class="img-fluid "></a>
         </div>
         <div class="col-md-6 pr-5-lg pr-5-md mt-25-lg mt-25-md mt-25-sm mt-25-xs ">
-            <a href="#"> <img src="~/img/banner_modalidade-03.png" class="img-fluid "></a>
+            <a href="https://pradois.com.br/Produto/Pesquisa?buscarPor=reconciliação"> <img onload="obterAlturaLargura(this)" src="~/img/banner_modalidade-03.png" class="img-fluid "></a>
         </div>
         <div class="col-md-6 pl-5-lg pl-5-md mt-25-lg mt-25-md mt-25-sm mt-25-xs ">
-            <a href="#"> <img src="~/img/banner_modalidade-04.png" class="img-fluid "></a>
+            <a href="https://pradois.com.br/Produto/Pesquisa?buscarPor=pedido"> <img onload="obterAlturaLargura(this)" src="~/img/banner_modalidade-04.png" class="img-fluid "></a>
         </div>
     </div>
 </section>
@@ -154,7 +154,7 @@
 
         <div class="row row_center_left mr-auto ml-auto mt-150  mt-90-xs  n_01">
             <div class="col-sm-3 col-md-4   d-none-xs d-none-sm">
-                <img class="d-block ml-auto mr-25" src="img/escolha.png">
+                <img onload="obterAlturaLargura(this)" class="d-block ml-auto mr-25" src="img/escolha.png">
             </div>
             <div class="col-sm-9 col-md-8">
                 <h3><span class="mr-15-md ml-15-lg  ">1</span> Escolha a surpresa aqui no site</h3>
@@ -216,7 +216,7 @@
             </div>
 
             <div class="col-sm-3 col-md-4  d-none-xs d-none-sm">
-                <img class="d-block mr-auto ml-25" src="img/escolha.png">
+                <img onload="obterAlturaLargura(this)" class="d-block mr-auto ml-25" src="img/escolha.png">
             </div>
 
         </div>
@@ -224,7 +224,7 @@
 
         <div class="row row_center_left mr-auto ml-auto mt-200  mt-120- xs  n_03">
             <div class="col-sm-3 col-md-4   d-none-xs d-none-sm">
-                <img class="d-block ml-auto mr-25" src="img/escolha.png">
+                <img onload="obterAlturaLargura(this)" class="d-block ml-auto mr-25" src="img/escolha.png">
             </div>
             <div class="col-sm-9 col-md-8">
                 <h3><span class="mr-15-lg mr-15-md ">1</span> Acompanhe o pedido</h3>
@@ -253,3 +253,20 @@
 </section>
 
 <partial name="_Faq"/>
+
+
+
+<script>
+    function obterAlturaLargura(imagem) {
+        // Obter altura e largura renderizadas da imagem
+        var alturaRenderizada = imagem.clientHeight;
+        var larguraRenderizada = imagem.clientWidth;
+
+        // Adicionar os atributos height e width à imagem
+        imagem.setAttribute('height', alturaRenderizada);
+        imagem.setAttribute('width', larguraRenderizada);
+
+        console.log('Altura renderizada: ' + alturaRenderizada + ' pixels');
+        console.log('Largura renderizada: ' + larguraRenderizada + ' pixels');
+    }
+</script>

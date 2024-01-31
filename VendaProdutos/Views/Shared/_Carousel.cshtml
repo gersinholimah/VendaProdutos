@@ -9,16 +9,16 @@
                     <div class="swiper-wrapper">
 
                         <div class="swiper-slide">
-                            <img src="~/img/temporario/banner1.png" />
+                            <img onload="obterAlturaLargura(this)" src="~/img/temporario/banner1.png" />
                         </div>
                         <div class="swiper-slide">
-                            <img src="~/img/temporario/banner2.png" />
+                            <img onload="obterAlturaLargura(this)" src="~/img/temporario/banner2.png" />
                         </div>
                         <div class="swiper-slide">
-                            <img src="~/img/temporario/banner4.png" />
+                            <img onload="obterAlturaLargura(this)" src="~/img/temporario/banner4.png" />
                         </div>
                         <div class="swiper-slide">
-                            <img src="~/img/temporario/banner3.png" />
+                            <img onload="obterAlturaLargura(this)" src="~/img/temporario/banner3.png" />
                         </div>
                     </div>
                     <div class="swiper-button-next"></div>
@@ -48,8 +48,9 @@
 
 
 
-    <script>
-        //stilo app
+<script>
+    // Função para configurar o Swiper
+    function configurarSwiper() {
         var swiper = new Swiper(".bannerSite", {
             freeMode: true,
             loop: true,
@@ -87,6 +88,37 @@
                     spaceBetween: 20,
                 },
             },
+            on: {
+                slideChange: function () {
+                    // Obtém a imagem ativa no momento
+                    var imagemAtiva = this.slides[this.activeIndex].querySelector('img');
+                    if (imagemAtiva) {
+                        // Aguarda a imagem ser carregada completamente
+                        imagemAtiva.onload = function () {
+                            obterAlturaLargura(imagemAtiva);
+                        };
+                    }
+                }
+            }
         });
-    </script>
- 
+    }
+
+    // Função para obter altura e largura da imagem
+    function obterAlturaLargura(imagem) {
+        // Obter altura e largura renderizadas da imagem
+        var alturaRenderizada = imagem.clientHeight;
+        var larguraRenderizada = imagem.clientWidth;
+
+        // Adicionar os atributos height e width à imagem
+        imagem.setAttribute('height', alturaRenderizada);
+        imagem.setAttribute('width', larguraRenderizada);
+
+        console.log('Altura renderizada: ' + alturaRenderizada + ' pixels');
+        console.log('Largura renderizada: ' + larguraRenderizada + ' pixels');
+    }
+
+    // Aguarda o carregamento completo da página
+    document.addEventListener("DOMContentLoaded", function () {
+        configurarSwiper();
+    });
+</script>

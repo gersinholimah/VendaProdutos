@@ -182,24 +182,43 @@
                     <div class=" col-sm-12">
                         <h4 class="mb-3">Controle interno</h4>
                     </div>
-                   
-                    
+
+                    <div class="form-group form-check col-sm-12">
+                        <label asp-for="Cancelado" class="form-check-label">
+                            <input autocomplete="off" class="form-check-input" asp-for="Cancelado" /> @Html.DisplayNameFor(model => model.Cancelado)
+
+                        </label>
+                    </div>
+                     
                     <div class="form-group col-sm-4">
                         <label asp-for="ObservacoesInterna" class="control-label"></label>
                         <textarea autocomplete="off" asp-for="ObservacoesInterna" class="form-control"></textarea>
                         <span asp-validation-for="ObservacoesInterna" class="text-danger"></span>
                     </div>
-
+                   
                     <div class=" col-sm-12">
                         <h4 class="mb-3">Cobrança</h4>
                     </div>
+                    
+                    <div id="temFreteDiv" class="form-group form-check col-sm-12">
+                        <label asp-for="TemFrete" class="form-check-label">
+                            <input autocomplete="off" class="form-check-input" asp-for="TemFrete" onchange="verificarCheckbox()" /> @Html.DisplayNameFor(model => model.TemFrete)
+                        </label>
+                        @if (Model.TemFrete)
+                        {
+                            <script>
+                            document.querySelector('label[for="TemFrete"]').setAttribute("id", "readonly-checkbox");
+                            </script>
+                        }
+                    </div>
+
                     <div class="form-group col-sm-4" style="display:none;">
                         <label asp-for="TotalItensPedido" class="control-label"></label>
                         <input autocomplete="off" asp-for="TotalItensPedido" class="form-control" readOnly />
                         <span asp-validation-for="TotalItensPedido" class="text-danger"></span>
                     </div>
-                    <div class="form-group col-sm-4">
-                        <label asp-for="Frete" class="control-label"></label>
+                    <div id="freteDiv" class="form-group col-sm-4" style="display:none;">
+                        <label asp-for="Frete" class="control-label">Valor do Frete</label>
                         <input autocomplete="off" oninput="formatarMoeda(this)" asp-for="Frete" class="form-control" />
                         <span asp-validation-for="Frete" class="text-danger"></span>
                         @if (Model.Frete > 0)
@@ -210,13 +229,14 @@
                     <div class=" col-12"></div>
 
                     <div class="form-group col-sm-4">
-                        <label asp-for="TotalPedido" class="control-label">Valor Total do pedido</label>
+                        <label asp-for="TotalPedido" class="control-label">Valor do pedido</label>
                         <input autocomplete="off" asp-for="TotalPedido" class="form-control" readOnly />
                         <span asp-validation-for="TotalPedido" class="text-danger"></span>
                         <br />
-                        <label class="control-label">Pedido + Frete</label>
+                        <div id="valorPedidoMaisFreteFDiv" style="display:none;">
+                        <label class="control-label">Valor Pedido + Frete</label>
                         <input id="valorPedidoMaisFreteF" class="form-control" readOnly>
-                        
+                        </div>
                     </div>
                     
                     
@@ -269,7 +289,8 @@
                         }
 
                     </div>
-
+                     
+                   
                     <div class="col-12">
                         <div class="row" id="todosOsCheckbox">
 
@@ -280,6 +301,17 @@
                                         <b>*</b>
                                     </div>
                                 </label>
+                            </div>
+                            <div id="retirarNaLojaDiv" class="form-group form-check col-sm-12">
+                                <label asp-for="RetirarNaLoja" class="form-check-label">
+                                    <input autocomplete="off" class="form-check-input" asp-for="RetirarNaLoja" onchange="verificarCheckbox()" /> @Html.DisplayNameFor(model => model.RetirarNaLoja)
+                                </label>
+                                @if (Model.RetirarNaLoja)
+                                {
+                                    <script>
+                                        document.querySelector('label[for="RetirarNaLoja"]').setAttribute("id", "readonly-checkbox");
+                                    </script>
+                                }
                             </div>
                             <div id="pagamentoNaEntregaDiv" class="form-group form-check col-sm-12">
                                 <label asp-for="PagamentoNaEntrega" class="form-check-label">
@@ -684,6 +716,8 @@
             var enderecoNaoEncontradoDiv = document.getElementById("enderecoNaoEncontradoDiv");
             var observacaoNaoEntregueDiv = document.getElementById("observacaoNaoEntregueDiv");
                     var saiuParaEntegaNovamenteDiv = document.getElementById("saiuParaEntegaNovamenteDiv");
+            var temFreteDiv = document.getElementById("temFreteDiv");
+            var retirarNaLojaDiv = document.getElementById("retirarNaLojaDiv");
 
 
                     var saiuPraEntregaInput = document.getElementById("SaiuPraEntrega");
@@ -695,7 +729,8 @@
             var enderecoNaoEncontradoInput = document.getElementById("EnderecoNaoEncontrado");
             var observacaoNaoEntregueInput = document.getElementById("ObservacaoNaoEntregue");
             var saiuParaEntegaNovamenteInput = document.getElementById("SaiuParaEntegaNovamente");
-            
+            var temFreteInput = document.getElementById("TemFrete");
+            var retirarNaLojaInput = document.getElementById("RetirarNaLoja");
 
                     var selecioneOpcaoDiv = document.getElementById("selecioneOpcaoDiv");
                     var pagamentoParcialDiv = document.getElementById("pagamentoParcialDiv");
@@ -707,6 +742,8 @@
                     var pagamentoNaEntregaLabel = document.querySelector('label[for="PagamentoNaEntrega"]');
                     var pagamentoPedidoLabel = document.querySelector('label[for="PagamentoPedido"]');
                     var saiuParaEntegaNovamenteLabel = document.querySelector('label[for="SaiuParaEntegaNovamente"]');
+            var temFreteLabel = document.querySelector('label[for="TemFrete"]');
+            var retirarNaLojaLabel = document.querySelector('label[for="RetirarNaLoja"]');
 
 
             var destinatarioNaoLocalizadoLabel = document.querySelector('label[for="DestinatarioNaoLocalizado"]');
@@ -946,6 +983,10 @@
         if(entregaPedidoInput.checked){
         saiuPraEntregaLabel.classList.add("readonly-checkbox"); //impede que alterem o valor do checkbox de saiu para entrega
             pagamentoNaEntregaLabel.classList.add("readonly-checkbox"); //impede que alterem o valor do checkbox de pagamento na entrega
+
+                retirarNaLojaLabel.classList.add("readonly-checkbox"); //impede que alterem o valor do checkbox de retirarNaLoja
+                temFreteLabel.classList.add("readonly-checkbox"); //impede que alterem o valor do checkbox de retirarNaLoja
+
             entregaPedidoLabel.classList.add("readonly-checkbox"); //impede que alterem o valor do checkbox de pedido entregue
             saiuParaEntegaNovamenteLabel.classList.add("readonly-checkbox");
 
@@ -976,8 +1017,27 @@
 
 
 
-         
 
+            if (temFreteInput.checked) {
+                document.getElementById("freteDiv").style.display = "block";
+                document.getElementById("valorPedidoMaisFreteFDiv").style.display = "block";
+                retirarNaLojaDiv.style.display = "none";
+                retirarNaLojaLabel.classList.add("readonly-checkbox");
+            } else {
+                document.getElementById("freteDiv").style.display = "none";
+                document.getElementById("valorPedidoMaisFreteFDiv").style.display = "none";
+                retirarNaLojaDiv.style.display = "block";
+                retirarNaLojaLabel.classList.remove("readonly-checkbox");
+            }
+
+            if (retirarNaLojaInput.checked) {
+                temFreteDiv.style.display = "none";
+                temFreteLabel.classList.add("readonly-checkbox");
+            } else {
+                temFreteDiv.style.display = "block";
+                temFreteLabel.classList.remove("readonly-checkbox");
+            }
+            
 
 
 

@@ -11,7 +11,7 @@
         string NomeProduto = Model.Nome.Replace(" ", "-");
         }
         <a asp-controller="Produto" asp-action="Details"  asp-route-nome="@NomeProduto" asp-route-produtoId="@Model.ProdutoId" class="envolve_produtos mb-30-xs mb-70">
-            <img class="img-fluid" src="@Model.ImagemUrl">
+            <img onload="obterAlturaLargura(this)" class="img-fluid" src="@Model.ImagemUrl">
             <h4>@Model.Categoria.NomeCurto @Model.Nome</h4>
             <p> Possui @Model.QuantidadeDeItem  Itens </p>
             
