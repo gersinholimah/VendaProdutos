@@ -97,7 +97,10 @@ namespace VendaProdutos.Controllers
              IEnumerable<Produto> listaOpcoesExtra = _produtoRepository.Produtos.Where(c => c.OpcaoExtra).ToList();
             var produto = _produtoRepository.Produtos.FirstOrDefault(p => p.ProdutoId == produtoId);
             IEnumerable<Categoria> listaCategorias = _context.Categorias.Include(c => c.Produtos).Where(c => !c.EsconderCategoria).ToList();
-           
+
+            ViewBag.MetaTitle = produto.MetaTitle;
+            ViewBag.MetaDescricao = produto.MetaDescricao;
+            ViewBag.MetaImage = produto.ImagemUrl;
 
             ViewBag.ProdutosCadastrados = _produtoRepository.Produtos;
             ViewBag.IdDoDetalheDoProdutoAtivo = produtoId;
@@ -130,10 +133,12 @@ namespace VendaProdutos.Controllers
             {
                 produtos = _produtoRepository.Produtos.Where(p => p.TagsSearch.ToLower().Contains(buscarPor.ToLower()) && !p.Categoria.EsconderCategoria);
 
-                if (produtos.Any())
-                    categoriaAtual = "Produtos";
-                else
+                if (produtos.Any()) { 
+                    categoriaAtual =  buscarPor ;
+                 }
+                else { 
                     categoriaAtual = "Nenhum produto foi encontrado";
+                }
             }
 
             return View("~/Views/Produto/List.cshtml", new ProdutoListViewModel

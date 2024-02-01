@@ -271,6 +271,9 @@ namespace VendaProdutos.Migrations
                     b.Property<bool>("EsconderCategoria")
                         .HasColumnType("bit");
 
+                    b.Property<bool>("ExibirNoMenu")
+                        .HasColumnType("bit");
+
                     b.Property<string>("ImagemDestaque")
                         .IsRequired()
                         .HasMaxLength(1000)

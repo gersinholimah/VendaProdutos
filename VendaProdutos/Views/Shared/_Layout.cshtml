@@ -28,7 +28,10 @@
 
     <link rel="canonical" href="@("https://pradois.com.br/" + ViewBag.urlAmigavel)" />
 
-
+    <link rel="apple-touch-icon" sizes="180x180" href="~/img/favicon_io/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="~/img/favicon_io/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="~/img/favicon_io/favicon-16x16.png">
+    <link rel="manifest" href="~/img/favicon_io/site.webmanifest">
 
     <meta name="theme-color" content="#3c2525">
     <meta name="apple-mobile-web-app-status-bar-style" content="#3c2525">
@@ -51,9 +54,15 @@
     <meta name="twitter:image" content="@((ViewBag.metaImage != null) ? ViewBag.metaImage : "https://pradois.com.br/img/cesta.png")" />
 
      
+    @if (ViewBag.MenuHomeAtivo != null)
+    {
 
-
-
+    <style>
+        body, html {
+            overflow-x: hidden;
+        }
+    </style>
+    }
 
 
     <script type="application/ld+json">

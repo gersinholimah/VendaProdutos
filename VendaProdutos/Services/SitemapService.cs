@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Globalization;
 using System.Text;
 using System.Xml;
 using VendaProdutos.Models;
@@ -15,6 +16,25 @@ namespace VendaProdutos.Services
         {
             _produtoRepository = produtoRepository;
             _categoriaRepository = categoriaRepository;
+        }
+        string RemoverAcentos(string texto)
+        {
+            if (string.IsNullOrEmpty(texto))
+                return texto;
+
+            string normalizedString = texto.Normalize(NormalizationForm.FormD);
+            StringBuilder stringBuilder = new StringBuilder();
+
+            foreach (char c in normalizedString)
+            {
+                UnicodeCategory unicodeCategory = CharUnicodeInfo.GetUnicodeCategory(c);
+                if (unicodeCategory != UnicodeCategory.NonSpacingMark)
+                {
+                    stringBuilder.Append(c);
+                }
+            }
+
+            return stringBuilder.ToString().Normalize(NormalizationForm.FormC);
         }
 
         public string GenerateSitemap()
@@ -51,11 +71,12 @@ namespace VendaProdutos.Services
             foreach (var produto in _produtoRepository.Produtos)
             {
                 string nomeProduto = produto.Nome.Replace(" ", "-");
+                string nomeProdutoMaisId = RemoverAcentos(nomeProduto + "-" + produto.ProdutoId);
 
                 XmlElement urlElement = xmlDocument.CreateElement("url");
 
                 XmlElement locElement = xmlDocument.CreateElement("loc");
-                locElement.InnerText = $"https://pradois.com.br/Produto/{nomeProduto}-{produto.ProdutoId}";
+                locElement.InnerText = $"https://pradois.com.br/Produto/{nomeProdutoMaisId}";
                 urlElement.AppendChild(locElement);
 
                 // Adicione as novas tags
@@ -78,11 +99,12 @@ namespace VendaProdutos.Services
             foreach (var categoria in _categoriaRepository.Categorias)
             {
                 string nomeCategoria = categoria.CategoriaNome.Replace(" ", "-");
+                string nomeCategoriaMaisId = RemoverAcentos(nomeCategoria + "-" + categoria.CategoriaId);
 
                 XmlElement urlElement = xmlDocument.CreateElement("url");
 
                 XmlElement locElement = xmlDocument.CreateElement("loc");
-                locElement.InnerText = $"https://pradois.com.br/Categoria/{nomeCategoria}-{categoria.CategoriaId}";
+                locElement.InnerText = $"https://pradois.com.br/Categoria/{nomeCategoriaMaisId}";
                 urlElement.AppendChild(locElement);
 
                 // Adicione as novas tags

@@ -70,6 +70,9 @@ namespace VendaProdutos.Models
         [Display(Name = "Esconder Categoria")]
         public bool EsconderCategoria { get; set; }
 
+        [Display(Name = "Exibir no Menu")]
+        public bool ExibirNoMenu { get; set; }
+
         public List<Produto> Produtos { get; set; }
     }
 }

@@ -12,9 +12,7 @@ bod y{
    -ms-transition: all ease .2s;
    transition: all ease .2s;
 }
-body, html {
-    overflow-x: hidden;
-} 
+
 .bg_topo{
    background: linear-gradient(315deg, var(--gradiente-primario) 30%, var(--gradiente-secuntario) 90%);
 }
@@ -2088,7 +2086,9 @@ button.btn.btn-link.btn-block.text-left.tit2_gen.p-4 {
         padding-top: 20px;
         padding-bottom: 20px;
     }
-
+    .home_titulo {
+        text-align: center !important;
+    }
 }
 
    /* Large devices (desktops, less than 1200px)*/

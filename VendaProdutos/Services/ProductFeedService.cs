@@ -57,6 +57,25 @@ namespace VendaProdutos.Services
 
             return valor;
         }
+        string RemoverAcentos(string texto)
+        {
+            if (string.IsNullOrEmpty(texto))
+                return texto;
+
+            string normalizedString = texto.Normalize(NormalizationForm.FormD);
+            StringBuilder stringBuilder = new StringBuilder();
+
+            foreach (char c in normalizedString)
+            {
+                UnicodeCategory unicodeCategory = CharUnicodeInfo.GetUnicodeCategory(c);
+                if (unicodeCategory != UnicodeCategory.NonSpacingMark)
+                {
+                    stringBuilder.Append(c);
+                }
+            }
+
+            return stringBuilder.ToString().Normalize(NormalizationForm.FormC);
+        }
 
         public string GenerateProductFeed()
         {
@@ -82,12 +101,14 @@ namespace VendaProdutos.Services
                 string nomeProduto = produto.Nome.Replace(" ", "-");
                 string precoPromocionalStr = produto.PrecoPromocional.ToString();
                 string descricaoDetalhada = RemoverTagsHtml(produto.DescricaoDetalhada);
+                string nomeProdutoMaisId = RemoverAcentos(nomeProduto + "-" + produto.ProdutoId);
+
 
                 AddElement(xmlDocument, itemElement, "g:id", produto.ProdutoId.ToString());
                 AddElement(xmlDocument, itemElement, "g:title", produto.Categoria.NomeCurto + " " + produto.Nome);
 
                 AddElement(xmlDocument, itemElement, "g:description", descricao);
-                AddElement(xmlDocument, itemElement, "g:link", $"https://pradois.com.br/Produto/{nomeProduto}-{produto.ProdutoId}");
+                AddElement(xmlDocument, itemElement, "g:link", $"https://pradois.com.br/Produto/{nomeProdutoMaisId}");
                 AddElement(xmlDocument, itemElement, "g:image_link", produto.ImagemUrl);
                 AddElement(xmlDocument, itemElement, "g:price", TrocarVirgulaPorPonto(precoPromocionalStr));
 

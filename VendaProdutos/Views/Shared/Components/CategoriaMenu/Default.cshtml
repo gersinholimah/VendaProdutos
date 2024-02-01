@@ -1,38 +1,29 @@
-﻿@*     <a class="nav-link dropdown-toggle"  data-bs-toggle="dropdown"> Produtos  </a>
-    <ul class="dropdown-menu">
-        @foreach(var categoria in Model){
+﻿@using System.Globalization
+@using System.Text
 
-        <li class="has-submenu">
-            @{
-                // Obtém a string da propriedade e substitui espaços por hifens
-                string categoriaUrl = categoria.CategoriaNome.Replace(" ", "-");
+@{
+
+
+    string RemoverAcentos(string texto)
+    {
+        if (string.IsNullOrEmpty(texto))
+            return texto;
+
+        string normalizedString = texto.Normalize(NormalizationForm.FormD);
+        StringBuilder stringBuilder = new StringBuilder();
+
+        foreach (char c in normalizedString)
+        {
+            UnicodeCategory unicodeCategory = CharUnicodeInfo.GetUnicodeCategory(c);
+            if (unicodeCategory != UnicodeCategory.NonSpacingMark)
+            {
+                stringBuilder.Append(c);
             }
-
-            <form action="/Produtos/@categoriaUrl" method="post">
-                <input type="hidden" name="categoria" value="@categoria.CategoriaNome" />
-                <input type="hidden" name="postSuperior" value="@categoria.PostSuperior" />
-                <input type="hidden" name="postInferior" value="@categoria.PostInferior" />
-                <input type="hidden" name="metaDescricao" value="@categoria.MetaDescricao" />
-                <input type="hidden" name="metaTitle" value="@categoria.MetaTitle" />
-                <input type="hidden" name="metaImage" value="@categoria.MetaImage" />
-                <input type="hidden" name="urlAmigavel" value="@categoria.UrlAmigavel" />
-                <input type="hidden" name="categoriaCompleta" value="@categoria" />
-                <input type="hidden" name="categoriaId " value="@categoria.CategoriaId " />
-                
-
-                <button type="submit" class="dropdown-item">
-                    @categoria.CategoriaNome
-                </button>
-            </form>
-        </li>
         }
-        <li class="has-submenu">
-            <a class="dropdown-item dropdown-toggle asp-controller="Produto" asp-action="List"
-               asp-route-categoria="" > Todos os Produtos</a>
-        </li>
-    </ul> *@
 
-
+        return stringBuilder.ToString().Normalize(NormalizationForm.FormC);
+    }
+}
 
 @foreach(var categoria in Model){
     @if (!categoria.EsconderCategoria)
@@ -41,7 +32,7 @@
         <li class="nav-item">
             @{
                 // Obtém a string da propriedade e substitui espaços por hifens
-                string categoriaUrl = categoria.CategoriaNome.Replace(" ", "-");
+                string categoriaUrl = RemoverAcentos(categoria.CategoriaNome.Replace(" ", "-"));
                 string categoriaIdString = categoria.CategoriaId.ToString();
 
                
@@ -55,29 +46,7 @@
             </script>
             }
         </li>
-        @*  <li class="nav-item">
-
-        @{
-            // Obtém a string da propriedade e substitui espaços por hifens
-            string categoriaUrl = categoria.CategoriaNome.Replace(" ", "-");
-        }
-        <form action="/Produtos/@categoriaUrl" method="post">
-            <input type="hidden" name="categoria" value="@categoria.CategoriaNome" />
-            <input type="hidden" name="postSuperior" value="@categoria.PostSuperior" />
-            <input type="hidden" name="postInferior" value="@categoria.PostInferior" />
-            <input type="hidden" name="metaDescricao" value="@categoria.MetaDescricao" />
-            <input type="hidden" name="metaTitle" value="@categoria.MetaTitle" />
-            <input type="hidden" name="metaImage" value="@categoria.MetaImage" />
-            <input type="hidden" name="urlAmigavel" value="@categoria.UrlAmigavel" />
-            <input type="hidden" name="categoriaCompleta" value="@categoria" />
-            <input type="hidden" name="categoriaId " value="@categoria.CategoriaId " />
-
-
-            <button type="submit" class="nav-link text-dark">
-                @categoria.CategoriaNome
-            </button>
-        </form>
-    </li>*@
+ 
     }
 
  }

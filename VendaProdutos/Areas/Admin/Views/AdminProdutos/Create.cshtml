@@ -94,15 +94,23 @@
 
                         <span asp-validation-for="GaleriaImagemURL" class="text-danger"></span>
                     </div>
+                    <div class="form-group col-12 "></div>
 
+                     <div class="form-group col-12 col-sm-6">
+                        <label asp-for="CategoriaId" class="control-label"></label>
+                        <select asp-for="CategoriaId" class="form-control" asp-items="ViewBag.CategoriaId"></select>
+                        <span asp-validation-for="CategoriaId" class="text-danger"></span>
+                    </div>
+                    <div class="form-group col-12 "></div>
 
-
-                    <div class="form-group  col-12">
+                    <div class="form-group  col-12 col-sm-6">
                         <label asp-for="Nome" class="control-label"></label>
                         <input asp-for="Nome" class="form-control" id="entrada8" oninput="calcularContador('entrada8', 4, 69)" />
                         <p id="resultado8"></p>
                         <span asp-validation-for="Nome" class="text-danger"></span>
                     </div>
+                    <div class="form-group col-12 "></div>
+
                     <div class="form-group col-4 col-md-4 col-lg-3">
                         <label asp-for="PrecoPromocional" class="control-label"></label>
                         <input asp-for="PrecoPromocional" class="form-control" id="entrada9" oninput="calcularContador('entrada9', 3, 6)" />
@@ -257,11 +265,7 @@
                         <p id="resultado26"></p>
                         <span asp-validation-for="QuantidadeDeItem" class="text-danger"></span>
                     </div>
-                    <div class="form-group col-6">
-                        <label asp-for="CategoriaId" class="control-label"></label>
-                        <select asp-for="CategoriaId" class="form-control" asp-items="ViewBag.CategoriaId"></select>
-                        <span asp-validation-for="CategoriaId" class="text-danger"></span>
-                    </div>
+                   
 
                     <div class="form-group form-check col-12">
                         <label class="form-check-label">
