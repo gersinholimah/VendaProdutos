@@ -1,8 +1,11 @@
-﻿@model LoginViewModel
+﻿@inject Microsoft.Extensions.Configuration.IConfiguration Configuration
+ @model LoginViewModel
 
 
-
-
+@* 
+@section scripts {
+    <partial name="_CaptchaScripts" />
+} *@
 @* 
 <table class="table">
     <tr>
@@ -69,6 +72,9 @@
                             <span asp-validation-for="Password" class="text-danger"></span>
                         </div>
 
+                        <partial name="_CaptchaInput" />
+
+
                         <button type="submit" value="Log in" class="btn btn-success btn-block">entrar</button>
                     </form>
                 </div>
@@ -76,3 +82,14 @@
         </div>
     </div>
 </div>  
+
+
+
+
+
+
+
+
+@section scripts {
+    <partial name="_CaptchaScripts" />
+}

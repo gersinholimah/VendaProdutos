@@ -10,6 +10,8 @@
 
 
 
+using GoogleReCaptcha.V3;
+using GoogleReCaptcha.V3.Interface;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
@@ -91,7 +93,8 @@ namespace VendaProdutos
             //Registra Feed de Produtos aqui no startup
             services.AddTransient<IProductFeedService, ProductFeedService>();
 
-
+            //Recaptcha
+            services.AddHttpClient<ICaptchaValidator, GoogleReCaptchaValidator>();
         }
         // This method gets called by the runtime. Use this method to public void Configure(IApplicationBuilder app, IWebHostEnviro {
 

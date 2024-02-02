@@ -1,5 +1,8 @@
 ﻿@model LoginViewModel
 
+@* @section scripts {
+    <partial name="_CaptchaScripts" />
+} *@
  
 
  <div class="container mt-5">
@@ -25,6 +28,10 @@
                             <input asp-for="Password" class="form-control" />
                             <span asp-validation-for="Password" class="text-danger"></span>
                         </div>
+
+                        <partial name="_CaptchaInput" />
+
+
                         <div asp-validation-summary="All" class="text-danger"></div>
 
                             <input type="submit" class="btn btn-success " value="Registrar" />
@@ -34,3 +41,10 @@
         </div>
     </div>
 </div> 
+
+
+
+
+@section scripts {
+    <partial name="_CaptchaScripts" />
+}
