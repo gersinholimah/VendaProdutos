@@ -24,6 +24,7 @@ using VendaProdutos.Models;
 using VendaProdutos.Repositories;
 using VendaProdutos.Repositories.Interfaces;
 using VendaProdutos.Services;
+using VendaProdutos.Untilities;
 namespace VendaProdutos
 {
     public class Startup
@@ -118,6 +119,8 @@ namespace VendaProdutos
                 app.UseHsts();
 
             }
+            app.UseMiddleware<NotFoundMiddleware>();
+
             app.UseHttpsRedirection(); 
             app.UseStaticFiles();
             app.UseRouting();
