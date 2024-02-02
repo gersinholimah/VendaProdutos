@@ -32,7 +32,7 @@ namespace VendaProdutos.Controllers
         public IActionResult Login(string returnUrl = null)
         {
             ViewBag.ProdutosCadastrados = _produtoRepository.Produtos;
-
+            
             return View(new LoginViewModel()
             {
                 ReturnUrl = returnUrl

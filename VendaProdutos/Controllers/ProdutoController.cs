@@ -57,6 +57,8 @@ namespace VendaProdutos.Controllers
             ViewBag.menuTodosProdutosAtivo = false;
             ViewBag.ProdutosCadastrados = _produtoRepository.Produtos;
 
+            ViewBag.IndexarPagina = true;
+
             if (string.IsNullOrEmpty(nomeCategoria))
             {
                 produtos = _produtoRepository.Produtos.OrderBy(p => p.ProdutoId);
@@ -105,6 +107,8 @@ namespace VendaProdutos.Controllers
             ViewBag.ProdutosCadastrados = _produtoRepository.Produtos;
             ViewBag.IdDoDetalheDoProdutoAtivo = produtoId;
 
+            ViewBag.IndexarPagina = true;
+
             // Adicione outros dados necessários ao ViewModel
             var produtosListViewModel = new ProdutoListViewModel
             {
@@ -122,6 +126,8 @@ namespace VendaProdutos.Controllers
             string categoriaAtual = string.Empty;
 
             ViewBag.ProdutosCadastrados = _produtoRepository.Produtos;
+            ViewBag.UrlCanonica = true;
+            ViewBag.IndexarPagina = true;
 
 
             if (string.IsNullOrEmpty(buscarPor))

@@ -30,6 +30,10 @@ namespace VendaProdutos.Controllers
             };
             ViewBag.ProdutosCadastrados = _produtoRepository.Produtos;
             ViewBag.MenuHomeAtivo = true;
+
+            ViewBag.IndexarPagina = true;
+
+
             return View(homeViewModel);
 
         }
