@@ -7,7 +7,7 @@
             <h1 class="tit2_pradois pb-10 text-center">
                 Confirmação do pedido
             </h1>
-            <p class=" text-center">Para confirmar o seu pedido selecione o botão VERDE, que abrirá seu whatsapp onde um atendente dará continuidade ao seu atendimento.</p>
+            <p class=" text-center"><b>Para confirmar o seu pedido</b> selecione o botão VERDE, que abrirá seu whatsapp onde um atendente dará continuidade ao seu atendimento.</p>
             @{
                 //esse codigo todo é para alimentar o botão de compartilhar no whatsapp
                 string NomeComprador = @Model.NomeComprador.Replace(" ", "+");
@@ -91,7 +91,7 @@
                      ObservacaoAqui = @Model.Observacoes.Replace(" ", "+");
                 }
             }
-            <a target="_blank" href="https://api.whatsapp.com/send?phone=+55+5575991702469&text=Olá%2C+meu+nome+é+@NomeComprador😁%0Ae+eu+encomendei+o+pedido+de+número%3A+@IdPedidoAqui%0A%0A%2ACom+os+itens%2A%0A+@ProdutoAqui%0A%0A%2AImportante+informar+que%2A%0AÉ+de+@QuemEstaEnviandoAqui%2C+%0APara+@NomeRecebedorAqui.%0AE+é+para+entregar+@DiaDaEntregaAqui+entre+@HorarioInicalAqui+e+@HorarioLimiteAqui%0A%0A%2AO+endereço+de+entrega+é%2A%0A+@NomeDaEmpresa+Na+cidade+de+Feira+de+Santana%2C+no+bairro+@BairroAqui%2C+na+rua+@RuaAqui%2C+o+nº+do+imóvel+é+@NumeroDoImovelAqui.%0AComplemento%3A+@ComplementoAqui.%0APonto+de+referência%3A+@PontoDeReferenciaAqui%0A%0A%2AAdicione+uma+carta+escrita%2A%0ADe%3A+@QuemEstaEnviandoAqui%0APara%3A+@NomeRecebedorAqui%0ATexto+@CartinhaAqui%0A%0A%2AObservações%3A%2A%0A+@ObservacaoAqui" class="btn bt_avancar pt-10 pb-10 pr-40 pl-40 mt-10 mr-auto ml-auto d-block mb-30" style=" max-width: 480px; ">Confirmar via Whatsapp</a>
+            <a id="pagarNoZap" target="_blank" href="https://api.whatsapp.com/send?phone=+55+5575991702469&text=Olá%2C+meu+nome+é+@NomeComprador😁%0Ae+eu+encomendei+o+pedido+de+número%3A+@IdPedidoAqui%0A%0A%2ACom+os+itens%2A%0A+@ProdutoAqui%0A%0A%2AImportante+informar+que%2A%0AÉ+de+@QuemEstaEnviandoAqui%2C+%0APara+@NomeRecebedorAqui.%0AE+é+para+entregar+@DiaDaEntregaAqui+entre+@HorarioInicalAqui+e+@HorarioLimiteAqui%0A%0A%2AO+endereço+de+entrega+é%2A%0A+@NomeDaEmpresa+Na+cidade+de+Feira+de+Santana%2C+no+bairro+@BairroAqui%2C+na+rua+@RuaAqui%2C+o+nº+do+imóvel+é+@NumeroDoImovelAqui.%0AComplemento%3A+@ComplementoAqui.%0APonto+de+referência%3A+@PontoDeReferenciaAqui%0A%0A%2AAdicione+uma+carta+escrita%2A%0ADe%3A+@QuemEstaEnviandoAqui%0APara%3A+@NomeRecebedorAqui%0ATexto+@CartinhaAqui%0A%0A%2AObservações%3A%2A%0A+@ObservacaoAqui" class="btn bt_avancar pt-10 pb-10 pr-40 pl-40 mt-10 mr-auto ml-auto d-block mb-30" style=" max-width: 480px; ">Pagar via Whatsapp</a>
         </div>
     </div>
 </div>
@@ -106,7 +106,7 @@
                 <div class="row">
 
                     <div class="col-12">
-                        <div class="ticketTitle">Seu pedido:</div>
+                        <div class="ticketTitle">Aguardando pagamento</div>
                     </div>
 
              
@@ -157,13 +157,14 @@
                                             </tr>
                                         }
                                         }
-                                        <tr>
-                                            <td></td>
-                                            <td></td>
-                                            <td class="">Frete:</td>
+                                        <div>
+                                             
+                                            <h6 class="">Frete:
+                                    <span class="text-success" style="font-size: 18px;">Será verificado e informado no Whatsapp</span>
+                            </h6>
 
-                                            <td class="text-success" style="font-size: 18px;">Será verificado e informado no Whatsapp</td>
-                                        </tr>
+                                            
+                                        </div>
 
                                     </tbody>
 
@@ -320,7 +321,7 @@
         <div class="row">
             <div class="col-12">
 
-                <a target="_blank" href="https://api.whatsapp.com/send?phone=+55+5575991702469&text=Olá%2C+meu+nome+é+@NomeComprador😁%0Ae+eu+encomendei+o+pedido+de+número%3A+@IdPedidoAqui%0A%0A%2ACom+os+itens%2A%0A+@ProdutoAqui%0A%0A%2AImportante+informar+que%2A%0AÉ+de+@QuemEstaEnviandoAqui%2C+%0APara+@NomeRecebedorAqui.%0AE+é+para+entregar+@DiaDaEntregaAqui+entre+@HorarioInicalAqui+e+@HorarioLimiteAqui%0A%0A%2AO+endereço+de+entrega+é%2A%0A+@NomeDaEmpresa+Na+cidade+de+Feira+de+Santana%2C+no+bairro+@BairroAqui%2C+na+rua+@RuaAqui%2C+o+nº+do+imóvel+é+@NumeroDoImovelAqui.%0AComplemento%3A+@ComplementoAqui.%0APonto+de+referência%3A+@PontoDeReferenciaAqui%0A%0A%2AAdicione+uma+carta+escrita%2A%0ADe%3A+@QuemEstaEnviandoAqui%0APara%3A+@NomeRecebedorAqui%0ATexto+@CartinhaAqui%0A%0A%2AObservações%3A%2A%0A+@ObservacaoAqui" class="btn bt_avancar pt-10 pb-10 pr-40 pl-40 mt-10 mr-auto ml-auto d-block mb-30" style=" max-width: 480px; ">Confirmar via Whatsapp</a>
+                <a id="pagarNoZap" target="_blank" href="https://api.whatsapp.com/send?phone=+55+5575991702469&text=Olá%2C+meu+nome+é+@NomeComprador😁%0Ae+eu+encomendei+o+pedido+de+número%3A+@IdPedidoAqui%0A%0A%2ACom+os+itens%2A%0A+@ProdutoAqui%0A%0A%2AImportante+informar+que%2A%0AÉ+de+@QuemEstaEnviandoAqui%2C+%0APara+@NomeRecebedorAqui.%0AE+é+para+entregar+@DiaDaEntregaAqui+entre+@HorarioInicalAqui+e+@HorarioLimiteAqui%0A%0A%2AO+endereço+de+entrega+é%2A%0A+@NomeDaEmpresa+Na+cidade+de+Feira+de+Santana%2C+no+bairro+@BairroAqui%2C+na+rua+@RuaAqui%2C+o+nº+do+imóvel+é+@NumeroDoImovelAqui.%0AComplemento%3A+@ComplementoAqui.%0APonto+de+referência%3A+@PontoDeReferenciaAqui%0A%0A%2AAdicione+uma+carta+escrita%2A%0ADe%3A+@QuemEstaEnviandoAqui%0APara%3A+@NomeRecebedorAqui%0ATexto+@CartinhaAqui%0A%0A%2AObservações%3A%2A%0A+@ObservacaoAqui">Pagar via Whatsapp</a>
             </div>
         </div>
 

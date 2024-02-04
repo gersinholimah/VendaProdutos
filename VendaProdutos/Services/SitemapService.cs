@@ -43,14 +43,14 @@ namespace VendaProdutos.Services
             XmlElement rootElement = xmlDocument.CreateElement("urlset");
 
             //SiteMap da home
-            // Adicione a URL da home
+            // Adiciona a URL da home
             XmlElement homeUrlElement = xmlDocument.CreateElement("url");
 
             XmlElement homeLocElement = xmlDocument.CreateElement("loc");
             homeLocElement.InnerText = "https://pradois.com.br/"; // URL da home
             homeUrlElement.AppendChild(homeLocElement);
 
-            // Adicione as novas tags para a home
+            // Adiciona as novas tags para a home
             XmlElement homeLastModElement = xmlDocument.CreateElement("lastmod");
             homeLastModElement.InnerText = DateTime.Now.ToString("yyyy-MM-dd"); // Atualize conforme necessário
             homeUrlElement.AppendChild(homeLastModElement);
@@ -65,9 +65,35 @@ namespace VendaProdutos.Services
 
             rootElement.AppendChild(homeUrlElement);
 
+
+            // todos os produtos
+            if (true)
+            {
+
+                XmlElement urlElement = xmlDocument.CreateElement("url");
+
+                XmlElement locElement = xmlDocument.CreateElement("loc");
+                locElement.InnerText = $"https://pradois.com.br/Produto/Produto/List";
+                urlElement.AppendChild(locElement);
+
+                // Adiciona as novas tags
+                XmlElement lastModElement = xmlDocument.CreateElement("lastmod");
+                lastModElement.InnerText = DateTime.Now.ToString("yyyy-MM-dd");
+                urlElement.AppendChild(lastModElement);
+
+                XmlElement changeFreqElement = xmlDocument.CreateElement("changefreq");
+                changeFreqElement.InnerText = "weekly"; // Defina a frequência de mudança conforme necessário
+                urlElement.AppendChild(changeFreqElement);
+
+                XmlElement priorityElement = xmlDocument.CreateElement("priority");
+                priorityElement.InnerText = "0.7"; // Defina a prioridade conforme necessário (de 0.0 a 1.0)
+                urlElement.AppendChild(priorityElement);
+
+                rootElement.AppendChild(urlElement);
+            }
              
 
-            // Adicione URLs de produtos
+            // Adiciona URLs de produtos
             foreach (var produto in _produtoRepository.Produtos)
             {
                 string nomeProduto = produto.Nome.Replace(" ", "-");
@@ -79,7 +105,7 @@ namespace VendaProdutos.Services
                 locElement.InnerText = $"https://pradois.com.br/Produto/{nomeProdutoMaisId}";
                 urlElement.AppendChild(locElement);
 
-                // Adicione as novas tags
+                // Adiciona as novas tags
                 XmlElement lastModElement = xmlDocument.CreateElement("lastmod");
                 lastModElement.InnerText = produto.UltimaImplementacao;
                 urlElement.AppendChild(lastModElement);
@@ -95,7 +121,7 @@ namespace VendaProdutos.Services
                 rootElement.AppendChild(urlElement);
             }
 
-            // Adicione URLs de categorias
+            // Adiciona URLs de categorias
             foreach (var categoria in _categoriaRepository.Categorias)
             {
                 string nomeCategoria = categoria.CategoriaNome.Replace(" ", "-");
@@ -107,7 +133,7 @@ namespace VendaProdutos.Services
                 locElement.InnerText = $"https://pradois.com.br/Categoria/{nomeCategoriaMaisId}";
                 urlElement.AppendChild(locElement);
 
-                // Adicione as novas tags
+                // Adiciona as novas tags
                 XmlElement lastModElement = xmlDocument.CreateElement("lastmod");
                 lastModElement.InnerText = categoria.UltimaImplementacao;
                 urlElement.AppendChild(lastModElement);

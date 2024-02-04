@@ -195,9 +195,9 @@ background-position: bottom right;
 }
 
 .como_pedir a{
-   background: var(--cor-tercearia);
+   background: var(--cor-quaternaria);
    display: block;
-   color: #000;
+   color: #fff;
    font-size: 23px;
    border-radius: 60px;
    text-decoration: none;
@@ -1025,7 +1025,7 @@ div.quantity input.lafka-qty-plus, div.quantity input.lafka-qty-minus, .auction_
     background: #3c2525;
     display: flex;
     align-items: center;
-    padding: 18px;
+    padding: 0;
 }
 .envolve_menu_mobi {
     display: flex;
@@ -1248,9 +1248,9 @@ nav .container {
     font-size: 25px;
 }
 
-.direcional .swiper-button-next:after, .swiper-button-prev:after {
+/*.direcional .swiper-button-next:after, .swiper-button-prev:after {
     font-size: 25px;
-}
+}*/
 
 .direcional {
     width: 80px;
@@ -1710,9 +1710,61 @@ nav .container {
     max-width: 100% !important;
     height: 100%;
 }
+.video-container {
+    position: relative;
+    padding-bottom: 56.25%; /* Proporção de aspecto 16:9 para o contêiner de vídeo */
+    height: 0;
+}
+
+    .video-container video {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+    }
+
+     
+/*.onb-embed-responsive-item{
+    position: absolute;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    height: 100%;
+    width: 100%;
+    border: 0;
+}*/
+
+ 
+
+/* 
+.onb-embed-responsive__16by9 {
+    padding-bottom: 56.25%;
+}
+ 
+.onb-embed-responsive__4by3 {
+    padding-bottom: 75%;
+}*/
 /*MEIO DO CSS*/
 
  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 @media (max-width: 991.98px) {
    .pp__close {
@@ -2075,21 +2127,31 @@ button.btn.btn-link.btn-block.text-left.tit2_gen.p-4 {
         border-radius: 10px;
     }
 
-    .searchbox input{
-        font-size: 24px;
-    }
+        .searchbox input {
+            font-size: 24px;
+        }
+
     .home_titulo {
         margin-top: 20px;
         margin-bottom: 0 !important;
     }
+
     .padding_home {
         padding-top: 20px;
         padding-bottom: 20px;
     }
+
     .home_titulo {
         text-align: center !important;
     }
-}
 
+    .container_produto a, .carrinho .bt_avancar, .bt_avancar {
+        font-size: 20px;
+    }
+    .home_titulo  span:last-child {
+        max-width: 201px;
+        margin: auto;
+    }
+}
    /* Large devices (desktops, less than 1200px)*/
    @media (max-width: 1199.98px) { }

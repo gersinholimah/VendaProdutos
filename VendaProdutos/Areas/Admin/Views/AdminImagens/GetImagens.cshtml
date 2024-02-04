@@ -14,12 +14,26 @@
     <div class="row">
         @foreach (FileInfo file in Model.Files)
         {
-            <div class="column">
+                        if (string.Equals(file.Extension, ".mp4", StringComparison.OrdinalIgnoreCase))
+                        {
+                            <div class="video-column">
+                                <!-- Adicione aqui o código para exibir ou processar vídeos -->
+                                <video width="125" height="125" controls>
+                                    <source src="~/@caminho/@file.Name" type="video/mp4">
+                                    Seu navegador não suporta o elemento de vídeo.
+                                </video>
+                                <div style="padding:10px;text-align:left">
+                                    <a href="@Url.Action("Deletefile", "AdminImagens", new { fname = file.Name })">Deletar</a>
+                                </div>
+                            </div>
+                        }else{
+                        <div class="column">
                 <img src="~/@caminho/@file.Name" width="125" height="125" title="@file.Name" asp-append-version="true">
                 <div style="padding:10px;text-align:left">
                     <a href="@Url.Action("Deletefile","AdminImagens",new { fname=file.Name})">Deletar</a>
                 </div>
             </div>
+                        }
         }
     </div>
 }

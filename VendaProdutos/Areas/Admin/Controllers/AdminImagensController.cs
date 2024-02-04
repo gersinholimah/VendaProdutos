@@ -44,7 +44,7 @@ namespace VendaProdutos.Areas.Admin.Controllers
 
             foreach (var formFile in files)
             {
-                if (formFile.FileName.Contains(".jpg") || formFile.FileName.Contains(".gif") || formFile.FileName.Contains(".png") || formFile.FileName.Contains(".webp") || formFile.FileName.Contains(".jpeg"))
+                if (formFile.FileName.Contains(".jpg") || formFile.FileName.Contains(".gif") || formFile.FileName.Contains(".png") || formFile.FileName.Contains(".webp") || formFile.FileName.Contains(".jpeg") || formFile.FileName.Contains(".mp4"))
                 {
                     var fileNameWithPath = string.Concat(filePath, "\\", formFile.FileName);
 

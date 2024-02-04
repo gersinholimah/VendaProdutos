@@ -63,7 +63,7 @@ namespace VendaProdutos.Controllers
             }
 
             ViewBag.EntregasPorData = entregasPorData;
-            ViewBag.limiteDePedidoPorHora = 9;
+            ViewBag.limiteDePedidoPorHora = 4;
             ViewBag.ProdutosCadastrados = _produtoRepository.Produtos;
 
 

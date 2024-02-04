@@ -17,7 +17,7 @@ namespace VendaProdutos.Migrations
         {
 #pragma warning disable 612, 618
             modelBuilder
-                .HasAnnotation("ProductVersion", "8.0.0")
+                .HasAnnotation("ProductVersion", "8.0.1")
                 .HasAnnotation("Relational:MaxIdentifierLength", 128);
 
             SqlServerModelBuilderExtensions.UseIdentityColumns(modelBuilder);
@@ -541,8 +541,8 @@ namespace VendaProdutos.Migrations
                         .HasColumnType("bit");
 
                     b.Property<string>("GaleriaImagemURL")
-                        .HasMaxLength(100)
-                        .HasColumnType("nvarchar(100)");
+                        .HasMaxLength(200)
+                        .HasColumnType("nvarchar(200)");
 
                     b.Property<string>("GoogleProductCategory")
                         .IsRequired()
@@ -555,16 +555,16 @@ namespace VendaProdutos.Migrations
                         .HasColumnType("nvarchar(200)");
 
                     b.Property<string>("Imagem2CarolselURL")
-                        .HasMaxLength(100)
-                        .HasColumnType("nvarchar(100)");
+                        .HasMaxLength(200)
+                        .HasColumnType("nvarchar(200)");
 
                     b.Property<string>("Imagem3CarolselURL")
-                        .HasMaxLength(100)
-                        .HasColumnType("nvarchar(100)");
+                        .HasMaxLength(200)
+                        .HasColumnType("nvarchar(200)");
 
                     b.Property<string>("Imagem4CarolselURL")
-                        .HasMaxLength(100)
-                        .HasColumnType("nvarchar(100)");
+                        .HasMaxLength(200)
+                        .HasColumnType("nvarchar(200)");
 
                     b.Property<string>("ImagemThumbnailUrl")
                         .IsRequired()

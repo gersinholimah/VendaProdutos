@@ -42,13 +42,15 @@
                             }
                             @if (!string.IsNullOrEmpty(Model.Produto.Imagem4CarolselURL))
                             {
+
                                 <div class="swiper-slide">
-                                    <img onload="obterAlturaLargura(this)" class="img-fluid"
-                                    width="345"
-                                    height="352"
-                                    alt="4ª foto  da cesta"
-                                    src="@Model.Produto.Imagem4CarolselURL" />
-                                </div>
+
+                                    <video id="video2" class="onb-embed-responsive-item" controls autoplay muted>
+                                            <source src="@Model.Produto.Imagem4CarolselURL" type="video/mp4">
+                                            Seu navagador não suporta esse formato de vídeo.
+                                        </video>
+                                 </div>
+
                             }
 
                         </div>
@@ -92,10 +94,10 @@
                             {
                                 <div class="swiper-slide">
                                     <img onload="obterAlturaLargura(this)" class="img-fluid"
-                                    width="74"
-                                    height="75"
-                                    alt="4ª miniatura da cesta"
-                                    src="@Model.Produto.Imagem4CarolselURL" />
+                                         width="74"
+                                         height="75"
+                                         alt="1ª miniatura da cesta"
+                                         src="@Model.Produto.ImagemUrl" />
                                 </div>
                             }
                         </div>
@@ -150,7 +152,7 @@
  
 
                     <div class="product-addon product-addon-ExtraToppings checkbox mt-50">
-                        <h3 class="addon-name">Opções extra</h3>
+                        <h2 class="addon-name">Opções extra</h2>
 
                     @foreach (var opcoesExtra in Model.OpcoesExtra)
                     {
@@ -458,13 +460,13 @@
 
 <script src="https://cdn.jsdelivr.net/npm/swiper@9/swiper-bundle.min.js"></script>
 
-<script>
+@* <script>
     var swiper = new Swiper(".mySwiper", {
         loop: true,
         spaceBetween: 10,
         slidesPerView: 4,
         freeMode: true,
-        watchSlidesProgress: true,
+        watchSlidesProgress: true,      
     });
     var swiper2 = new Swiper(".mySwiper2", {
         loop: true,
@@ -476,10 +478,45 @@
         thumbs: {
             swiper: swiper,
         },
+        callback: function (index, element) {
+            // Pausa o vídeo ao navegar para outro slide
+            var currentVideo = document.getElementById('video' + (index + 1));
+            var allVideos = document.querySelectorAll('video');
+
+            allVideos.forEach(function (video) {
+                if (video !== currentVideo) {
+                    video.pause();
+                }
+            });
+        }
     });
 </script>
+ *@
 
 
+<script>
+    document.addEventListener("DOMContentLoaded", function () {
+        var swiper = new Swiper(".mySwiper", {
+            loop: true,
+            spaceBetween: 10,
+            slidesPerView: 4,
+            freeMode: true,
+            watchSlidesProgress: true,
+        });
+
+        var swiper2 = new Swiper(".mySwiper2", {
+            loop: true,
+            spaceBetween: 10,
+            navigation: {
+                nextEl: ".swiper-button-next",
+                prevEl: ".swiper-button-prev",
+            },
+            thumbs: {
+                swiper: swiper,
+            },
+        });
+    });
+</script>
 
 
 <script>
@@ -507,3 +544,33 @@
         console.log('Largura renderizada: ' + larguraRenderizada + ' pixels');
     }
 </script>
+
+
+        <script>
+    document.addEventListener("DOMContentLoaded", function () {
+
+    var imagem = document.querySelector(".swiper-slide img");
+    var video = document.getElementById("video2");
+
+    if (imagem && video) {
+        // Obter a largura da primeira imagem
+        var larguraImagem = imagem.clientWidth;
+
+        // Definir a largura do vídeo igual à largura da imagem
+        video.setAttribute('width', larguraImagem);
+
+        // Obter a proporção da altura da imagem
+        var proporcaoAltura = imagem.clientHeight / imagem.clientWidth;
+
+        // Calcular a altura proporcional do vídeo
+        var alturaVideo = Math.round(larguraImagem * proporcaoAltura);
+
+        // Definir a altura do vídeo
+        video.setAttribute('height', alturaVideo);
+
+        console.log('Largura do vídeo: ' + larguraImagem + ' pixels');
+        console.log('Altura do vídeo: ' + alturaVideo + ' pixels');
+    }
+    });
+
+        </script>
