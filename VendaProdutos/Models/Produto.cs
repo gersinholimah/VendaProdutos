@@ -85,10 +85,10 @@ namespace VendaProdutos.Models
 
         [Required(ErrorMessage = "Informe a Descrição Detalhada do Produto corretamente")]
         [Display(Name = "Descrição Detalhada do Produto")]
-        [StringLength(100000, MinimumLength = 500, ErrorMessage = "A {0} deve ter no máximo {1} e no mínimo {2} caracteres")]
+        [StringLength(10000, MinimumLength = 500, ErrorMessage = "A {0} deve ter no máximo {1} e no mínimo {2} caracteres")]
         public string DescricaoDetalhada { get; set; }
 
-        [StringLength(100000, MinimumLength = 500, ErrorMessage = "O tamanho minimo é 500 caracteres e o máximo 10000")]
+        [StringLength(10000, MinimumLength = 500, ErrorMessage = "O tamanho minimo é 500 caracteres e o máximo 10000")]
         [Required(ErrorMessage = "Informe o post inferior categoria Corretamente")]
         [Display(Name = "post inferior da categoria")]
         public string PostInferior { get; set; }
@@ -152,6 +152,7 @@ namespace VendaProdutos.Models
         public string GoogleProductType { get; set; }
 
         [Display(Name = "Última alteração")]
+        [StringLength(50)]
         public string UltimaImplementacao { get; set; }
 
 

@@ -139,9 +139,11 @@ namespace VendaProdutos.Models
         [DisplayFormat(DataFormatString = "{0: dd/MM/yyyy hh:mm}", ApplyFormatInEditMode = true)]
         public DateTime PedidoEnviado { get; set; }
 
+        [StringLength(50)]
         [Display(Name = "Data Envio Pedido")]
         public string PedidoEntregueEm { get; set; }
 
+        [StringLength(300)]
         [Display(Name = "O que houve na entrega?")]
         public string ObservacaoNaoEntregue { get; set; }
 

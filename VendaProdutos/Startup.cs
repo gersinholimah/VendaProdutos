@@ -17,6 +17,7 @@ using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.DependencyInjection; 
 using Microsoft. Extensions. Hosting;
+using Microsoft.Extensions.Options;
 using ReflectionIT.Mvc.Paging;
 using VendaProdutos.Areas.Admin.Servicos;
 using VendaProdutos.Context;
@@ -39,7 +40,7 @@ namespace VendaProdutos
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddDbContext<AppDbContext>(options =>
-           options.UseSqlServer(Configuration.GetConnectionString("DefaultConnection")));
+            options.UseSqlServer(Configuration.GetConnectionString("DefaultConnection")));
             //options.UseMySql(Configuration.GetConnectionString("DefaultConnection"), ServerVersion.AutoDetect(Configuration.GetConnectionString("DefaultConnection"))));
 
             services.AddIdentity<IdentityUser, IdentityRole>()

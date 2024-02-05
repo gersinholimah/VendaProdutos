@@ -1,6 +1,7 @@
 ﻿using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 
+
 namespace VendaProdutos.Models
 {
     [Table("Categorias")]
@@ -29,12 +30,12 @@ namespace VendaProdutos.Models
         [Display(Name = "Descrição da imagem da categoria")]
         public string DescricaoTagAlt { get; set; }
 
-        [StringLength(100000, MinimumLength = 500, ErrorMessage = "O tamanho minimo é 500 caracteres e o máximo 10000")]
+        [StringLength(10000, MinimumLength = 500, ErrorMessage = "O tamanho minimo é 500 caracteres e o máximo 3000")]
         [Required(ErrorMessage = "Informe o post superior categoria Corretamente")]
         [Display(Name = "post superior da categoria")]
         public string PostSuperior { get; set; }
 
-        [StringLength(100000, MinimumLength = 500, ErrorMessage = "O tamanho minimo é 500 caracteres e o máximo 10000")]
+        [StringLength(10000, MinimumLength = 500, ErrorMessage = "O tamanho minimo é 500 caracteres e o máximo 3000")]
         [Required(ErrorMessage = "Informe o post inferior categoria Corretamente")]
         [Display(Name = "post inferior da categoria")]
         public string PostInferior { get; set; }
@@ -64,6 +65,7 @@ namespace VendaProdutos.Models
         [Required(ErrorMessage = "Informe o Nome Curto para a categoria Corretamente")]
         public string NomeCurto { get; set; }
 
+        [StringLength(50)]
         [Display(Name = "Última alteração")]
         public string UltimaImplementacao { get; set; }
 
