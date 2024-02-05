@@ -12,13 +12,25 @@
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://pradois.com.br/Produto/Produto1-0</loc>
+    <loc>https://pradois.com.br/Produto/Produto1-1</loc>
     <lastmod></lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://pradois.com.br/Categoria/Cestas1-0</loc>
+    <loc>https://pradois.com.br/Produto/Produto2-2</loc>
+    <lastmod></lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://pradois.com.br/Categoria/Cestas1-1</loc>
+    <lastmod></lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.9</priority>
+  </url>
+  <url>
+    <loc>https://pradois.com.br/Categoria/Festacaixa1-2</loc>
     <lastmod></lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.9</priority>

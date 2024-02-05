@@ -4,10 +4,10 @@
     <link>https://pradois.com.br/</link>
     <description>Cestas de café da manhã personalizadas para todos os gostos e ocasiões: presenteie com sabor e carinho!</description>
     <item>
-      <g:id>0</g:id>
+      <g:id>1</g:id>
       <g:title> Produto1</g:title>
       <g:description>com 100 itens, Descrição curta do Produto1</g:description>
-      <g:link>https://pradois.com.br/Produto/Produto1-0</g:link>
+      <g:link>https://pradois.com.br/Produto/Produto1-1</g:link>
       <g:image_link>imagem1.jpg</g:image_link>
       <g:price>9.99</g:price>
       <g:availability>in stock</g:availability>
@@ -18,6 +18,22 @@
       <g:product_type></g:product_type>
       <g:occasion>Presente</g:occasion>
       <g:content>Descrição detalhada do Produto1</g:content>
+    </item>
+    <item>
+      <g:id>2</g:id>
+      <g:title> Produto2</g:title>
+      <g:description>com 150 itens, Descrição curta do Produto2</g:description>
+      <g:link>https://pradois.com.br/Produto/Produto2-2</g:link>
+      <g:image_link>imagem2.jpg</g:image_link>
+      <g:price>12.99</g:price>
+      <g:availability>in stock</g:availability>
+      <g:brand>Pradois Cestas</g:brand>
+      <g:condition>new</g:condition>
+      <g:mpn>SKU002</g:mpn>
+      <g:google_product_category></g:google_product_category>
+      <g:product_type></g:product_type>
+      <g:occasion>Presente</g:occasion>
+      <g:content>Descrição detalhada do Produto2</g:content>
     </item>
   </channel>
 </rss>
