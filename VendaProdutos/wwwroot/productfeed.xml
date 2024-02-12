@@ -5,35 +5,512 @@
     <description>Cestas de café da manhã personalizadas para todos os gostos e ocasiões: presenteie com sabor e carinho!</description>
     <item>
       <g:id>1</g:id>
-      <g:title> Produto1</g:title>
-      <g:description>com 100 itens, Descrição curta do Produto1</g:description>
-      <g:link>https://pradois.com.br/Produto/Produto1-1</g:link>
-      <g:image_link>imagem1.jpg</g:image_link>
-      <g:price>9.99</g:price>
+      <g:title>Cesta Completa</g:title>
+      <g:description>com 28 itens, A cesta Completa é sortida com 27 itens. Distribuidos por 1 bolo, 3 tipos de bebidas, 4 tipos de pães recheados, 2 tipos de aperitivos, 5 tipos de guloseimas e 2 tipos de frutas. Tudo embalado e ornamentado em um cesta de vim...</g:description>
+      <g:link>https://pradois.com.br/Produto/Completa-1</g:link>
+      <g:image_link>https://pradois.com.br/img/site/cesta-completa-01.webp</g:image_link>
+      <g:price>334.00</g:price>
       <g:availability>in stock</g:availability>
       <g:brand>Pradois Cestas</g:brand>
       <g:condition>new</g:condition>
       <g:mpn>SKU001</g:mpn>
-      <g:google_product_category></g:google_product_category>
-      <g:product_type></g:product_type>
+      <g:google_product_category>Alimentos e bebidas &gt; Café da manhã</g:google_product_category>
+      <g:product_type>Cesta de café da manhã, Cesta de presente</g:product_type>
       <g:occasion>Presente</g:occasion>
-      <g:content>Descrição detalhada do Produto1</g:content>
+      <g:content>Bebidas: 1 Suco de caixa de 1L + 1 Iogurte de 1L + 2 Achocolatados 200ml
+Salgados: 4 Pãezinhos de queijo + 2 Esfirra + 2 Enrolado de salsicha + 2 Pães recheado (frango)
+Aperitivos: Queijo + presunto
+Frutas: Uva + 2 Maçãs
+Guloseimas: 1 Bolo + 2 Biscoitos recheado salgado + 2 Kitkat + 2 Barrinhas de cereais + Cookie (pacote)
+Ornamentação: Todos os itens são ornamentados dentro de um cesto de palha, embalado conforme as imagens acima.Observação: Cada cesta é meticulosamente preparada com todo o carinho e dedicação pela nossa equipe. Desde a seleção criteriosa dos itens até a montagem final, cada etapa do processo é realizada com um cuidado especial. Nosso objetivo é não apenas oferecer produtos de alta qualidade, mas também transmitir todo carinho e comprometimento que temos com nossos clientes. Isso nos permitiu estar a 4 anos atuando em crescimento aqui na cidade de Feira de Santana.</g:content>
     </item>
     <item>
       <g:id>2</g:id>
-      <g:title> Produto2</g:title>
-      <g:description>com 150 itens, Descrição curta do Produto2</g:description>
-      <g:link>https://pradois.com.br/Produto/Produto2-2</g:link>
-      <g:image_link>imagem2.jpg</g:image_link>
-      <g:price>12.99</g:price>
+      <g:title>Cesta Light</g:title>
+      <g:description>com 19 itens, Distribuídos por 5 tipos de frutas, 3 tipos de bebidas, 3 tipos de aperitivos, 5 tipos de guloseimas. Tudo devidamente embalado e ornamentado em um cesto de palha feito de maneira totalmente artesanal </g:description>
+      <g:link>https://pradois.com.br/Produto/Light-2</g:link>
+      <g:image_link>https://pradois.com.br/img/site/cesta-light-01.webp</g:image_link>
+      <g:price>368.00</g:price>
       <g:availability>in stock</g:availability>
       <g:brand>Pradois Cestas</g:brand>
       <g:condition>new</g:condition>
       <g:mpn>SKU002</g:mpn>
-      <g:google_product_category></g:google_product_category>
-      <g:product_type></g:product_type>
+      <g:google_product_category>Alimentos e bebidas &gt; Café da manhã</g:google_product_category>
+      <g:product_type>Cesta de café da manhã, Cesta de presente</g:product_type>
       <g:occasion>Presente</g:occasion>
-      <g:content>Descrição detalhada do Produto2</g:content>
+      <g:content>Frutas: Uva + 2 Maçãs + 2 Ameixas + 1 Penca de banana + 1 Mamão papaya
+Bebidas: 1 Água de coco 1L + 2 Iogurte light de 200ml + 1 suco light 1L
+Aperitivos: Peito de peru + Ricota fresca sem sal + Creme de ricota light
+Guloseimas: 1 pacote de pão integral + 1 pacote de torrada light + 2 pacotes de Biscoito integral + Cookie Light (pacote)
+ 
+Ornamentação: Todos os itens são ornamentados dentro de um cesto de palha, embalado conforme as imagens acima.Observação: Cada cesta é meticulosamente preparada com todo o carinho e dedicação pela nossa equipe. Desde a seleção criteriosa dos itens até a montagem final, cada etapa do processo é realizada com um cuidado especial. Nosso objetivo é não apenas oferecer produtos de alta qualidade, mas também transmitir todo carinho e comprometimento que temos com nossos clientes. Isso nos permitiu estar a 4 anos atuando em crescimento aqui na cidade de Feira de Santana.</g:content>
+    </item>
+    <item>
+      <g:id>3</g:id>
+      <g:title>Balão Te amo</g:title>
+      <g:description>com 1 itens, Esse balão de coração com a frase: "Te amo" é perfeito para presentear pessoas queridas e especiais no aniversário, lindo balão de coração, com vareta, esse lindo presente irá alegrar e encantar o dia de quem rec</g:description>
+      <g:link>https://pradois.com.br/Produto/Te-amo-3</g:link>
+      <g:image_link>https://pradois.com.br/img/site/balao-teamo-modal-opcao-extra.webp</g:image_link>
+      <g:price>34.00</g:price>
+      <g:availability>in stock</g:availability>
+      <g:brand>Pradois Cestas</g:brand>
+      <g:condition>new</g:condition>
+      <g:mpn>SKU021</g:mpn>
+      <g:google_product_category>Presentes e Brindes: &gt; Presentes Personalizados</g:google_product_category>
+      <g:product_type>Balão de Coração</g:product_type>
+      <g:occasion>Presente</g:occasion>
+      <g:content>Balão: lindissimo balão com a frase "Te amo", vem preso a uma fita de cetin, um lindo balão que irá alegrar e encantar o dia de quem receber
+Tipo: Grande
+Quantidade: 1 unidade
+Como pedir: Após clicar no botão verde "encomendar agora", você vai seguir todas as etapas e no final terá um botão verde com o texto, "Pagar no Whatsapp" esse botão irá abrir nosso contato no whatsapp.
+Observação: Cada balão é meticulosamente preparado com todo o carinho e dedicação pela nossa equipe. Desde a seleção criteriosa do matérial até a personalização final, cada etapa do processo é realizada com um cuidado especial. Nosso objetivo é não apenas oferecer produtos de alta qualidade, mas também transmitir todo carinho e comprometimento que temos com nossos clientes. Isso nos permitiu estar a 4 anos atuando em crescimento aqui na cidade de Feira de Santana.</g:content>
+    </item>
+    <item>
+      <g:id>4</g:id>
+      <g:title>Balão Parabéns</g:title>
+      <g:description>com 1 itens, Esse balão de coração com a frase: "parabéns" é perfeito para presentear pessoas queridas e especiais no aniversário, lindo balão de coração, com gás helio, esse lindo presente irá alegrar e encantar o dia de quem rec</g:description>
+      <g:link>https://pradois.com.br/Produto/Parabens-4</g:link>
+      <g:image_link>https://pradois.com.br/img/site/balao-parabens-modal-opcao-extra.webp</g:image_link>
+      <g:price>34.00</g:price>
+      <g:availability>in stock</g:availability>
+      <g:brand>Pradois Cestas</g:brand>
+      <g:condition>new</g:condition>
+      <g:mpn>SKU020</g:mpn>
+      <g:google_product_category>Presentes e Brindes: &gt; Presentes Personalizados</g:google_product_category>
+      <g:product_type>Balão de Coração</g:product_type>
+      <g:occasion>Presente</g:occasion>
+      <g:content>Balão: lindissimo balão com a palavra parabéns, vem preso a uma fita de cetin, um lindo balão que irá alegrar e encantar o dia de quem receber
+Tipo: Grande
+Quantidade: 1 unidade
+Como pedir: Após clicar no botão verde "encomendar agora", você vai seguir todas as etapas e no final terá um botão verde com o texto, "Pagar no Whatsapp" esse botão irá abrir nosso contato no whatsapp.
+Observação: Cada balão é meticulosamente preparado com todo o carinho e dedicação pela nossa equipe. Desde a seleção criteriosa do matérial até a personalização final, cada etapa do processo é realizada com um cuidado especial. Nosso objetivo é não apenas oferecer produtos de alta qualidade, mas também transmitir todo carinho e comprometimento que temos com nossos clientes. Isso nos permitiu estar a 4 anos atuando em crescimento aqui na cidade de Feira de Santana.
+ </g:content>
+    </item>
+    <item>
+      <g:id>5</g:id>
+      <g:title>Foto Polaroide 3uni</g:title>
+      <g:description>com 3 itens, Você pode enviar 3 fotos de sua escolha e colocaremos ela no formato polaroid e iremos imprimir em papel fotográfico para que você possa presentear as pessoas que você admira e nutri carinho com momentos eternizados em fotos.</g:description>
+      <g:link>https://pradois.com.br/Produto/Polaroide-3uni-5</g:link>
+      <g:image_link>https://pradois.com.br/img/site/foto-modal-opcao-extra.png</g:image_link>
+      <g:price>24.00</g:price>
+      <g:availability>in stock</g:availability>
+      <g:brand>Pradois Cestas</g:brand>
+      <g:condition>new</g:condition>
+      <g:mpn>SKU019</g:mpn>
+      <g:google_product_category>Presentes e Brindes: &gt; Presentes Personalizados</g:google_product_category>
+      <g:product_type>Foto Polaroid</g:product_type>
+      <g:occasion>Presente</g:occasion>
+      <g:content>Foto: 3 Lindas fotos no formato polaroid, com as fotos selecionadas e escolhidas por você. Escolha fotos com boa qualidade para que o resultado fique ainda mais incrível.
+Como pedir: Após clicar no botão verde "encomendar agora", você vai seguir todas as etapas e no final terá um botão verde com o texto, "Pagar no Whatsapp" esse botão irá abrir nosso contato no whatsapp.
+Tipo: Polaroid
+Observação: Cada foto é meticulosamente preparada com todo o carinho e dedicação pela nossa equipe. Desde a seleção do matérial até a personalização final, cada etapa do processo é realizada com um cuidado especial. Nosso objetivo é não apenas oferecer produtos de alta qualidade, mas também transmitir todo carinho e comprometimento que temos com nossos clientes. Isso nos permitiu estar a 4 anos atuando em crescimento aqui na cidade de Feira de Santana.
+ </g:content>
+    </item>
+    <item>
+      <g:id>6</g:id>
+      <g:title>Pelucia Urso médio</g:title>
+      <g:description>com 1 itens, Esse urso médio é perfeito para presentear pessoas queridas e especiais, urso fofinho com o coração escrito amo você, vem envolvido com uma embalagem encantadora, esse lindo presente irá alegrar e encantar o dia de quem rec</g:description>
+      <g:link>https://pradois.com.br/Produto/Urso-medio-6</g:link>
+      <g:image_link>https://pradois.com.br/img/site/urso-medio-modal-opcao-extra.webp</g:image_link>
+      <g:price>50.00</g:price>
+      <g:availability>in stock</g:availability>
+      <g:brand>Pradois Cestas</g:brand>
+      <g:condition>new</g:condition>
+      <g:mpn>SKU018</g:mpn>
+      <g:google_product_category>Presentes e Brindes &gt; Urso de Pelúcia</g:google_product_category>
+      <g:product_type>Urso de Pelúcia</g:product_type>
+      <g:occasion>Presente</g:occasion>
+      <g:content>Urso: lindissimo urso em uma linda embalagem encantadora, uma pelúcia fofinha que irá alegrar e encantar o dia de quem receber
+Como pedir: Após clicar no botão verde "encomendar agora", você vai seguir todas as etapas e no final terá um botão verde com o texto, "Pagar no Whatsapp" esse botão irá abrir nosso contato no whatsapp.
+Tipo: Médio
+Observação: Cada urso é meticulosamente preparado com todo o carinho e dedicação pela nossa equipe. Desde a seleção criteriosa das flores até a personalização final, cada etapa do processo é realizada com um cuidado especial. Nosso objetivo é não apenas oferecer produtos de alta qualidade, mas também transmitir todo carinho e comprometimento que temos com nossos clientes. Isso nos permitiu estar a 4 anos atuando em crescimento aqui na cidade de Feira de Santana.
+ </g:content>
+    </item>
+    <item>
+      <g:id>7</g:id>
+      <g:title>Pelucia Urso pequeno</g:title>
+      <g:description>com 1 itens, Esse urso é perfeito para presentear pessoas queridas e especiais, urso fofinho com o coração escrito amo você, vem envolvido com uma embalagem encantadora, esse lindo presente irá alegrar e encantar o dia de quem rec</g:description>
+      <g:link>https://pradois.com.br/Produto/Urso-pequeno-7</g:link>
+      <g:image_link>https://pradois.com.br/img/site/urso-medio-modal-opcao-extra.webp</g:image_link>
+      <g:price>42.00</g:price>
+      <g:availability>in stock</g:availability>
+      <g:brand>Pradois Cestas</g:brand>
+      <g:condition>new</g:condition>
+      <g:mpn>SKU017</g:mpn>
+      <g:google_product_category>Presentes e Brindes &gt; Urso de Pelúcia</g:google_product_category>
+      <g:product_type>Urso de Pelúcia</g:product_type>
+      <g:occasion>Presente</g:occasion>
+      <g:content>Urso: lindissimo urso em uma linda vaso embalagem encantadora, uma pelúcia fofinha que irá alegrar e encantar o dia de quem receber
+Como pedir: Após clicar no botão verde "encomendar agora", você vai seguir todas as etapas e no final terá um botão verde com o texto, "Pagar no Whatsapp" esse botão irá abrir nosso contato no whatsapp.
+Tipo: Pequeno
+Observação: Cada urso é meticulosamente preparado com todo o carinho e dedicação pela nossa equipe. Desde a seleção do matérial até a personalização final, cada etapa do processo é realizada com um cuidado especial. Nosso objetivo é não apenas oferecer produtos de alta qualidade, mas também transmitir todo carinho e comprometimento que temos com nossos clientes. Isso nos permitiu estar a 4 anos atuando em crescimento aqui na cidade de Feira de Santana.
+ </g:content>
+    </item>
+    <item>
+      <g:id>8</g:id>
+      <g:title>Arranjos de flor</g:title>
+      <g:description>com 1 itens, Esse arranjo é perfeito para presentear pessoas queridas e especiais, lindissimas flores em um lindo vaso envolvido com uma embalagem encantadora, são flores naturais que irão alegrar e encantar o dia de quem rec</g:description>
+      <g:link>https://pradois.com.br/Produto/de-flor-8</g:link>
+      <g:image_link>https://pradois.com.br/img/site/arranjo-flor-modal-opcao-extra.webp</g:image_link>
+      <g:price>28.00</g:price>
+      <g:availability>in stock</g:availability>
+      <g:brand>Pradois Cestas</g:brand>
+      <g:condition>new</g:condition>
+      <g:mpn>SKU016</g:mpn>
+      <g:google_product_category>Alimentos e bebidas &gt; Café da manhã</g:google_product_category>
+      <g:product_type>Arranjo de Flores</g:product_type>
+      <g:occasion>Presente</g:occasion>
+      <g:content>Arranjo: lindissimas flores em um lindo vaso envolvido com uma embalagem encantadora, são flores naturais que irão alegrar e encantar o dia de quem recebe
+Como pedir: Após clicar no botão verde "encomendar agora", você vai seguir todas as etapas e no final terá um botão verde com o texto, "Pagar no Whatsapp" esse botão irá abrir nosso contato no whatsapp.
+Tipo: dependerá da disponibilidade
+Observação: Cada arranjo é meticulosamente preparado com todo o carinho e dedicação pela nossa equipe. Desde a seleção criteriosa das flores até a personalização final, cada etapa do processo é realizada com um cuidado especial. Nosso objetivo é não apenas oferecer produtos de alta qualidade, mas também transmitir todo carinho e comprometimento que temos com nossos clientes. Isso nos permitiu estar a 4 anos atuando em crescimento aqui na cidade de Feira de Santana.
+ </g:content>
+    </item>
+    <item>
+      <g:id>9</g:id>
+      <g:title>Cartão de Presente</g:title>
+      <g:description>com 1 itens, Esse cartão é perfeito para homenagear pessoas queridas e especiais, você irá informar via whatsapp o texto que deseja que seja adicionado ao cartão, o cartão tem campo informando quem está enviando e quem deverá receb</g:description>
+      <g:link>https://pradois.com.br/Produto/de-Presente-9</g:link>
+      <g:image_link>https://pradois.com.br/img/site/cartao-modal-opcao-extra.webp</g:image_link>
+      <g:price>20.00</g:price>
+      <g:availability>in stock</g:availability>
+      <g:brand>Pradois Cestas</g:brand>
+      <g:condition>new</g:condition>
+      <g:mpn>SKU015</g:mpn>
+      <g:google_product_category>Alimentos e bebidas &gt; Café da manhã</g:google_product_category>
+      <g:product_type>Cesta de café da manhã, Cesta de presente</g:product_type>
+      <g:occasion>Presente</g:occasion>
+      <g:content>Cartão: Cartão de presente com desenho de laço vermelho e espaço para adição de texto,
+Personalização: É possível adicionar texto, o texto deve ser enviada por Whatsapp, após clicar no botão verde "encomendar agora", você vai seguir todas as etapas e no final terá um botão verde com o texto, "Pagar no Whatsapp" esse botão irá abrir nosso contato no whatsapp, assim você irá enviar o texto.
+Medidas: 1/4 de folha de papel A4.
+Observação: Cada cartão é meticulosamente preparada com todo o carinho e dedicação pela nossa equipe. Desde a seleção criteriosa do materia até a personalização final, cada etapa do processo é realizada com um cuidado especial. Nosso objetivo é não apenas oferecer produtos de alta qualidade, mas também transmitir todo carinho e comprometimento que temos com nossos clientes. Isso nos permitiu estar a 4 anos atuando em crescimento aqui na cidade de Feira de Santana.
+ </g:content>
+    </item>
+    <item>
+      <g:id>10</g:id>
+      <g:title>Caneca Personalizada</g:title>
+      <g:description>com 1 itens, A nossa caneca pode ser personalizada com foto e textou ou os dois, podendo ter um design de acordo com o gosto de quem vai receber, podendo por frase de datas comemorativas. Esse produto é vendido como opção extra a outros pro</g:description>
+      <g:link>https://pradois.com.br/Produto/Personalizada-10</g:link>
+      <g:image_link>https://pradois.com.br/img/site/caneca-modal-opcao-extra.webp</g:image_link>
+      <g:price>20.00</g:price>
+      <g:availability>in stock</g:availability>
+      <g:brand>Pradois Cestas</g:brand>
+      <g:condition>new</g:condition>
+      <g:mpn>SKU014</g:mpn>
+      <g:google_product_category>Presentes e Brindes &gt; Canecas</g:google_product_category>
+      <g:product_type>Caneca Personalizada</g:product_type>
+      <g:occasion>Presente</g:occasion>
+      <g:content>Caneca: Caneca branca com alça..  Esse produto é vendido como opção extra a outros pro
+Personalização: É possível adicionar foto e ou texto, a foto deve ser enviada por Whatsapp, após clicar no botão verde "encomendar agora", você vai seguir todas as etapas e no final terá um botão verde com o texto, "Pagar no Whatsapp" esse botão irá abrir nosso contato no whatsapp, assim você irãá enviar o texto e a foto.
+Medidas: 8cm de diâmetro externo e interno, 9.5 de altura, 8cm de diametro externo, 11cm de diâmetro c/ alça volume de 325ml.
+Observação: Cada caneca é meticulosamente preparada com todo o carinho e dedicação pela nossa equipe. Desde a seleção criteriosa do produto até a personalização final, cada etapa do processo é realizada com um cuidado especial. Nosso objetivo é não apenas oferecer produtos de alta qualidade, mas também transmitir todo carinho e comprometimento que temos com nossos clientes. Isso nos permitiu estar a 4 anos atuando em crescimento aqui na cidade de Feira de Santana.
+ </g:content>
+    </item>
+    <item>
+      <g:id>11</g:id>
+      <g:title>Caixa Guloseimas Boy</g:title>
+      <g:description>com 14 itens, A cesta Completa é sortida com 27 itens. Distribuidos por 1 bolo, 3 tipos de bebidas, 4 tipos de pães recheados, 2 tipos de aperitivos, 5 tipos de guloseimas e 2 tipos de frutas. Tudo embalado e ornamentado em um cesta de vim...</g:description>
+      <g:link>https://pradois.com.br/Produto/Guloseimas-Boy-11</g:link>
+      <g:image_link>https://pradois.com.br/img/site/caixa-guloseima-boy-01.webp</g:image_link>
+      <g:price>165.00</g:price>
+      <g:availability>in stock</g:availability>
+      <g:brand>Pradois Cestas</g:brand>
+      <g:condition>new</g:condition>
+      <g:mpn>SKU013</g:mpn>
+      <g:google_product_category>Alimentos e bebidas &gt; Café da manhã</g:google_product_category>
+      <g:product_type>Cesta de café da manhã, Cesta de presente</g:product_type>
+      <g:occasion>Presente</g:occasion>
+      <g:content>Bebidas: 2 Sucos de caixa de 200ml
+Aperitivos: Assados de milho sabor queijo + Assados de milho sabor presunto
+Guloseimas: Nutela + pacotes de Jujubas + barra de chocolate + waffles + Fini minhoca morango
+Booble: Balão azul de coração grande (com frase: parabéns) + Balão azul de coração pequenoOrnamentação: Todos os itens são ornamentados dentro de uma caixa de madeira, com laço conforme as imagens acima.Observação: Cada festa na caixa é meticulosamente preparado com todo o carinho e dedicação pela nossa equipe. Desde a seleção criteriosa dos itens até a montagem final, cada etapa do processo é realizada com um cuidado especial. Nosso objetivo é não apenas oferecer produtos de alta qualidade, mas também transmitir todo carinho e comprometimento que temos com nossos clientes. Isso nos permitiu estar a 4 anos atuando em crescimento aqui na cidade de Feira de Santana.
+ </g:content>
+    </item>
+    <item>
+      <g:id>12</g:id>
+      <g:title>Caixa Guloseimas Girl</g:title>
+      <g:description>com 14 itens, Distribuidos entre guloseimas diversas, doces, salgadinhos de milho assado, jujuba, suquinho, balões, Nutela, chocolates. Tudo devidamente decorado e ornamentado em uma caixa de madeira com fitas branca e laço rosa</g:description>
+      <g:link>https://pradois.com.br/Produto/Guloseimas-Girl-12</g:link>
+      <g:image_link>https://pradois.com.br/img/site/caixa-guloseima-girl-01.webp</g:image_link>
+      <g:price>165.00</g:price>
+      <g:availability>in stock</g:availability>
+      <g:brand>Pradois Cestas</g:brand>
+      <g:condition>new</g:condition>
+      <g:mpn>SKU012</g:mpn>
+      <g:google_product_category>Presentes &gt; Presentes para ocasiões especiais &gt; Festas &gt; Festas na caixa</g:google_product_category>
+      <g:product_type>Festa na caixa</g:product_type>
+      <g:occasion>Presente</g:occasion>
+      <g:content>Bebidas: 2 Sucos de caixa de 200ml
+Aperitivos: Assados de milho sabor queijo + Assados de milho sabor presunto
+Guloseimas: Nutela + pacotes de Jujubas + barra de chocolate + waffles + Fini minhoca morango
+Booble: Balão rosa de coração grande (com frase: parabéns) + Balão rosa de coração pequenoOrnamentação: Todos os itens são ornamentados dentro de uma caixa de madeira, com laço conforme as imagens acima.Observação: Cada festa na caixa é meticulosamente preparado com todo o carinho e dedicação pela nossa equipe. Desde a seleção criteriosa dos itens até a montagem final, cada etapa do processo é realizada com um cuidado especial. Nosso objetivo é não apenas oferecer produtos de alta qualidade, mas também transmitir todo carinho e comprometimento que temos com nossos clientes. Isso nos permitiu estar a 4 anos atuando em crescimento aqui na cidade de Feira de Santana.
+ </g:content>
+    </item>
+    <item>
+      <g:id>14</g:id>
+      <g:title>Caixa Super Top</g:title>
+      <g:description>com 39 itens, Distribuidos em 1 Bolo do tipo 12 fatias recheado e com morangos,  brigadeiros, beijinhos, deliciosas Coxinhas, Bolinhas de queijo,  2 bebidas. Tudo devidamente decorado e ornamentado em uma caixa de mad</g:description>
+      <g:link>https://pradois.com.br/Produto/Super-Top-14</g:link>
+      <g:image_link>https://pradois.com.br/img/site/caixa-super-top-01.webp</g:image_link>
+      <g:price>267.00</g:price>
+      <g:availability>in stock</g:availability>
+      <g:brand>Pradois Cestas</g:brand>
+      <g:condition>new</g:condition>
+      <g:mpn>SKU011</g:mpn>
+      <g:google_product_category>Presentes &gt; Presentes para ocasiões especiais &gt; Festas &gt; Festas na caixa</g:google_product_category>
+      <g:product_type>Festa na caixa</g:product_type>
+      <g:occasion>Presente</g:occasion>
+      <g:content>Bolo: 1 Bolo 12 fatiasdecorado + 2 camadas de recheios + cobertura sabor 4 leites + morangos + brigadeiros
+Doces: Brigadeiros gourmet + beijinhos
+Salgados: Coxinhas, + Bolinhas de queijo
+Bebidas: 2 refrigerantes lata (Sabor a sua escolha)Ornamentação: Todos os itens são ornamentados dentro de uma caixa de madeira, com laço conforme as imagens acima.Observação: Cada festa na caixa é meticulosamente preparado com todo o carinho e dedicação pela nossa equipe. Desde a seleção criteriosa dos itens até a montagem final, cada etapa do processo é realizada com um cuidado especial. Nosso objetivo é não apenas oferecer produtos de alta qualidade, mas também transmitir todo carinho e comprometimento que temos com nossos clientes. Isso nos permitiu estar a 4 anos atuando em crescimento aqui na cidade de Feira de Santana.
+ </g:content>
+    </item>
+    <item>
+      <g:id>15</g:id>
+      <g:title>Caixa Pleno Carinho Refri</g:title>
+      <g:description>com 6 itens, Distribuidos em 1 Bolo do tipo Caseirinho com cobertura especial,  1 Bandeja de Salgados, 1 Bandeja de Brigadeiros gourmet, 2 Refrigerantes . Tudo devidamente decorado e ornamentado em uma caixa de madei</g:description>
+      <g:link>https://pradois.com.br/Produto/Pleno-Carinho-Refri-15</g:link>
+      <g:image_link>https://pradois.com.br/img/site/caixa-pleno-carinho-refri-01.webp</g:image_link>
+      <g:price>167.00</g:price>
+      <g:availability>in stock</g:availability>
+      <g:brand>Pradois Cestas</g:brand>
+      <g:condition>new</g:condition>
+      <g:mpn>SKU010</g:mpn>
+      <g:google_product_category>Presentes &gt; Presentes para ocasiões especiais &gt; Festas &gt; Festas na caixa</g:google_product_category>
+      <g:product_type>Festa na caixa</g:product_type>
+      <g:occasion>Presente</g:occasion>
+      <g:content>Bolo: 1 Caseirinho decorado com recheio 4 leites e morangos
+Doces: Brigadeiros gourmet
+Salgados: Coxinha, Bolinhas de queijo
+Bebidas: 2 refrigerantes lata (Sabor a sua escolha)
+Ornamentação: Todos os itens são ornamentados dentro de uma caixa de madeira, com laço conforme as imagens acima.Observação: Cada festa na caixa é meticulosamente preparado com todo o carinho e dedicação pela nossa equipe. Desde a seleção criteriosa dos itens até a montagem final, cada etapa do processo é realizada com um cuidado especial. Nosso objetivo é não apenas oferecer produtos de alta qualidade, mas também transmitir todo carinho e comprometimento que temos com nossos clientes. Isso nos permitiu estar a 4 anos atuando em crescimento aqui na cidade de Feira de Santana.
+ </g:content>
+    </item>
+    <item>
+      <g:id>16</g:id>
+      <g:title>Coleção Cone Love Blue</g:title>
+      <g:description>com 9 itens, Distribuidos por urso de pelúcia, Ferreiro Rochet, Nutela, Chocolates diversos, além de coração vermelho com frase te amo. Tudo devidamente decorado e ornamentado em um lindo cone azul com a frase te am</g:description>
+      <g:link>https://pradois.com.br/Produto/Cone-Love-Blue-16</g:link>
+      <g:image_link>https://pradois.com.br/img/site/cone-love-blue-01.webp</g:image_link>
+      <g:price>291.00</g:price>
+      <g:availability>in stock</g:availability>
+      <g:brand>Pradois Cestas</g:brand>
+      <g:condition>new</g:condition>
+      <g:mpn>SKU009</g:mpn>
+      <g:google_product_category>Presentes &gt; Presentes para homens &gt; Presentes românticos</g:google_product_category>
+      <g:product_type>Cesta de presente, Chocolate, Pelúcia</g:product_type>
+      <g:occasion>Presente</g:occasion>
+      <g:content>Pelucia: 1 Urso médio
+Booble: Balão de coração(Frase: Te amo)
+Chocolates: Ferreiro Rochet, Nutela e Chocolates diversos
+Ornamentação: Todos os itens são ornamentados dentro de um cone Azul com o nome te amo conforme as imagens acima.Observação: Cada kit é meticulosamente preparada com todo o carinho e dedicação pela nossa equipe. Desde a seleção criteriosa dos itens até a montagem final, cada etapa do processo é realizada com um cuidado especial. Nosso objetivo é não apenas oferecer produtos de alta qualidade, mas também transmitir todo carinho e comprometimento que temos com nossos clientes. Isso nos permitiu estar a 4 anos atuando em crescimento aqui na cidade de Feira de Santana.
+ </g:content>
+    </item>
+    <item>
+      <g:id>17</g:id>
+      <g:title>Coleção Cone Love Red</g:title>
+      <g:description>com 9 itens, Distribuidos por urso de pelúcia, Ferreiro Rochet, Nutela, Chocolates diversos, além de coração vermelho com frase te amo. Tudo devidamente decorado e ornamentado em um lindo cone vermelho com a frase te am</g:description>
+      <g:link>https://pradois.com.br/Produto/Cone-Love-Red-17</g:link>
+      <g:image_link>https://pradois.com.br/img/site/cone-love-red-01.webp</g:image_link>
+      <g:price>291.00</g:price>
+      <g:availability>in stock</g:availability>
+      <g:brand>Pradois Cestas</g:brand>
+      <g:condition>new</g:condition>
+      <g:mpn>SKU008</g:mpn>
+      <g:google_product_category>Alimentos e bebidas &gt; Café da manhã</g:google_product_category>
+      <g:product_type>Cesta de café da manhã, Cesta de presente</g:product_type>
+      <g:occasion>Presente</g:occasion>
+      <g:content>Pelucia: 1 Urso médio
+Booble: Balão de coração(Frase: Te amo)
+Chocolates: Ferreiro Rochet, Nutela e Chocolates diversos
+Ornamentação: Todos os itens são ornamentados dentro de um cone com o nome te amo conforme as imagens acima.Observação: Cada kit é meticulosamente preparada com todo o carinho e dedicação pela nossa equipe. Desde a seleção criteriosa dos itens até a montagem final, cada etapa do processo é realizada com um cuidado especial. Nosso objetivo é não apenas oferecer produtos de alta qualidade, mas também transmitir todo carinho e comprometimento que temos com nossos clientes. Isso nos permitiu estar a 4 anos atuando em crescimento aqui na cidade de Feira de Santana.
+ </g:content>
+    </item>
+    <item>
+      <g:id>18</g:id>
+      <g:title>Coleção mimo Personalizado</g:title>
+      <g:description>com 18 itens, Distribuidos por uma caneca que pode ser personalizada com foto e frase, uma pelúcia de coração com frase, Pacote chocolate do tipo waffles, frutas distinas. Tudo embalado e ornamentado em um cesto de vim...</g:description>
+      <g:link>https://pradois.com.br/Produto/mimo-Personalizado-18</g:link>
+      <g:image_link>https://pradois.com.br/img/site/colecao-personalizada-01.webp</g:image_link>
+      <g:price>145.00</g:price>
+      <g:availability>in stock</g:availability>
+      <g:brand>Pradois Cestas</g:brand>
+      <g:condition>new</g:condition>
+      <g:mpn>SKU007</g:mpn>
+      <g:google_product_category>Alimentos e bebidas &gt; Café da manhã</g:google_product_category>
+      <g:product_type>Cesta de café da manhã, Cesta de presente</g:product_type>
+      <g:occasion>Presente</g:occasion>
+      <g:content>Personalizados: 1 Caneca (Pode ser personalizada com foto e frase)
+Pelúcias: 1 Coração
+Guloseimas: Chocolates Wafles
+Frutas: 1 Cacho de Uva (roxa) + 1 Maçã + 1 Manga
+Booble: Balão de coração com frase: (Te amo) ou (Parabéns)Ornamentação: Todos os itens são ornamentados dentro de um cesto artesanal, embalado e decorado com laço conforme as imagens acima.Observação: Cada kit é meticulosamente preparada com todo o carinho e dedicação pela nossa equipe. Desde a seleção criteriosa dos itens até a montagem final, cada etapa do processo é realizada com um cuidado especial. Nosso objetivo é, não apenas oferecer produtos de alta qualidade, mas também transmitir todo carinho e comprometimento que temos com nossos clientes. Isso nos permitiu estar a 4 anos atuando com constante crescimentos aqui na cidade de Feira de Santana.
+ </g:content>
+    </item>
+    <item>
+      <g:id>19</g:id>
+      <g:title>Cesta Mimosa</g:title>
+      <g:description>com 8 itens, A cesta Completa é sortida com 27 itens. Distribuidos por 1 bolo, 3 tipos de bebidas, 4 tipos de pães recheados, 2 tipos de aperitivos, 5 tipos de guloseimas e 2 tipos de frutas. Tudo embalado e ornamentado em um cesta de vim...</g:description>
+      <g:link>https://pradois.com.br/Produto/Mimosa-19</g:link>
+      <g:image_link>https://pradois.com.br/img/site/cesta-mimosa-01.webp</g:image_link>
+      <g:price>172.00</g:price>
+      <g:availability>in stock</g:availability>
+      <g:brand>Pradois Cestas</g:brand>
+      <g:condition>new</g:condition>
+      <g:mpn>SKU006</g:mpn>
+      <g:google_product_category>Alimentos e bebidas &gt; Café da manhã</g:google_product_category>
+      <g:product_type>Cesta de café da manhã, Cesta de presente</g:product_type>
+      <g:occasion>Presente</g:occasion>
+      <g:content>Bebidas: 1 Suco de caixa de 200ml + 2 Achocolatados 200ml
+Salgados: 2 Pãezinhos de queijo + 1 Esfirra (frango)
+Frutas: Uva + 1 Maçã
+Guloseimas: 1 Bolo 
+Ornamentação: Todos os itens são ornamentados dentro de um cesto de palha, embalado conforme as imagens acima.Observação: Cada cesta é meticulosamente preparada com todo o carinho e dedicação pela nossa equipe. Desde a seleção criteriosa dos itens até a montagem final, cada etapa do processo é realizada com um cuidado especial. Nosso objetivo é não apenas oferecer produtos de alta qualidade para os nossos clientes, mas também transmitir todo carinho e comprometimento que temos com nossos clientes. Isso nos permitiu estar a 4 anos atuando em crescimento aqui na cidade de Feira de Santana.</g:content>
+    </item>
+    <item>
+      <g:id>20</g:id>
+      <g:title>Cesta Mimo</g:title>
+      <g:description>com 17 itens, Distribuídos por 2 tipos de bebidas, 4 tipos de salgados, 2 tipos de aperitivos, 1 tipo de guloseima e 1 tipo de fruta. Tudo devidamente embalado e ornamentado em um cesto de palha feito de maneira totalmente artesan...</g:description>
+      <g:link>https://pradois.com.br/Produto/Mimo-20</g:link>
+      <g:image_link>https://pradois.com.br/img/site/pradois-slide-produto-cesta-de-cafe-da-manha.webp</g:image_link>
+      <g:price>250.00</g:price>
+      <g:availability>in stock</g:availability>
+      <g:brand>Pradois Cestas</g:brand>
+      <g:condition>new</g:condition>
+      <g:mpn>SKU005</g:mpn>
+      <g:google_product_category>Alimentos e bebidas &gt; Café da manhã</g:google_product_category>
+      <g:product_type>Cesta de café da manhã, Cesta de presente</g:product_type>
+      <g:occasion>Presente</g:occasion>
+      <g:content>Bebidas: 1 Suco de caixa de 1L + 2 Iogurte de 200ml
+Salgados: 4 Pãezinhos de queijo + 2 Esfirra + 2 Enrolado de salsicha + 2 Pães recheado (frango)
+Frutas: Uva + 2 Maçãs
+Guloseimas: 2 Biscoitos recheado salgado + 2 Kitkat + Cookie (pacote)
+Ornamentação: Todos os itens são ornamentados dentro de um cesto de palha, embalado conforme as imagens acima.Observação: Cada cesta é meticulosamente preparada com todo o carinho e dedicação pela nossa equipe. Desde a seleção criteriosa dos itens até a montagem final, cada etapa do processo é realizada com um cuidado especial. Nosso objetivo é não apenas oferecer produtos de alta qualidade, mas também transmitir todo carinho e comprometimento que temos com nossos clientes. Isso nos permitiu estar a 4 anos atuando em crescimento aqui na cidade de Feira de Santana.</g:content>
+    </item>
+    <item>
+      <g:id>21</g:id>
+      <g:title>Cesta Slim</g:title>
+      <g:description>com 21 itens, Distribuídos por 3 tipos de bebidas, 4 tipos de salgados, 3 tipos de guloseimas e 2 tipos de frutas. Tudo devidamente embalado e ornamentado em um cesto de palha feito de maneira totalmente artesan...</g:description>
+      <g:link>https://pradois.com.br/Produto/Slim-21</g:link>
+      <g:image_link>https://pradois.com.br/img/site/cesta-slim-01.webp</g:image_link>
+      <g:price>283.00</g:price>
+      <g:availability>in stock</g:availability>
+      <g:brand>Pradois Cestas</g:brand>
+      <g:condition>new</g:condition>
+      <g:mpn>SKU004</g:mpn>
+      <g:google_product_category>Alimentos e bebidas &gt; Café da manhã</g:google_product_category>
+      <g:product_type>Cesta de café da manhã, Cesta de presente</g:product_type>
+      <g:occasion>Presente</g:occasion>
+      <g:content>Bebidas: 1 Suco de caixa de 1L + 2 Iogurte de 200ml
+Salgados: 4 Pãezinhos de queijo + 2 Esfirra + 2 Enrolado de salsicha + 2 Pães recheado (frango)
+Frutas: Uva + 2 Maçãs
+Guloseimas: 2 Biscoitos recheado salgado + 2 Kitkat + Cookie (pacote)
+Ornamentação: Todos os itens são ornamentados dentro de um cesto de palha, embalado conforme as imagens acima.Observação: Cada cesta é meticulosamente preparada com todo o carinho e dedicação pela nossa equipe. Desde a seleção criteriosa dos itens até a montagem final, cada etapa do processo é realizada com um cuidado especial. Nosso objetivo é não apenas oferecer produtos de alta qualidade, mas também transmitir todo carinho e comprometimento que temos com nossos clientes. Isso nos permitiu estar a 4 anos atuando em crescimento aqui na cidade de Feira de Santana.</g:content>
+    </item>
+    <item>
+      <g:id>22</g:id>
+      <g:title>Cesta Super Top</g:title>
+      <g:description>com 33 itens,  Distribuídos por 3 tipos de bebidas, 4 tipos de salgados, 2 tipos de aperitivos, 10 tipos de guloseimas e 2 tipos de frutas. Tudo embalado e ornamentado em um cesta de palha... feita de maneira totalmente artesan...</g:description>
+      <g:link>https://pradois.com.br/Produto/Super-Top-22</g:link>
+      <g:image_link>https://pradois.com.br/img/site/cesta-super-top-01.webp</g:image_link>
+      <g:price>394.00</g:price>
+      <g:availability>in stock</g:availability>
+      <g:brand>Pradois Cestas</g:brand>
+      <g:condition>new</g:condition>
+      <g:mpn>SKU003</g:mpn>
+      <g:google_product_category>Alimentos e bebidas &gt; Café da manhã</g:google_product_category>
+      <g:product_type>Cesta de café da manhã, Cesta de presente</g:product_type>
+      <g:occasion>Presente</g:occasion>
+      <g:content>Bebidas: 1 Suco de caixa de 1L + 1 Iogurte de 1L + 2 Achocolatados 200ml
+Salgados: 4 Pãezinhos de queijo + 2 Esfirra + 2 Enrolado de salsicha + 2 Pães recheado (frango)
+Aperitivos: Queijo + presunto
+Frutas: Uva + 2 Maçãs
+Guloseimas: 2 Biscoitos recheado salgado + 2 Kitkat + 2 Barrinhas de cereais + Cookie (pacote) + 1 Geleia + 1 Nutela + 2 Barra s de Chocolate + 1 Patê + 1 Torrada + 1 Caixa de BisOrnamentação: Todos os itens são ornamentados dentro de um cesto de palha, embalado conforme as imagens acima.Observação: Cada cesta é meticulosamente preparada com todo o carinho e dedicação pela nossa equipe. Desde a seleção criteriosa dos itens até a montagem final, cada etapa do processo é realizada com um cuidado especial. Nosso objetivo é não apenas oferecer produtos de alta qualidade, mas também transmitir todo carinho e comprometimento que temos com nossos clientes. Isso nos permitiu estar a 4 anos atuando em crescimento aqui na cidade de Feira de Santana.</g:content>
+    </item>
+    <item>
+      <g:id>23</g:id>
+      <g:title>Buquê 2 Rosas</g:title>
+      <g:description>com 2 itens, Esse buquê é perfeito para presentear pessoas queridas e especiais, lindissimas rosas em um lindo arranjo envolvido com uma embalagem encantadora, são rosas naturais que irão alegrar e encantar o dia de quem rec</g:description>
+      <g:link>https://pradois.com.br/Produto/2-Rosas-23</g:link>
+      <g:image_link>https://pradois.com.br/img/site/2-rosas-modal-opcao-extra.png</g:image_link>
+      <g:price>39.00</g:price>
+      <g:availability>in stock</g:availability>
+      <g:brand>Pradois Cestas</g:brand>
+      <g:condition>new</g:condition>
+      <g:mpn>SKU022</g:mpn>
+      <g:google_product_category>Flores e Plantas: &gt; Arranjos de Flores</g:google_product_category>
+      <g:product_type>Buquê de Rosas</g:product_type>
+      <g:occasion>Presente</g:occasion>
+      <g:content>Buquê: lindissimas rosas em um lindo vaso envolvido com uma embalagem encantadora, são rosas naturais que irão alegrar e encantar o dia de quem recebe
+Quantidade: 2 Rosas
+Como pedir: Após clicar no botão verde "encomendar agora", você vai seguir todas as etapas e no final terá um botão verde com o texto, "Pagar no Whatsapp" esse botão irá abrir nosso contato no whatsapp.
+Tipo: dependerá da disponibilidade
+Observação: Cada buquê é meticulosamente preparado com todo o carinho e dedicação pela nossa equipe. Desde a seleção criteriosa das rosas até a personalização final, cada etapa do processo é realizada com um cuidado especial. Nosso objetivo é não apenas oferecer produtos de alta qualidade, mas também transmitir todo carinho e comprometimento que temos com nossos clientes. Isso nos permitiu estar a 4 anos atuando em crescimento aqui na cidade de Feira de Santana.
+ </g:content>
+    </item>
+    <item>
+      <g:id>24</g:id>
+      <g:title>Buquê 6 Rosas</g:title>
+      <g:description>com 6 itens, Esse buquê é perfeito para presentear pessoas queridas e especiais, lindissimas rosas em um lindo arranjo envolvido com uma embalagem encantadora, são rosas naturais que irão alegrar e encantar o dia de quem rec</g:description>
+      <g:link>https://pradois.com.br/Produto/6-Rosas-24</g:link>
+      <g:image_link>https://pradois.com.br/img/site/6-rosas-modal-opcao-extra.png</g:image_link>
+      <g:price>99.00</g:price>
+      <g:availability>in stock</g:availability>
+      <g:brand>Pradois Cestas</g:brand>
+      <g:condition>new</g:condition>
+      <g:mpn>SKU023</g:mpn>
+      <g:google_product_category>Flores e Plantas: &gt; Arranjos de Flores</g:google_product_category>
+      <g:product_type>Buquê de Rosas</g:product_type>
+      <g:occasion>Presente</g:occasion>
+      <g:content>Buquê: lindissimas rosas em um lindo vaso envolvido com uma embalagem encantadora, são rosas naturais que irão alegrar e encantar o dia de quem recebe
+Quantidade: 6 Rosas
+Como pedir: Após clicar no botão verde "encomendar agora", você vai seguir todas as etapas e no final terá um botão verde com o texto, "Pagar no Whatsapp" esse botão irá abrir nosso contato no whatsapp.
+Tipo: dependerá da disponibilidade
+Observação: Cada buquê é meticulosamente preparado com todo o carinho e dedicação pela nossa equipe. Desde a seleção criteriosa das rosas até a personalização final, cada etapa do processo é realizada com um cuidado especial. Nosso objetivo é não apenas oferecer produtos de alta qualidade, mas também transmitir todo carinho e comprometimento que temos com nossos clientes. Isso nos permitiu estar a 4 anos atuando em crescimento aqui na cidade de Feira de Santana.
+ </g:content>
+    </item>
+    <item>
+      <g:id>25</g:id>
+      <g:title>Buquê 12 Rosas</g:title>
+      <g:description>com 12 itens, Esse buquê é perfeito para presentear pessoas queridas e especiais, lindissimas rosas em um lindo arranjo envolvido com uma embalagem encantadora, são rosas naturais que irão alegrar e encantar o dia de quem rec</g:description>
+      <g:link>https://pradois.com.br/Produto/12-Rosas-25</g:link>
+      <g:image_link>https://pradois.com.br/img/site/12-rosas-modal-opcao-extra.webp</g:image_link>
+      <g:price>144.00</g:price>
+      <g:availability>in stock</g:availability>
+      <g:brand>Pradois Cestas</g:brand>
+      <g:condition>new</g:condition>
+      <g:mpn>SKU024</g:mpn>
+      <g:google_product_category>Flores e Plantas: &gt; Arranjos de Flores</g:google_product_category>
+      <g:product_type>Buquê de Rosas</g:product_type>
+      <g:occasion>Presente</g:occasion>
+      <g:content>Buquê: lindissimas rosas em um lindo vaso envolvido com uma embalagem encantadora, são rosas naturais que irão alegrar e encantar o dia de quem recebe
+Quantidade: 12 Rosas
+Como pedir: Após clicar no botão verde "encomendar agora", você vai seguir todas as etapas e no final terá um botão verde com o texto, "Pagar no Whatsapp" esse botão irá abrir nosso contato no whatsapp.
+Tipo: dependerá da disponibilidade
+Observação: Cada buquê é meticulosamente preparado com todo o carinho e dedicação pela nossa equipe. Desde a seleção criteriosa das rosas até a personalização final, cada etapa do processo é realizada com um cuidado especial. Nosso objetivo é não apenas oferecer produtos de alta qualidade, mas também transmitir todo carinho e comprometimento que temos com nossos clientes. Isso nos permitiu estar a 4 anos atuando em crescimento aqui na cidade de Feira de Santana.
+ </g:content>
+    </item>
+    <item>
+      <g:id>26</g:id>
+      <g:title>Balão gás hélio 3 uni</g:title>
+      <g:description>com 3 itens, Esse balões de coração com gás hélio é perfeito para presentear pessoas queridas e especiais no aniversário, lindos balões de coração, com gás helio, esse lindo presente irá alegrar e encantar o dia de quem rec</g:description>
+      <g:link>https://pradois.com.br/Produto/gas-helio-3-uni-26</g:link>
+      <g:image_link>https://pradois.com.br/img/site/3-baloes-modal-opcao-extra.webp</g:image_link>
+      <g:price>130.00</g:price>
+      <g:availability>in stock</g:availability>
+      <g:brand>Pradois Cestas</g:brand>
+      <g:condition>new</g:condition>
+      <g:mpn>SKU003</g:mpn>
+      <g:google_product_category>Presentes e Brindes: &gt; Presentes Personalizados</g:google_product_category>
+      <g:product_type>Balão de Coração</g:product_type>
+      <g:occasion>Presente</g:occasion>
+      <g:content>Balão: lindissimos balões com gás hélio, vem preso a uma fita de cetin, um lindos balões que irá alegrar e encantar o dia de quem receber
+Tipo: Grande
+Quantidade: 3 unidades
+Como pedir: Após clicar no botão verde "encomendar agora", você vai seguir todas as etapas e no final terá um botão verde com o texto, "Pagar no Whatsapp" esse botão irá abrir nosso contato no whatsapp.
+Observação: Cada balão é meticulosamente preparado com todo o carinho e dedicação pela nossa equipe. Desde a seleção criteriosa do matérial até a personalização final, cada etapa do processo é realizada com um cuidado especial. Nosso objetivo é não apenas oferecer produtos de alta qualidade, mas também transmitir todo carinho e comprometimento que temos com nossos clientes. Isso nos permitiu estar a 4 anos atuando em crescimento aqui na cidade de Feira de Santana.
+ </g:content>
     </item>
   </channel>
 </rss>

@@ -223,12 +223,12 @@ background-position: bottom right;
    text-decoration: none!important;
    display: block;
 }
-.produtos .envolve_produtos h4 {
-   text-align: left;
-   font-size: 19px;
-   margin: 20px 20px 0px 20px;
-   color: #363636;
-}
+    .produtos .envolve_produtos h4 {
+        text-align: left;
+        font-size: 17px;
+        margin: 20px 20px 0px 20px;
+        color: #363636;
+    }
 .produtos .envolve_produtos p {
    font-size: 15px;
    font-family: Roboto;
@@ -1108,7 +1108,7 @@ nav .container {
 }
 
 
-.mySwiper .swiper-slide img {
+.galeria_produto .mySwiper .swiper-slide img {
     opacity: 0.4;
 }
 
@@ -1747,7 +1747,6 @@ nav .container {
 }*/
 /*MEIO DO CSS*/
 
- 
 
 
 
@@ -1761,8 +1760,11 @@ nav .container {
 
 
 
-
-
+@media (min-width: 1200px) {
+    .envolve_produtos img{
+        width: 279px;
+    }
+}
 
 
 
@@ -2151,6 +2153,10 @@ button.btn.btn-link.btn-block.text-left.tit2_gen.p-4 {
     .home_titulo  span:last-child {
         max-width: 201px;
         margin: auto;
+    }
+    .scrool_opcoes_extra {
+        overflow: scroll;
+        height: 210px;
     }
 }
    /* Large devices (desktops, less than 1200px)*/

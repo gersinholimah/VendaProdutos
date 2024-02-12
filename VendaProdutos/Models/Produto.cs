@@ -48,7 +48,6 @@ namespace VendaProdutos.Models
 
         
         [Display(Name = "Tag para pesquisa")]
-        [StringLength(300, MinimumLength = 3, ErrorMessage = "A {0} deve ter no máximo {1} e no mínimo {2} caracteres")]
         public string TagsSearch { get; set; }
 
         //[Required(ErrorMessage = "Informe as Imagens do Produto corretamente")]
@@ -80,12 +79,11 @@ namespace VendaProdutos.Models
 
         [Required(ErrorMessage = "Informe a Descrição Curta do Produto corretamente")]
         [Display(Name = "Descrição Curta do Produto")]
-        [StringLength(300, MinimumLength = 200, ErrorMessage = "A {0} deve ter no máximo {1} e no mínimo {2} caracteres")]
+        [StringLength(300, MinimumLength = 50, ErrorMessage = "A {0} deve ter no máximo {1} e no mínimo {2} caracteres")]
         public string DescricaoCurta { get; set; }
 
         [Required(ErrorMessage = "Informe a Descrição Detalhada do Produto corretamente")]
         [Display(Name = "Descrição Detalhada do Produto")]
-        [StringLength(10000, MinimumLength = 500, ErrorMessage = "A {0} deve ter no máximo {1} e no mínimo {2} caracteres")]
         public string DescricaoDetalhada { get; set; }
 
         [StringLength(10000, MinimumLength = 500, ErrorMessage = "O tamanho minimo é 500 caracteres e o máximo 10000")]

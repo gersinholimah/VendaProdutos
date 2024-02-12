@@ -40,8 +40,10 @@ namespace VendaProdutos.Services
         public string GenerateSitemap()
         {
             XmlDocument xmlDocument = new XmlDocument();
-            XmlElement rootElement = xmlDocument.CreateElement("urlset");
+            XmlElement rootElement = xmlDocument.CreateElement("urlset", "http://www.sitemaps.org/schemas/sitemap/0.9");
 
+            // Altere para adicionar o namespace correto
+            rootElement.SetAttribute("xmlns", "http://www.sitemaps.org/schemas/sitemap/0.9");
             //SiteMap da home
             // Adiciona a URL da home
             XmlElement homeUrlElement = xmlDocument.CreateElement("url");
@@ -159,7 +161,7 @@ namespace VendaProdutos.Services
             StringBuilder stringBuilder = new StringBuilder();
             XmlWriterSettings settings = new XmlWriterSettings
             {
-                OmitXmlDeclaration = true,
+                OmitXmlDeclaration = false, // Altere para false para incluir a declaração XML
                 Indent = true
             };
 

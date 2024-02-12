@@ -1,37 +1,224 @@
-<urlset>
-  <url>
+<?xml version="1.0" encoding="utf-16"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+  <url xmlns="">
     <loc>https://pradois.com.br/</loc>
-    <lastmod>2024-02-05</lastmod>
+    <lastmod>2024-02-12</lastmod>
     <changefreq>weekly</changefreq>
     <priority>1.0</priority>
   </url>
-  <url>
+  <url xmlns="">
     <loc>https://pradois.com.br/Produto/Produto/List</loc>
-    <lastmod>2024-02-05</lastmod>
+    <lastmod>2024-02-12</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.7</priority>
   </url>
-  <url>
-    <loc>https://pradois.com.br/Produto/Produto1-1</loc>
-    <lastmod></lastmod>
+  <url xmlns="">
+    <loc>https://pradois.com.br/Produto/Completa-1</loc>
+    <lastmod>2024-02-12</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
-  <url>
-    <loc>https://pradois.com.br/Produto/Produto2-2</loc>
-    <lastmod></lastmod>
+  <url xmlns="">
+    <loc>https://pradois.com.br/Produto/Light-2</loc>
+    <lastmod>2024-02-10</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
-  <url>
-    <loc>https://pradois.com.br/Categoria/Cestas1-1</loc>
-    <lastmod></lastmod>
+  <url xmlns="">
+    <loc>https://pradois.com.br/Produto/Te-amo-3</loc>
+    <lastmod>2024-02-10</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url xmlns="">
+    <loc>https://pradois.com.br/Produto/Parabens-4</loc>
+    <lastmod>2024-02-10</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url xmlns="">
+    <loc>https://pradois.com.br/Produto/Polaroide-3uni-5</loc>
+    <lastmod>2024-02-10</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url xmlns="">
+    <loc>https://pradois.com.br/Produto/Urso-medio-6</loc>
+    <lastmod>2024-02-10</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url xmlns="">
+    <loc>https://pradois.com.br/Produto/Urso-pequeno-7</loc>
+    <lastmod>2024-02-10</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url xmlns="">
+    <loc>https://pradois.com.br/Produto/de-flor-8</loc>
+    <lastmod>2024-02-10</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url xmlns="">
+    <loc>https://pradois.com.br/Produto/de-Presente-9</loc>
+    <lastmod>2024-02-10</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url xmlns="">
+    <loc>https://pradois.com.br/Produto/Personalizada-10</loc>
+    <lastmod>2024-02-10</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url xmlns="">
+    <loc>https://pradois.com.br/Produto/Guloseimas-Boy-11</loc>
+    <lastmod>2024-02-10</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url xmlns="">
+    <loc>https://pradois.com.br/Produto/Guloseimas-Girl-12</loc>
+    <lastmod>2024-02-10</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url xmlns="">
+    <loc>https://pradois.com.br/Produto/Super-Top-14</loc>
+    <lastmod>2024-02-10</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url xmlns="">
+    <loc>https://pradois.com.br/Produto/Pleno-Carinho-Refri-15</loc>
+    <lastmod>2024-02-10</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url xmlns="">
+    <loc>https://pradois.com.br/Produto/Cone-Love-Blue-16</loc>
+    <lastmod>2024-02-10</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url xmlns="">
+    <loc>https://pradois.com.br/Produto/Cone-Love-Red-17</loc>
+    <lastmod>2024-02-10</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url xmlns="">
+    <loc>https://pradois.com.br/Produto/mimo-Personalizado-18</loc>
+    <lastmod>2024-02-10</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url xmlns="">
+    <loc>https://pradois.com.br/Produto/Mimosa-19</loc>
+    <lastmod>2024-02-10</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url xmlns="">
+    <loc>https://pradois.com.br/Produto/Mimo-20</loc>
+    <lastmod>2024-02-09</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url xmlns="">
+    <loc>https://pradois.com.br/Produto/Slim-21</loc>
+    <lastmod>2024-02-10</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url xmlns="">
+    <loc>https://pradois.com.br/Produto/Super-Top-22</loc>
+    <lastmod>2024-02-10</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url xmlns="">
+    <loc>https://pradois.com.br/Produto/2-Rosas-23</loc>
+    <lastmod>2024-02-10</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url xmlns="">
+    <loc>https://pradois.com.br/Produto/6-Rosas-24</loc>
+    <lastmod>2024-02-10</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url xmlns="">
+    <loc>https://pradois.com.br/Produto/12-Rosas-25</loc>
+    <lastmod>2024-02-10</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url xmlns="">
+    <loc>https://pradois.com.br/Produto/gas-helio-3-uni-26</loc>
+    <lastmod>2024-02-10</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url xmlns="">
+    <loc>https://pradois.com.br/Categoria/Cestas-1</loc>
+    <lastmod>2024-02-07</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.9</priority>
   </url>
-  <url>
-    <loc>https://pradois.com.br/Categoria/Festacaixa1-2</loc>
-    <lastmod></lastmod>
+  <url xmlns="">
+    <loc>https://pradois.com.br/Categoria/Festas-na-Caixa-2</loc>
+    <lastmod>2024-02-10</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.9</priority>
+  </url>
+  <url xmlns="">
+    <loc>https://pradois.com.br/Categoria/Colecoes-exclusivas-3</loc>
+    <lastmod>2024-02-07</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.9</priority>
+  </url>
+  <url xmlns="">
+    <loc>https://pradois.com.br/Categoria/Canecas-4</loc>
+    <lastmod>2024-02-09</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.9</priority>
+  </url>
+  <url xmlns="">
+    <loc>https://pradois.com.br/Categoria/Cartao-Presente-5</loc>
+    <lastmod>2024-02-09</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.9</priority>
+  </url>
+  <url xmlns="">
+    <loc>https://pradois.com.br/Categoria/Buques-de-rosas-6</loc>
+    <lastmod>2024-02-09</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.9</priority>
+  </url>
+  <url xmlns="">
+    <loc>https://pradois.com.br/Categoria/Arranjos-de-flores-7</loc>
+    <lastmod>2024-02-09</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.9</priority>
+  </url>
+  <url xmlns="">
+    <loc>https://pradois.com.br/Categoria/Pelucia-8</loc>
+    <lastmod>2024-02-09</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.9</priority>
+  </url>
+  <url xmlns="">
+    <loc>https://pradois.com.br/Categoria/Fotos-presente-9</loc>
+    <lastmod>2024-02-09</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.9</priority>
+  </url>
+  <url xmlns="">
+    <loc>https://pradois.com.br/Categoria/Arranjos-de-baloes-10</loc>
+    <lastmod>2024-02-09</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.9</priority>
   </url>

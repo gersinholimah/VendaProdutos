@@ -197,6 +197,8 @@
                         <label asp-for="Cartinha">Cartinha</label>
                         <textarea asp-for="Cartinha" class="form-control"></textarea>
                         <span asp-validation-for="Cartinha" class="text-danger"></span>
+                            <span id="contador">0 caracteres</span>
+                            <span id="aviso" style="color: red;"></span>
 
                     </div>
 
@@ -752,4 +754,31 @@
         console.log('Altura renderizada: ' + alturaRenderizada + ' pixels');
         console.log('Largura renderizada: ' + larguraRenderizada + ' pixels');
     }
+</script>
+
+
+<script>
+    // Seleciona a textarea e o contador
+    const textarea = document.getElementById('Cartinha');
+    const contador = document.getElementById('contador');
+    const aviso = document.getElementById('aviso');
+
+    // Adiciona um evento de input à textarea
+    textarea.addEventListener('input', function () {
+        // Obtém o comprimento do texto na textarea
+        let comprimentoTexto = textarea.value.length;
+
+        // Verifica se o comprimento do texto excede 200 caracteres
+        if (comprimentoTexto > 400) {
+            // Impede que o usuário digite mais caracteres
+            textarea.value = textarea.value.substring(0, 200);
+            comprimentoTexto = 400; // Atualiza o comprimento do texto para 200
+            aviso.textContent = 'Aviso: Esse é o limite máximo de texto permitido';
+        } else {
+            aviso.textContent = ''; // Limpa o aviso se estiver dentro do limite
+        }
+
+        // Atualiza o conteúdo do contador
+        contador.textContent = `${comprimentoTexto} caracteres`;
+    });
 </script>

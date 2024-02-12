@@ -110,8 +110,8 @@
                 <h1 class="mt-30-xs">
                     @Model.Produto.Categoria.NomeCurto  <span>@Model.Produto.Nome
                     </span>
-                    <div style="color: #fd4800; font-weight: 800">
-                        Apenas em Feira de Santana
+                    <div style="font-weight: 800">
+                        Apenas em <span style="color: #fd4800;">Feira de Santana</span>
                     </div>
                 </h1>
                 <div class="mt-20 descri"><b>Descrição:</b>Com @Model.Produto.QuantidadeDeItem itens, @Model.Produto.DescricaoCurta ... <a class="maisdetalhes" href="#descricao-completa">Continue lendo</a> </div>
@@ -134,7 +134,7 @@
                     @if (@Model.Produto.Parcela > 0)
                     {
                     <div class="parcelado">
-                        5x sem juros no cartão
+                        12x no cartão de crédito <br />(dividindo até 3x não tem juros)
                     </div>
                     }
                     @if (@Model.Produto.TaxaDeEntrega == 0)
@@ -153,7 +153,7 @@
 
                     <div class="product-addon product-addon-ExtraToppings checkbox mt-50">
                         <h2 class="addon-name">Opções extra</h2>
-
+                        <div class="scrool_opcoes_extra">
                     @foreach (var opcoesExtra in Model.OpcoesExtra)
                     {
                         @if (opcoesExtra.ProdutoId != Model.Produto.ProdutoId)
@@ -161,7 +161,7 @@
                             // Seu código aqui
                                                 <div class="form-row">
                         <div class="opcao_extra" id="minhaDiv">
-                                    <img onload="obterAlturaLargura(this)" src="@opcoesExtra.ImagemUrl" data-toggle="modal" data-target="#modal-@opcoesExtra.ProdutoId" class="lafka-addon-image-icon" alt="">
+                                    <img src="@opcoesExtra.ImagemThumbnailUrl" width="43px" height="43px" data-toggle="modal" data-target="#modal-@opcoesExtra.ProdutoId" class="lafka-addon-image-icon" alt="">
                             <div class="envolve_opcoes">
                                 @{
                                     int parteInteiraPrecoPromocional = (int)opcoesExtra.PrecoPromocional;
@@ -205,6 +205,7 @@
                     }
 
                         <div class="clear"></div>
+                    </div>
                     </div>
                 
 
