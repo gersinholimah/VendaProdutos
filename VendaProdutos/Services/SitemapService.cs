@@ -98,8 +98,9 @@ namespace VendaProdutos.Services
             // Adiciona URLs de produtos
             foreach (var produto in _produtoRepository.Produtos)
             {
+                string nomeCategoria = produto.Categoria.NomeCurto.Replace(" ", "-");
                 string nomeProduto = produto.Nome.Replace(" ", "-");
-                string nomeProdutoMaisId = RemoverAcentos(nomeProduto + "-" + produto.ProdutoId);
+                string nomeProdutoMaisId = RemoverAcentos(nomeCategoria + "-" + nomeProduto + "-" + produto.ProdutoId);
 
                 XmlElement urlElement = xmlDocument.CreateElement("url");
 

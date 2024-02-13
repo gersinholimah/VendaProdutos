@@ -114,7 +114,7 @@
                         Apenas em <span style="color: #fd4800;">Feira de Santana</span>
                     </div>
                 </h1>
-                <div class="mt-20 descri"><b>Descrição:</b>Com @Model.Produto.QuantidadeDeItem itens, @Model.Produto.DescricaoCurta ... <a class="maisdetalhes" href="#descricao-completa">Continue lendo</a> </div>
+                <div class="mt-20 descri"><b>Descrição:</b>Com @Model.Produto.QuantidadeDeItem itens, @Model.Produto.DescricaoCurta ... <a class="maisdetalhes" href="#descricao-completa" id="escorrega_na_tela">Continue lendo</a> </div>
 
 
                 <div class="envolve_star d-none-xs  d-none-sm">
@@ -149,10 +149,19 @@
                     }
                 </small>
 
- 
 
+                @if (Model.Produto.OpcaoExtra)
+                {
+                    <p class="mt-10">Esse produto é vendido como opção extra, selecione um de nossos produto para que possa comprar também esse item</p>
+
+                    <a class="btn btn-primary pt-10 pb-10 pr-40 pl-40 mt-10 mr-auto-xs ml-auto-xs d-block-xs" style="background-color:#007bff" asp-controller="Produto" asp-action="List">Selecionar mais Produtos</a>
+
+                }
+                else
+                {
                     <div class="product-addon product-addon-ExtraToppings checkbox mt-50">
-                        <h2 class="addon-name">Opções extra</h2>
+                   
+                        <h2 class="addon-name">Adicione opções extra</h2>
                         <div class="scrool_opcoes_extra">
                     @foreach (var opcoesExtra in Model.OpcoesExtra)
                     {
@@ -160,8 +169,8 @@
                         {
                             // Seu código aqui
                                                 <div class="form-row">
-                        <div class="opcao_extra" id="minhaDiv">
-                                    <img src="@opcoesExtra.ImagemThumbnailUrl" width="43px" height="43px" data-toggle="modal" data-target="#modal-@opcoesExtra.ProdutoId" class="lafka-addon-image-icon" alt="">
+                        <div class="opcao_extra" id="minhaDiv" data-toggle="modal" data-target="#modal-@opcoesExtra.ProdutoId">
+                                    <img src="@opcoesExtra.ImagemThumbnailUrl" width="43px" height="43px"  class="lafka-addon-image-icon" alt="">
                             <div class="envolve_opcoes">
                                 @{
                                     int parteInteiraPrecoPromocional = (int)opcoesExtra.PrecoPromocional;
@@ -189,7 +198,7 @@
 
                                         <!-- Corpo do Modal -->
                                         <div class="modal-body">
-                                            <img onload="obterAlturaLargura(this)" class="img-fluid"  src="@opcoesExtra.ImagemUrl" alt="Imagem Modal">
+                                            <img  class="img-fluid"  src="@opcoesExtra.ImagemUrl" alt="Imagem Modal">
                                         </div>
                                         <!-- Rodapé do Modal -->
                                         <div class="modal-footer">
@@ -231,7 +240,63 @@
 
  
 
-                <a class="pt-10 pb-10 pr-40 pl-40 mt-10 mr-auto-xs ml-auto-xs d-block-xs" onclick="compraProdutosDaLista()">Encomendar agora</a>
+                    <a class="pt-10 pb-10 pr-40 pl-40 mt-10 mr-auto-xs ml-auto-xs d-block-xs" id="botao_comprar" onclick="compraProdutosDaLista()">Encomendar agora</a>
+                    <!--SVG ANIMATED LOAD-->
+                    <div id="animated_load" style="display:none"> 
+<?xml version="1.0" encoding="utf-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" style="margin: auto; background: rgb(255, 255, 255); display: block; shape-rendering: auto;" width="200px" height="200px" viewBox="0 0 100 100" preserveAspectRatio="xMidYMid">
+<g transform="rotate(0 50 50)">
+  <rect x="47" y="24" rx="3" ry="6" width="6" height="12" fill="#00a650">
+    <animate attributeName="opacity" values="1;0" keyTimes="0;1" dur="1s" begin="-0.9166666666666666s" repeatCount="indefinite"></animate>
+  </rect>
+</g><g transform="rotate(30 50 50)">
+  <rect x="47" y="24" rx="3" ry="6" width="6" height="12" fill="#00a650">
+    <animate attributeName="opacity" values="1;0" keyTimes="0;1" dur="1s" begin="-0.8333333333333334s" repeatCount="indefinite"></animate>
+  </rect>
+</g><g transform="rotate(60 50 50)">
+  <rect x="47" y="24" rx="3" ry="6" width="6" height="12" fill="#00a650">
+    <animate attributeName="opacity" values="1;0" keyTimes="0;1" dur="1s" begin="-0.75s" repeatCount="indefinite"></animate>
+  </rect>
+</g><g transform="rotate(90 50 50)">
+  <rect x="47" y="24" rx="3" ry="6" width="6" height="12" fill="#00a650">
+    <animate attributeName="opacity" values="1;0" keyTimes="0;1" dur="1s" begin="-0.6666666666666666s" repeatCount="indefinite"></animate>
+  </rect>
+</g><g transform="rotate(120 50 50)">
+  <rect x="47" y="24" rx="3" ry="6" width="6" height="12" fill="#00a650">
+    <animate attributeName="opacity" values="1;0" keyTimes="0;1" dur="1s" begin="-0.5833333333333334s" repeatCount="indefinite"></animate>
+  </rect>
+</g><g transform="rotate(150 50 50)">
+  <rect x="47" y="24" rx="3" ry="6" width="6" height="12" fill="#00a650">
+    <animate attributeName="opacity" values="1;0" keyTimes="0;1" dur="1s" begin="-0.5s" repeatCount="indefinite"></animate>
+  </rect>
+</g><g transform="rotate(180 50 50)">
+  <rect x="47" y="24" rx="3" ry="6" width="6" height="12" fill="#00a650">
+    <animate attributeName="opacity" values="1;0" keyTimes="0;1" dur="1s" begin="-0.4166666666666667s" repeatCount="indefinite"></animate>
+  </rect>
+</g><g transform="rotate(210 50 50)">
+  <rect x="47" y="24" rx="3" ry="6" width="6" height="12" fill="#00a650">
+    <animate attributeName="opacity" values="1;0" keyTimes="0;1" dur="1s" begin="-0.3333333333333333s" repeatCount="indefinite"></animate>
+  </rect>
+</g><g transform="rotate(240 50 50)">
+  <rect x="47" y="24" rx="3" ry="6" width="6" height="12" fill="#00a650">
+    <animate attributeName="opacity" values="1;0" keyTimes="0;1" dur="1s" begin="-0.25s" repeatCount="indefinite"></animate>
+  </rect>
+</g><g transform="rotate(270 50 50)">
+  <rect x="47" y="24" rx="3" ry="6" width="6" height="12" fill="#00a650">
+    <animate attributeName="opacity" values="1;0" keyTimes="0;1" dur="1s" begin="-0.16666666666666666s" repeatCount="indefinite"></animate>
+  </rect>
+</g><g transform="rotate(300 50 50)">
+  <rect x="47" y="24" rx="3" ry="6" width="6" height="12" fill="#00a650">
+    <animate attributeName="opacity" values="1;0" keyTimes="0;1" dur="1s" begin="-0.08333333333333333s" repeatCount="indefinite"></animate>
+  </rect>
+</g><g transform="rotate(330 50 50)">
+  <rect x="47" y="24" rx="3" ry="6" width="6" height="12" fill="#00a650">
+    <animate attributeName="opacity" values="1;0" keyTimes="0;1" dur="1s" begin="0s" repeatCount="indefinite"></animate>
+  </rect>
+</g>
+ </svg>
+ </div>
+                    }
 
  
 
@@ -276,12 +341,12 @@
 @{
     bool exibeProdutosRelacionados = false;
     @foreach (var categoria in Model.Categorias){
-        @if (categoria.CategoriaId == @Model.Produto.Categoria.CategoriaId)
+    @if (categoria.CategoriaId == @Model.Produto.Categoria.CategoriaId)
         {
 
-            @foreach (var produto in categoria.Produtos)
+    @foreach (var produto in categoria.Produtos)
             {
-                @if (produto.ProdutoId != @Model.Produto.ProdutoId)
+    @if (produto.ProdutoId != @Model.Produto.ProdutoId)
                 {
                     exibeProdutosRelacionados = true;
                 }
@@ -419,8 +484,8 @@
     // Função para comprar os produtos da lista
     function compraProdutosDaLista() {
         var valores_totais = $(`#valores_totais`);
+    
         valores_totais.hide();
-
         
         if (listaDeCompra.length > 0) {
             // Iterar sobre cada ID na lista de compra
@@ -446,7 +511,14 @@
         } else {
             alert('Adicione produtos à lista antes de comprar.');
         }
-    }
+        var botao_comprar = $(`#botao_comprar`);
+        var opcoes_extras = $(`.product-addon`);
+ 
+        botao_comprar.hide();
+        opcoes_extras.hide();
+
+var animated_load = document.getElementById("animated_load");
+animated_load.style.display = "block";    }
 </script>
 
 
@@ -575,3 +647,16 @@
     });
 
         </script>
+
+
+        <script>
+    function bloquearModal(event) {
+        event.stopPropagation();
+    }
+
+    // Adicionando um evento de clique aos botões de adicionar e remover para chamar a função bloquearModal
+    document.querySelectorAll('.btn.btn-primary.btn-sm, .btn.btn-danger').forEach(button => {
+        button.addEventListener('click', bloquearModal);
+    });
+</script>
+ 

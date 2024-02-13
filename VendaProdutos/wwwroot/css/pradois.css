@@ -387,8 +387,8 @@ header {
    vertical-align: middle;
    border-radius: 4px;
   
-   text-transform: uppercase;
-   font-weight: 900;
+/*   text-transform: uppercase;
+*/   font-weight: 900;
    font-weight: 700;
    font-size: 12px!important;
    letter-spacing: 0.4px;
@@ -1110,6 +1110,7 @@ nav .container {
 
 .galeria_produto .mySwiper .swiper-slide img {
     opacity: 0.4;
+    max-width:123px;
 }
 
 .mySwiper .swiper-slide-thumb-active img {
@@ -1141,7 +1142,7 @@ nav .container {
         width: 43px;
     }
     .opcao_extra .envolve_opcoes {
-        font-size: 12px !important;
+        font-size: 13px !important;
         letter-spacing: -0.3px;
         padding: 0px 5px 5px 5px;
         display: grid;
@@ -1685,21 +1686,31 @@ nav .container {
 
 
 .baner_principal .bannerSite .swiper-button-prev,
-.baner_principal .bannerSite .swiper-button-next {
+.baner_principal .bannerSite .swiper-button-next,
+.slideTodosProdutos .swiper-button-prev,
+.slideTodosProdutos .swiper-button-next {
     background: #fff;
     border-radius: 35px !important;
     height: 40px !important;
     width: 40px !important;
+    box-shadow: 0 4px 20px #00000029;
 }
 
-.baner_principal .bannerSite .swiper-button-next:after, .baner_principal .bannerSite .swiper-button-prev:after {
-    font-size: 20px !important;
-}
+    .baner_principal .bannerSite .swiper-button-next:after,
+    .baner_principal .bannerSite .swiper-button-prev:after,
+    .slideTodosProdutos .swiper-button-next:after,
+    .slideTodosProdutos .swiper-button-prev:after {
+        font-size: 20px !important;
+    }
 
+.slideTodosProdutos .swiper-button-prev,
+.slideTodosProdutos .swiper-button-next {
+    top: 192px;
+}
 
 .home_titulo {
-    margin-top:50px;
-    margin-bottom: 50px!important;
+    margin-top: 50px;
+    margin-bottom: 50px !important;
 }
 .padding_home {
     padding-top: 50px;
@@ -1745,6 +1756,58 @@ nav .container {
 .onb-embed-responsive__4by3 {
     padding-bottom: 75%;
 }*/
+
+
+.modal-body img{
+    margin: auto;
+    display: block;
+}
+.scrool_opcoes_extra .form-row{
+    cursor:pointer;
+}
+.galeria_produto .swiper-backface-hidden .swiper-slide {
+    background: #000;
+}
+.swiper.mySwiper.swiper-initialized.swiper-horizontal.swiper-free-mode.swiper-watch-progress.swiper-backface-hidden.swiper-thumbs {
+    display: inline-block;
+}
+.swiper.mySwiper2.swiper-initialized.swiper-horizontal.swiper-backface-hidden {
+    display: inline-block;
+    margin-bottom: -7px;
+}
+
+
+.bg_topo_interno h2 span {
+    font-size: 10pt !important;
+    line-height: 26px !important;
+    width: 100%;
+    display: block;
+}
+
+.bg_topo_interno p span {
+    font-size: 10pt !important;
+}
+
+.bg_topo_interno
+.linkbuild_top h2 {
+    line-height: 23px !important;
+}
+.social svg {
+    width: 43px;
+    margin: 0 20px 0 0;
+}
+
+.social_insta svg {
+    fill: #c13584;
+}
+.social {
+    padding: 0;
+    list-style: none;
+    margin: auto;
+    width: fit-content;
+}
+}
+
 /*MEIO DO CSS*/
 
 
@@ -2156,8 +2219,13 @@ button.btn.btn-link.btn-block.text-left.tit2_gen.p-4 {
     }
     .scrool_opcoes_extra {
         overflow: scroll;
-        height: 210px;
+        height: 218px;
+    }
+    .slideTodosProdutos .swiper-button-prev,
+    .slideTodosProdutos .swiper-button-next {
+        display:none!important;
     }
 }
    /* Large devices (desktops, less than 1200px)*/
    @media (max-width: 1199.98px) { }
+

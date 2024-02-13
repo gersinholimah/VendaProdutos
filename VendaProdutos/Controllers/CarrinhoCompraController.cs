@@ -20,9 +20,9 @@ namespace VendaProdutos.Controllers
 
         public IActionResult Index()
         {
-             
-            var itens = _carrinhoCompra.GetCarrinhoCompraItens();
-            _carrinhoCompra.CarrinhoCompraItens = itens;
+            VerificaSeCarrinhoSoTemOpcaoExtra();
+
+          
             IEnumerable<Produto> listaOpcoesExtra = _produtoRepository.Produtos.Where(c => c.OpcaoExtra).ToList();
 
             var carrinhCompraVM = new CarrinhoCompraViewModel 
@@ -33,7 +33,7 @@ namespace VendaProdutos.Controllers
 
             };
             ViewBag.ProdutosCadastrados = _produtoRepository.Produtos;
-
+ 
             return View(carrinhCompraVM);
         }
 
@@ -67,8 +67,36 @@ namespace VendaProdutos.Controllers
         }
 
 
+        public IActionResult VerificaSeCarrinhoSoTemOpcaoExtra()
+        {
+            var itens = _carrinhoCompra.GetCarrinhoCompraItens();
+            _carrinhoCompra.CarrinhoCompraItens = itens;
 
+            if (_carrinhoCompra.CarrinhoCompraItens != null)
+            {
+                bool removeTudoDoCarrinho = true;
+                foreach (var item in _carrinhoCompra.CarrinhoCompraItens)
+                {
+                    if (!item.Produto.OpcaoExtra)
+                    {
+                        removeTudoDoCarrinho = false;
+                        break; // Não é necessário continuar verificando se encontramos um item que não é uma opção extra
+                    }
+                }
 
+                if (removeTudoDoCarrinho)
+                {
+                    foreach (var item in _carrinhoCompra.CarrinhoCompraItens.ToList())
+                    {
+                        RemoverItemDoCarrinhoCompra(item.Produto.ProdutoId);
+                        item.Quantidade = 0;
+                    }
+                }
+            }
+
+            // O redirecionamento para "Index" deve ser feito após a verificação, não dentro do loop
+            return RedirectToAction("Index");
+        }
 
 
 

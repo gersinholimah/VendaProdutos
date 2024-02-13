@@ -217,7 +217,7 @@
 
                         <div class="col-sm-6 mb-3">
                         <label asp-for="DataDeEntrega">Data da entrega</label>
-                        <input oninput="procuraErro(this)"  type="text" asp-for="DataDeEntrega" id="datePicker" placeholder="Dia/mês/ano" class="form-control" width="276" autocomplete="off" required />
+                            <input oninput="procuraErro(this)" type="text" asp-for="DataDeEntrega" id="datePicker" placeholder="Dia/mês/ano" class="form-control" width="276" autocomplete="off" required readonly />
                         <span asp-validation-for="DataDeEntrega" class="text-danger"></span>
                         <span asp-validation-for="DataDeEntrega" class="text-danger"></span>
 

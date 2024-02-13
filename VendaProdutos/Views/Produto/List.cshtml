@@ -191,7 +191,7 @@
                              </h2>
             </div>
             <div class="col-12">
-                <div class=" swiper mySwiper">
+                        <div class=" swiper slideTodosProdutos">
                     <div class="swiper-wrapper">
 
                                 @foreach (var produto in categoria.Produtos)
@@ -226,7 +226,8 @@
 
 
                     </div>
-
+                            <div class="swiper-button-next"></div>
+                            <div class="swiper-button-prev"></div>
                 </div>
             </div>
         </div>
@@ -330,7 +331,7 @@ else
 <script src="https://cdn.jsdelivr.net/npm/swiper/swiper-bundle.min.js"></script>
 
 <script>
-    var swiper = new Swiper(".mySwiper", {
+    var swiper = new Swiper(".slideTodosProdutos", {
         slidesPerView: 3.5,
         spaceBetween: 30,
         freeMode: true,
