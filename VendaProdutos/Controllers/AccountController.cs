@@ -1,4 +1,4 @@
-﻿using GoogleReCaptcha.V3.Interface;
+﻿//using GoogleReCaptcha.V3.Interface;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
@@ -15,17 +15,18 @@ namespace VendaProdutos.Controllers
         private readonly UserManager<IdentityUser> _userManager;
         private readonly SignInManager<IdentityUser> _signInManager;
         private readonly IProdutoRepository _produtoRepository;
-        private readonly ICaptchaValidator _captchaValidator;
+        //private readonly ICaptchaValidator _captchaValidator;
 
 
         public AccountController(UserManager<IdentityUser> userManager,
-            SignInManager<IdentityUser> signInManager, IProdutoRepository produtoRepository,
-            ICaptchaValidator captchaValidator)
+            SignInManager<IdentityUser> signInManager, IProdutoRepository produtoRepository
+            //,ICaptchaValidator captchaValidator
+            )
         {
             _userManager = userManager;
             _signInManager = signInManager;
             _produtoRepository = produtoRepository;
-            _captchaValidator = captchaValidator;
+            //_captchaValidator = captchaValidator;
 
         }
 
@@ -40,7 +41,7 @@ namespace VendaProdutos.Controllers
         }
         [AllowAnonymous]
         [HttpPost]
-        public async Task<IActionResult> Login(LoginViewModel loginVM, string captcha)
+        public async Task<IActionResult> Login(LoginViewModel loginVM)/*, string captcha*/
         {
    
 
@@ -54,7 +55,7 @@ namespace VendaProdutos.Controllers
             {
                 var result = await _signInManager.PasswordSignInAsync(user, loginVM.Password, false, false);
        //verifica se o logim ta certo e verifica se o captcha aprovou
-                if (result.Succeeded && await _captchaValidator.IsCaptchaPassedAsync(captcha))
+                if (result.Succeeded)/*&& await _captchaValidator.IsCaptchaPassedAsync(captcha)*/
                 {
                     if (string.IsNullOrEmpty(loginVM.ReturnUrl))
                     {
@@ -76,7 +77,7 @@ namespace VendaProdutos.Controllers
         [HttpPost]
         [ValidateAntiForgeryToken]
 
-        public async Task<IActionResult> Register(LoginViewModel registroVM, string captcha)
+        public async Task<IActionResult> Register(LoginViewModel registroVM)/*, string captcha*/
         {
             ViewBag.ProdutosCadastrados = _produtoRepository.Produtos;
 
@@ -88,7 +89,7 @@ namespace VendaProdutos.Controllers
                 var result = await _userManager.CreateAsync(user, registroVM.Password);
         //verifica se o cadastro ta certo e verifica se o captcha aprovou
 
-                if (result.Succeeded && await _captchaValidator.IsCaptchaPassedAsync(captcha))
+                if (result.Succeeded )/*&& await _captchaValidator.IsCaptchaPassedAsync(captcha)*/
                 {
                     //await _signInManager.SignInAsync(user, isPersistent: false);
                     await _userManager.AddToRoleAsync(user, "Member");

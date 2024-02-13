@@ -38,7 +38,7 @@
         }
 
         <a asp-controller="Produto" asp-action="Details" asp-route-nome="@NomeConjugado" asp-route-produtoId="@Model.ProdutoId" class="envolve_produtos mb-30-xs mb-70">
-            <img onload="obterAlturaLargura(this)" class="img-fluid" alt="@Model.DescricaoImgTagAlt" src="@Model.ImagemThumbnailUrl">
+            <img onload="obterAlturaLargura(this)" class="img-fluid" alt="@Model.DescricaoImgTagAlt" src="@Model.ImagemThumbnailUrl" decoding="async">
             <h4>@Model.Categoria.NomeCurto @Model.Nome</h4>
             <p> Possui @Model.QuantidadeDeItem  Itens </p>
             

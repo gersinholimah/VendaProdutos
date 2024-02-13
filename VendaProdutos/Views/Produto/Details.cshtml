@@ -27,7 +27,7 @@
                                      width="345"
                                      height="352"
                                      alt="2ª foto  da cesta"
-                                     src="@Model.Produto.Imagem2CarolselURL" />
+                                     src="@Model.Produto.Imagem2CarolselURL"  loading="lazy" decoding="async"/>
                             </div>
                             }
                             @if (!string.IsNullOrEmpty(Model.Produto.Imagem3CarolselURL))
@@ -37,7 +37,7 @@
                                     width="345"
                                     height="352"
                                     alt="3ª foto  da cesta"
-                                    src="@Model.Produto.Imagem3CarolselURL" />
+                                    src="@Model.Produto.Imagem3CarolselURL"  loading="lazy" decoding="async"/>
                                 </div>
                             }
                             @if (!string.IsNullOrEmpty(Model.Produto.Imagem4CarolselURL))
@@ -67,7 +67,7 @@
                                      width="74"
                                      height="75"
                                      alt="1ª miniatura da cesta"
-                                     src="@Model.Produto.ImagemUrl" />
+                                     src="@Model.Produto.ImagemUrl"  loading="lazy" decoding="async"/>
                             </div>
                             }
                             @if (!string.IsNullOrEmpty(Model.Produto.Imagem2CarolselURL))
@@ -77,7 +77,7 @@
                                     width="74"
                                     height="75"
                                     alt="2ª miniatura da cesta"
-                                    src="@Model.Produto.Imagem2CarolselURL" />
+                                    src="@Model.Produto.Imagem2CarolselURL"  loading="lazy" decoding="async"/>
                                 </div>
                             }
                             @if (!string.IsNullOrEmpty(Model.Produto.Imagem3CarolselURL))
@@ -87,7 +87,7 @@
                                     width="74"
                                     height="75"
                                     alt="3ª miniatura da cesta"
-                                    src="@Model.Produto.Imagem3CarolselURL" />
+                                    src="@Model.Produto.Imagem3CarolselURL"  loading="lazy" decoding="async"/>
                                 </div>
                             }
                             @if (!string.IsNullOrEmpty(Model.Produto.Imagem4CarolselURL))
@@ -97,7 +97,7 @@
                                          width="74"
                                          height="75"
                                          alt="1ª miniatura da cesta"
-                                         src="@Model.Produto.ImagemUrl" />
+                                         src="@Model.Produto.ImagemUrl"  loading="lazy" decoding="async"/>
                                 </div>
                             }
                         </div>
@@ -161,7 +161,7 @@
                 {
                     <div class="product-addon product-addon-ExtraToppings checkbox mt-50">
                    
-                        <h2 class="addon-name">Adicione opções extra</h2>
+                        <h2 class="addon-name">Adicione opções extras</h2>
                         <div class="scrool_opcoes_extra">
                     @foreach (var opcoesExtra in Model.OpcoesExtra)
                     {
@@ -170,7 +170,7 @@
                             // Seu código aqui
                                                 <div class="form-row">
                         <div class="opcao_extra" id="minhaDiv" data-toggle="modal" data-target="#modal-@opcoesExtra.ProdutoId">
-                                    <img src="@opcoesExtra.ImagemThumbnailUrl" width="43px" height="43px"  class="lafka-addon-image-icon" alt="">
+                                    <img src="@opcoesExtra.ImagemThumbnailUrl" width="43px" height="43px"  class="lafka-addon-image-icon" alt=""  loading="lazy" decoding="async">
                             <div class="envolve_opcoes">
                                 @{
                                     int parteInteiraPrecoPromocional = (int)opcoesExtra.PrecoPromocional;
@@ -198,7 +198,7 @@
 
                                         <!-- Corpo do Modal -->
                                         <div class="modal-body">
-                                            <img  class="img-fluid"  src="@opcoesExtra.ImagemUrl" alt="Imagem Modal">
+                                            <img  class="img-fluid"  src="@opcoesExtra.ImagemUrl" alt="Imagem Modal"  decoding="async">
                                         </div>
                                         <!-- Rodapé do Modal -->
                                         <div class="modal-footer">
@@ -215,6 +215,29 @@
 
                         <div class="clear"></div>
                     </div>
+                    <button id="expandirOpcoes" class="btn btn-sm btn-secondary" onclick="adicionarAlturaAuto()" style="margin: auto;display: block;width:100%">Expandir opções extras</button>
+                                        <button id="encolherOpcoes" class="btn btn-sm btn-default" onclick="removerAlturaAuto()" style="margin: auto;display: none;width:100%">Encolher opções extras</button>
+
+
+ <script>
+  function adicionarAlturaAuto() {
+      var encolherOpcoes = document.getElementById("encolherOpcoes")
+      var expandirOpcoes = document.getElementById("expandirOpcoes")
+    var opcaoExtra = document.querySelector(".scrool_opcoes_extra");
+    opcaoExtra.style.height = "auto";
+      expandirOpcoes.style.display = "none";
+      encolherOpcoes.style.display = "block";
+  }
+    function removerAlturaAuto() {
+              var encolherOpcoes = document.getElementById("encolherOpcoes")
+
+      var expandirOpcoes = document.getElementById("expandirOpcoes")
+    var opcaoExtra = document.querySelector(".scrool_opcoes_extra");
+    opcaoExtra.style.height = "218px";
+      expandirOpcoes.style.display = "block";
+      encolherOpcoes.style.display = "none";
+  }
+</script>
                     </div>
                 
 

@@ -693,6 +693,7 @@ fill:var(--cor-primaria);
    display: block;
    margin-left: auto;
    margin-top: 30px;
+   background-image:url(../img/img_topo_xs.webp);
    background-position: top right;
    background-size: contain;
    background-repeat: no-repeat;
@@ -1295,9 +1296,10 @@ nav .container {
     border: 1px solid #dbdbdb;
     border-radius: 5px;
 }
-.envolve_produtos img{
+.envolve_produtos img {
     border-top-left-radius: 19px;
     border-top-right-radius: 19px;
+    width: 100%;
 }
 .detalhes_produto h3, .detalhes_produto h2 {
     text-align: center;
@@ -1792,6 +1794,9 @@ nav .container {
 .linkbuild_top h2 {
     line-height: 23px !important;
 }
+.linkbuild_2 ul {
+    color: #a6a6a6;
+}
 .social svg {
     width: 43px;
     margin: 0 20px 0 0;
@@ -1806,6 +1811,8 @@ nav .container {
     margin: auto;
     width: fit-content;
 }
+input#datePicker {
+    background: #fff;
 }
 
 /*MEIO DO CSS*/
@@ -1826,6 +1833,9 @@ nav .container {
 @media (min-width: 1200px) {
     .envolve_produtos img{
         width: 279px;
+    }
+    .slideTodosProdutos img {
+        width: 301px;
     }
 }
 
@@ -1889,7 +1899,9 @@ nav .container {
         width: auto;
         height: 100%;
     }
-
+    #expandirOpcoes{
+        display:none!important;
+    }
 }
 
 
@@ -1897,6 +1909,9 @@ nav .container {
    @media (max-width: 400px) {
     .menu_mobi {
         padding: 0;
+    }
+    .banner_categ {
+        background-size: 200px !important;
     }
    }
    
@@ -2035,6 +2050,9 @@ button.btn.btn-link.btn-block.text-left.tit2_gen.p-4 {
 .produtos h2 {
    font-size: 40px;
 }
+    section.produtos.categorias h2 {
+        font-size: 24px;
+    }
 .product-addon .form-row {
    width: 100%;
    }
@@ -2150,7 +2168,7 @@ button.btn.btn-link.btn-block.text-left.tit2_gen.p-4 {
     }
 
     .produtos .envolve_produtos h4 {
-        margin: 5px 5px 0px 5px;
+        margin: 15px 5px 0px 5px;
     }
 
     .produtos .envolve_produtos p {
@@ -2218,7 +2236,7 @@ button.btn.btn-link.btn-block.text-left.tit2_gen.p-4 {
         margin: auto;
     }
     .scrool_opcoes_extra {
-        overflow: scroll;
+        overflow-y: scroll;
         height: 218px;
     }
     .slideTodosProdutos .swiper-button-prev,

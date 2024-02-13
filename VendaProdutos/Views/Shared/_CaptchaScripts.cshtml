@@ -1,4 +1,4 @@
-﻿@inject Microsoft.Extensions.Configuration.IConfiguration Configuration
+﻿@* @inject Microsoft.Extensions.Configuration.IConfiguration Configuration
 
 <script src="https://www.google.com/recaptcha/api.js?render=@Configuration["googleReCaptcha:Sitekey"]"></script>
 <script>
@@ -7,4 +7,4 @@
     $("#captchaInput").val(token);
     });
     });
-</script>
+</script> *@
